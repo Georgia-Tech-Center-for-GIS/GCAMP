@@ -1,0 +1,179 @@
+<!doctype html> 
+<html lang="en"> 
+  <head> 
+    <meta charset="utf-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=7,IE=9" /> 
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/> 
+    <title></title> 
+    <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/dojo/dijit/themes/tundra/tundra.css" /> 
+	<link href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/dojo/dijit/themes/tundra/form/Button.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/dojo/dojox/layout/resources/ExpandoPane.css"/>
+    <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/esri/dijit/css/Popup.css" />
+	<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/esri/css/esri.css" /> 
+    <link rel="stylesheet" type="text/css" href="style.css" /> 
+    <style>
+      #map{ margin: 0; padding: 0; } 
+      #footer{ 
+        border-top: solid 1px #888; 
+        height:55px; 
+      } 
+    </style> 
+    <script>var dojoConfig = { parseOnLoad: true,
+		packages : [
+			{
+				name : "my",
+				location : "http://localhost/dijits/my"
+			}
+		]};</script> 
+
+    <script src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=3.2"></script>
+
+	<script src='visibility.js'> </script>
+    <script src='main.js'> </script>
+  </head> 
+ 
+<body class="tundra">
+	<div data-dojo-type="dijit.layout.BorderContainer" 
+		data-dojo-props="design:'headline',gutters:false" 
+		style="width: 100%; height: 100%; margin: 0;">
+		
+		<div id="titlePane" data-dojo-type="dijit.layout.ContentPane"data-dojo-props="region:'top'" >
+			<img style='float: left' src='http://georgia.gov/profiles/georgiagov/themes/gagov/logo.png' alt='Georgia.gov Logo'/>
+			<div id='GABranding' style=''>Coastal Dataset Viewer</div>
+		</div>
+		<div data-dojo-type="dijit.layout.ContentPane"data-dojo-props="region:'top'">
+			<div id="navToolbar" data-dojo-type="dijit.Toolbar" class="toolbar">
+	  			<div dojotype="dijit.form.Button" id="zoomfullext" iconclass="zoomfullextIcon" onclick="fullExtent();" title="Full Extent">Zoom out to full-extent</div>
+	    		<div dojotype="dijit.form.Button" id="zoomprev"	   iconclass="zoomprevIcon" onClick="navToolbar.zoomToPrevExtent();" title="Zoom Previous">Go back</div>
+				<div dojotype="dijit.form.Button" id="zoomnext"    iconclass="zoomnextIcon" onClick="navToolbar.zoomToNextExtent();" title="Zoom Next"> Go forward</div>
+				<div dojotype="dijit.form.Button" id="pan"         iconclass="zoompan" onClick="navToolbar.activate(esri.toolbars.Navigation.PAN);" title="Pan">Pan</div>
+				<!--div dojotype="dijit.form.Button" id="identify"	   iconclass="identify" title="Identify">Identify</div -->
+			</div>
+			
+			<div id='lyrTypeTabController' style='height: 36pt; margin-left: 10%; width: 80%;'>
+				<form>
+					<div data-dojo-type="dijit.form.HorizontalSlider" id='MapType'
+						 data-dojo-props="discreteValues: 4"> 					</div>
+						 <ol data-dojo-type="dijit.form.HorizontalRuleLabels" container="topDecoration"
+							style="height:1.5em;font-size:125%;color:gray;">
+							<li>All Layers</li>
+							<li>On-Shore</li>
+							<li>Coastal</li>
+							<li>Ocean</li>
+						  </ol>
+				</form>
+			</div>		
+		</div>
+		<div data-dojo-type="dojox.layout.ExpandoPane"
+			 data-dojo-props="title: 'Information', maxWidth:225, splitter:false, region:'leading'"
+			 style='' id='LeftExPanel'>
+			<div dojoType='dijit.layout.TabContainer'
+				  tabPosition='top' tabStrip='true' id='LeftTabs'>
+				<div dojoType='dijit.layout.ContentPane' title="Layers" id='layersSection'>
+				</div>
+				<div dojoType='dijit.layout.ContentPane' title='Base Maps' id='layersBaseMap'>
+					<div id="basemapGallery" ></div>
+				</div>
+				<div dojoType='dijit.layout.ContentPane' title='Other Data...' id='layersAddNew'>
+					<h2>Available Map Services</h2>
+					
+					<div id='SelectMapLayer'>
+					</div>
+					
+					<button data-dojo-type="dijit.form.Button" type="button" id='MapSrvInfo'> Get Information
+						<script type="dojo/on" data-dojo-event="click" data-dojo-args="evt">
+							require(["dojo/dom"], function(dom){
+							});
+						</script>
+					</button>
+
+					<button data-dojo-type="dijit.form.Button" type="button" id='MapSrvRemove'> Remove Service
+						<script type="dojo/on" data-dojo-event="click" data-dojo-args="evt">
+							require(["dojo/dom"], function(dom){
+								var s = dijit.byId('SelectMapLayer');
+								removeLayerFromMap(s,s.getValue());
+							});
+						</script>
+					</button>
+
+					<h3 style='margin-top: 20px;'>Add Map Service</h3>
+					<table>
+						<tr><td><strong>Label:</strong></td><td><input id='AddMapSvcLabel' data-dojo-type="dijit.form.ValidationTextBox" /></td></tr>
+						<tr><td><strong>URL:</strong></td><td><input id='AddMapSvcURL'   data-dojo-type="dijit.form.ValidationTextBox" /></td></tr>
+					</table>
+
+					<div id='SelectMapLayerCatalog'> </div>
+					
+					<button data-dojo-type="dijit.form.Button" type="button" id='MapSrvAdd'> Add Map Service
+						<script type="dojo/on" data-dojo-event="click" data-dojo-args="evt">
+							require(["dojo/dom"], function(dom){
+								var l = dijit.byId('AddMapSvcLabel').value;
+								var u = dijit.byId('AddMapSvcURL').value;
+								
+								if( l == "" || u == "") {
+								}
+								else {
+									try {
+										addLayerToMap(u,l);
+									}
+									catch(e) {
+										console.debug(e);
+									}
+									
+									dijit.byId('AddMapSvcLabel').set("value","");
+									dijit.byId('AddMapSvcURL').set("value","");
+
+								}
+							});
+						</script>
+					</button>
+					
+					<!--button data-dojo-type="dijit.form.Button" type="button" id='MapSrvAddChoice'> Add Map Service from List
+						<script type="dojo/on" data-dojo-event="click" data-dojo-args="evt">
+							require(["dojo/dom"], function(dom){
+								var s = dijit.byId('SelectMapLayerCatalog');
+								var storedObj = s.store.objectStore.query({"id": s.getValue()})[0];
+								
+								var l = storedObj.label;
+								var u = storedObj.url;
+								
+								if( l == "" || u == "") {
+								}
+								else {
+									addLayerToMap(map,u,l);
+								}
+							});
+						</script>
+					</button>
+					</div-->
+				</div>
+			</div>
+		</div>
+		<div data-dojo-type="dojox.layout.ExpandoPane"
+			 data-dojo-props="title: 'Legend and ID Results', maxWidth:225, splitter:false, region:'trailing', startExpanded: false"
+			 style='' id='RightExPanel'>
+			
+			<div dojoType='dijit.layout.TabContainer'
+				 tabPosition="top" tabStrip="true" id='RightTabs'>
+				<div id='legend' dojoType='dijit.layout.ContentPane' title="Legend"><div id='legendSection'> </div> </div>
+				<div id='bottomIDPanel' data-dojo-type='dijit.layout.ContentPane' data-dojo-props='title: "Identify Results"' style='width: 250px;' >
+					<h2>Left-click on map to retrieve information</h2>
+				</div>
+				<div id='layerInfoPane' dojoType='dijit.layout.ContentPane' title='Layer Info'>
+				</div>
+			</div>
+		</div>
+			
+		<!--/div-->
+
+		<div id="map" data-dojo-type="dijit.layout.ContentPane"data-dojo-props="region:'center'">
+			<div id='status' style=''>Seeing&nbsp;if&nbsp;there's&nbsp;more&nbsp;information... </div>
+		</div>
+	</div>
+	<div id='paneTitleRight' style=''>Legend/Information</div>
+	<div id='paneTitleLeft' style=''>Layers</div>
+	</body> 
+<script>
+	//dojo.ready(init);
+</script>
+</html> 

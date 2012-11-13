@@ -1,0 +1,159 @@
+/*
+ */
+ 
+/*@import url("dojox/layout/resources/ExpandoPane.css");*/
+
+html, body {
+    font-family: Verdana, Arial, Serif;
+	height: 100%; width: 100%; margin: 0; padding: 0;
+}
+
+h3 {
+	margin: 0 0 0.5em 0;
+	border-bottom: 1px solid #444;
+}
+
+#status{ 
+    background-color:#E0E0E0;
+    color: #707070;
+	
+	font-size: 18pt;
+	height: 28pt;
+	
+    font-weight: bold; 
+    
+	padding: 3px;  
+    border: solid 1px #707070; 
+    
+	-moz-border-radius: 15px; 
+    -webkit-border-radius: 15px;     
+    border-radius: 15px;
+    
+	position:absolute; 
+    top:50%; 
+    right:20%; 
+    z-index:100; 
+    display:none;
+}
+
+.shadow { 
+    -moz-box-shadow: 0 0 15px #888; 
+    -webkit-box-shadow: 0 0 15px #888; 
+	box-shadow: 0 0 15px #888; 
+}
+
+.zoomfullextIcon {
+	background-image: url("images/esriZoomFullExtent.png");
+	width: 25px;
+	height:25px;
+	font-size: 36pt;
+}
+
+.zoomnextIcon {
+	background-image: url("images/forward.png");
+	width: 25px;
+	height:25px;
+}
+
+.zoomprevIcon {
+	background-image: url("images/backward.png");
+	width: 25px;
+	height:25px;
+}
+
+.zoompan {
+	background-image: url("images/esriPan.png");
+	width: 25px;
+	height:25px;
+}
+
+.identify {
+	background-image: url("images/esriPan.png");
+	width: 25px;
+	height:25px;
+}
+
+div {
+
+}
+
+.dijitButton img {
+	height: 16pt;
+}
+
+.dijitButtonText {
+	font-size: 14pt;
+	font-weight: bold;
+}
+
+.dojoDndContainer .dijitButtonText, .dojoDndContainerOver .dijitButtonText {
+	font-size: 10pt;
+}
+
+.esriLegendLayerLabel  td{
+	margin: 0px;
+}
+
+.esriLegendGroupLayer > .esriLegendLayerLabel {
+	font-weight: bold;
+}
+
+.esriLegendLayer td {
+	margin: 0px;
+}
+
+#bottomIDPanel {
+	border: 2px solid black;
+	overflow: scroll;
+	height: 10em;
+}
+
+#paneTitleRight {
+	position:absolute;
+	
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+	-webkit-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+	
+	font-size: 14pt;
+	top: 15em; right: 0;
+	
+	z-index: 1024;
+	
+	padding-top: 150px;
+	margin: 0;
+}
+
+#paneTitleLeft {
+	position:absolute;
+	
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+	-webkit-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+	
+	font-size: 14pt;
+	visibility: hidden;
+	top: 15em; left: 0;
+	
+	z-index: 1024;
+	
+	padding-bottom: 35px;
+	margin: 0;
+}
+
+#LeftExPanel, #RightExPanel {
+	width: 20em;
+}
+
+#GABranding {
+	padding-left: 280px;
+	color: #78ABB1;
+	
+	font-weight: bold;
+	font-size: 22pt;
+	font-family: "Trebuchet MS" sans-serif;
+}
+
+#MapSrvInfo .dijitButtonText, #MapSrvRemove .dijitButtonText, #MapSrvAdd .dijitButtonText {
+	font-size: 10pt;
+}
