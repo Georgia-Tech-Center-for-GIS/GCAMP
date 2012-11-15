@@ -157,3 +157,17 @@ div {
 #MapSrvInfo .dijitButtonText, #MapSrvRemove .dijitButtonText, #MapSrvAdd .dijitButtonText {
 	font-size: 10pt;
 }
+
+.idLayerLabel {
+	background-color: #DDDDDD;
+	margin-top: 8px;
+	height: 1.8em;
+	padding-top: .5em;
+}
+
+.idAttribLabel  {
+	background-color: #EEEEEE;
+}
+
+.idAttribValue {
+}

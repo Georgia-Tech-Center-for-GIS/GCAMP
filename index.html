@@ -7,6 +7,7 @@
     <title></title> 
     <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/dojo/dijit/themes/tundra/tundra.css" /> 
 	<link href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/dojo/dijit/themes/tundra/form/Button.css" rel="stylesheet">
+	
 	<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/dojo/dojox/layout/resources/ExpandoPane.css"/>
     <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/esri/dijit/css/Popup.css" />
 	<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/esri/css/esri.css" /> 
@@ -29,6 +30,7 @@
     <script src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=3.2"></script>
 
 	<script src='visibility.js'> </script>
+	<script src='query.js'> </script>
     <script src='main.js'> </script>
   </head> 
  
@@ -147,6 +149,12 @@
 					</button>
 					</div-->
 				</div>
+				<div id='legend' dojoType='dijit.layout.ContentPane' title="Legend"><div id='legendSection'> </div> </div>
+				<div id='bottomIDPanel' data-dojo-type='dijit.layout.ContentPane' data-dojo-props='title: "Identify Results"' style='width: 250px;' >
+					<h2>Left-click on map to retrieve information</h2>
+				</div>
+				<div id='layerInfoPane' dojoType='dijit.layout.ContentPane' title='Layer Info'>
+				</div>
 			</div>
 		</div>
 		<div data-dojo-type="dojox.layout.ExpandoPane"
@@ -155,12 +163,6 @@
 			
 			<div dojoType='dijit.layout.TabContainer'
 				 tabPosition="top" tabStrip="true" id='RightTabs'>
-				<div id='legend' dojoType='dijit.layout.ContentPane' title="Legend"><div id='legendSection'> </div> </div>
-				<div id='bottomIDPanel' data-dojo-type='dijit.layout.ContentPane' data-dojo-props='title: "Identify Results"' style='width: 250px;' >
-					<h2>Left-click on map to retrieve information</h2>
-				</div>
-				<div id='layerInfoPane' dojoType='dijit.layout.ContentPane' title='Layer Info'>
-				</div>
 			</div>
 		</div>
 			
