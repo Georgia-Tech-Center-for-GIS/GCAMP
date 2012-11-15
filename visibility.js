@@ -104,21 +104,6 @@ function visibleLayerItemNodeCreator(item, hint) {
 
 	var ndBtn = dojo.create('span', { id: item.name + "_Button", style: "width: 50px; height: 1em;" }, node);
 	
-	/*var btn = new dijit.form.Button({
-		label: "Hide Layer",
-		onClick: function(){
-			var dndC = dojo.byId('visibleLayersDnd');
-
-			dojo.query("[uniqId=" + item.lyrIdIndex + "_" + item.lyrId +"]", dndC ).forEach( function(a,index) {
-				vldnd.selectNone();
-				dojo.destroy(a.id);
-				vldnd.delItem(a.id);
-				
-				refresh_layers();
-			});
-			
-		}
-	});	*/
 	var btn = my.Widget.adopt(dijit.form.Button,
 		{
 			label: "Hide Layer",
@@ -150,9 +135,6 @@ function init_layer_controls(map) {
 	
 	layerTitlePane = dijit.byId('layersSection');
 	
-	//layerTitlePane.containerNode.appendChild( dojo.create("h2",
-	//	{ innerHTML: "Layer Information and Visibility" } ) );
-	
 	mapref = map;
 	
 	if(dijit.byId('legendSection') == null) {
@@ -173,14 +155,26 @@ function init_layer_controls(map) {
 		var infos = lyr.layerInfos, info;
 		var items = [];
 		
+		var serviceLabel = "";
+		
+		switch(j) {
+			case 0:
+			serviceLabel = "Basemap";
+			continue;
+			
+			case 1:
+			serviceLabel = "Georgia Tech -- Carto";
+			break;
+			
+			default:
+			serviceLabel = "";
+			/*if(lyrs != null && lyrs.length > 1)
+				serviceLabel = lyrs[j-2].url;*/
+			break;
+		};
+		
 		var section = dojo.create("h3",
-			{ innerHTML: (lyr.url.indexOf("carto") == -1)? "Other Layers" : "Georgia Tech - Carto" } );
-
-		/*new dijit.TitlePane( {
-			title: (lyr.url.indexOf("carto") == -1)? "Marine Cadastre Layers" : "Georgia Tech - Carto",
-			open: true,
-			id: j+"_titlePane"
-		});*/
+			{ innerHTML: serviceLabel /*(lyr.url.indexOf("carto") == -1)? "Other Layers" : "Georgia Tech - Carto"*/ } );
 		
 		layerTitlePane.containerNode.appendChild(section);
 				
@@ -193,11 +187,7 @@ function init_layer_controls(map) {
 			if(lastParent != null && lastParent.length > 0) {
 				while(lastParentIds.length > 0) {
 					var last_parent_index = lastParentIds.pop();
-					
-					/*console.debug(lastParentIds);
-					console.debug(info.parentLayerId);
-					console.debug(info.parentLayerId == last_parent_index);*/
-					
+									
 					if(last_parent_index == info.parentLayerId) {
 //						lastParent.push(lastLastParent);
 						lastParentIds.push(last_parent_index);
@@ -217,10 +207,6 @@ function init_layer_controls(map) {
 					id: info.name +"_titlePane"
 				});
 				
-			//	var newParent = my.Widget.adopt(dojo.getObject(""),
-				//	{
-					//});
-				//my.Widget._addItem(newParent);
 				layerTitlePane._supportingWidgets.push(newParent);
 				
 				lastParentIds.push(info.id);
@@ -237,44 +223,11 @@ function init_layer_controls(map) {
 				
 				lastParent.push(newParent);
 
-//				if(lastParent != null && lastSubIds != null) {
-//					var lastParent2 = new dijit.TitlePane( {
-//						title: info.name,
-//						id: info.name +"_ctntPane"/*,
-//						content: "<h3>"+info.name+"</h3>"*/
-//					});
-					
-//					lastParent.containerNode.appendChild(lastParent2.domNode);
-//
-//					lastParent = lastParent2;
-//				}
-//				else {
-//					lastSubIds = info.subLayerIds;
-//					lastParent = new dijit.TitlePane( {
-//						title: info.name,
-//						open: false,
-//						id: info.name +"_titlePane"
-//					});
-//					layerTitlePane.containerNode.appendChild(lastParent.domNode);
-//				}
 				continue;
 			}
 			
 			var tbl = dojo.create('table', {} );
 			
-			//if(false) {
-			//}
-			//else {
-//				console.debug("IAMHERE");
-//				console.debug("legendSection_" + map.layerIds[j] + "_" + i.toString());
-				
-//				var b = dojo.byId("legendSection_" + map.layerIds[j] + "_" + i.toString());
-//				console.debug(b);
-//				if(b != null) {
-//					b.insertBefore(tbl);
-//				}
-			//}
-
 			var trrow = dojo.create('tr' , {} );
 			var tdcheck = dojo.create('td', {} );
 			var tdtitle = dojo.create('td', {} );
@@ -314,85 +267,8 @@ function init_layer_controls(map) {
 			}
 		}
 		
-		//layerTitlePane.containerNode.appendChild(section.domNode);
 	}
 	
-    //dojo.byId("layer_list").innerHTML = items.join();
-
-    //layer.setVisibleLayers(visible);
-    //map.addLayer(layer);
-		
-	//var layerTitlePane = new dijit.TitlePane( {title: "All Layers", open: false }, "layersSection");
-	//var layerContentPane = new dijit.layout.ContentPane( { } , "layersSection" );
-	
-	/*
-	layerTabContainer = new dijit.layout.TabContainer(
-		{ tabPosition: "top", useMenu: false, useSlider: false, style: "width: 100%; position: absolute;" }, "layerTabs");
-	var allLayers = new dijit.layout.ContentPane(
-		{ title : "All Available Layers", selected: true}, "allLayersTab");
-	var visibleLayers = new dijit.layout.ContentPane(
-		{ title : "Visible Layers"}, "visibleLayersTab");
-		
-	layerTabContainer.startup();
-			
-	vldnd = new dojo.dnd.Target("visibleLayersTab", {
-		parent: dojo.byId('visibleLayersDnd'),
-		creator: visibleLayerItemNodeCreator
-	});
-	
-	dojo.connect(vldnd, "onDrop", refresh_layers);
-
-	for(var j = 0 ; j < map.layerIds.length; j++ ) {
-		var lyr = map.getLayer(map.layerIds[j]);
-		var vl  = lyr.visibleLayers;
-		
-		var bArrr = [];
-		
-		var section = new dijit.TitlePane( { title: lyr.url , open: true, id: j+"_titlePane"} );
-		var container = new dijit.layout.ContentPane({title: " ", id: j+"_containerPane"});
-
-		var allDnd = new dojo.dnd.Source(dojo.create('table', {id: j+"_table"}), {
-			id: j+"__dnd",
-			creator: allLayersItemNodeCreator,
-			copyOnly : true,
-			selfAccept: false
-		});
-		
-		container.containerNode.appendChild(dojo.create('div', {innerHtml : "Hello" }));
-	
-		for(var i = 0; i < lyr.layerInfos.length; i++) {
-			var aArr = [];
-			var li = lyr.layerInfos[i];
-			var isVis = (( vl.indexOf(li.id)) != -1 );
-			
-			//console.debug(j + "   \n   " + i);
-			
-			if(li.subLayerIds == null) {
-				var parent = aArr[li.id] ;
-				
-				if (parent == null) parent = -1;
-				
-				allDnd.insertNodes(false, [
-					{ name: li.name, lyrIdIndex : j, lyrId: li.id, pid : parent }
-					]);
-				
-				if(isVis) {
-					vldnd.insertNodes(false, [
-						{ name: li.name, lyrIdIndex : j, lyrId: li.id, pid : parent }
-					]);				
-				}
-			}
-			else {
-				li.subLayerIds.forEach(function(item, index) {
-					aArr[item] = li.id;
-				});
-			}
-		}
-		
-		container.containerNode.appendChild(allDnd.node);
-		section.containerNode.appendChild(container.domNode);
-		allLayers.containerNode.appendChild(section.domNode);
-	}*/
 }
 
 var qry = null;

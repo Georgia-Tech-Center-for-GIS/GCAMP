@@ -111,9 +111,6 @@ function createBasemapGallery() {
 			layerTitlePane.destroyDescendants();
 //			c.push(val);
 			init_layer_controls(map);
-			//fullExtent();
-		
-		//dojo.byId('status').setAttribute("style", "display: block");
 	});
 }
 
@@ -138,7 +135,6 @@ function addLayerToMap(url,label) {
 		layer = new esri.layers.WMSLayer(url);
 	}
 	else {
-		//layer = new esri.layers.ArcGISTiledMapServiceLayer (url);
 		layer = new esri.layers.ArcGISDynamicMapServiceLayer ( url );	
 		map.addLayer(layer);
 	}
@@ -303,7 +299,7 @@ function init() {
 	});
 	
 	dojo.connect(dijit.byId("LeftExPanel"), "_hideEnd", function () {
-		dojo.byId("paneTitleLeft").style.setProperty("visibility", "");
+		dojo.byId("paneTitleLeft").style.setProperty("visibility", "visible");
 	});
 	
 	dojo.connect(dijit.byId(""), "onClick", function(evt) {
