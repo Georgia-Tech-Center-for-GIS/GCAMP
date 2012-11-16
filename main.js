@@ -244,7 +244,7 @@ function prepare_map_when_extents_finished(a) {
 						}
 					}
 					
-							layerStoreChoicesMemory = new dojo.store.Memory({data: serviceCatalog});
+		layerStoreChoicesMemory = new dojo.store.Memory({data: serviceCatalog});
 		layerStoreChoices = new dojo.data.ObjectStore({objectStore: layerStoreChoicesMemory});
 
 		var lyrSelect2 = new dijit.form.Select({

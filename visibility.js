@@ -156,7 +156,13 @@ function init_layer_controls(map) {
 		var items = [];
 		
 		var serviceLabel = "";
+		var section = null;
+
+		var lastParent = [];
+		var lastParentIds = [];
 		
+		var serviceSection = null;
+					
 		switch(j) {
 			case 0:
 			serviceLabel = "Basemap";
@@ -164,23 +170,31 @@ function init_layer_controls(map) {
 			
 			case 1:
 			serviceLabel = "Georgia Tech -- Carto";
-			break;
 			
-			default:
-			serviceLabel = "";
-			/*if(lyrs != null && lyrs.length > 1)
-				serviceLabel = lyrs[j-2].url;*/
+			section = dojo.create("h3",
+				{ innerHTML: serviceLabel /*(lyr.url.indexOf("carto") == -1)? "Other Layers" : "Georgia Tech - Carto"*/ } );
+			break;
+
+			default:			
+			//serviceLabel = "";
+			if(lyrs != null && lyrs.length > 0)
+				serviceLabel = lyrs[j-2].label;
+				
+			if(j == 2) {
+				section = dojo.create("h3",
+					{ innerHTML: serviceLabel /*(lyr.url.indexOf("carto") == -1)? "Other Layers" : "Georgia Tech - Carto"*/ } );
+			}
+
+			serviceSection = new dijit.TitlePane({
+				title: serviceLabel,
+				open: false,
+				id: serviceLabel +"_titlePane"
+			});
 			break;
 		};
-		
-		var section = dojo.create("h3",
-			{ innerHTML: serviceLabel /*(lyr.url.indexOf("carto") == -1)? "Other Layers" : "Georgia Tech - Carto"*/ } );
-		
+				
 		layerTitlePane.containerNode.appendChild(section);
 				
-		var lastParent = [];
-		var lastParentIds = [];
-			
 		for (var i=0, il=infos.length; i<il; i++) {
 			info = infos[i];
 			
@@ -324,7 +338,7 @@ function dispLayerInfo(name, id, wurl) {
 			dstring += "</ul>";
 			
 			lyrInfoPane.setContent("<h3>"+name+"</h3><pre>"+dstring+"</pre>");
-			dijit.byId('RightTabs').selectChild(dijit.byId('layerInfoPane'));
-			toggleIdentifyOn(dijit.byId('RightExPanel'));
+			dijit.byId('LeftTabs').selectChild(dijit.byId('layerInfoPane'));
+			toggleIdentifyOn(dijit.byId('LeftExPanel'));
 		});
 }

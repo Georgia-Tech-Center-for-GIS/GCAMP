@@ -62,7 +62,7 @@ var factoredResults = [];
 function addToMap(idResults, evt) {
 	lastIdResults = idResults;
 	factoredResults  = [];
-	
+		
 	if(idResults.length == 0) {
 		return;
 	}

@@ -28,7 +28,6 @@
 		]};</script> 
 
     <script src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=3.2"></script>
-
 	<script src='visibility.js'> </script>
 	<script src='query.js'> </script>
     <script src='main.js'> </script>
@@ -74,9 +73,27 @@
 				<div dojoType='dijit.layout.ContentPane' title="Layers" id='layersSection'>
 				</div>
 				<div dojoType='dijit.layout.ContentPane' title='Base Maps' id='layersBaseMap'>
+					<button data-dojo-type="dijit.form.Button" type="button" id='Return1'> Return to Layers Pane
+						<script type="dojo/on" data-dojo-event="click" data-dojo-args="evt">
+							require(["dojo/dom"], function(dom){
+								dijit.byId('LeftTabs').selectChild(dijit.byId('layersSection'));
+								toggleIdentifyOn(dijit.byId('LeftExPanel'));
+							});
+						</script>
+					</button>
+
 					<div id="basemapGallery" ></div>
 				</div>
 				<div dojoType='dijit.layout.ContentPane' title='Other Data...' id='layersAddNew'>
+					<button data-dojo-type="dijit.form.Button" type="button" id='Return2'> Return to Layers Pane
+						<script type="dojo/on" data-dojo-event="click" data-dojo-args="evt">
+							require(["dojo/dom"], function(dom){
+								dijit.byId('LeftTabs').selectChild(dijit.byId('layersSection'));
+								toggleIdentifyOn(dijit.byId('LeftExPanel'));
+							});
+						</script>
+					</button>
+
 					<h2>Available Map Services</h2>
 					
 					<div id='SelectMapLayer'>
@@ -149,11 +166,46 @@
 					</button>
 					</div-->
 				</div>
-				<div id='legend' dojoType='dijit.layout.ContentPane' title="Legend"><div id='legendSection'> </div> </div>
+				<div id='legend' dojoType='dijit.layout.ContentPane' title="Legend">
+					<button data-dojo-type="dijit.form.Button" type="button" id='Return3'> Return to Layers Pane
+						<script type="dojo/on" data-dojo-event="click" data-dojo-args="evt">
+							require(["dojo/dom"], function(dom){
+								dijit.byId('LeftTabs').selectChild(dijit.byId('layersSection'));
+								toggleIdentifyOn(dijit.byId('LeftExPanel'));
+							});
+						</script>
+					</button>
+					<div id='legendSection'> </div>
+				</div>
 				<div id='bottomIDPanel' data-dojo-type='dijit.layout.ContentPane' data-dojo-props='title: "Identify Results"' style='width: 250px;' >
+					<button data-dojo-type="dijit.form.Button" type="button" id='Return4'> Return to Layers Pane
+						<script type="dojo/on" data-dojo-event="click" data-dojo-args="evt">
+							require(["dojo/dom"], function(dom){
+								dijit.byId('LeftTabs').selectChild(dijit.byId('layersSection'));
+								toggleIdentifyOn(dijit.byId('LeftExPanel'));
+							});
+						</script>
+					</button>
 					<h2>Left-click on map to retrieve information</h2>
 				</div>
 				<div id='layerInfoPane' dojoType='dijit.layout.ContentPane' title='Layer Info'>
+					<button data-dojo-type="dijit.form.Button" type="button" id='Return5'> Return to Layers Pane
+						<script type="dojo/on" data-dojo-event="click" data-dojo-args="evt">
+							require(["dojo/dom"], function(dom){
+								dijit.byId('LeftTabs').selectChild(dijit.byId('layersSection'));
+								toggleIdentifyOn(dijit.byId('LeftExPanel'));
+							});
+						</script>
+					</button>
+					
+					<button data-dojo-type="dijit.form.Button" type="button" id='Return6'> Show Attribute Data
+						<script type="dojo/on" data-dojo-event="click" data-dojo-args="evt">
+/*							require(["dojo/dom"], function(dom){
+								dijit.byId('LeftTabs').selectChild(dijit.byId('layersSection'));
+								toggleIdentifyOn(dijit.byId('LeftExPanel'));
+							});*/
+						</script>
+					</button>
 				</div>
 			</div>
 		</div>
