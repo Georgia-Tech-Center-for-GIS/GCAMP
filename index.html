@@ -4,6 +4,8 @@
     <meta charset="utf-8"> 
     <meta http-equiv="X-UA-Compatible" content="IE=7,IE=9" /> 
     <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/> 
+	<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+	
     <title></title> 
     <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/dojo/dijit/themes/tundra/tundra.css" /> 
 	<link href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/dojo/dijit/themes/tundra/form/Button.css" rel="stylesheet">
@@ -27,7 +29,8 @@
 			}
 		]};</script> 
 
-    <script src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=3.2"></script>
+    <script src="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/"></script>
+	<script src='attributes.js'> </script>
 	<script src='visibility.js'> </script>
 	<script src='query.js'> </script>
     <script src='main.js'> </script>
@@ -66,8 +69,8 @@
 			</div>		
 		</div>
 		<div data-dojo-type="dojox.layout.ExpandoPane"
-			 data-dojo-props="title: 'Information', maxWidth:225, splitter:false, region:'leading'"
-			 style='' id='LeftExPanel'>
+			 data-dojo-props="title: 'Information', maxWidth:200, maxHeight:700, splitter:false, region:'leading'"
+			 style='' id='LeftExPanel' preload='false'>
 			<div dojoType='dijit.layout.TabContainer'
 				  tabPosition='top' tabStrip='true' id='LeftTabs'>
 				<div dojoType='dijit.layout.ContentPane' title="Layers" id='layersSection'>
@@ -146,25 +149,6 @@
 							});
 						</script>
 					</button>
-					
-					<!--button data-dojo-type="dijit.form.Button" type="button" id='MapSrvAddChoice'> Add Map Service from List
-						<script type="dojo/on" data-dojo-event="click" data-dojo-args="evt">
-							require(["dojo/dom"], function(dom){
-								var s = dijit.byId('SelectMapLayerCatalog');
-								var storedObj = s.store.objectStore.query({"id": s.getValue()})[0];
-								
-								var l = storedObj.label;
-								var u = storedObj.url;
-								
-								if( l == "" || u == "") {
-								}
-								else {
-									addLayerToMap(map,u,l);
-								}
-							});
-						</script>
-					</button>
-					</div-->
 				</div>
 				<div id='legend' dojoType='dijit.layout.ContentPane' title="Legend">
 					<button data-dojo-type="dijit.form.Button" type="button" id='Return3'> Return to Layers Pane
@@ -207,6 +191,20 @@
 						</script>
 					</button>
 				</div>
+			
+				<div id='attributesPanel' data-dojo-type='dojox.layout.ContentPane' title='Attribute Table'>
+					<button data-dojo-type="dijit.form.Button" type="button" id='Return8'> Return to Layers Panel
+						<script type="dojo/on" data-dojo-event="click" data-dojo-args="evt">
+							require(["dojo/dom"], function(dom){
+								dijit.byId('LeftTabs').selectChild(dijit.byId('layersSection'));
+								toggleIdentifyOn(dijit.byId('LeftExPanel'));
+							});
+						</script>
+					</button>
+					<div id='SelectMapLayerAttributes'> </div>
+					<div id="gridDiv" style=''>
+					</div>
+				</div>
 			</div>
 		</div>
 		<!--div data-dojo-type="dojox.layout.ExpandoPane"
@@ -222,6 +220,7 @@
 
 		<div id="map" data-dojo-type="dijit.layout.ContentPane"data-dojo-props="region:'center'">
 			<div id='status' style=''>Seeing&nbsp;if&nbsp;there's&nbsp;more&nbsp;information... </div>
+
 		</div>
 	</div>
 	<!--div id='paneTitleRight' style=''>Legend/Information</div-->

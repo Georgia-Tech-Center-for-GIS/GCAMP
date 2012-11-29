@@ -24,6 +24,8 @@ dojo.require("dijit.Toolbar");
 
 dojo.require("dijit.form.Select");
 
+dojo.require("dojox.layout.ContentPane");
+
 dojo.require("esri.tasks.identify");
 
 dojo.require("esri.layers.wms");
@@ -193,10 +195,11 @@ function prepare_map_when_extents_finished(a) {
 				
 		ly1 = new esri.layers.ArcGISDynamicMapServiceLayer
 			//("http://carto.gis.gatech.edu/ArcGIS/rest/services/ViewerJSResources/MapServer");
-			("http://carto.gis.gatech.edu/ArcGIS/rest/services/coastal912/MapServer");
+			("http://carto.gis.gatech.edu/ArcGIS/rest/services/coastal1112/MapServer");
 		//ly1.setVisibleLayers([12, 13, 17]);
 			dojo.connect(ly1, "onLoad", function () {
 			init_layer_controls(map);
+			initAttributesLayerList(map);
 		});
 		
 		map.addLayer(ly1);
@@ -302,6 +305,17 @@ function init() {
 		dojo.byId("paneTitleLeft").style.setProperty("visibility", "visible");
 	});
 	
+	dijit.byId('LeftTabs').watch("selectedChildWidget", function(name, oval, nval) {
+		if(nval.id == "attributesPanel") {
+			if(grid != null) {
+				var nsize = parseInt(dojo.byId('attributesPanel').style.height)-150 + "px";
+				console.debug(nsize)
+				grid.setAttribute("style", "height: " + nsize);
+				grid.resize();
+			}
+		}
+	});
+		
 	dojo.connect(dijit.byId(""), "onClick", function(evt) {
 								var l = dijit.byId('AddMapSvcLabel').value;
 								var u = dijit.byId('AddMapSvcURL').value;
@@ -344,6 +358,7 @@ function init_id_funct(map) {
 			esri.symbol.SimpleFillSymbol.STYLE_SOLID,
 			new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([255, 0, 0]), 2),
 			new dojo.Color([255, 255, 0, 0.25]));
+	getAttributesLayer("http://carto.gis.gatech.edu/ArcGIS/rest/services/coastal1112/MapServer/14");
 }
 
 function toggleIdentifyOn(pne) {

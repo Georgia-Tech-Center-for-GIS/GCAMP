@@ -171,3 +171,38 @@ div {
 
 .idAttribValue {
 }
+
+#attributesPanel {
+/*    background-color:#E0E0E0;
+    color: #707070;
+	
+	font-size: 12pt;
+	height: 300px;
+	width: 500px;
+	
+    font-weight: bold; 
+    
+	padding: 8px;
+    border: solid 1px #707070; 
+    
+	-moz-border-radius: 15px; 
+    -webkit-border-radius: 15px;     
+    border-radius: 15px;
+    
+	position:absolute; 
+    top:50%; 
+    right:20%; 
+    z-index:100;*/
+	/*height: 95%;*/
+}
+
+@import "http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/dojo/dojox/grid/resources/Grid.css";
+@import "http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/dojo/dojox/grid/resources/claroGrid.css";
+
+/*.dojoxGrid table {
+}*/
+
+.dojoxGrid {
+	/*margin-bottom: 50px;*/
+	height: 30em;
+}
