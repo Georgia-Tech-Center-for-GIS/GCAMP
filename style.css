@@ -206,3 +206,8 @@ div {
 	/*margin-bottom: 50px;*/
 	height: 30em;
 }
+
+a.attributeLink {
+	font-size: 80%;
+	padding-left: 2em;
+}

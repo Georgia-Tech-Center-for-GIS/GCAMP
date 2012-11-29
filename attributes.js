@@ -40,7 +40,7 @@ function initAttributesLayerList() {
 		for (var i=0, il=infos.length; i<il; i++) {
 			info = infos[i];
 			
-			if(info.subLayerIds == null) {
+			if(info.subLayerIds == null && info.name.search("Basemap") == -1) {
 				lyrList.push({label : info.name, value : lyr.url+"/" + i});
 			}
 		}
@@ -52,11 +52,11 @@ function initAttributesLayerList() {
 	var layerStore2 = new dojo.data.ObjectStore({objectStore: layerStoreMemory2});
 			
 	var lyrSelect2 = new dijit.form.Select({
+		id: 'attributesPanelSelector',
 		name: "",
 		style: "width: 15em; height: 1em;",
 		options: lyrList,
-		maxHeight: "5em;"},
-		"attributesPanelSelector");
+		maxHeight: "5em;"});
 		
 	lyrSelect2.placeAt("SelectMapLayerAttributes");
 	

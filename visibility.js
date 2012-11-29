@@ -265,8 +265,16 @@ function init_layer_controls(map) {
 				innerHTML: info.name
 			} );
 			
+			var attribLink = dojo.create('a', {
+				href: '#',
+				"class": "attributeLink",
+				onClick: "dispLayerAttribs('" + lyr.url + "'," + info.id + ");",
+				innerHTML: "Show Attributes"
+			} );
+			
 			tdcheck.appendChild(cbox.domNode);
 			tdtitle.appendChild(layerLink);
+			tdtitle.appendChild(attribLink);
 			//tdtitle.innerHTML = info.name;
 			
 			tbl.appendChild(trrow);
@@ -341,4 +349,10 @@ function dispLayerInfo(name, id, wurl) {
 			dijit.byId('LeftTabs').selectChild(dijit.byId('layerInfoPane'));
 			toggleIdentifyOn(dijit.byId('LeftExPanel'));
 		});
+}
+
+function dispLayerAttribs(url,id) {
+	console.debug('"+lyr.url+"');
+	dijit.byId('attributesPanelSelector').setValue(url +"/" +id );
+	dijit.byId('LeftTabs').selectChild(dijit.byId('attributesPanel'));
 }
