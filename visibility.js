@@ -243,7 +243,7 @@ function init_layer_controls(map) {
 			var tbl = dojo.create('table', {} );
 			
 			var trrow = dojo.create('tr' , {} );
-			var tdcheck = dojo.create('td', {} );
+			var tdcheck = dojo.create('td', { style: "vertical-align: top;" } );
 			var tdtitle = dojo.create('td', {} );
 			
 			var cbox = new dijit.form.CheckBox({
@@ -265,6 +265,8 @@ function init_layer_controls(map) {
 				innerHTML: info.name
 			} );
 			
+			var brElement = dojo.create('br', {} );
+			
 			var attribLink = dojo.create('a', {
 				href: '#',
 				"class": "attributeLink",
@@ -274,6 +276,7 @@ function init_layer_controls(map) {
 			
 			tdcheck.appendChild(cbox.domNode);
 			tdtitle.appendChild(layerLink);
+			tdtitle.appendChild(brElement);
 			tdtitle.appendChild(attribLink);
 			//tdtitle.innerHTML = info.name;
 			
