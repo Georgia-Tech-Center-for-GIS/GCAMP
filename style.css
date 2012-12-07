@@ -42,6 +42,48 @@ h3 {
 	box-shadow: 0 0 15px #888; 
 }
 
+.Layers-icon {
+	background-image: url("images/Layers-icon.png");
+	width: 32px;
+	height:32px;
+	font-size: 12pt;
+}
+
+.Identify-results {
+	background-image: url("images/Identify-Results.png");
+	width: 32px;
+	height:32px;
+	font-size: 12pt;
+}
+
+.Information-Icon {
+	background-image: url("images/Information-icon.png");
+	width: 32px;
+	height:32px;
+	font-size: 12pt;
+}
+
+.base-layer-icon{
+	background-image: url("images/base-layer-icon.png");
+	width: 32px;
+	height:32px;
+	font-size: 12pt;
+}
+
+.open-maplayer-icon {
+	background-image: url("images/folder-open-icon.png");
+	width: 32px;
+	height:32px;
+	font-size: 12pt;
+}
+
+.map-legend-icon {
+	background-image: url("images/map-legend-icon.png");
+	width: 32px;
+	height:32px;
+	font-size: 12pt;
+}
+
 .zoomfullextIcon {
 	background-image: url("images/esriZoomFullExtent.png");
 	width: 25px;
@@ -204,10 +246,14 @@ div {
 
 .dojoxGrid {
 	/*margin-bottom: 50px;*/
-	height: 30em;
+	height: 15em;
 }
 
 a.attributeLink {
 	font-size: 80%;
 	padding-left: 2em;
+}
+
+.tabLabel {
+/*	font-size: 0px;*/
 }

@@ -305,7 +305,7 @@ function init() {
 		dojo.byId("paneTitleLeft").style.setProperty("visibility", "visible");
 	});
 	
-	dijit.byId('LeftTabs').watch("selectedChildWidget", function(name, oval, nval) {
+	/*dijit.byId('RightExPanel').watch("selectedChildWidget", function(name, oval, nval) {
 		if(nval.id == "attributesPanel") {
 			if(grid != null) {
 				var nsize = parseInt(dojo.byId('attributesPanel').style.height)-150 + "px";
@@ -314,7 +314,7 @@ function init() {
 				grid.resize();
 			}
 		}
-	});
+	});*/
 		
 	dojo.connect(dijit.byId(""), "onClick", function(evt) {
 								var l = dijit.byId('AddMapSvcLabel').value;

@@ -13,6 +13,8 @@ dojo.require("dijit.form.CheckBox");
 
 dojo.require("dojox.layout.ExpandoPane");
 
+dojo.require("dojox.xml.DomParser");
+
 dojo.require("esri.utils");
 dojo.require("esri.IdentityManager");
 
@@ -333,22 +335,78 @@ function updateLayerVisibility (changeValue) {
 	legend.refresh();
 }
 
+var xmldata = null;
+var jsonObj = null;
+
+function xmlToJson(xml) {
+var obj = {};
+try {
+  // Create the return object
+
+  if (xml.nodeType == 1) { // element
+    // do attributes
+    if (xml.attributes != null && xml.attributes.length > 0) {
+    obj["@attributes"] = {};
+      for (var j = 0; j < xml.attributes.length; j++) {
+        var attribute = xml.attributes.item[j];
+        obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
+      }
+    }
+  } else if (xml.nodeType == 3) { // text
+    obj = xml.nodeValue;
+  }
+
+  // do children
+  if (xml.childNodes != null && xml.childNodes.length > 0) {
+    for(var i = 0; i < xml.childNodes.length; i++) {
+      var item = xml.childNodes[i];
+	  
+      var nodeName = item.nodeName;
+      if (typeof(obj[nodeName]) == "undefined") {
+        obj[nodeName] = xmlToJson(item);
+      } else {
+        if (typeof(obj[nodeName].length) == "undefined") {
+          var old = obj[nodeName];
+          obj[nodeName] = [];
+          obj[nodeName].push(old);
+        }
+        obj[nodeName].push(xmlToJson(item));
+      }
+    }
+  }
+  }
+  catch( exception ) {}
+  
+  return obj;
+  
+};
+
 function dispLayerInfo(name, id, wurl) {
 	var lyrInfoPane = dijit.byId('layerInfoPane');
+	//var jsdom = dojox.xml.DomParser.parse(xml);
+
+    //console.debug(xmlToJson(jsdom));
 	
 	esri.request(
-		{ url : wurl + "/" + id.toString() + "?f=json",
-		  handleAs : "json"}).
+		//{ url : wurl + "/" + id.toString() + "?f=json",
+		{ url: "http://carto.gis.gatech.edu/coast/metadata/" + name + ".xml",
+		  handleAs : "text"}).
 		then(function(data) {
-			var dstring = "<ul>";
+			/*var dstring = "<ul>";
 
 			for(item in data) {
 				dstring += "<li><b>" + item + "</b>: " + data[item];
 			}
 			
-			dstring += "</ul>";
+			dstring += "</ul>";*/
+			var jsdom = dojox.xml.DomParser.parse(data);
+			xmldata = jsdom;
 			
-			lyrInfoPane.setContent("<h3>"+name+"</h3><pre>"+dstring+"</pre>");
+			jsonObj = xmlToJson(jsdom);
+			
+			var dstring = "";
+			lyrInfoPane.setContent("<h3>"+name+"</h3>");
+			
 			dijit.byId('LeftTabs').selectChild(dijit.byId('layerInfoPane'));
 			toggleIdentifyOn(dijit.byId('LeftExPanel'));
 		});
@@ -357,5 +415,6 @@ function dispLayerInfo(name, id, wurl) {
 function dispLayerAttribs(url,id) {
 	console.debug('"+lyr.url+"');
 	dijit.byId('attributesPanelSelector').setValue(url +"/" +id );
-	dijit.byId('LeftTabs').selectChild(dijit.byId('attributesPanel'));
+	//dijit.byId('LeftTabs').selectChild(dijit.byId('attributesPanel'));
+	toggleIdentifyOn(dijit.byId('RightExPanel'));
 }
