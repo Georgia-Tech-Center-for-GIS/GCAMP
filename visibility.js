@@ -174,7 +174,7 @@ function init_layer_controls(map) {
 			serviceLabel = "Georgia Tech -- Carto";
 			
 			section = dojo.create("h3",
-				{ innerHTML: serviceLabel /*(lyr.url.indexOf("carto") == -1)? "Other Layers" : "Georgia Tech - Carto"*/ } );
+				{ innerHTML: serviceLabel } );
 			break;
 
 			default:			
@@ -184,7 +184,7 @@ function init_layer_controls(map) {
 				
 			if(j == 2) {
 				section = dojo.create("h3",
-					{ innerHTML: serviceLabel /*(lyr.url.indexOf("carto") == -1)? "Other Layers" : "Georgia Tech - Carto"*/ } );
+					{ innerHTML: serviceLabel } );
 			}
 
 			serviceSection = new dijit.TitlePane({
