@@ -8,13 +8,15 @@
 	
     <title></title> 
     <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/dojo/dijit/themes/tundra/tundra.css" /> 
+
 	<link href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/dojo/dijit/themes/tundra/form/Button.css" rel="stylesheet">
 	
 	<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/dojo/dojox/layout/resources/ExpandoPane.css"/>
     <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/esri/dijit/css/Popup.css" />
 	<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/esri/css/esri.css" /> 
-	
+
     <link rel="stylesheet" type="text/css" href="style.css" /> 
+	
     <style>
       #map{ margin: 0; padding: 0; } 
       #footer{ 
@@ -28,10 +30,20 @@
 				name : "my",
 				location : "http://localhost/dijits/my"
 			}
-		]};</script> 
+		]}; </script> 
+
+	<script src="/bootstrap/js/bootstrap.min.js"></script>
+	<script type='text/javascript' src="http://cloud.github.com/downloads/SteveSanderson/knockout/knockout-2.0.0.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+	
+    <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAg58_FLn5bynKiZewfpUCeBTyCV9A2YBg0isNV8i_fASKoO0TiRRYqDCtRVNLgUhnJVaabm69uDjeZg&autoload=%7B%27modules%27%3A%5B%7B%27name%27%3A%27jquery%27%2C%27version%27%3A%271.4.2%27%7D%2C%7B%27name%27%3A%27jqueryui%27%2C%27version%27%3A%271.8.2%27%7D%5D%7D"></script>
 
     <script src="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/"></script>
-	<script src='http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.1.0.js'></script>
+
+	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	
+	<link rel="stylesheet" type="text/css" href="./css/marco_style.css" /> 
+	
 	<script src='attributes.js'> </script>
 	<script src='visibility.js'> </script>
 	<script src='query.js'> </script>
@@ -52,8 +64,13 @@
 	  			<div dojotype="dijit.form.Button" id="zoomfullext" iconclass="zoomfullextIcon" onclick="fullExtent();" title="Full Extent">Zoom out to full-extent</div>
 	    		<div dojotype="dijit.form.Button" id="zoomprev"	   iconclass="zoomprevIcon" onClick="navToolbar.zoomToPrevExtent();" title="Zoom Previous">Go back</div>
 				<div dojotype="dijit.form.Button" id="zoomnext"    iconclass="zoomnextIcon" onClick="navToolbar.zoomToNextExtent();" title="Zoom Next"> Go forward</div>
-				<div dojotype="dijit.form.Button" id="pan"         iconclass="zoompan" onClick="navToolbar.activate(esri.toolbars.Navigation.PAN);" title="Pan">Pan</div>
-				<!--div dojotype="dijit.form.Button" id="identify"	   iconclass="identify" title="Identify">Identify</div -->
+				<div dojotype="dijit.form.Button" id="pan"         iconclass="zoompan" onClick="drawToolbar.deactivate(); navToolbar.activate(esri.toolbars.Navigation.PAN);" title="Pan">Pan</div>
+			</div>
+			<div id="drawToolbar" data-dojo-type="dijit.Toolbar" class="toolbar">
+				<div dojotype="dijit.form.Button" id="identify"	 iconclass="identify" title="Identify"
+					onClick="drawToolbar.activate(esri.toolbars.Draw.POLYGON); map.hideZoomSlider();">Identify</div>			
+				<div dojotype="dijit.form.Button" id="identify_sum"	 iconclass="identify" title="Identify - Summarize by Field"
+					onClick="drawToolbar.activate(esri.toolbars.Draw.POLYGON); map.hideZoomSlider();">Identify - Summarize by Field</div>
 			</div>
 			
 			<div id='lyrTypeTabController' style='height: 36pt; margin-left: 10%; width: 80%;'>
@@ -75,8 +92,37 @@
 			 style='' id='LeftExPanel' preload='false'>
 			<div dojoType='dijit.layout.TabContainer'
 				  tabPosition='right' tabStrip='false' id='LeftTabs'>
-				<div dojoType='dijit.layout.ContentPane' tooltip="Layers" id='layersSection'
+				<div dojoType='dojox.layout.ContentPane' tooltip="Layers" id='layersSection'
 					iconClass='Layers-icon'>
+	<div style=''>
+		<div class='accordion' id='layersVisibList'  data-bind="template: {name: 'layers_template', foreach: return_map_layers() }"></div>
+
+		<script type="text/html" id="layers_template">
+			<!-- ko if: (children.length > 0) -->
+				<div class='accordion-heading' data-bind="click : viewModel.setOpenTheme , css:{'active': true}">
+					<div>
+						<a class='accordion-toggle'><span data-bind='text: name'> </span> </a>
+					</div>
+				</div>
+				<div class='accordion-body collapse' data-bind="css: {'in': viewModel.isOpenTheme(name) }" style='margin-left: 20px;'>
+						<div data-bind="template: {name: 'layers_template', foreach: children }"> </div>
+				</div>
+			<!-- /ko -->
+			<!-- ko if: (children.length == 0) -->
+				<div class='accordion-inner'>
+					<div class='btn-group btn-group-layer'>
+						<a class='btn btn-info-sign' data-bind="click: viewModel.toggleVisibleLayer "><i class='icon-info-sign icon-large'></i> </a>
+						<span class='btn btn-layer' data-bind='text: name'> </span>
+					</div>
+				</div>
+			<!-- /ko -->
+		</script>
+	</div>	
+					<!--ul data-bind='foreach: return_map_layers()'>
+						<li>${name}
+							<ul data-bind='template: { name: 
+						</li>
+					</ul-->
 				</div>
 				<div dojoType='dijit.layout.ContentPane' tooltip='Base Maps' id='layersBaseMap' iconclass='base-layer-icon'>
 					<button data-dojo-type="dijit.form.Button" type="button" id='Return1'> Return to Layers Pane

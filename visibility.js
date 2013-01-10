@@ -131,10 +131,144 @@ function visibleLayerItemNodeCreator(item, hint) {
 var layerTabContainer = null;
 var layerTitlePane = null;
 var legend = null;
+function return_child_layers(mapLyr, mapLyrId, layerInfo) {
+	var list = [];
+	var lastIndex = 0;
+	
+	dojo.forEach( layerInfo.subLayerIds, function(id, k) {
+		var li = mapLyr.layerInfos[id];
+		var dispLyr = {
+			"mapLayerId" : mapLyrId,
+			"seq" : id,
+			"name": li.name,
+			"url" : mapLyr.url + "/" + id,
+			"esriLayer": li,
+			"children" : []
+		};
+		
+		lastIndex = id;
+
+		if(li.subLayerIds) {
+			var retval = return_child_layers(mapLyr, mapLyrId, li);
+			
+			dispLyr.children = dojo.clone(retval.childLayers);
+			lastIndex = retval.lastIndex;
+		}
+		
+		list.push(dispLyr);
+	});
+	
+	var returnValue = { "childLayers": list, "lastIndex": lastIndex };
+	
+	console.debug(list);
+	return returnValue;
+}
+
+function return_map_layers() {
+	var mapItems = [];
+	var lastIndex = -1;
+	
+	for(var j = 0 ; j < map.layerIds.length; j++ ) {
+		var lyr = map.getLayer(map.layerIds[j]);
+		
+		var allLyrs = [];
+	
+		dojo.forEach( lyr.layerInfos, function (li, i) {
+			if(i-1 < lastIndex) {
+			}
+			else {
+				var dispLyr = {
+					"mapLayerId" : map.layerIds[j],
+					"seq" : i,
+					"name": li.name,
+					"url" : lyr.url + "/" + i,
+					"esriLayer": li,
+					"children" : []
+				};
+
+				if(li.subLayerIds) {				
+					var retval = return_child_layers(lyr, map.layerIds[j], li);
+					dispLyr.children = dojo.clone(retval.childLayers);
+					lastIndex = retval.lastIndex;
+				}
+				
+				mapItems.push(dispLyr);
+			}
+		});
+	}
+	
+	console.debug(mapItems);
+	
+	return mapItems;
+/*			
+		for (var i=0, il=infos.length; i<il; i++) {
+			info = infos[i];
+			
+			if(lastParentLayer != null) {
+			}
+			
+			if(info.subLayerIds == null || info.subLayerIds.length == 0) {
+				var dispLyr = {
+					"mapLayerId" : map.layerIds[j],
+					"seq" : i,
+					"name": info.name,
+					"url" : lyr.url + "/" + i,
+					"esriLayer": info,
+					"children" : []
+				};
+			
+				if(lastParentLayer == null) {
+					mapItems.push(dispLyr);
+				}
+				else {
+					if(lastParentLayer.esriLayer.subLayerIds.lastIndexOf(i) == -1) {
+					}
+					else {
+						mapItems.push(dispLyr);
+						lastParentLayer = null;
+					}
+				}
+			}
+			else {
+			}
+		}
+	}
+	
+	return mapItems;*/
+}
+
+var viewModel = {
+	themes :ko.observableArray(),
+	
+	isOpenTheme : function (a) {
+		var themeName = a;
+	
+		if( viewModel.themes.indexOf(themeName) !== -1) {
+			return true;
+		}
+		return false;
+	}, 
+
+	setOpenTheme: function(a) {
+		var themeName = a.name;
+	
+		if( viewModel.isOpenTheme(themeName) ) {
+			viewModel.themes.remove(themeName);
+		}
+		else {
+			viewModel.themes.push(themeName);
+		}
+		
+		ko.applyBindings();
+}
+};
 
 function init_layer_controls(map) {
 	if(!ly1.loaded  /*|| !ly2.loaded*/) return;
 	
+	ko.applyBindings();
+	
+	/*
 	layerTitlePane = dijit.byId('layersSection');
 	
 	mapref = map;
@@ -142,17 +276,17 @@ function init_layer_controls(map) {
 	if(dijit.byId('legendSection') == null) {
 		legend = new esri.dijit.Legend({
 				map : map,
-				layerInfos : [/*{title: "Marine Cadastre", layer: ly2},*/ {title: "Local Data", layer: ly1}],
+				layerInfos : [ {title: "Local Data", layer: ly1}],
 				useAllMapLayers : true
 			}, "legendSection");
 	}
 
 	legend.startup();
-	
+*/
+
+/*
 	for(var j = 0 ; j < map.layerIds.length; j++ ) {
 		var lyr = map.getLayer(map.layerIds[j]);
-
-		//if(j == 0) continue;
 		
 		var infos = lyr.layerInfos, info;
 		var items = [];
@@ -295,7 +429,7 @@ function init_layer_controls(map) {
 		}
 		
 	}
-	
+	*/
 }
 
 var qry = null;

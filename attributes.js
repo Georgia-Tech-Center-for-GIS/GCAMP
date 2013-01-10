@@ -46,7 +46,7 @@ function initAttributesLayerList() {
 		}
 	}
 	
-	console.debug(lyrList);
+	//console.debug(lyrList);
 	
 	var layerStoreMemory2 = new dojo.store.Memory({data: lyrList});
 	var layerStore2 = new dojo.data.ObjectStore({objectStore: layerStoreMemory2});
@@ -77,7 +77,7 @@ function getAttributesLayer (url) {
 	query.outFields= ["*"];
 	
 	qt.execute(query, function(results) {
-		console.debug(results);
+		//console.debug(results);
 			
 		var fields = dojo.map(results.fields, function(field) {
 			var item = [];

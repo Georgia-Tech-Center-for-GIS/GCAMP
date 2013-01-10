@@ -86,8 +86,8 @@ function addToMap(idResults, evt) {
 	for (var j in factoredResults) {
 		var root = dojo.create('div', {});
 		
-		console.debug(j);
-		console.debug(factoredResults[j]);
+		//console.debug(j);
+		//console.debug(factoredResults[j]);
 		
 		var grp = factoredResults[j];
 		

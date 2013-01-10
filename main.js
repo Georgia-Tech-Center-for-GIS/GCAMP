@@ -22,6 +22,9 @@ dojo.require("esri.dijit.Popup");
 dojo.require("dijit.form.DateTextBox");
 dojo.require("dijit.Toolbar");
 
+dojo.require("esri.toolbars.draw");
+dojo.require("dojo.number");
+
 dojo.require("dijit.form.Select");
 
 dojo.require("dojox.layout.ContentPane");
@@ -176,6 +179,18 @@ function removeLayerFromMap(s,val) {
 	layerTitlePane.destroyDescendants();
 	init_layer_controls(map);
 }
+function jQueryReady() {
+	/*jQuery( "#layersVisibList" ) .accordion({
+		navigation: true,
+		autoHeight: false,
+		header: '.accordion-heading',
+		active: false,
+		collapsible: true,
+		icons: false
+	});*/
+	
+	jQuery(".resizable").resizable();
+}
 
 function prepare_map_when_extents_finished(a) {
 		initialExtent = a[0];
@@ -186,9 +201,13 @@ function prepare_map_when_extents_finished(a) {
 		});
 		
 		dojo.connect(dijit.byId('map'), 'resize', map,map.resize);
+		dojo.connect(dijit.byId('map'), "onLoad", function() { });
 		
 		navToolbar = new esri.toolbars.Navigation(map);
 		dojo.connect(navToolbar, "onExtentHistoryChange", extentHistoryChangeHandler);
+		
+		drawToolbar = new esri.toolbars.Draw(map);
+		//dojo.connect(drawToolbar, "", null);
 		
 		var initBasemap = new esri.layers.ArcGISDynamicMapServiceLayer("http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer");
 		map.addLayer(initBasemap);
@@ -197,9 +216,10 @@ function prepare_map_when_extents_finished(a) {
 			//("http://carto.gis.gatech.edu/ArcGIS/rest/services/ViewerJSResources/MapServer");
 			("http://carto.gis.gatech.edu/ArcGIS/rest/services/coastal1112/MapServer");
 		//ly1.setVisibleLayers([12, 13, 17]);
-			dojo.connect(ly1, "onLoad", function () {
+		dojo.connect(ly1, "onLoad", function () {
 			init_layer_controls(map);
 			initAttributesLayerList(map);
+			$(document).ready(jQueryReady);
 		});
 		
 		map.addLayer(ly1);
