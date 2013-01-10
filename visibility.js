@@ -260,7 +260,53 @@ var viewModel = {
 		}
 		
 		ko.applyBindings();
-}
+	},
+	
+	toggleVisibleLayer : function (a) {	
+		var lyr = map.getLayer(a.mapLayerId);
+		var vl = lyr.visibleLayers;
+		var nl = [];
+		
+		console.debug(a);
+		console.debug(vl);
+		
+		nl = vl.filter(function(c) {
+			var a = [];
+			var b = false;
+						
+			if(lyr.layerInfos[c].subLayerIds == null) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		});
+		
+		if(vl.lastIndexOf(a.esriLayer.id) !== -1 ) {
+			nl = nl.filter(function(b) { if(b == a.esriLayer.id) return false; else return true; } );
+		}
+		else {
+			nl.push(a.esriLayer.id);
+		}
+		
+		console.debug(nl);
+		
+		lyr.setVisibleLayers(nl);
+		ko.applyBindings();
+	},
+	
+	isVisibleLayer : function (a,b) {
+		//console.debug(a);
+		var lyr = map.getLayer(a);
+		var vl = lyr.visibleLayers;
+
+		if(vl.lastIndexOf(b) !== -1 ) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 };
 
 function init_layer_controls(map) {

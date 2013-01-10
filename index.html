@@ -104,15 +104,21 @@
 						<a class='accordion-toggle'><span data-bind='text: name'> </span> </a>
 					</div>
 				</div>
-				<div class='accordion-body collapse' data-bind="css: {'in': viewModel.isOpenTheme(name) }" style='margin-left: 20px;'>
+				<div class='accordion-body collapse' data-bind="css: {'in': viewModel.isOpenTheme(name) }" style='margin-left: 20px; overflow: scroll;'>
 						<div data-bind="template: {name: 'layers_template', foreach: children }"> </div>
 				</div>
 			<!-- /ko -->
 			<!-- ko if: (children.length == 0) -->
 				<div class='accordion-inner'>
 					<div class='btn-group btn-group-layer'>
-						<a class='btn btn-info-sign' data-bind="click: viewModel.toggleVisibleLayer "><i class='icon-info-sign icon-large'></i> </a>
-						<span class='btn btn-layer' data-bind='text: name'> </span>
+						<span class='btn btn-layer' style='padding-top: 0px; margin: 0px;' data-bind='click: viewModel.toggleVisibleLayer'>
+							<i class='check icon-large icon-check' data-bind="visible: viewModel.isVisibleLayer(mapLayerId,esriLayer.id)"
+								style='padding: 4px; margin: 0px; width: 30px; background-image: url("images/glyphicons_152_check.png"); background-position: 0 0;' ></i>
+							<i class='check icon-large icon-check' data-bind="visible: viewModel.isVisibleLayer(mapLayerId,esriLayer.id)==false"
+								style='padding: 4px; margin: 0px; width: 30px; background-image: url("images/glyphicons_153_unchecked.png"); background-position: 0 0;' ></i>
+						</span>
+						<!--a class='btn btn-info-sign'><i class='icon-info-sign icon-large'></i> </a-->
+						<span class='btn btn-layer' data-bind='text: name' style='text-align:left; min-width: 12em;'> </span>
 					</div>
 				</div>
 			<!-- /ko -->
