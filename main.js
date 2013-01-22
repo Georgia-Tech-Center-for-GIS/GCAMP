@@ -180,10 +180,11 @@ function removeLayerFromMap(s,val) {
 function prepare_map_when_extents_finished(a) {
 		initialExtent = a[0];
 		
-		//esriConfig.defaults.map.sliderLabel = null;
 		map = new esri.Map("map", {
 				extent : initialExtent
 		});
+		
+		//dijit.byId('LeftPanel');
 		
 		dojo.connect(dijit.byId('map'), 'resize', map,map.resize);
 		dojo.connect(dijit.byId('map'), "onLoad", function() { });
@@ -204,7 +205,6 @@ function prepare_map_when_extents_finished(a) {
 			("http://carto.gis.gatech.edu/ArcGIS/rest/services/coastal1112/MapServer");
 
 		dojo.connect(ly1, "onLoad", function () {
-			console.debug("HOWDYHOWDY");
 			init_layer_controls(map);
 			//initAttributesLayerList(map);
 		});
@@ -292,7 +292,6 @@ function init() {
 }
 
 function init_id_funct(map) {
-	dojo.connect(map, "onClick", doIdentify);
 	createBasemapGallery();
 	//identifyTask = new esri.tasks.IdentifyTask("http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer");
 	identifyTask = new esri.tasks.IdentifyTask(ly1.url);
@@ -352,10 +351,23 @@ function sliderChanged(value) {
 	});
 }
 
-	function jQueryReady() {
+var handleIdentify = null;
+
+function jQueryReady() {
 	$(function() {
 				$('.scroll-pane').jScrollPane();
 				$('a[data-toggle="tab"]').on('shown', function (e) {
+					if( $(e.target).attr('href') == "#identifyPane") {
+						handleIdentify = dojo.connect(map, "onClick", doIdentify);
+					}
+					else {
+						//dojo.connect(map, "onClick", doIdentify);
+						if(handleIdentify != null) {
+							dojo.disconnect(handleIdentify);
+							handleIdentify = null;
+						}
+					}
+					
 					//alert($(e.target).attr('href')) //e.target // activated tab
 					//e.relatedTarget // previous tab
 			})

@@ -51,7 +51,7 @@
 		<script src='script/knockout-2.2.1.js'></script>
 	<script src="/bootstrap/js/bootstrap.min.js"></script>
 	
-    <script src="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3/"></script>
+    <script src="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3compact"></script>
 		
 	<script src='attributes.js'> </script>
 	<script src='visibility.js'> </script>
@@ -60,16 +60,15 @@
   </head> 
  
 <body class="tundra" style='margin-top: 0px;'>
-	<div>
-		
+	<div style='height: 7em; padding-top: 20px;'>
 		<img src='http://georgia.gov/profiles/georgiagov/themes/gagov/logo.png' alt='Georgia.gov Logo'/>
 		<span id='GABranding' style=''>Coastal Dataset Viewer</span>
 	</div>
 
-	<div class='container-fluid'>
-	<div class='row-fluid'>
-		<div class='span5'>
-			<div class='sidebar-nav'>
+	<div class='container-fluid' style='height: 80%'>
+	<!--div class='row-fluid'-->
+		<div class='span6' id='LeftPanel' style='height: 100%;'>
+			<div class='sidebar-nav' style='height: 3em;'>
 				<ul class='nav nav-tabs'>
 					<li> <a >All Layers</a> </li>
 					<li> <a>On Shore</a> </li>
@@ -77,7 +76,7 @@
 					<li> <a>Ocean</a> </li>
 				</ul>
 			</div>
-			<div>
+			<div style='height: 100%'>
 				<div>
 				<ul class='nav nav-tabs nav-stacked' id='myTab' style='width: 48px; float: right;'>
 					<li class='active'><a href="#layersTab" data-toggle="tab">
@@ -93,7 +92,7 @@
 				</ul>
 				</div>
 
-				<div class='tab-content' >
+				<div class='tab-content' style='height: 100%;'>
 					<div class='tab-pane active' id="layersTab" style='padding-left:1em;'>
 						<h2>Data Layers</h2>
 						<div class='scroll-pane vertical-only' style='overflow: auto; height: 50em;'>
@@ -199,15 +198,21 @@
 					</div>
 					<div class='tab-pane' id='resultsPane' style='padding-left:1em;'>
 					</div>
+					<div class='tab-pane' id='identifyPane'style='padding-left: 1em; height: 90%;'>
+						<h2>Identify</h2>
+						
+						<div id='bottomIDPanel' data-dojo-type="dojox.layout.ContentPane" style='height: 100%;'> </div>
+					</div>
+					
 					<div class='tab-pane' id='attribPane' style='padding-left:1em;'> </div>
 				</div>
 			</div>
 		</div>
-		<div class='span6'>
-			<div id="map">
+		<div class='span9' id='MapPanel' style='height: 100%;'>
+			<div id="map" style='height:100%;'>
 			</div>
 		</div>
-	</div>
+	<!--/div-->
 	</div>
 </body>
 </html>

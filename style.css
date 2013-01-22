@@ -279,3 +279,7 @@ a.attributeLink {
 .jspVerticalBar{
  background-color: transparent;
 }
+
+#map {
+	width: 100%;
+}

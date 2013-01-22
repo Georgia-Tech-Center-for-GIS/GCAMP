@@ -60,6 +60,8 @@ var lastIdResults = null;
 var factoredResults = [];
 
 function addToMap(idResults, evt) {
+	console.debug("ID ID ID ID");
+	console.debug(idResults);
 	lastIdResults = idResults;
 	factoredResults  = [];
 		
@@ -130,10 +132,10 @@ function addToMap(idResults, evt) {
 		bidPanel._supportingWidgets.push(tpane);
 	}
 	
-	//dijit.byId('bottomIDPanel').setContent(root.outerHTML);
+	dijit.byId('bottomIDPanel').setContent(root.outerHTML);
 	
-	toggleIdentifyOn(dijit.byId('LeftExPanel'));
-	dijit.byId('LeftTabs').selectChild(dijit.byId('bottomIDPanel'));
+	//toggleIdentifyOn(dijit.byId('LeftExPanel'));
+	//dijit.byId('LeftTabs').selectChild(dijit.byId('bottomIDPanel'));
 	
 	//map.infoWindow.show(evt.screenPoint, map.getInfoWindowAnchor(evt.screenPoint));
 }
