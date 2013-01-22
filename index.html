@@ -7,7 +7,9 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/> 
 	<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
 	
-    <title></title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+    <title>Georgia Coastal Resource Viewer</title> 
 
     <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3/js/dojo/dijit/themes/tundra/tundra.css" /> 
 	<link href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3/js/dojo/dijit/themes/tundra/form/Button.css" rel="stylesheet"/>
@@ -19,6 +21,8 @@
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" > </link>
 	<link type="text/css" href="css/jquery.jscrollpane.css" rel="stylesheet" media="all" />
 	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"> </link>
+	<link href="assets/css/bootstrap-responsive.css" rel="stylesheet"> </link>
+	
 	<link rel="stylesheet" type="text/css" href="./css/marco_style.css"> </link>
     <link rel="stylesheet" type="text/css" href="style.css">  </link>
 	
@@ -201,7 +205,26 @@
 					<div class='tab-pane' id='identifyPane'style='padding-left: 1em; height: 90%;'>
 						<h2>Identify</h2>
 						
-						<div id='bottomIDPanel' data-dojo-type="dojox.layout.ContentPane" style='height: 100%;'> </div>
+						<div id='' class='scroll-pane' style='height: 100%; width: 75%; overflow: auto;'>
+								<div id='idResultsList' data-bind="foreach: lastIdResults">
+									<h3 data-bind="text: $data[0].layerName"> </h3>
+									
+									<ul>
+									<div data-bind="foreach: $data">
+											<li>
+												<span data-bind='text: layerName'> </span>
+												<span data-bind='text: feature.attributes'> </span>
+											</li>
+										</div>
+									</ul>
+								</div>
+							
+							<script type="text/html" id="idresults_template">
+								<li>
+									
+								</li>
+							</script>
+						</div>
 					</div>
 					
 					<div class='tab-pane' id='attribPane' style='padding-left:1em;'> </div>

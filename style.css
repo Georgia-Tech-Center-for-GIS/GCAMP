@@ -283,3 +283,13 @@ a.attributeLink {
 #map {
 	width: 100%;
 }
+
+.span6 {
+	margin-left: 0;
+	width: 34.5%;
+}
+
+.span9 {
+	margin-left: 10px;
+	width: 64%;
+}

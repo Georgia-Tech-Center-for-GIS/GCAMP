@@ -356,6 +356,7 @@ var handleIdentify = null;
 function jQueryReady() {
 	$(function() {
 				$('.scroll-pane').jScrollPane();
+				
 				$('a[data-toggle="tab"]').on('shown', function (e) {
 					if( $(e.target).attr('href') == "#identifyPane") {
 						handleIdentify = dojo.connect(map, "onClick", doIdentify);
@@ -370,6 +371,7 @@ function jQueryReady() {
 					
 					//alert($(e.target).attr('href')) //e.target // activated tab
 					//e.relatedTarget // previous tab
+					$('.scroll-pane').jScrollPane();
 			})
 	});
 }
