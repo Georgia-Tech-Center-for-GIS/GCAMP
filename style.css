@@ -275,4 +275,7 @@ a.attributeLink {
 	border-right: none;
 }
 
-.jspHorizontalBar { display: none !important; }
+.jspHorizontalBar { background-color: transparent; }
+.jspVerticalBar{
+ background-color: transparent;
+}

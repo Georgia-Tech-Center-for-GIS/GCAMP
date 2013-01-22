@@ -1,20 +1,25 @@
-<!doctype html> 
+<!DOCTYPE html> 
 <html lang="en"> 
   <head> 
     <meta charset="utf-8"> 
     <meta http-equiv="X-UA-Compatible" content="IE=7,IE=9" /> 
+	
     <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/> 
 	<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
 	
     <title></title> 
-    <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/dojo/dijit/themes/tundra/tundra.css" /> 
 
-	<link href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/dojo/dijit/themes/tundra/form/Button.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3/js/dojo/dijit/themes/tundra/tundra.css" /> 
+	<link href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3/js/dojo/dijit/themes/tundra/form/Button.css" rel="stylesheet"/>
 	
-	<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/dojo/dojox/layout/resources/ExpandoPane.css"/>
-    <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/esri/dijit/css/Popup.css" />
-	<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/esri/css/esri.css" >  </link>
+	<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3/js/dojo/dojox/layout/resources/ExpandoPane.css"/>
+    <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3/js/esri/dijit/css/Popup.css" />
+	<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3/js/esri/css/esri.css" >  </link>
 
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" > </link>
+	<link type="text/css" href="css/jquery.jscrollpane.css" rel="stylesheet" media="all" />
+	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"> </link>
+	<link rel="stylesheet" type="text/css" href="./css/marco_style.css"> </link>
     <link rel="stylesheet" type="text/css" href="style.css">  </link>
 	
     <style>
@@ -24,34 +29,30 @@
         height:55px; 
       } 
     </style> 
-    <script>var dojoConfig = { parseOnLoad: true,
+    <script>
+	var dojoConfig = { parseOnLoad: true };
+	/*
 		packages : [
 			{
 				name : "my",
 				location : "http://localhost/dijits/my"
 			}
-		]}; </script> 
+		]};*/
+	</script> 
 
-	<script type='text/javascript' src="http://cloud.github.com/downloads/SteveSanderson/knockout/knockout-2.0.0.js"></script>
-
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" > </link>
-	<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 
-	<script src="/bootstrap/js/bootstrap.min.js"></script>
 	
-    <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAg58_FLn5bynKiZewfpUCeBTyCV9A2YBg0isNV8i_fASKoO0TiRRYqDCtRVNLgUhnJVaabm69uDjeZg&autoload=%7B%27modules%27%3A%5B%7B%27name%27%3A%27jquery%27%2C%27version%27%3A%271.4.2%27%7D%2C%7B%27name%27%3A%27jqueryui%27%2C%27version%27%3A%271.8.2%27%7D%5D%7D"></script>
-
-    <script src="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/"></script>
-
-	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"> </link>
-	<link type="text/css" href="css/jquery.jscrollpane.css" rel="stylesheet" media="all" />
-	<link rel="stylesheet" type="text/css" href="./css/marco_style.css"> </link>
-	
-	<script type="text/javascript" src="script/jquery.mousewheel.js"></script>
 		<!-- the jScrollPane script -->
+	<script type="text/javascript" src="script/jquery.mousewheel.js"></script>
 	<script type="text/javascript" src="script/jquery.jscrollpane.min.js"></script>
 	
+		<script src='script/knockout-2.2.1.js'></script>
+	<script src="/bootstrap/js/bootstrap.min.js"></script>
+	
+    <script src="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3/"></script>
+		
 	<script src='attributes.js'> </script>
 	<script src='visibility.js'> </script>
 	<script src='query.js'> </script>
@@ -59,28 +60,15 @@
   </head> 
  
 <body class="tundra" style='margin-top: 0px;'>
-	<div data-dojo-type="dijit.layout.BorderContainer" 
-		data-dojo-props="design:'headline',gutters:false" 
-		style="width: 100%; height: 100%; margin: 0;">
+	<div>
 		
-		<div id="titlePane" data-dojo-type="dijit.layout.ContentPane"data-dojo-props="region:'top'" style='margin-top: 1em;'>
-			<img src='http://georgia.gov/profiles/georgiagov/themes/gagov/logo.png' alt='Georgia.gov Logo'/>
-			<span id='GABranding' style=''>Coastal Dataset Viewer</span>
-		</div>
-		<div data-dojo-type="dijit.layout.ContentPane"data-dojo-props="region:'top'" style='margin-top: 2em;'>
-			<!-- <div id="navToolbar" data-dojo-type="dijit.Toolbar" class="toolbar">
-	  			<div dojotype="dijit.form.Button" id="zoomfullext" iconclass="zoomfullextIcon" onclick="fullExtent();" title="Full Extent">Zoom out to full-extent</div>
-	    		<div dojotype="dijit.form.Button" id="zoomprev"	   iconclass="zoomprevIcon" onClick="navToolbar.zoomToPrevExtent();" title="Zoom Previous">Go back</div>
-				<div dojotype="dijit.form.Button" id="zoomnext"    iconclass="zoomnextIcon" onClick="navToolbar.zoomToNextExtent();" title="Zoom Next"> Go forward</div>
-				<div dojotype="dijit.form.Button" id="pan"         iconclass="zoompan" onClick="drawToolbar.deactivate(); navToolbar.activate(esri.toolbars.Navigation.PAN);" title="Pan">Pan</div>
-			</div>
-			<div id="drawToolbar" data-dojo-type="dijit.Toolbar" class="toolbar">
-				<div dojotype="dijit.form.Button" id="identify"	 iconclass="identify" title="Identify"
-					onClick="drawToolbar.activate(esri.toolbars.Draw.POLYGON); map.hideZoomSlider();">Identify</div>			
-				<div dojotype="dijit.form.Button" id="identify_sum"	 iconclass="identify" title="Identify - Summarize by Field"
-					onClick="drawToolbar.activate(esri.toolbars.Draw.POLYGON); map.hideZoomSlider();">Identify - Summarize by Field</div>
-			</div> -->
-			
+		<img src='http://georgia.gov/profiles/georgiagov/themes/gagov/logo.png' alt='Georgia.gov Logo'/>
+		<span id='GABranding' style=''>Coastal Dataset Viewer</span>
+	</div>
+
+	<div class='container-fluid'>
+	<div class='row-fluid'>
+		<div class='span5'>
 			<div class='sidebar-nav'>
 				<ul class='nav nav-tabs'>
 					<li> <a >All Layers</a> </li>
@@ -89,13 +77,9 @@
 					<li> <a>Ocean</a> </li>
 				</ul>
 			</div>
-		</div>
-		
-		<div data-dojo-type="dojox.layout.ContentPane"
-			data-dojo-props="title: '', width:250, height:500, splitter:false, region:'leading'" id='LeftExPanel' preload='false'
-			style='overflow: hidden;'>
-
-				<ul class='nav nav-tabs nav-stacked' id='myTab' style='position: absolute; margin-left: 82%;'>
+			<div>
+				<div>
+				<ul class='nav nav-tabs nav-stacked' id='myTab' style='width: 48px; float: right;'>
 					<li class='active'><a href="#layersTab" data-toggle="tab">
 						<i class='icon Layers-icon'></i></a></li>
 					<li><a href="#basemapsTab" data-toggle="tab">
@@ -104,178 +88,126 @@
 						<i class='icon open-maplayer-icon'></i></a></li>
 					<li><a href='#legendPane' data-toggle='tab'>
 						<i class='icon map-legend-icon'></i></a></li>
-
-					<!--li><a href="#tabs-3">Aenean lacinia</a></li-->
+					<li><a href='#identifyPane' data-toggle='tab'>
+						<i class='icon Identify-results'></i></a></li>
 				</ul>
-				<div style='width: 80%; z-index: 20; height: 100%;'>
-					<div class='tab-content' >
-						<div class='tab-pane active' id="layersTab" style='padding-left:1em;'>
-							<h2>Data Layers</h2>
-							<div class='scroll-pane vertical-only' style='overflow: auto; height: 50em;'>
-								<div style='padding-right: 1em;'>
-									<div class='accordion' id='layersVisibList' data-bind="template: {name: 'layers_template', foreach: return_map_layers() }">
-									</div>
-									
-									<script type="text/html" id="layers_template">
-										<!-- ko if: (children.length > 0) -->
-											<div class='accordion-heading' data-bind="click : viewModel.setOpenTheme , css:{'active': true}">
-												<div> <a class='accordion-toggle'>  <span data-bind='text: name'></span> </a> </div>
-											</div>
-											<div class='accordion-body collapse' data-bind="css: {'in': viewModel.isOpenTheme(name) }"
-													style='margin-left: 20px; overflow: auto;'>
-												<div data-bind="template: {name: 'layers_template', foreach: children }">
-												</div>
-											</div>
-										<!-- /ko -->
-										<!-- ko if: (children.length == 0) -->
-											<div class='accordion-inner'>
-												<div class='btn-group btn-group-layer'>
-													<span class='btn btn-layer' style='padding-top: 0px; margin: 0px;' data-bind='click: viewModel.toggleVisibleLayer'>
-														<i class='check icon-large icon-check'
-														data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq) "
-														style='padding: 4px; margin: 0px; width: 30px; background-image: url("images/glyphicons_152_check.png"); background-position: 0 0;'>
-														</i>
-														<i class='check icon-large icon-check'
-														data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq) == false"
-														style='padding: 4px; margin: 0px; width: 30px; background-image: url("images/glyphicons_153_unchecked.png"); background-position: 0 0;'>
-														</i>
-													</span>
-													<!--a class='btn btn-info-sign'><i class='icon-info-sign icon-large'></i> </a-->
-													<span class='btn btn-layer' data-bind='text: name' style='text-align:left; min-width: 12em;'></span>
-												</div>
-											</div>
-										<!-- /ko -->
-									</script>
+				</div>
+
+				<div class='tab-content' >
+					<div class='tab-pane active' id="layersTab" style='padding-left:1em;'>
+						<h2>Data Layers</h2>
+						<div class='scroll-pane vertical-only' style='overflow: auto; height: 50em;'>
+							<div style='padding-right: 1em;'>
+								<div class='accordion' id='layersVisibList' data-bind="template: {name: 'layers_template', foreach: return_map_layers() }">
 								</div>
+								
+								<script type="text/html" id="layers_template">
+									<!-- ko if: (children.length > 0) -->
+										<div class='accordion-heading' data-bind="click : viewModel.setOpenTheme , css:{'active': true}">
+											<div> <a class='accordion-toggle'>  <span data-bind='text: name'></span> </a> </div>
+										</div>
+										<div class='accordion-body collapse' data-bind="css: {'in': viewModel.isOpenTheme(name) }"
+												style='margin-left: 20px; overflow: auto;'>
+											<div data-bind="template: {name: 'layers_template', foreach: children }">
+											</div>
+										</div>
+									<!-- /ko -->
+									<!-- ko if: (children.length == 0) -->
+										<div class='accordion-inner'>
+											<div class='btn-group btn-group-layer'>
+												<span class='btn btn-layer' style='padding-top: 0px; margin: 0px;' data-bind='click: viewModel.toggleVisibleLayer'>
+													<i class='check icon-large icon-check'
+													data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq) "
+													style='padding: 4px; margin: 0px; width: 30px; background-image: url("images/glyphicons_152_check.png"); background-position: 0 0;'>
+													</i>
+													<i class='check icon-large icon-check'
+													data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq) == false"
+													style='padding: 4px; margin: 0px; width: 30px; background-image: url("images/glyphicons_153_unchecked.png"); background-position: 0 0;'>
+													</i>
+												</span>
+												<!--a class='btn btn-info-sign'><i class='icon-info-sign icon-large'></i> </a-->
+												<span class='btn btn-layer' data-bind='text: name' style='text-align:left; min-width: 12em;'></span>
+											</div>
+										</div>
+									<!-- /ko -->
+								</script>
 							</div>
 						</div>
-						<div class='tab-pane' id="basemapsTab" style='padding-left:1em;'>
-							<h2>Basemaps</h2>
-							<!--button data-dojo-type="dijit.form.Button" type="button" id='Return1'>Return to Layers Pane 
-								<script type="dojo/on" data-dojo-event="click"
-									data-dojo-args="evt">require(["dojo/dom"], function(dom){
-									dijit.byId('LeftTabs').selectChild(dijit.byId('layersSection'));
-									toggleIdentifyOn(dijit.byId('LeftExPanel'));
-								});</script></button -->
-							<div id='basemapGallery'> </div>
-						</div>
-						<div class='tab-pane' id="otherDataTab" style='padding-left:1em;'>
-							<h2>Add Data</h2>
-							
-							<h4>Available Map Services</h4>
-							
-							<div id='SelectMapLayer'></div>
-							
-							<button data-dojo-type="dijit.form.Button" type="button" id='MapSrvInfo'>Get Information 
-								<script type="dojo/on" data-dojo-event="click"
-									data-dojo-args="evt">require(["dojo/dom"], function(dom){
-									});</script></button>
-							
-							<button data-dojo-type="dijit.form.Button" type="button" id='MapSrvRemove'>Remove Service 
-								<script type="dojo/on" data-dojo-event="click"
-									data-dojo-args="evt">require(["dojo/dom"], function(dom){ var s =
-										dijit.byId('SelectMapLayer'); removeLayerFromMap(s,s.getValue());
-									});</script></button>
+					</div>
+					<div class='tab-pane' id="basemapsTab" style='padding-left:1em;'>
+						<h2>Basemaps</h2>
+						<!--button data-dojo-type="dijit.form.Button" type="button" id='Return1'>Return to Layers Pane 
+							<script type="dojo/on" data-dojo-event="click"
+								data-dojo-args="evt">require(["dojo/dom"], function(dom){
+								dijit.byId('LeftTabs').selectChild(dijit.byId('layersSection'));
+								toggleIdentifyOn(dijit.byId('LeftExPanel'));
+							});</script></button -->
+						<div id='basemapGallery'> </div>
+					</div>
+					<div class='tab-pane' id="otherDataTab" style='padding-left:1em;'>
+						<h2>Add Data</h2>
+						
+						<h4>Available Map Services</h4>
+						
+						<div id='SelectMapLayer'></div>
+						
+						<button data-dojo-type="dijit.form.Button" type="button" id='MapSrvInfo'>Get Information 
+							<script type="dojo/on" data-dojo-event="click"
+								data-dojo-args="evt">require(["dojo/dom"], function(dom){
+								});</script></button>
+						
+						<button data-dojo-type="dijit.form.Button" type="button" id='MapSrvRemove'>Remove Service 
+							<script type="dojo/on" data-dojo-event="click"
+								data-dojo-args="evt">require(["dojo/dom"], function(dom){ var s =
+									dijit.byId('SelectMapLayer'); removeLayerFromMap(s,s.getValue());
+								});</script></button>
 
-							<h4 style='margin-top: 20px;'>Add Map Service</h4>
-							<table>
-								<tr>
-									<td> <strong>Label:</strong> </td>
-									<td> <input id='AddMapSvcLabel' data-dojo-type="dijit.form.ValidationTextBox" /> </td>
-								</tr>
-								<tr>
-									<td> <strong>URL:</strong> </td>
-									<td> <input id='AddMapSvcURL' data-dojo-type="dijit.form.ValidationTextBox" /> </td>
-								</tr>
-							</table>
-							
-							<div id='SelectMapLayerCatalog'></div>
-							<button data-dojo-type="dijit.form.Button" type="button" id='MapSrvAdd'>Add Map Service 
-							<script type="dojo/on" data-dojo-event="click" data-dojo-args="evt">
-								require(["dojo/dom"], function(dom){
-									var l = dijit.byId('AddMapSvcLabel').value;
-									var u = dijit.byId('AddMapSvcURL').value; if( l == "" || u == "") { }
-									else {
-										try {
-											addLayerToMap(u,l);
-										}
-										catch(e) {
-											console.debug(e);
-										}
-											
-										dijit.byId('AddMapSvcLabel').set("value","");
-										dijit.byId('AddMapSvcURL').set("value",""); }
-									});
-							</script></button>
-						</div>
-						<div class='tab-pane' id='legendPane' style='padding-left:1em;'>
-							<h2>Map Legend</h2>
-							<div id='legendSection'></div>
-						</div>
-						<div class='tab-pane' id='resultsPane' style='padding-left:1em;'>
-						</div>
-
-						<div class='tab-pane' id='attribPane' style='padding-left:1em;'>
-						</div>
+						<h4 style='margin-top: 20px;'>Add Map Service</h4>
+						<table>
+							<tr>
+								<td> <strong>Label:</strong> </td>
+								<td> <input id='AddMapSvcLabel' data-dojo-type="dijit.form.ValidationTextBox" /> </td>
+							</tr>
+							<tr>
+								<td> <strong>URL:</strong> </td>
+								<td> <input id='AddMapSvcURL' data-dojo-type="dijit.form.ValidationTextBox" /> </td>
+							</tr>
+						</table>
+						
+						<div id='SelectMapLayerCatalog'></div>
+						<button data-dojo-type="dijit.form.Button" type="button" id='MapSrvAdd'>Add Map Service 
+						<script type="dojo/on" data-dojo-event="click" data-dojo-args="evt">
+							require(["dojo/dom"], function(dom){
+								var l = dijit.byId('AddMapSvcLabel').value;
+								var u = dijit.byId('AddMapSvcURL').value; if( l == "" || u == "") { }
+								else {
+									try {
+										addLayerToMap(u,l);
+									}
+									catch(e) {
+										console.debug(e);
+									}
+										
+									dijit.byId('AddMapSvcLabel').set("value","");
+									dijit.byId('AddMapSvcURL').set("value",""); }
+								});
+						</script></button>
+					</div>
+					<div class='tab-pane' id='legendPane' style='padding-left:1em;'>
+						<h2>Map Legend</h2>
+						<div id='legendSection'></div>
+					</div>
+					<div class='tab-pane' id='resultsPane' style='padding-left:1em;'>
+					</div>
+					<div class='tab-pane' id='attribPane' style='padding-left:1em;'> </div>
 				</div>
 			</div>
 		</div>
-		<div id="map" data-dojo-type="dijit.layout.ContentPane" data-dojo-props="region:'center'">
-			<div id='status' style=''>
-			Seeing&#160;if&#160;there's&#160;more&#160;information...</div>
+		<div class='span6'>
+			<div id="map">
+			</div>
 		</div>
 	</div>
+	</div>
 </body>
-					<!--
-<div id='legend' dojoType='dijit.layout.ContentPane'
-tooltip="Legend" iconclass='map-legend-icon'>
-  <button data-dojo-type="dijit.form.Button" type="button"
-  id='Return3'>Return to Layers Pane 
-  <script type="dojo/on" data-dojo-event="click"
-  data-dojo-args="evt">require(["dojo/dom"], function(dom){
-  dijit.byId('LeftTabs').selectChild(dijit.byId('layersSection'));
-  toggleIdentifyOn(dijit.byId('LeftExPanel'));
-  });</script></button>
-  <div id='legendSection'></div>
-</div>
-<div id='bottomIDPanel' data-dojo-type='dijit.layout.ContentPane'
-data-dojo-props='tooltip: "Identify Results"'
-iconclass="Identify-results" style='width: 250px;'>
-  <button data-dojo-type="dijit.form.Button" type="button"
-  id='Return4'>Return to Layers Pane 
-  <script type="dojo/on" data-dojo-event="click"
-  data-dojo-args="evt">require(["dojo/dom"], function(dom){
-  dijit.byId('LeftTabs').selectChild(dijit.byId('layersSection'));
-  toggleIdentifyOn(dijit.byId('LeftExPanel'));
-  });</script></button>
-  <h2>Left-click on map to retrieve information</h2>
-</div>
-<div id='layerInfoPane' dojoType='dijit.layout.ContentPane'
-tooltip='Layer Info' iconclass='Information-Icon'>
-  <button data-dojo-type="dijit.form.Button" type="button"
-  id='Return5'>Return to Layers Pane 
-  <script type="dojo/on" data-dojo-event="click"
-  data-dojo-args="evt">require(["dojo/dom"], function(dom){
-  dijit.byId('LeftTabs').selectChild(dijit.byId('layersSection'));
-  toggleIdentifyOn(dijit.byId('LeftExPanel'));
-  });</script></button>
-
-</div>
-<div data-dojo-type="dojox.layout.ExpandoPane"
-data-dojo-props="title: 'Layer Attribute Information', splitter:false, region:'bottom', startExpanded: false"
-style='width: 100%; height: 20em;' id='RightExPanel'>
-  <div id='attributesPanel'
-  data-dojo-type='dojox.layout.ContentPane'
-  tooltip='Attribute Table'>
-
-  <div id='SelectMapLayerAttributes'></div>
-    <div id="gridDiv" style=''></div>
-  </div>
-</div>
-
-<div id='paneTitleLeft' style=''>Layers</div>
--->
-	<!--script>
-		dojo.ready(init);
-	</script-->
-	
+</html>

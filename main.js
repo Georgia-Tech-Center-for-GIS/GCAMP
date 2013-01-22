@@ -176,21 +176,11 @@ function removeLayerFromMap(s,val) {
 	
 	init_layer_controls(map);
 }
-function jQueryReady() {
-	var element = $('.scroll-pane').jScrollPane({});
-	var api = element.data('jsp');
-	//api.reintialise();
-}
-
-$(function()
-			{
-				$('.scroll-pane').jScrollPane();
-			});
 
 function prepare_map_when_extents_finished(a) {
 		initialExtent = a[0];
 		
-		esriConfig.defaults.map.sliderLabel = null;
+		//esriConfig.defaults.map.sliderLabel = null;
 		map = new esri.Map("map", {
 				extent : initialExtent
 		});
@@ -214,6 +204,7 @@ function prepare_map_when_extents_finished(a) {
 			("http://carto.gis.gatech.edu/ArcGIS/rest/services/coastal1112/MapServer");
 
 		dojo.connect(ly1, "onLoad", function () {
+			console.debug("HOWDYHOWDY");
 			init_layer_controls(map);
 			//initAttributesLayerList(map);
 		});
@@ -279,9 +270,6 @@ function prepare_map_when_extents_finished(a) {
 }
 
 function init() {
-	$(document).ready(jQueryReady);
-	
-	if( true) {
 	esriConfig.defaults.io.proxyUrl = "http://carto.gis.gatech.edu/proxypage_net/proxy.ashx";
 	esriConfig.defaults.io.alwaysUseProxy = true;
 	
@@ -290,7 +278,7 @@ function init() {
 	esri.config.defaults.io.corsEnabledServers.push("http://ocs-gis.ncd.noaa.gov");
 	esri.config.defaults.io.corsEnabledServers.push("http://services.arcgisonline.com");
 	esri.config.defaults.io.corsEnabledServers.push("http://tasks.arcgisonline.com");
-	 
+
 	extents = [
 		new esri.geometry.Extent( {"ymin": 31, "ymax": 33, "xmin" : -87, "xmax": -78, "spatialReference": { "wkid" : 4269 } } ) , //all
 		new esri.geometry.Extent( {"ymin": 31, "ymax": 33, "xmin" : -87, "xmax": -78, "spatialReference": { "wkid" : 4269 } } ) , //on-shore
@@ -299,52 +287,8 @@ function init() {
 	];
 	
 	initialExtent = extents[2];
-	/*
-	dojo.connect(dijit.byId("RightExPanel"), "_showEnd", function () {
-		dojo.byId("paneTitleRight").style.setProperty("visibility", "hidden");
-	});
-	
-	dojo.connect(dijit.byId("RightExPanel"), "_hideEnd", function () {
-		dojo.byId("paneTitleRight").style.setProperty("visibility", "");
-	});
-
-	dojo.connect(dijit.byId("LeftExPanel"), "_showEnd", function () {
-		dojo.byId("paneTitleLeft").style.setProperty("visibility", "hidden");
-	});
-	
-	dojo.connect(dijit.byId("LeftExPanel"), "_hideEnd", function () {
-		dojo.byId("paneTitleLeft").style.setProperty("visibility", "visible");
-	}); */
-	
-	/*dijit.byId('RightExPanel').watch("selectedChildWidget", function(name, oval, nval) {
-		if(nval.id == "attributesPanel") {
-			if(grid != null) {
-				var nsize = parseInt(dojo.byId('attributesPanel').style.height)-150 + "px";
-				console.debug(nsize)
-				grid.setAttribute("style", "height: " + nsize);
-				grid.resize();
-			}
-		}
-	});*/
-		
-	/*dojo.connect(dijit.byId(""), "onClick", function(evt) {
-								var l = dijit.byId('AddMapSvcLabel').value;
-								var u = dijit.byId('AddMapSvcURL').value;
-								
-								if( l == "" || u == "") {
-								}
-								else {
-									addLayerToMap(map,u,l);
-									
-									//dijit.byId('AddMapSvcLabel').value = "";
-									//dijit.byId('AddMapSvcURL').value = "";
-								}
-	});*/
-	
-	//dojo.connect(dijit.byId('MapType'), "onChange", sliderChanged);
 	
 	cvtLatLongExtent_2_WebMercator( initialExtent, prepare_map_when_extents_finished);
-	}
 }
 
 function init_id_funct(map) {
@@ -408,4 +352,15 @@ function sliderChanged(value) {
 	});
 }
 
+	function jQueryReady() {
+	$(function() {
+				$('.scroll-pane').jScrollPane();
+				$('a[data-toggle="tab"]').on('shown', function (e) {
+					//alert($(e.target).attr('href')) //e.target // activated tab
+					//e.relatedTarget // previous tab
+			})
+	});
+}
+
+$(document).ready(jQueryReady);
 dojo.addOnLoad(init);

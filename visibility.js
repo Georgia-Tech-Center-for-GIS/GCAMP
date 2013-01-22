@@ -58,7 +58,7 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 	
 	var returnValue = { "childLayers": list, "lastIndex": lastIndex };
 	
-	console.debug(list);
+	//console.debug(list);
 	return returnValue;
 }
 
@@ -140,7 +140,7 @@ var viewModel = {
 			viewModel.themes.push(themeName);
 		}
 		
-		var element = $('.scroll-pane').jScrollPane({horizontalDragMaxWidth: 0});
+		var element = $('.scroll-pane').jScrollPane({verticalGutter: 0});
 		var api = element.data('jsp');
 
 	},
@@ -150,8 +150,8 @@ var viewModel = {
 		var vl = lyr.visibleLayers;
 		var nl = [];
 		
-		console.debug(a);
-		console.debug(vl);
+		//console.debug(a);
+		//console.debug(vl);
 		
 		nl = vl.filter(function(c) {
 			var a = [];
@@ -183,8 +183,6 @@ var viewModel = {
 		});
 		
 		viewModel.currentVisibleLayers.push(newVal);
-		
-		//console.debug(nl);
 		
 		lyr.setVisibleLayers(nl);
 		
@@ -218,7 +216,7 @@ var viewModel = {
 
 function init_layer_controls(map) {
 	if(!ly1.loaded  /*|| !ly2.loaded*/) return;
-	
+	console.debug("IAMHERE");
 	ko.applyBindings();
 }
 
