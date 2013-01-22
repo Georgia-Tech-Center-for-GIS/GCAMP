@@ -111,11 +111,7 @@ function createBasemapGallery() {
 			dojo.byId('status').setAttribute("style", "display: none");
 		});
 		
-//			var val = c.pop();
-//			lyrs.push({lyr: layer, "label": lbl, id: url, mapLyrId: val });
-			layerTitlePane.destroyDescendants();
-//			c.push(val);
-			init_layer_controls(map);
+		init_layer_controls(map);
 	});
 }
 
@@ -150,23 +146,25 @@ function addLayerToMap(url,label) {
 		dojo.connect( layer, "onLoad", function(ev) {
 			c = map.layerIds;
 			var val = c.pop();
-			lyrs.push({lyr: layer, "label": lbl, id: url, mapLyrId: val });
-			layerTitlePane.destroyDescendants();
+				lyrs.push({lyr: layer, "label": lbl, id: url, mapLyrId: val });
 			c.push(val);
+			
 			init_layer_controls(map);
 			
 			legend.useAllMapLayers = true;
 			legend.refresh();
 			
-			dijit.byId('SelectMapLayer').startup();
+			dijit.byId('SelectMapLayer').startup();		
 		});
 	}
 }
 
 function removeLayerFromMap(s,val) {
 	var storedObj = s.store.objectStore.query({"id": val})[0];
+	
 	console.debug(val);
 	console.debug(storedObj);
+	
 	map.removeLayer(storedObj.lyr);
 	lyrs = lyrs.filter( function(v,i,a) {
 		if ( v.id == val ) return false;
@@ -176,21 +174,18 @@ function removeLayerFromMap(s,val) {
 	s.store.objectStore.data = lyrs;
 	s.startup();
 	
-	layerTitlePane.destroyDescendants();
 	init_layer_controls(map);
 }
 function jQueryReady() {
-	/*jQuery( "#layersVisibList" ) .accordion({
-		navigation: true,
-		autoHeight: false,
-		header: '.accordion-heading',
-		active: false,
-		collapsible: true,
-		icons: false
-	});*/
-	
-	jQuery(".resizable").resizable();
+	var element = $('.scroll-pane').jScrollPane({});
+	var api = element.data('jsp');
+	//api.reintialise();
 }
+
+$(function()
+			{
+				$('.scroll-pane').jScrollPane();
+			});
 
 function prepare_map_when_extents_finished(a) {
 		initialExtent = a[0];
@@ -203,42 +198,30 @@ function prepare_map_when_extents_finished(a) {
 		dojo.connect(dijit.byId('map'), 'resize', map,map.resize);
 		dojo.connect(dijit.byId('map'), "onLoad", function() { });
 		
-		navToolbar = new esri.toolbars.Navigation(map);
+		/*navToolbar = new esri.toolbars.Navigation(map);
 		dojo.connect(navToolbar, "onExtentHistoryChange", extentHistoryChangeHandler);
 		
 		drawToolbar = new esri.toolbars.Draw(map);
-		//dojo.connect(drawToolbar, "", null);
+		//dojo.connect(drawToolbar, "", null); 
+		
+		*/
 		
 		var initBasemap = new esri.layers.ArcGISDynamicMapServiceLayer("http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer");
 		map.addLayer(initBasemap);
-				
+		
 		ly1 = new esri.layers.ArcGISDynamicMapServiceLayer
 			//("http://carto.gis.gatech.edu/ArcGIS/rest/services/ViewerJSResources/MapServer");
 			("http://carto.gis.gatech.edu/ArcGIS/rest/services/coastal1112/MapServer");
-		//ly1.setVisibleLayers([12, 13, 17]);
+
 		dojo.connect(ly1, "onLoad", function () {
 			init_layer_controls(map);
-			initAttributesLayerList(map);
-			$(document).ready(jQueryReady);
+			//initAttributesLayerList(map);
 		});
 		
 		map.addLayer(ly1);
 		
-		/* ly2 = new esri.layers.ArcGISDynamicMapServiceLayer
-			//("http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer");
-			("http://ocs-gis.ncd.noaa.gov/ArcGIS/rest/services/CMSP/US_Maritime_Limits_Boundaries/MapServer");
-		//ly2.setVisibleLayers([10, 11, 6]);
-			dojo.connect(ly2, "onLoad", function () {
-			init_layer_controls(map);
-		}); 
-		
-		map.addLayer(ly2); */
-		
-		//dojo.connect(map, "onLoad", init_layer_controls);
 		dojo.connect(map, "onLoad", init_id_funct);
-		//dojo.connect(map, "onLoad", function () { dojo.byId('indic').innerHTML = "Ready..."; } );
 		legendInfos = ly1.layerInfos;
-		//legendInfos.concat(ly2.layerInfos);
 		
 		layerStoreMemory = new dojo.store.Memory({data: lyrs});
 		layerStore = new dojo.data.ObjectStore({objectStore: layerStoreMemory});
@@ -281,16 +264,24 @@ function prepare_map_when_extents_finished(a) {
 		
 		dojo.connect(lyrSelect2, "onChange", function (nv) {
 			if(layerStoreChoicesMemory.get(nv) == null) return;
-			
 			dijit.byId('AddMapSvcURL').set("value" , layerStoreChoicesMemory.get(nv).url);
 		});
 
 				}
 				};
 		esri.request(args);
+		
+		legend = new esri.dijit.Legend({
+			map:map
+		},"legendSection");
+		
+		legend.startup();
 }
 
 function init() {
+	$(document).ready(jQueryReady);
+	
+	if( true) {
 	esriConfig.defaults.io.proxyUrl = "http://carto.gis.gatech.edu/proxypage_net/proxy.ashx";
 	esriConfig.defaults.io.alwaysUseProxy = true;
 	
@@ -308,7 +299,7 @@ function init() {
 	];
 	
 	initialExtent = extents[2];
-	
+	/*
 	dojo.connect(dijit.byId("RightExPanel"), "_showEnd", function () {
 		dojo.byId("paneTitleRight").style.setProperty("visibility", "hidden");
 	});
@@ -323,7 +314,7 @@ function init() {
 	
 	dojo.connect(dijit.byId("LeftExPanel"), "_hideEnd", function () {
 		dojo.byId("paneTitleLeft").style.setProperty("visibility", "visible");
-	});
+	}); */
 	
 	/*dijit.byId('RightExPanel').watch("selectedChildWidget", function(name, oval, nval) {
 		if(nval.id == "attributesPanel") {
@@ -336,7 +327,7 @@ function init() {
 		}
 	});*/
 		
-	dojo.connect(dijit.byId(""), "onClick", function(evt) {
+	/*dojo.connect(dijit.byId(""), "onClick", function(evt) {
 								var l = dijit.byId('AddMapSvcLabel').value;
 								var u = dijit.byId('AddMapSvcURL').value;
 								
@@ -348,11 +339,12 @@ function init() {
 									//dijit.byId('AddMapSvcLabel').value = "";
 									//dijit.byId('AddMapSvcURL').value = "";
 								}
-	});
+	});*/
 	
-	dojo.connect(dijit.byId('MapType'), "onChange", sliderChanged);
+	//dojo.connect(dijit.byId('MapType'), "onChange", sliderChanged);
 	
 	cvtLatLongExtent_2_WebMercator( initialExtent, prepare_map_when_extents_finished);
+	}
 }
 
 function init_id_funct(map) {
