@@ -142,20 +142,18 @@
 					</div>
 					<div class='tab-pane' id="basemapsTab" style='padding-left:1em;'>
 						<h2>Basemaps</h2>
-						<!--button data-dojo-type="dijit.form.Button" type="button" id='Return1'>Return to Layers Pane 
-							<script type="dojo/on" data-dojo-event="click"
-								data-dojo-args="evt">require(["dojo/dom"], function(dom){
-								dijit.byId('LeftTabs').selectChild(dijit.byId('layersSection'));
-								toggleIdentifyOn(dijit.byId('LeftExPanel'));
-							});</script></button -->
+						
 						<div id='basemapGallery'> </div>
 					</div>
 					<div class='tab-pane' id="otherDataTab" style='padding-left:1em;'>
 						<h2>Add Data</h2>
 						
-						<h4>Available Map Services</h4>
+						<h3>Available Map Services</h3>
 						
-						<div id='SelectMapLayer'></div>
+						<div id='SelectMapLayer'>
+							<div data-bind="">
+							</div>
+						</div>
 						
 						<button data-dojo-type="dijit.form.Button" type="button" id='MapSrvInfo'>Get Information 
 							<script type="dojo/on" data-dojo-event="click"

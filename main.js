@@ -124,59 +124,6 @@ function cvtLatLongExtent_2_WebMercator( extent, fn_when_finished ) {
 	geometryService.project(PrjParams, fn_when_finished );
 }
 
-var lyrs = [];
-var layerStore = null;
-var e = null;
-
-function addLayerToMap(url,label) {
-	var lbl = dojox.xmpp.util.stripHtml(label);
-	var layer = null;
-	
-	if(url.lastIndexOf("WMS") >= 0 || url.lastIndexOf("wms") >= 0) {
-		layer = new esri.layers.WMSLayer(url);
-	}
-	else {
-		layer = new esri.layers.ArcGISDynamicMapServiceLayer ( url );	
-		map.addLayer(layer);
-	}
-	
-	if(layer == null) {
-	}
-	else {
-		dojo.connect( layer, "onLoad", function(ev) {
-			c = map.layerIds;
-			var val = c.pop();
-				lyrs.push({lyr: layer, "label": lbl, id: url, mapLyrId: val });
-			c.push(val);
-			
-			init_layer_controls(map);
-			
-			legend.useAllMapLayers = true;
-			legend.refresh();
-			
-			dijit.byId('SelectMapLayer').startup();		
-		});
-	}
-}
-
-function removeLayerFromMap(s,val) {
-	var storedObj = s.store.objectStore.query({"id": val})[0];
-	
-	console.debug(val);
-	console.debug(storedObj);
-	
-	map.removeLayer(storedObj.lyr);
-	lyrs = lyrs.filter( function(v,i,a) {
-		if ( v.id == val ) return false;
-		return true;
-	});
-	
-	s.store.objectStore.data = lyrs;
-	s.startup();
-	
-	init_layer_controls(map);
-}
-
 function prepare_map_when_extents_finished(a) {
 		initialExtent = a[0];
 		
@@ -188,25 +135,15 @@ function prepare_map_when_extents_finished(a) {
 		
 		dojo.connect(dijit.byId('map'), 'resize', map,map.resize);
 		dojo.connect(dijit.byId('map'), "onLoad", function() { });
-		
-		/*navToolbar = new esri.toolbars.Navigation(map);
-		dojo.connect(navToolbar, "onExtentHistoryChange", extentHistoryChangeHandler);
-		
-		drawToolbar = new esri.toolbars.Draw(map);
-		//dojo.connect(drawToolbar, "", null); 
-		
-		*/
-		
+			
 		var initBasemap = new esri.layers.ArcGISDynamicMapServiceLayer("http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer");
 		map.addLayer(initBasemap);
 		
 		ly1 = new esri.layers.ArcGISDynamicMapServiceLayer
-			//("http://carto.gis.gatech.edu/ArcGIS/rest/services/ViewerJSResources/MapServer");
 			("http://carto.gis.gatech.edu/ArcGIS/rest/services/coastal1112/MapServer");
 
 		dojo.connect(ly1, "onLoad", function () {
 			init_layer_controls(map);
-			//initAttributesLayerList(map);
 		});
 		
 		map.addLayer(ly1);
@@ -351,6 +288,7 @@ function sliderChanged(value) {
 }
 
 var handleIdentify = null;
+var legend = null;
 
 function jQueryReady() {
 	$(function() {

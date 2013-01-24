@@ -294,6 +294,10 @@ a.attributeLink {
 	width: 64%;
 }
 
+h3 {
+	font-size: 115%;
+}
+
 #idResultsList th {
 	text-align: left;
 	font-size: 125%;

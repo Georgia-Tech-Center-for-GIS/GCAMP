@@ -27,7 +27,6 @@ dojo.require("esri.dijit.Popup");
 
 var layerTabContainer = null;
 var layerTitlePane = null;
-var legend = null;
 
 function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 	var list = [];
@@ -72,6 +71,8 @@ function return_map_layers() {
 		var dispLyrOuter = {
 			"children": []
 		};
+		
+		console.debug(lyr);
 		
 		switch(j) {
 			case 0:
