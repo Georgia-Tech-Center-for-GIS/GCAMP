@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" > </link>
 	<link type="text/css" href="css/jquery.jscrollpane.css" rel="stylesheet" media="all" />
 	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"> </link>
-	<link href="assets/css/bootstrap-responsive.css" rel="stylesheet"> </link>
+	<link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"> </link>
 	
 	<link rel="stylesheet" type="text/css" href="./css/marco_style.css"> </link>
     <link rel="stylesheet" type="text/css" href="style.css">  </link>
@@ -64,22 +64,25 @@
   </head> 
  
 <body class="tundra" style='margin-top: 0px;'>
-	<div style='height: 7em; padding-top: 20px;'>
-		<img src='http://georgia.gov/profiles/georgiagov/themes/gagov/logo.png' alt='Georgia.gov Logo'/>
-		<span id='GABranding' style=''>Coastal Dataset Viewer</span>
+	<div style='padding-top: 20px;'>
+		<div style='height: 5em;'>
+			<img src='http://georgia.gov/profiles/georgiagov/themes/gagov/logo.png' alt='Georgia.gov Logo'/>
+			<span id='GABranding' style=''>Coastal Dataset Viewer</span>
+		</div>
+		
+		<div class='sidebar-nav' style='height: 3em;'>
+			<ul class='nav nav-tabs'>
+				<li> <a >All Layers</a> </li>
+				<li> <a>On Shore</a> </li>
+				<li> <a>Coastal</a> </li>
+				<li> <a>Ocean</a> </li>
+			</ul>
+		</div>
 	</div>
 
 	<div class='container-fluid' style='height: 80%'>
 	<!--div class='row-fluid'-->
 		<div class='span6' id='LeftPanel' style='height: 100%;'>
-			<div class='sidebar-nav' style='height: 3em;'>
-				<ul class='nav nav-tabs'>
-					<li> <a >All Layers</a> </li>
-					<li> <a>On Shore</a> </li>
-					<li> <a>Coastal</a> </li>
-					<li> <a>Ocean</a> </li>
-				</ul>
-			</div>
 			<div style='height: 100%'>
 				<div>
 				<ul class='nav nav-tabs nav-stacked' id='myTab' style='width: 48px; float: right;'>
@@ -97,9 +100,9 @@
 				</div>
 
 				<div class='tab-content' style='height: 100%;'>
-					<div class='tab-pane active' id="layersTab" style='padding-left:1em;'>
+					<div class='tab-pane active' id="layersTab" style='padding-left:1em; height: 95%;'>
 						<h2>Data Layers</h2>
-						<div class='scroll-pane vertical-only' style='overflow: auto; height: 50em;'>
+						<div class='scroll-pane vertical-only' style='overflow: auto; height: 95%;'>
 							<div style='padding-right: 1em;'>
 								<div class='accordion' id='layersVisibList' data-bind="template: {name: 'layers_template', foreach: return_map_layers() }">
 								</div>
@@ -202,21 +205,41 @@
 					</div>
 					<div class='tab-pane' id='resultsPane' style='padding-left:1em;'>
 					</div>
-					<div class='tab-pane' id='identifyPane'style='padding-left: 1em; height: 90%;'>
+					<div class='tab-pane' id='identifyPane'style='padding-left: 1em; padding-right: 1em; height: 90%;'>
 						<h2>Identify</h2>
 						
-						<div id='' class='scroll-pane' style='height: 100%; width: 75%; overflow: auto;'>
+						<div style='height: 10%;'>
+							Click on the map to identify and display a single feature's attributes.
+						</div>
+						
+						<div id='' class='scroll-pane' style='height: 85%; width: 75%; overflow: auto;'>
 								<div id='idResultsList' data-bind="foreach: lastIdResults">
-									<h3 data-bind="text: $data[0].layerName"> </h3>
-									
-									<ul>
-									<div data-bind="foreach: $data">
-											<li>
-												<span data-bind='text: layerName'> </span>
-												<span data-bind='text: feature.attributes'> </span>
-											</li>
+									<!--h3 data-bind="text: $data[0].layerName"> </h3-->
+									<div class='accordion-heading' data-bind="click : idViewModel.setOpenTheme, css:{'active': true}">
+										<div> <a class='accordion-toggle'>  <span data-bind='text: $data[0].layerName'></span> </a> </div>
+									</div>
+									<div class='accordion-body collapse' data-bind="css: {'in': idViewModel.isOpenTheme($data[0].layerName) }">
+										<div class='accordion-inner'>
+											<ul>
+												<div data-bind="foreach: $data">
+													<li><span data-bind="text: value"></span> <br/>
+														<a data-bind="click: idViewModel.zoomToFeature " >Zoom to feature</a></li>
+														<table>
+															<thead>
+																<tr><th>Attribute</th><th>Value</th></tr>
+															</thead>
+															<tbody data-bind="foreach: getResultsFields($data)">
+																<tr>
+																		<td><span data-bind="text: Name"></span></td>
+																		<td><span data-bind="text: Value"></span></td>
+																</tr>
+															</tbody>
+														</table>
+													</li>
+												</div>
+											</ul>
 										</div>
-									</ul>
+									</div>
 								</div>
 							
 							<script type="text/html" id="idresults_template">

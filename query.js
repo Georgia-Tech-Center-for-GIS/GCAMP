@@ -39,14 +39,7 @@ function doIdentify(evt) {
 	
 	for (var j = 0; j < ly1.visibleLayers.length; j++) {
 		identifyParams.layerIds.push(ly1.visibleLayers[j]);
-		/*
-		if(ly1.visibleLayers[j] != -1 && ly1.layerInfos[ ly1.visibleLayers[j] ] != null &&
-		ly1.layerInfos[ ly1.visibleLayers[j] ].parentLayerId != -1) {
-		identifyParams.layerIds.push( ly1.layerInfos[ ly1.visibleLayers[j] ].parentLayerId );
-		}*/
 	}
-	
-	//console.debug(identifyParams.layerIds);
 	
 	identifyTask.execute(identifyParams,
 		function (idResults) {
@@ -59,101 +52,84 @@ function doIdentify(evt) {
 var factoredResults = null;
 var lastIdResults = ko.observableArray();
 
-function addToMap(idResults, evt) {
-	console.debug("ID ID ID ID");
-	console.debug(idResults);
+var idViewModel = {
+	idOpenLayers : ko.observableArray(),
 	
+	isOpenTheme : function(themeName) {	
+		if( idViewModel.idOpenLayers.indexOf(themeName) !== -1) {
+			return true;
+		}
+		return false;
+	},
+	
+	setOpenTheme : function (a) {
+		var themeName = a[0].layerName;
+		
+		if( idViewModel.isOpenTheme(themeName) ) {
+			idViewModel.idOpenLayers.remove(themeName);
+		}
+		else {
+			idViewModel.idOpenLayers.push(themeName);
+		}
+		
+		$('.scroll-pane').jScrollPane({verticalGutter: 0});
+	},
+	
+	zoomToFeature : function (a) {
+		map.graphics.clear();
+		a.feature.setSymbol(symbol);
+		
+		map.setExtent(a.feature.geometry.getExtent().expand(1.5));
+		
+		map.graphics.add(a.feature);
+	}
+}
+
+function getResultsFields(ftre) {
+	var arrayResult = ko.observableArray();
+	
+	var attribs = ftre.feature.attributes;
+	
+	var i = 0;
+	for (var k in attribs) {
+		arrayResult.push( {"Name" : k , "Value" : attribs[k] } );
+	}
+	
+	return arrayResult;
+}
+
+function addToMap(idResults, evt) {
 	var tempIdResults = idResults;
 	factoredResults = [];
+	
 	lastIdResults.removeAll();
+	idViewModel.idOpenLayers.removeAll();
 		
 	if(idResults.length == 0) {
 		return;
 	}
 	
-	//var bidPanel = dojo.byId('bottomIDPanel');
-	//bidPanel.destroyDescendants();
-	
-	//console.debug(idResults);
-
 	for (var i = 0; i < idResults.length; i++) {
 		if(factoredResults[ idResults[i].layerName ] == null) {
 			factoredResults[ idResults[i].layerName ] = [];
+			idViewModel.idOpenLayers.push( idResults[i].layerName );
 		}
+		
+		factoredResults[ idResults[i].layerName ] = factoredResults[ idResults[i].layerName ].filter( function (f) {		
+				if( f.feature.attributes.FID ==
+						idResults[i].feature.attributes.FID) return false;
+					
+				return true;
+			});
 		
 		factoredResults[ idResults[i].layerName ].push(idResults[i]);
 	}
 	
 	counter = 0;
-//	lastIdResults = factoredResults;
 	
 	for (var j in factoredResults) {
 		lastIdResults.push(factoredResults[j]);
 	}
-	
-	/*
-		var root = dojo.create('div', {});
-		
-		//console.debug(j);
-		//console.debug(factoredResults[j]);
-		
-		var grp = factoredResults[j];
-		
-		for(var k in grp) {
-			var feat = grp[k].feature;
-			var attribs = feat.attributes;
-			
-			if (feat.geometry == null) {
-			} else {
-				layerTitle = dojo.create('div', { "class": "idLayerLabel"}, root);
-				var layerLink = dojo.create('a', {
-						href : "#",
-						onClick : "showIdentifySymbol(\"" + j + "\"," + k + ");",
-						innerHTML : "Click to highlight feature"
-					}, layerTitle);
-			}
-			
-			var attrTable = dojo.create('table', {
-					style : "margin-left: 15px;"
-				}, root);
-			
-			for (var l in attribs) {
-				var attrTr = dojo.create('tr', {}, attrTable);
-				var attrName = dojo.create('td', {
-						innerHTML : l,
-						"class" : "idAttribLabel"
-					}, attrTr);
-				var attrValue = dojo.create('td', {
-						innerHTML : attribs[l],
-						"class" : "idAttribValue"
-					}, attrTr);
-			}
-			
-			counter++;
-		}
-		}
-		//var tpane = dojo.create('div', {innerHTML: root.outerHTML }); //({ title: j, content: root.outerHTML });
-		//console.debug(root.outerHTML);
-		//console.debug(tpane);
-		//bidPanel.appendChild(root);
-			
-		//bidPanel._supportingWidgets.push(tpane);
-	}
-	
-	//dijit.byId('bottomIDPanel').setContent(root.outerHTML);
-	
-	//toggleIdentifyOn(dijit.byId('LeftExPanel'));
-	//dijit.byId('LeftTabs').selectChild(dijit.byId('bottomIDPanel'));
-	
-	//map.infoWindow.show(evt.screenPoint, map.getInfoWindowAnchor(evt.screenPoint));
-	*/
-}
 
-function showIdentifySymbol(i, j) {
-	map.graphics.clear();
-	lastIdResults[i][j].feature.setSymbol(symbol);
-	
-	map.setExtent(lastIdResults[i][j].feature.geometry.getExtent().expand(1.5));
-	
-	map.graphics.add(lastIdResults[i][j].feature);
+	$('.scroll-pane').jScrollPane({verticalGutter: 0});	
 }

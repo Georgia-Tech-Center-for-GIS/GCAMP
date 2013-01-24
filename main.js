@@ -230,7 +230,6 @@ function prepare_map_when_extents_finished(a) {
 				url: "http://carto.gis.gatech.edu/proxypage_net/sites.ashx",
 				handleAs: "json",
 				load: function(data) {
-					console.debug(data);
 					serviceCatalog = [];
 					
 					for(var i = 0; i < data.length; i++) {

@@ -197,10 +197,6 @@ var viewModel = {
 				else return false;
 			})[0].vlayers;
 			
-			console.debug(vl);
-			//var lyr = map.getLayer(a);
-			//var vl = lyr.visibleLayers;
-
 			if(vl.lastIndexOf(b) !== -1 ) {
 				return true;
 			}
@@ -216,7 +212,6 @@ var viewModel = {
 
 function init_layer_controls(map) {
 	if(!ly1.loaded  /*|| !ly2.loaded*/) return;
-	console.debug("IAMHERE");
 	ko.applyBindings();
 }
 

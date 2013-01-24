@@ -4,7 +4,7 @@
 /*@import url("dojox/layout/resources/ExpandoPane.css");*/
 
 html, body {
-    font-family: Verdana, Arial, Serif;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	height: 100%; width: 100%; margin: 0; padding: 0;
 }
 
@@ -292,4 +292,14 @@ a.attributeLink {
 .span9 {
 	margin-left: 10px;
 	width: 64%;
+}
+
+#idResultsList th {
+	text-align: left;
+	font-size: 125%;
+	color: 0x0066FF;
+}
+
+#idResultsList ul {
+	list-style: none;
 }
