@@ -3,11 +3,38 @@
  
 /*@import url("dojox/layout/resources/ExpandoPane.css");*/
 
+/*Stick Footer Solution
+http://www.cssstickyfooter.com */
+* { margin: 0; padding: 0; }
+
 html, body {
+	height: 100%; width: 100%;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	height: 100%; width: 100%; margin: 0; padding: 0;
+	
+	overflow: hidden;
 }
 
+#wrap { height: 100%; min-height: 90%;}
+#main { height: 80%;  padding-bottom: 12%; }
+
+#footer {
+	position: relative;
+	margin-top: -12%;
+	margin-left: 90%;
+	height: 12%;
+	clear: both;
+	
+	z-index: 255;
+}
+
+body:before {
+	content: "";
+	height: 100%;
+	float: left;
+	width: 0;
+	margin-top: -32767px;
+}
+		
 h3 {
 	margin: 0 0 0.5em 0;
 	border-bottom: 1px solid #444;
@@ -187,25 +214,25 @@ div {
 	margin: 0;
 }
 
-  .ui-tabs-vertical { width: 55em; }
-  .ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
-  .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
-  .ui-tabs-vertical .ui-tabs-nav li a { display:block; }
-  .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
-  .ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
-
-#LeftExPanel, #RightExPanel {
-	width: 30em;
-}
+.ui-tabs-vertical { width: 55em; }
+.ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
+.ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
+.ui-tabs-vertical .ui-tabs-nav li a { display:block; }
+.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
+.ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
 
 #GABranding {
-	margin: 2em;
-	
 	color: #78ABB1;
+	
+	padding-left: 0.5em;
 	
 	font-weight: bold;
 	font-size: 22pt;
 	font-family: "Trebuchet MS" sans-serif;
+}
+
+#BrandingPanel {
+	height: 3em;
 }
 
 #MapSrvInfo .dijitButtonText, #MapSrvRemove .dijitButtonText, #MapSrvAdd .dijitButtonText {
@@ -306,4 +333,14 @@ h3 {
 
 #idResultsList ul {
 	list-style: none;
+}
+
+#coordinates {
+	font-weight: bold;
+	margin-left: -5em;
+}
+
+.esriScalebar {
+	padding-bottom: 8%;
+	padding-left: 32em;
 }

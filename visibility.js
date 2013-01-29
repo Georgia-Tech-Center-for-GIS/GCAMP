@@ -119,7 +119,7 @@ function return_map_layers() {
 }
 
 var viewModel = {
-	themes :ko.observableArray(),
+	themes :ko.observableArray(['Carto']),
 	currentVisibleLayers: ko.observableArray(),
 	
 	isOpenTheme : function (a) {

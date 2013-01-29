@@ -36,6 +36,8 @@ dojo.require("esri.layers.wms");
 dojo.require("dojox.xmpp.util");
 dojo.require("esri.dijit.BasemapGallery");
 
+dojo.require("esri.dijit.Scalebar");
+
 //var gpServiceUrl = "http://sampleserver6.arcgisonline.com/arcgis/rest/services/911CallsHotspot/GPServer/911%20Calls%20Hotspot";
 //var mapserviceurl = "http://sampleserver6.arcgisonline.com/arcgis/rest/services/911CallsHotspot/MapServer/jobs";
 var map, legend;
@@ -130,11 +132,12 @@ function prepare_map_when_extents_finished(a) {
 		map = new esri.Map("map", {
 				extent : initialExtent
 		});
-		
-		//dijit.byId('LeftPanel');
-		
+			
 		dojo.connect(dijit.byId('map'), 'resize', map,map.resize);
 		dojo.connect(dijit.byId('map'), "onLoad", function() { });
+		
+		dojo.connect(map, "onMouseMove", showMouseCoordinates);
+		dojo.connect(map, "onMouseDrag", showMouseCoordinates);
 			
 		var initBasemap = new esri.layers.ArcGISDynamicMapServiceLayer("http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer");
 		map.addLayer(initBasemap);
@@ -144,6 +147,16 @@ function prepare_map_when_extents_finished(a) {
 
 		dojo.connect(ly1, "onLoad", function () {
 			init_layer_controls(map);
+			scalebar = new esri.dijit.Scalebar({
+				map: map,
+				attachTo:"bottom-left"
+			});
+			
+			legend = new esri.dijit.Legend({
+				map:map
+			},"legendSection");
+			
+			legend.startup();
 		});
 		
 		map.addLayer(ly1);
@@ -197,12 +210,6 @@ function prepare_map_when_extents_finished(a) {
 				}
 				};
 		esri.request(args);
-		
-		legend = new esri.dijit.Legend({
-			map:map
-		},"legendSection");
-		
-		legend.startup();
 }
 
 function init() {
@@ -223,8 +230,40 @@ function init() {
 	];
 	
 	initialExtent = extents[2];
-	
+		
 	cvtLatLongExtent_2_WebMercator( initialExtent, prepare_map_when_extents_finished);
+}
+
+var map_x_coord = ko.observable("-00.00");
+var map_y_coord = ko.observable("00.00");
+
+var lastMapEv = null;
+
+function showMouseCoordinates(e) {
+	console.debug(e);
+	lastMapEv = e;
+	
+	var mp = esri.geometry.webMercatorToGeographic(e.mapPoint);
+	
+	// DMS
+	if(false) {
+		var degX = Math.floor(mp.x);
+		var degY = Math.floor(mp.y);
+		
+		var minX = (Math.abs(mp.x - degX) * 60);
+		var minY = (Math.abs(mp.y - degY) * 60);
+		
+		var secX = (Math.abs(minX - Math.floor(minX)) * 60);
+		var secY = (Math.abs(minY - Math.floor(minY)) * 60);
+		
+		map_x_coord(degX + "* " + Math.floor(minX) + "\' " + Math.floor(secX) + "\"" );
+		map_y_coord(degY + "* " + Math.floor(minY) + "\' " + Math.floor(secY) + "\"" );
+	}
+	// DD
+	else {
+		map_x_coord(mp.x.toFixed(2));
+		map_y_coord(mp.y.toFixed(2))
+	}
 }
 
 function init_id_funct(map) {
@@ -288,7 +327,6 @@ function sliderChanged(value) {
 }
 
 var handleIdentify = null;
-var legend = null;
 
 function jQueryReady() {
 	$(function() {
@@ -310,6 +348,8 @@ function jQueryReady() {
 					//e.relatedTarget // previous tab
 					$('.scroll-pane').jScrollPane();
 			})
+			
+			$('#intro').modal();
 	});
 }
 

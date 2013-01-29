@@ -9,7 +9,7 @@
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-    <title>Georgia Coastal Resource Viewer</title> 
+    <title>Georgia Coastal Atlas</title> 
 
     <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3/js/dojo/dijit/themes/tundra/tundra.css" /> 
 	<link href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3/js/dojo/dijit/themes/tundra/form/Button.css" rel="stylesheet"/>
@@ -28,10 +28,6 @@
 	
     <style>
       #map{ margin: 0; padding: 0; } 
-      #footer{ 
-        border-top: solid 1px #888; 
-        height:55px; 
-      } 
     </style> 
     <script>
 	var dojoConfig = { parseOnLoad: true };
@@ -64,199 +60,216 @@
   </head> 
  
 <body class="tundra" style='margin-top: 0px;'>
-	<div style='padding-top: 20px;'>
-		<div style='height: 5em;'>
-			<img src='http://georgia.gov/profiles/georgiagov/themes/gagov/logo.png' alt='Georgia.gov Logo'/>
-			<span id='GABranding' style=''>Coastal Dataset Viewer</span>
-		</div>
-		
-		<div class='sidebar-nav' style='height: 3em;'>
-			<ul class='nav nav-tabs'>
-				<li> <a >All Layers</a> </li>
-				<li> <a>On Shore</a> </li>
-				<li> <a>Coastal</a> </li>
-				<li> <a>Ocean</a> </li>
-			</ul>
-		</div>
-	</div>
-
-	<div class='container-fluid' style='height: 80%'>
-	<!--div class='row-fluid'-->
-		<div class='span6' id='LeftPanel' style='height: 100%;'>
-			<div style='height: 100%'>
-				<div>
-				<ul class='nav nav-tabs nav-stacked' id='myTab' style='width: 48px; float: right;'>
-					<li class='active'><a href="#layersTab" data-toggle="tab">
-						<i class='icon Layers-icon'></i></a></li>
-					<li><a href="#basemapsTab" data-toggle="tab">
-						<i class='icon base-layer-icon'></i></a></li>
-					<li><a href="#otherDataTab" data-toggle="tab">
-						<i class='icon open-maplayer-icon'></i></a></li>
-					<li><a href='#legendPane' data-toggle='tab'>
-						<i class='icon map-legend-icon'></i></a></li>
-					<li><a href='#identifyPane' data-toggle='tab'>
-						<i class='icon Identify-results'></i></a></li>
+	<div id='wrap'>
+		<div id='header' style='padding-top: 20px;'>
+			<div id='BrandingPanel'>
+				<!--img src='http://georgia.gov/profiles/georgiagov/themes/gagov/logo.png' alt='Georgia.gov Logo'/-->
+				<span id='GABranding'>Georgia Coastal Atlas</span>
+			</div>
+			
+			<div class='sidebar-nav' style='height: 3em;'>
+				<ul class='nav nav-tabs'>
+					<li> <a >All Layers</a> </li>
+					<li> <a>On Shore</a> </li>
+					<li> <a>Coastal</a> </li>
+					<li> <a>Ocean</a> </li>
 				</ul>
-				</div>
+			</div>
+		</div>
 
-				<div class='tab-content' style='height: 100%;'>
-					<div class='tab-pane active' id="layersTab" style='padding-left:1em; height: 95%;'>
-						<h2>Data Layers</h2>
-						<div class='scroll-pane vertical-only' style='overflow: auto; height: 95%;'>
-							<div style='padding-right: 1em;'>
-								<div class='accordion' id='layersVisibList' data-bind="template: {name: 'layers_template', foreach: return_map_layers() }">
-								</div>
-								
-								<script type="text/html" id="layers_template">
-									<!-- ko if: (children.length > 0) -->
-										<div class='accordion-heading' data-bind="click : viewModel.setOpenTheme , css:{'active': true}">
-											<div> <a class='accordion-toggle'>  <span data-bind='text: name'></span> </a> </div>
-										</div>
-										<div class='accordion-body collapse' data-bind="css: {'in': viewModel.isOpenTheme(name) }"
-												style='margin-left: 20px; overflow: auto;'>
-											<div data-bind="template: {name: 'layers_template', foreach: children }">
-											</div>
-										</div>
-									<!-- /ko -->
-									<!-- ko if: (children.length == 0) -->
-										<div class='accordion-inner'>
-											<div class='btn-group btn-group-layer'>
-												<span class='btn btn-layer' style='padding-top: 0px; margin: 0px;' data-bind='click: viewModel.toggleVisibleLayer'>
-													<i class='check icon-large icon-check'
-													data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq) "
-													style='padding: 4px; margin: 0px; width: 30px; background-image: url("images/glyphicons_152_check.png"); background-position: 0 0;'>
-													</i>
-													<i class='check icon-large icon-check'
-													data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq) == false"
-													style='padding: 4px; margin: 0px; width: 30px; background-image: url("images/glyphicons_153_unchecked.png"); background-position: 0 0;'>
-													</i>
-												</span>
-												<!--a class='btn btn-info-sign'><i class='icon-info-sign icon-large'></i> </a-->
-												<span class='btn btn-layer' data-bind='text: name' style='text-align:left; min-width: 12em;'></span>
-											</div>
-										</div>
-									<!-- /ko -->
-								</script>
-							</div>
-						</div>
+		<div id='main' class='container-fluid'>
+		<!--div class='row-fluid'-->
+			<div class='span6' id='LeftPanel' style='height: 100%;'>
+				<div style='height: 100%'>
+					<div>
+					<ul class='nav nav-tabs nav-stacked' id='myTab' style='width: 48px; float: right;'>
+						<li class='active'><a href="#layersTab" data-toggle="tab">
+							<i class='icon Layers-icon'></i></a></li>
+						<li><a href="#basemapsTab" data-toggle="tab">
+							<i class='icon base-layer-icon'></i></a></li>
+						<li><a href="#otherDataTab" data-toggle="tab">
+							<i class='icon open-maplayer-icon'></i></a></li>
+						<li><a href='#legendPane' data-toggle='tab'>
+							<i class='icon map-legend-icon'></i></a></li>
+						<li><a href='#identifyPane' data-toggle='tab'>
+							<i class='icon Identify-results'></i></a></li>
+					</ul>
 					</div>
-					<div class='tab-pane' id="basemapsTab" style='padding-left:1em;'>
-						<h2>Basemaps</h2>
-						
-						<div id='basemapGallery'> </div>
-					</div>
-					<div class='tab-pane' id="otherDataTab" style='padding-left:1em;'>
-						<h2>Add Data</h2>
-						
-						<h3>Available Map Services</h3>
-						
-						<div id='SelectMapLayer'>
-							<div data-bind="">
-							</div>
-						</div>
-						
-						<button data-dojo-type="dijit.form.Button" type="button" id='MapSrvInfo'>Get Information 
-							<script type="dojo/on" data-dojo-event="click"
-								data-dojo-args="evt">require(["dojo/dom"], function(dom){
-								});</script></button>
-						
-						<button data-dojo-type="dijit.form.Button" type="button" id='MapSrvRemove'>Remove Service 
-							<script type="dojo/on" data-dojo-event="click"
-								data-dojo-args="evt">require(["dojo/dom"], function(dom){ var s =
-									dijit.byId('SelectMapLayer'); removeLayerFromMap(s,s.getValue());
-								});</script></button>
 
-						<h4 style='margin-top: 20px;'>Add Map Service</h4>
-						<table>
-							<tr>
-								<td> <strong>Label:</strong> </td>
-								<td> <input id='AddMapSvcLabel' data-dojo-type="dijit.form.ValidationTextBox" /> </td>
-							</tr>
-							<tr>
-								<td> <strong>URL:</strong> </td>
-								<td> <input id='AddMapSvcURL' data-dojo-type="dijit.form.ValidationTextBox" /> </td>
-							</tr>
-						</table>
-						
-						<div id='SelectMapLayerCatalog'></div>
-						<button data-dojo-type="dijit.form.Button" type="button" id='MapSrvAdd'>Add Map Service 
-						<script type="dojo/on" data-dojo-event="click" data-dojo-args="evt">
-							require(["dojo/dom"], function(dom){
-								var l = dijit.byId('AddMapSvcLabel').value;
-								var u = dijit.byId('AddMapSvcURL').value; if( l == "" || u == "") { }
-								else {
-									try {
-										addLayerToMap(u,l);
-									}
-									catch(e) {
-										console.debug(e);
-									}
-										
-									dijit.byId('AddMapSvcLabel').set("value","");
-									dijit.byId('AddMapSvcURL').set("value",""); }
-								});
-						</script></button>
-					</div>
-					<div class='tab-pane' id='legendPane' style='padding-left:1em;'>
-						<h2>Map Legend</h2>
-						<div id='legendSection'></div>
-					</div>
-					<div class='tab-pane' id='resultsPane' style='padding-left:1em;'>
-					</div>
-					<div class='tab-pane' id='identifyPane'style='padding-left: 1em; padding-right: 1em; height: 90%;'>
-						<h2>Identify</h2>
-						
-						<div style='height: 10%;'>
-							Click on the map to identify and display a single feature's attributes.
-						</div>
-						
-						<div id='' class='scroll-pane' style='height: 85%; width: 75%; overflow: auto;'>
-								<div id='idResultsList' data-bind="foreach: lastIdResults">
-									<!--h3 data-bind="text: $data[0].layerName"> </h3-->
-									<div class='accordion-heading' data-bind="click : idViewModel.setOpenTheme, css:{'active': true}">
-										<div> <a class='accordion-toggle'>  <span data-bind='text: $data[0].layerName'></span> </a> </div>
+					<div class='tab-content' style='height: 100%;'>
+						<div class='tab-pane active' id="layersTab" style='padding-left:1em; height: 95%;'>
+							<h2>Data Layers</h2>
+							<div class='scroll-pane vertical-only' style='overflow: auto; height: 95%;'>
+								<div style='padding-right: 1em;'>
+									<div class='accordion' id='layersVisibList' data-bind="template: {name: 'layers_template', foreach: return_map_layers() }">
 									</div>
-									<div class='accordion-body collapse' data-bind="css: {'in': idViewModel.isOpenTheme($data[0].layerName) }">
-										<div class='accordion-inner'>
-											<ul>
-												<div data-bind="foreach: $data">
-													<li><span data-bind="text: value"></span> <br/>
-														<a data-bind="click: idViewModel.zoomToFeature " >Zoom to feature</a></li>
-														<table>
-															<thead>
-																<tr><th>Attribute</th><th>Value</th></tr>
-															</thead>
-															<tbody data-bind="foreach: getResultsFields($data)">
-																<tr>
-																		<td><span data-bind="text: Name"></span></td>
-																		<td><span data-bind="text: Value"></span></td>
-																</tr>
-															</tbody>
-														</table>
-													</li>
-												</div>
-											</ul>
-										</div>
-									</div>
-								</div>
-							
-							<script type="text/html" id="idresults_template">
-								<li>
 									
-								</li>
-							</script>
+									<script type="text/html" id="layers_template">
+										<!-- ko if: (children.length > 0) -->
+											<div class='accordion-heading' data-bind="click : viewModel.setOpenTheme , css:{'active': true}">
+												<div> <a class='accordion-toggle'>  <span data-bind='text: name'></span> </a> </div>
+											</div>
+											<div class='accordion-body collapse' data-bind="css: {'in': viewModel.isOpenTheme(name) }"
+													style='margin-left: 20px; overflow: auto;'>
+												<div data-bind="template: {name: 'layers_template', foreach: children }">
+												</div>
+											</div>
+										<!-- /ko -->
+										<!-- ko if: (children.length == 0) -->
+											<div class='accordion-inner'>
+												<div class='btn-group btn-group-layer'>
+													<span class='btn btn-layer' style='padding-top: 0px; margin: 0px;' data-bind='click: viewModel.toggleVisibleLayer'>
+														<i class='check icon-large icon-check'
+														data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq) "
+														style='padding: 4px; margin: 0px; width: 30px; background-image: url("images/glyphicons_152_check.png"); background-position: 0 0;'>
+														</i>
+														<i class='check icon-large icon-check'
+														data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq) == false"
+														style='padding: 4px; margin: 0px; width: 30px; background-image: url("images/glyphicons_153_unchecked.png"); background-position: 0 0;'>
+														</i>
+													</span>
+													<!--a class='btn btn-info-sign'><i class='icon-info-sign icon-large'></i> </a-->
+													<span class='btn btn-layer' data-bind='text: name' style='text-align:left; min-width: 12em;'></span>
+												</div>
+											</div>
+										<!-- /ko -->
+									</script>
+								</div>
+							</div>
 						</div>
+						<div class='tab-pane' id="basemapsTab" style='padding-left:1em;'>
+							<h2>Basemaps</h2>
+							
+							<div id='basemapGallery'> </div>
+						</div>
+						<div class='tab-pane' id="otherDataTab" style='padding-left:1em;'>
+							<h2>Add Data</h2>
+							
+							<h3>Available Map Services</h3>
+							
+							<div id='SelectMapLayer'>
+								<div data-bind="">
+								</div>
+							</div>
+							
+							<button data-dojo-type="dijit.form.Button" type="button" id='MapSrvInfo'>Get Information 
+								<script type="dojo/on" data-dojo-event="click"
+									data-dojo-args="evt">require(["dojo/dom"], function(dom){
+									});</script></button>
+							
+							<button data-dojo-type="dijit.form.Button" type="button" id='MapSrvRemove'>Remove Service 
+								<script type="dojo/on" data-dojo-event="click"
+									data-dojo-args="evt">require(["dojo/dom"], function(dom){ var s =
+										dijit.byId('SelectMapLayer'); removeLayerFromMap(s,s.getValue());
+									});</script></button>
+
+							<h4 style='margin-top: 20px;'>Add Map Service</h4>
+							<table>
+								<tr>
+									<td> <strong>Label:</strong> </td>
+									<td> <input id='AddMapSvcLabel' data-dojo-type="dijit.form.ValidationTextBox" /> </td>
+								</tr>
+								<tr>
+									<td> <strong>URL:</strong> </td>
+									<td> <input id='AddMapSvcURL' data-dojo-type="dijit.form.ValidationTextBox" /> </td>
+								</tr>
+							</table>
+							
+							<div id='SelectMapLayerCatalog'></div>
+							<button data-dojo-type="dijit.form.Button" type="button" id='MapSrvAdd'>Add Map Service 
+							<script type="dojo/on" data-dojo-event="click" data-dojo-args="evt">
+								require(["dojo/dom"], function(dom){
+									var l = dijit.byId('AddMapSvcLabel').value;
+									var u = dijit.byId('AddMapSvcURL').value; if( l == "" || u == "") { }
+									else {
+										try {
+											addLayerToMap(u,l);
+										}
+										catch(e) {
+											console.debug(e);
+										}
+											
+										dijit.byId('AddMapSvcLabel').set("value","");
+										dijit.byId('AddMapSvcURL').set("value",""); }
+									});
+							</script></button>
+						</div>
+						<div class='tab-pane' id='legendPane' style='padding-left:1em;'>
+							<h2>Map Legend</h2>
+							<div id='legendSection'></div>
+						</div>
+						<div class='tab-pane' id='resultsPane' style='padding-left:1em;'>
+						</div>
+						<div class='tab-pane' id='identifyPane'style='padding-left: 1em; padding-right: 1em; height: 90%;'>
+							<h2>Identify</h2>
+							
+							<div style='height: 10%;'>
+								Click on the map to identify and display a single feature's attributes.
+							</div>
+							
+							<div id='' class='scroll-pane' style='height: 85%; width: 75%; overflow: auto;'>
+									<div id='idResultsList' data-bind="foreach: lastIdResults">
+										<!--h3 data-bind="text: $data[0].layerName"> </h3-->
+										<div class='accordion-heading' data-bind="click : idViewModel.setOpenTheme, css:{'active': true}">
+											<div> <a class='accordion-toggle'>  <span data-bind='text: $data[0].layerName'></span> </a> </div>
+										</div>
+										<div class='accordion-body collapse' data-bind="css: {'in': idViewModel.isOpenTheme($data[0].layerName) }">
+											<div class='accordion-inner'>
+												<ul>
+													<div data-bind="foreach: $data">
+														<li><span data-bind="text: value"></span> <br/>
+															<a data-bind="click: idViewModel.zoomToFeature " >Zoom to feature</a></li>
+															<table>
+																<thead>
+																	<tr><th>Attribute</th><th>Value</th></tr>
+																</thead>
+																<tbody data-bind="foreach: getResultsFields($data)">
+																	<tr>
+																			<td><span data-bind="text: Name"></span></td>
+																			<td><span data-bind="text: Value"></span></td>
+																	</tr>
+																</tbody>
+															</table>
+														</li>
+													</div>
+												</ul>
+											</div>
+										</div>
+									</div>								
+							</div>
+						</div>
+						
+						<div class='tab-pane' id='attribPane' style='padding-left:1em;'> </div>
 					</div>
-					
-					<div class='tab-pane' id='attribPane' style='padding-left:1em;'> </div>
+				</div>
+				
+				<div class="modal hide fade" id='intro'>
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h3>Georgia Coastal Atlas</h3>
+					</div>
+					<div class="modal-body">
+						<p>Prepared by the Center of GIS at Georgia Tech</p>
+					</div>
+					<div class="modal-footer">
+						<a href="#" class="btn" data-dismiss="modal">Close</a>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class='span9' id='MapPanel' style='height: 100%;'>
-			<div id="map" style='height:100%;'>
+			<div class='span9' id='MapPanel' style='height: 100%;'>
+				<div id="map" style='height:100%;'>
+				</div>
 			</div>
+		<!--/div-->
 		</div>
-	<!--/div-->
+	
+	</div>
+	
+	<div id='footer'>
+			<img src='http://carto.gis.gatech.edu/ga-logo_dnr_09.jpg' alt='Georgia DNR Logo' style='height: 75px;' />
+			<div id='coordinates' class='button button-group'>
+				Lat: <span data-bind='text: map_y_coord'></span> Long: <span data-bind='text: map_x_coord'></span>
+			</div>
 	</div>
 </body>
 </html>
