@@ -132,7 +132,9 @@ function prepare_map_when_extents_finished(a) {
 		map = new esri.Map("map", {
 				extent : initialExtent
 		});
-			
+		
+		ko.applyBindings();
+		
 		dojo.connect(dijit.byId('map'), 'resize', map,map.resize);
 		dojo.connect(dijit.byId('map'), "onLoad", function() { });
 		
@@ -143,10 +145,13 @@ function prepare_map_when_extents_finished(a) {
 		map.addLayer(initBasemap);
 		
 		ly1 = new esri.layers.ArcGISDynamicMapServiceLayer
-			("http://carto.gis.gatech.edu/ArcGIS/rest/services/coastal1112/MapServer");
+			("http://tulip.gis.gatech.edu:6080/arcgis/rest/services/coastal213/MapServer");
+			
+		ly2 = new esri.layers.ArcGISImageServiceLayer("http://tulip.gis.gatech.edu:6080/arcgis/rest/services/coastdemwebm/ImageServer");
 
 		dojo.connect(ly1, "onLoad", function () {
 			init_layer_controls(map);
+			
 			scalebar = new esri.dijit.Scalebar({
 				map: map,
 				attachTo:"bottom-left"
@@ -160,6 +165,7 @@ function prepare_map_when_extents_finished(a) {
 		});
 		
 		map.addLayer(ly1);
+		//map.addLayer(ly2);
 		
 		dojo.connect(map, "onLoad", init_id_funct);
 		legendInfos = ly1.layerInfos;
@@ -240,7 +246,6 @@ var map_y_coord = ko.observable("00.00");
 var lastMapEv = null;
 
 function showMouseCoordinates(e) {
-	console.debug(e);
 	lastMapEv = e;
 	
 	var mp = esri.geometry.webMercatorToGeographic(e.mapPoint);
@@ -273,9 +278,9 @@ function init_id_funct(map) {
 	//"http://carto.gis.gatech.edu/ArcGIS/rest/services/ViewerJSResources/MapServer");
 	
 	identifyParams = new esri.tasks.IdentifyParameters();
-	identifyParams.tolerance = 4;
+	identifyParams.tolerance = 1;
 	identifyParams.returnGeometry = true;
-	identifyParams.layerIds = null; //[12,13,17];//[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
+	identifyParams.layerIds = []; //[12,13,17];//[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
 	identifyParams.layerOption = esri.tasks.IdentifyParameters.LAYER_OPTION_VISIBLE;
 	identifyParams.width = map.width;
 	identifyParams.height = map.height;
@@ -284,11 +289,7 @@ function init_id_funct(map) {
 	map.infoWindow.setContent("_");
 	map.infoWindow.setTitle("Identify Results");
 	
-	symbol = new esri.symbol.SimpleFillSymbol(
-			esri.symbol.SimpleFillSymbol.STYLE_SOLID,
-			new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([255, 0, 0]), 2),
-			new dojo.Color([255, 255, 0, 0.25]));
-	getAttributesLayer("http://carto.gis.gatech.edu/ArcGIS/rest/services/coastal1112/MapServer/14");
+	//getAttributesLayer("http://carto.gis.gatech.edu/ArcGIS/rest/services/coastal1112/MapServer/14");
 }
 
 function toggleIdentifyOn(pne) {

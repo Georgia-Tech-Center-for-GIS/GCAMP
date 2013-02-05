@@ -28,6 +28,8 @@ dojo.require("esri.dijit.Popup");
 var layerTabContainer = null;
 var layerTitlePane = null;
 
+var allMapLayers = ko.observableArray();
+
 function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 	var list = [];
 	var lastIndex = 0;
@@ -62,64 +64,78 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 }
 
 function return_map_layers() {
-	var mapItems = [];
+	//var mapItems = [];
 	var lastIndex = -1;
+	
+	allMapLayers.removeAll();
 	
 	for(var j = 0 ; j < map.layerIds.length; j++ ) {
 		var lyr = map.getLayer(map.layerIds[j]);
+
+		var allLyrs = [];
 		
 		var dispLyrOuter = {
 			"children": []
 		};
 		
-		console.debug(lyr);
+		//if(!lyr.isInstanceOf(esri.layers.ArcGISDynamicMapServiceLayer)) continue;
 		
-		switch(j) {
-			case 0:
+		if(lyr.isInstanceOf(esri.layers.ArcGISImageServiceLayer) == true) {
 			continue;
 			
-			case 1:
-			dispLyrOuter.name = "Carto";
-			break;
+			var d = {
+					"name": "DEM",
+			};
 			
-			default:
-			dispLyrOuter.name = "H" + j.toString();
-			break;
-		};
-		
-		var allLyrs = [];
-	
-		dojo.forEach( lyr.layerInfos, function (li, i) {
-			if(i-1 < lastIndex) {
-			}
-			else {
-				var dispLyr = {
-					"mapLayerId" : map.layerIds[j],
-					"seq" : i,
-					"name": li.name,
-					"url" : lyr.url + "/" + i,
-					"esriLayer": li,
-					"children" : []
-				};
-
-				if(li.subLayerIds) {				
-					var retval = return_child_layers(lyr, map.layerIds[j], li);
-					dispLyr.children = dojo.clone(retval.childLayers);
-					lastIndex = retval.lastIndex;
-				}
+			dispLyrOuter.push(d);
+		}
+		else {
+			
+			switch(j) {
+				case 0:
+				continue;
 				
-				dispLyrOuter.children.push(dispLyr);
-			}
-		});
+				case 1:
+				dispLyrOuter.name = "Carto";
+				break;
+				
+				default:
+				dispLyrOuter.name = mapLyrs()[ j-2 ].mapLabel;
+				break;
+			};
+			
+			dojo.forEach( lyr.layerInfos, function (li, i) {
+				if(i-1 < lastIndex) {
+				}
+				else {
+					var dispLyr = {
+						"mapLayerId" : map.layerIds[j],
+						"seq" : i,
+						"name": li.name,
+						"url" : lyr.url + "/" + i,
+						"esriLayer": li,
+						"children" : []
+					};
+
+					if(li.subLayerIds) {				
+						var retval = return_child_layers(lyr, map.layerIds[j], li);
+						dispLyr.children = dojo.clone(retval.childLayers);
+						lastIndex = retval.lastIndex;
+					}
+					
+					dispLyrOuter.children.push(dispLyr);
+				}
+			});
+		}
 		
-		mapItems.push(dispLyrOuter);
+		lastIndex = -1;
+		
+		allMapLayers.push(dispLyrOuter);
 	}
-	
-	return mapItems;
 }
 
 var viewModel = {
-	themes :ko.observableArray(['Carto']),
+	themes : ko.observableArray(['Carto']),
 	currentVisibleLayers: ko.observableArray(),
 	
 	isOpenTheme : function (a) {
@@ -146,52 +162,55 @@ var viewModel = {
 
 	},
 	
-	toggleVisibleLayer : function (a) {	
+	toggleVisibleLayer : function (a) {
 		var lyr = map.getLayer(a.mapLayerId);
-		var vl = lyr.visibleLayers;
-		var nl = [];
 		
-		//console.debug(a);
-		//console.debug(vl);
-		
-		nl = vl.filter(function(c) {
-			var a = [];
-			var b = false;
-						
-			if(lyr.layerInfos[c].subLayerIds == null) {
-				return true;
+		if(lyr != null) {
+			var vl = lyr.visibleLayers;
+			var nl = [];
+			
+			//console.debug(a);
+			//console.debug(vl);
+			
+			nl = vl.filter(function(c) {
+				var a = [];
+				var b = false;
+							
+				if(lyr.layerInfos[c].subLayerIds == null) {
+					return true;
+				}
+				else {
+					return false;
+				}
+			});
+			
+			if(vl.lastIndexOf(a.esriLayer.id) !== -1 ) {
+				nl = nl.filter(function(b) { if(b == a.esriLayer.id) return false; else return true; } );
 			}
 			else {
-				return false;
+				nl.push(a.esriLayer.id);
 			}
-		});
-		
-		if(vl.lastIndexOf(a.esriLayer.id) !== -1 ) {
-			nl = nl.filter(function(b) { if(b == a.esriLayer.id) return false; else return true; } );
+			
+			var newVal = {
+				"mapLyr" : a.mapLayerId,
+				"vlayers": nl
+			};
+			
+			viewModel.currentVisibleLayers.remove( function(i) {
+				if(i.mapLyr == a.mapLayerId) return true;
+				else return false;
+			});
+			
+			viewModel.currentVisibleLayers.push(newVal);
+			
+			lyr.setVisibleLayers(nl);
+			
+			legend.refresh();
 		}
-		else {
-			nl.push(a.esriLayer.id);
-		}
-		
-		var newVal = {
-			"mapLyr" : a.mapLayerId,
-			"vlayers": nl
-		};
-		
-		viewModel.currentVisibleLayers.remove( function(i) {
-			if(i.mapLyr == a.mapLayerId) return true;
-			else return false;
-		});
-		
-		viewModel.currentVisibleLayers.push(newVal);
-		
-		lyr.setVisibleLayers(nl);
-		
-		legend.refresh();
 	},
 	
 	isVisibleLayer : function(a,b) {
-		try {
+		try {			
 			var visibleArray = viewModel.currentVisibleLayers();
 			var vl = visibleArray.filter( function( i) {
 				if(i.mapLyr == a) return true;
@@ -213,15 +232,38 @@ var viewModel = {
 
 function init_layer_controls(map) {
 	if(!ly1.loaded  /*|| !ly2.loaded*/) return;
-	ko.applyBindings();
+	if(viewModel.currentVisibleLayers.peek().length == 0) {
+		for(var i = 0; i< map.layerIds.length; i++) {
+			var reallyVisibleLayers = [];
+			
+			var lyr = map.getLayer(map.layerIds[i]);
+			
+			for(var j = 0; j < lyr.visibleLayers.length; j++) {
+				console.debug(j);
+				
+				if( lyr.layerInfos[ lyr.visibleLayers[j] ].subLayerIds == null) {
+					reallyVisibleLayers.push(lyr.visibleLayers[j]);
+				}
+			}
+			
+			var newVal = {
+				"mapLyr" : map.layerIds[i],
+				"vlayers": reallyVisibleLayers
+			};
+			
+			viewModel.currentVisibleLayers.push(newVal);
+		}
+	}
+			
+	return_map_layers();
 }
 
 var qry = null;
 var a = [];
 
 function updateLayerVisibility (changeValue) {
-	console.debug(changeValue);
-	console.debug(this);
+	//console.debug(changeValue);
+	//console.debug(this);
 	
 	qry = dojo.query(".dijitChecked", dojo.byId('layersSection'));
 	

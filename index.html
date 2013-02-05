@@ -56,6 +56,7 @@
 	<script src='attributes.js'> </script>
 	<script src='visibility.js'> </script>
 	<script src='query.js'> </script>
+	<script src='map.js'> </script>
     <script src='main.js'> </script>
   </head> 
  
@@ -99,9 +100,10 @@
 					<div class='tab-content' style='height: 100%;'>
 						<div class='tab-pane active' id="layersTab" style='padding-left:1em; height: 95%;'>
 							<h2>Data Layers</h2>
+							<!--div data-bind="text: ly1.visibleLayers.length"></div-->
 							<div class='scroll-pane vertical-only' style='overflow: auto; height: 95%;'>
 								<div style='padding-right: 1em;'>
-									<div class='accordion' id='layersVisibList' data-bind="template: {name: 'layers_template', foreach: return_map_layers() }">
+									<div class='accordion' id='layersVisibList' data-bind="template: {name: 'layers_template', foreach: allMapLayers }">
 									</div>
 									
 									<script type="text/html" id="layers_template">
@@ -147,9 +149,8 @@
 							
 							<h3>Available Map Services</h3>
 							
-							<div id='SelectMapLayer'>
-								<div data-bind="">
-								</div>
+							<div >
+								<select id='SelectMapLayer' data-bind="options: mapLyrs, optionsText: 'mapLabel'"> </select>
 							</div>
 							
 							<button data-dojo-type="dijit.form.Button" type="button" id='MapSrvInfo'>Get Information 
@@ -159,8 +160,8 @@
 							
 							<button data-dojo-type="dijit.form.Button" type="button" id='MapSrvRemove'>Remove Service 
 								<script type="dojo/on" data-dojo-event="click"
-									data-dojo-args="evt">require(["dojo/dom"], function(dom){ var s =
-										dijit.byId('SelectMapLayer'); removeLayerFromMap(s,s.getValue());
+									data-dojo-args="evt">require(["dojo/dom"], function(dom){
+										removeLayerFromMap($('#SelectMapLayer:selected').val());
 									});</script></button>
 
 							<h4 style='margin-top: 20px;'>Add Map Service</h4>
@@ -204,7 +205,13 @@
 							<h2>Identify</h2>
 							
 							<div style='height: 10%;'>
-								Click on the map to identify and display a single feature's attributes.
+								<p>Click on the map to identify and display a single feature's attributes.</p>
+								
+								<p><div>Identify Tolerance (feet):</div>
+									<form id='idTolForm' data-bind='submit: aaah'>
+										<input id='idTolerance' type='text' name='tolerance' />
+									</form>
+								</p>
 							</div>
 							
 							<div id='' class='scroll-pane' style='height: 85%; width: 75%; overflow: auto;'>
@@ -217,7 +224,7 @@
 											<div class='accordion-inner'>
 												<ul>
 													<div data-bind="foreach: $data">
-														<li><span data-bind="text: value"></span> <br/>
+														<li style='padding-top: 0.8em;'><span data-bind="text: value"></span> <br/>
 															<a data-bind="click: idViewModel.zoomToFeature " >Zoom to feature</a></li>
 															<table>
 																<thead>
