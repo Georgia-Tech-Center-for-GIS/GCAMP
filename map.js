@@ -4,6 +4,7 @@ dojo.require("esri.layers.agsdynamic");
 dojo.require("esri.layers.wms");
 
 var mapLyrs = ko.observableArray();
+var mapLyrToRemove = ko.observable();
 var map;
 
 function addLayerToMap(url,label) {
@@ -34,6 +35,7 @@ function addLayerToMap(url,label) {
 				legend.refresh();
 				
 				dijit.byId('SelectMapLayer').startup();
+				dijit.byId('AddMapSvcList').startup();
 			});
 		}
 	}
@@ -45,11 +47,28 @@ function addLayerToMap(url,label) {
 function removeLayerFromMap(val) {
 	console.debug(val);
 	
-	map.removeLayer(storedObj.lyr);
-	mapLyrs = lyrs.filter( function(v,i,a) {
-		if ( v.id == val ) return false;
-		return true;
-	});
+	map.removeLayer(mapLyrToRemove.peek().lyr);
+	
+	mapLyrs.remove(mapLyrToRemove);
 	
 	init_layer_controls(map);
+}
+
+function do_add_mapsvc(e) {
+	var l = selectedNewMapSvc.peek().mapLabel ; //dijit.byId('AddMapSvcLabel').value;
+	var u = selectedNewMapSvc.peek().url ; //dijit.byId('AddMapSvcURL').value; if( l == "" || u == "") { }
+	{
+		try {
+			addLayerToMap(u,l);
+		}
+		catch(e) {
+			console.debug(e);
+		}
+	}
+}
+
+function do_remove_mapsvc(e) {
+	if( mapLyrToRemove != null) {
+		removeLayerFromMap(mapLyrToRemove.mapLabel);
+	}
 }

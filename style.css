@@ -81,31 +81,21 @@ h3 {
 }
 
 .Identify-results {
-	background-image: url("images/Identify-Results.png");
-	width: 32px;
-	height:32px;
-	font-size: 12pt;
+	background-image: url("images/identify.gif");
+	height: 30px;
+	width : 30px;
 }
 
 .Information-Icon {
 	background-image: url("images/Information-icon.png");
-	width: 32px;
-	height:32px;
-	font-size: 12pt;
 }
 
 .base-layer-icon{
 	background-image: url("images/base-layer-icon.png");
-	width: 32px;
-	height:32px;
-	font-size: 12pt;
 }
 
 .open-maplayer-icon {
 	background-image: url("images/folder-open-icon.png");
-	width: 32px;
-	height:32px;
-	font-size: 12pt;
 }
 
 .map-legend-icon {
@@ -115,11 +105,22 @@ h3 {
 	font-size: 12pt;
 }
 
-.zoomfullextIcon {
+.zoomInIcon {
 	background-image: url("images/esriZoomFullExtent.png");
 	width: 25px;
 	height:25px;
-	font-size: 36pt;
+}
+
+.zoomfullextIcon {
+	background-image: url("images/ga-icon.png");
+	width: 25px;
+	height:25px;
+}
+
+.metadataTabIcon {
+	background-image: url("images/glyphicons_039_notes.png");
+	width: 25px;
+	height:25px;
 }
 
 .zoomnextIcon {
@@ -141,7 +142,7 @@ h3 {
 }
 
 .identify {
-	background-image: url("images/esriPan.png");
+	background-image: url("images/identify.png");
 	width: 25px;
 	height:25px;
 }
@@ -337,10 +338,18 @@ h3 {
 
 #coordinates {
 	font-weight: bold;
-	margin-left: -5em;
 }
 
 .esriScalebar {
-	padding-bottom: 8%;
-	padding-left: 32em;
+	position: relative;
+	bottom: 2.5em;
+}
+
+#statTable td, #statTable th {
+	padding: 5px;
+}
+
+.currTool {
+	font-weight: bold;
+	font-size: 110%;
 }

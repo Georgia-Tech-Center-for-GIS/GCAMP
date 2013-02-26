@@ -52,7 +52,8 @@
 	<script src="/bootstrap/js/bootstrap.min.js"></script>
 	
     <script src="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3compact"></script>
-		
+	<script src="script/MapClasses.js" type="text/javascript"></script>
+	
 	<script src='attributes.js'> </script>
 	<script src='visibility.js'> </script>
 	<script src='query.js'> </script>
@@ -70,10 +71,11 @@
 			
 			<div class='sidebar-nav' style='height: 3em;'>
 				<ul class='nav nav-tabs'>
-					<li> <a >All Layers</a> </li>
-					<li> <a>On Shore</a> </li>
-					<li> <a>Coastal</a> </li>
-					<li> <a>Ocean</a> </li>
+					<li> <a id='allLayersLink'>All Layers</a> </li>
+					<li> <a id='energyLink' >Energy</a> </li>
+					<li> <a id='fisheriesLink'>Fisheries</a> </li>
+					<li> <a id='habitatLink'>Habitat</a> </li>
+					<!-- <li> <a>Regulatory</a> </li> -->
 				</ul>
 			</div>
 		</div>
@@ -84,6 +86,15 @@
 				<div style='height: 100%'>
 					<div>
 					<ul class='nav nav-tabs nav-stacked' id='myTab' style='width: 48px; float: right;'>
+						<li><a id='panBtn' href='#' class='btn'
+							data-bind='css: { currTool: true }'>
+							<i class='icon zoompan'></i></a></li>
+						<li><a id='zoomInBtn' href='#' class='btn'>
+							<i class='icon zoomInIcon'></i></a></li>
+						<li><a id='zoomPrevBtn' href='#'class='btn'>
+							<i class='icon zoomprevIcon'></i></a></li>
+						<li><a id='zoomFullExtBtn' href='#'class='btn'>
+							<i class='icon zoomfullextIcon'></i></a></li>
 						<li class='active'><a href="#layersTab" data-toggle="tab">
 							<i class='icon Layers-icon'></i></a></li>
 						<li><a href="#basemapsTab" data-toggle="tab">
@@ -94,6 +105,8 @@
 							<i class='icon map-legend-icon'></i></a></li>
 						<li><a href='#identifyPane' data-toggle='tab'>
 							<i class='icon Identify-results'></i></a></li>
+						<li><a href='#metadataPane' id='mdtaLink' data-toggle='tab'>
+							<i class='icon metadataTabIcon'></i></a></li>
 					</ul>
 					</div>
 
@@ -101,7 +114,7 @@
 						<div class='tab-pane active' id="layersTab" style='padding-left:1em; height: 95%;'>
 							<h2>Data Layers</h2>
 							<!--div data-bind="text: ly1.visibleLayers.length"></div-->
-							<div class='scroll-pane vertical-only' style='overflow: auto; height: 95%;'>
+							<div class='scroll-pane metadataPane' style='overflow: auto; height: 95%;'>
 								<div style='padding-right: 1em;'>
 									<div class='accordion' id='layersVisibList' data-bind="template: {name: 'layers_template', foreach: allMapLayers }">
 									</div>
@@ -131,7 +144,7 @@
 														</i>
 													</span>
 													<!--a class='btn btn-info-sign'><i class='icon-info-sign icon-large'></i> </a-->
-													<span class='btn btn-layer' data-bind='text: name' style='text-align:left; min-width: 12em;'></span>
+													<span class='btn btn-layer' data-bind='text: name, click: viewModel.dispMetadata' style='text-align:left; min-width: 12em;'></span>
 												</div>
 											</div>
 										<!-- /ko -->
@@ -150,22 +163,17 @@
 							<h3>Available Map Services</h3>
 							
 							<div >
-								<select id='SelectMapLayer' data-bind="options: mapLyrs, optionsText: 'mapLabel'"> </select>
+								<select id='SelectMapLayer' data-bind="options: mapLyrs, optionsText: 'mapLabel', value: mapLyrToRemove"> </select>
 							</div>
-							
-							<button data-dojo-type="dijit.form.Button" type="button" id='MapSrvInfo'>Get Information 
-								<script type="dojo/on" data-dojo-event="click"
-									data-dojo-args="evt">require(["dojo/dom"], function(dom){
-									});</script></button>
-							
-							<button data-dojo-type="dijit.form.Button" type="button" id='MapSrvRemove'>Remove Service 
-								<script type="dojo/on" data-dojo-event="click"
-									data-dojo-args="evt">require(["dojo/dom"], function(dom){
-										removeLayerFromMap($('#SelectMapLayer:selected').val());
-									});</script></button>
+				
+							<button class="btn" id='MapSrvRemove' data-bind='click: do_remove_mapsvc'>Remove Service</button>
 
 							<h4 style='margin-top: 20px;'>Add Map Service</h4>
-							<table>
+							<div>
+								<select id='AddMapSvcList' data-bind="options: mapSvrChoices, optionsText: 'mapLabel', value: selectedNewMapSvc"> </select>
+							</div>
+							
+							<!--table>
 								<tr>
 									<td> <strong>Label:</strong> </td>
 									<td> <input id='AddMapSvcLabel' data-dojo-type="dijit.form.ValidationTextBox" /> </td>
@@ -174,27 +182,11 @@
 									<td> <strong>URL:</strong> </td>
 									<td> <input id='AddMapSvcURL' data-dojo-type="dijit.form.ValidationTextBox" /> </td>
 								</tr>
-							</table>
+							</table-->
 							
 							<div id='SelectMapLayerCatalog'></div>
-							<button data-dojo-type="dijit.form.Button" type="button" id='MapSrvAdd'>Add Map Service 
-							<script type="dojo/on" data-dojo-event="click" data-dojo-args="evt">
-								require(["dojo/dom"], function(dom){
-									var l = dijit.byId('AddMapSvcLabel').value;
-									var u = dijit.byId('AddMapSvcURL').value; if( l == "" || u == "") { }
-									else {
-										try {
-											addLayerToMap(u,l);
-										}
-										catch(e) {
-											console.debug(e);
-										}
-											
-										dijit.byId('AddMapSvcLabel').set("value","");
-										dijit.byId('AddMapSvcURL').set("value",""); }
-									});
-							</script></button>
-						</div>
+								<button class='btn' id='MapSrvAdd' data-bind='click: do_add_mapsvc' >Add Map Service </button> 
+							</div>
 						<div class='tab-pane' id='legendPane' style='padding-left:1em;'>
 							<h2>Map Legend</h2>
 							<div id='legendSection'></div>
@@ -205,18 +197,27 @@
 							<h2>Identify</h2>
 							
 							<div style='height: 10%;'>
-								<p>Click on the map to identify and display a single feature's attributes.</p>
+								<p>Click on the map to identify map attributes for particular features.</p>
 								
-								<p><div>Identify Tolerance (feet):</div>
-									<form id='idTolForm' data-bind='submit: aaah'>
-										<input id='idTolerance' type='text' name='tolerance' />
-									</form>
-								</p>
+								<!--p>
+									<div>Identify Tolerance: </div>
+									<div style='font-weight: bold;' data-bind="text: dispIDTolerance"></div>
+								</p-->
 							</div>
 							
 							<div id='' class='scroll-pane' style='height: 85%; width: 75%; overflow: auto;'>
+									<!-- div id='idResultsList' -->
 									<div id='idResultsList' data-bind="foreach: lastIdResults">
-										<!--h3 data-bind="text: $data[0].layerName"> </h3-->
+										<!-- h3 data-bind="text: $data[0].layerName"> </h3 -->
+										
+										<!-- table id='statTable'>
+											<tr><th>Layer</th><th>Minimum</th><th>Maximum</th><th>Average</th></tr>
+											<tr><td style='font-weight: bold;'> Tidal Power </td>
+												<td data-bind='text: mean_curr().min'></td>
+												<td data-bind='text: mean_curr().max'></td>
+												<td data-bind='text: mean_curr().avg'></td></tr>
+										</table-->
+										
 										<div class='accordion-heading' data-bind="click : idViewModel.setOpenTheme, css:{'active': true}">
 											<div> <a class='accordion-toggle'>  <span data-bind='text: $data[0].layerName'></span> </a> </div>
 										</div>
@@ -242,11 +243,19 @@
 												</ul>
 											</div>
 										</div>
-									</div>								
+									</div>
 							</div>
 						</div>
 						
-						<div class='tab-pane' id='attribPane' style='padding-left:1em;'> </div>
+						<!--div class='tab-pane' id='attribPane' style='padding-left:1em;'> </div-->
+						<div class='tab-pane' id='metadataPane' style='padding-left:1em; height: 90%;'>
+							<h2>Layer Metadata</h2>
+					
+							<h3 data-bind='text: lastMetadataLayerTitle'> </h3>
+							
+							<div style='overflow: auto; height: 80%; width: 90%;' class='' data-bind='text: lastMetadata' id='metaArea'>
+							</div>
+						</div>
 					</div>
 				</div>
 				
@@ -256,7 +265,7 @@
 						<h3>Georgia Coastal Atlas</h3>
 					</div>
 					<div class="modal-body">
-						<p>Prepared by the Center of GIS at Georgia Tech</p>
+						<p>Prepared by the Center of GIS at Georgia Tech for the Georgia Department of Natural Resources Coastal Resources Division</p>
 					</div>
 					<div class="modal-footer">
 						<a href="#" class="btn" data-dismiss="modal">Close</a>
@@ -264,19 +273,24 @@
 				</div>
 			</div>
 			<div class='span9' id='MapPanel' style='height: 100%;'>
-				<div id="map" style='height:100%;'>
+				<div style='position: absolute; top: 24px;'>
+					<!--a id='panBtn' href='#' class='btn'
+						data-bind='css: { currTool: true }'> Pan </a>
+					<a id='zoomInBtn' href='#' class='btn'> Zoom In </a> 
+					<a id='zoomPrevBtn' href='#'class='btn'> Zoom to Previous Extent</a-->
 				</div>
-			</div>
+				<div id="map" style='height:100%;'> </div>
+				<div style='position: absolute; top: 5px; z-index: 255; right: 2.5em;'>
+					<img src='http://carto.gis.gatech.edu/ga-logo_dnr_09.jpg' alt='Georgia DNR Logo' style='height: 75px; margin-left: 5em;' />
+				</div>
+				<div style='position: absolute; bottom: 2px; z-index: 255; right: 2.5em;'>
+					<div id='coordinates' class='button button-group'>
+						Lat: <span data-bind='text: map_y_coord'></span> Long: <span data-bind='text: map_x_coord'></span>
+					</div>
+				</div>
+		</div>
 		<!--/div-->
 		</div>
-	
-	</div>
-	
-	<div id='footer'>
-			<img src='http://carto.gis.gatech.edu/ga-logo_dnr_09.jpg' alt='Georgia DNR Logo' style='height: 75px;' />
-			<div id='coordinates' class='button button-group'>
-				Lat: <span data-bind='text: map_y_coord'></span> Long: <span data-bind='text: map_x_coord'></span>
-			</div>
-	</div>
+	</div>	
 </body>
 </html>

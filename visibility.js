@@ -67,12 +67,14 @@ function return_map_layers() {
 	//var mapItems = [];
 	var lastIndex = -1;
 	
+	//var mapLyrs = ko.observableArray();
+	
 	allMapLayers.removeAll();
 	
 	for(var j = 0 ; j < map.layerIds.length; j++ ) {
 		var lyr = map.getLayer(map.layerIds[j]);
 
-		var allLyrs = [];
+		//var allLyrs = [];
 		
 		var dispLyrOuter = {
 			"children": []
@@ -96,46 +98,103 @@ function return_map_layers() {
 				continue;
 				
 				case 1:
-				dispLyrOuter.name = "Carto";
+				dispLyrOuter.name = "DEM";
+				dojo.forEach( lyr.layerInfos, function (li, i) {
+					if(i-1 < lastIndex) {
+					}
+					else {
+						var dispLyr = {
+							"mapLayerId" : map.layerIds[j],
+							"seq" : i,
+							"name": li.name,
+							"url" : lyr.url + "/" + i,
+							"esriLayer": li,
+							"children" : []
+						};
+
+						if(li.subLayerIds) {				
+							var retval = return_child_layers(lyr, map.layerIds[j], li);
+							dispLyr.children = dojo.clone(retval.childLayers);
+							lastIndex = retval.lastIndex;
+						}
+						
+						dispLyrOuter.children.push(dispLyr);
+					}
+				});
+				
+				allMapLayers.push(dispLyrOuter);
+				break;
+				
+				case 2:
+				dojo.forEach( lyr.layerInfos, function (li, i) {
+					console.debug( lyr.layerInfos);
+					
+					if(i-1 < lastIndex) {
+					}
+					else {
+						var dispLyr = {
+							"mapLayerId" : map.layerIds[j],
+							"seq" : i,
+							"name": li.name,
+							"url" : lyr.url + "/" + i,
+							"esriLayer": li,
+							"children" : []
+						};
+
+						if(li.subLayerIds) {				
+							var retval = return_child_layers(lyr, map.layerIds[j], li);
+							dispLyr.children = dojo.clone(retval.childLayers);
+							lastIndex = retval.lastIndex;
+						}
+						
+						allMapLayers.push(dispLyr);
+					}
+				});
 				break;
 				
 				default:
-				dispLyrOuter.name = mapLyrs()[ j-2 ].mapLabel;
+				dispLyrOuter.name = mapLyrs()[ j-3 ].mapLabel;
+				
+				dojo.forEach( lyr.layerInfos, function (li, i) {
+					if(i-1 < lastIndex) {
+					}
+					else {
+						var dispLyr = {
+							"mapLayerId" : map.layerIds[j],
+							"seq" : i,
+							"name": li.name,
+							"url" : lyr.url + "/" + i,
+							"esriLayer": li,
+							"children" : []
+						};
+
+						if(li.subLayerIds) {				
+							var retval = return_child_layers(lyr, map.layerIds[j], li);
+							dispLyr.children = dojo.clone(retval.childLayers);
+							lastIndex = retval.lastIndex;
+						}
+						
+						dispLyrOuter.children.push(dispLyr);
+					}
+				});
+				
+				allMapLayers.push(dispLyrOuter);
 				break;
 			};
-			
-			dojo.forEach( lyr.layerInfos, function (li, i) {
-				if(i-1 < lastIndex) {
-				}
-				else {
-					var dispLyr = {
-						"mapLayerId" : map.layerIds[j],
-						"seq" : i,
-						"name": li.name,
-						"url" : lyr.url + "/" + i,
-						"esriLayer": li,
-						"children" : []
-					};
-
-					if(li.subLayerIds) {				
-						var retval = return_child_layers(lyr, map.layerIds[j], li);
-						dispLyr.children = dojo.clone(retval.childLayers);
-						lastIndex = retval.lastIndex;
-					}
-					
-					dispLyrOuter.children.push(dispLyr);
-				}
-			});
 		}
 		
 		lastIndex = -1;
-		
-		allMapLayers.push(dispLyrOuter);
 	}
+	
+	//
 }
 
+var xmlMeta;
+var lastMetadata = ko.observable();
+var lastMetadataLayerTitle = ko.observable();
+
 var viewModel = {
-	themes : ko.observableArray(['Carto']),
+	themes : ko.observableArray(),
 	currentVisibleLayers: ko.observableArray(),
 	
 	isOpenTheme : function (a) {
@@ -162,8 +221,37 @@ var viewModel = {
 
 	},
 	
+	dispMetadata : function (a) {
+		//var lyr = map.getLayer(a.mapLayerId);
+		var nm = a.name;
+		
+		console.debug(a);
+		
+		var args = {
+				url: "http://carto.gis.gatech.edu/ViewerJSNew/metadata/" + a.name + ".xml",
+				handleAs: "xml",
+				load: function(data) {
+					//console.debug(data);
+					var text = data.querySelector("abstract").textContent;
+					
+					lastMetadata (data.querySelector("abstract").textContent);
+					lastMetadataLayerTitle (a.name);
+					
+					$('#mdtaLink').tab('show');
+					
+					//$('.scroll-pane').jScrollPane({verticalGutter: 0});
+					//$('#metaArea').data('jsp').reinitialise();
+				}
+		};
+		
+		esri.request(args);
+	},
+	
 	toggleVisibleLayer : function (a) {
 		var lyr = map.getLayer(a.mapLayerId);
+		
+		console.debug(a);
+		console.debug(lyr);
 		
 		if(lyr != null) {
 			var vl = lyr.visibleLayers;
@@ -203,8 +291,14 @@ var viewModel = {
 			
 			viewModel.currentVisibleLayers.push(newVal);
 			
-			lyr.setVisibleLayers(nl);
+			if(nl.length == 0) {
+				lyr.setVisibility(false);
+			}
+			else {
+				lyr.setVisibility(true);
+			}
 			
+			lyr.setVisibleLayers(nl);
 			legend.refresh();
 		}
 	},
@@ -231,8 +325,8 @@ var viewModel = {
 };
 
 function init_layer_controls(map) {
-	if(!ly1.loaded  /*|| !ly2.loaded*/) return;
-	if(viewModel.currentVisibleLayers.peek().length == 0) {
+	//if(!ly1.loaded  /*|| !ly2.loaded*/) return;
+	/*if(viewModel.currentVisibleLayers.peek().length == 0) */{
 		for(var i = 0; i< map.layerIds.length; i++) {
 			var reallyVisibleLayers = [];
 			

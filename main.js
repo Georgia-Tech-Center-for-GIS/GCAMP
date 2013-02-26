@@ -23,6 +23,7 @@ dojo.require("dijit.form.DateTextBox");
 dojo.require("dijit.Toolbar");
 
 dojo.require("esri.toolbars.draw");
+dojo.require("esri.toolbars.navigation");
 dojo.require("dojo.number");
 
 dojo.require("dijit.form.Select");
@@ -47,13 +48,17 @@ var mapMarine = "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMar
 
 var cartoLayers = ["NauticalChart522", "Habitat522", "Wetlands530", "CoastalResources61", "Physical522", "Counties531", "Administrative530"];
 var marineLayers = ["2", "3", "4", "5"];
+var selectedNewMapSvc = ko.observable();
 
-var serviceCatalog = [];
-/*	{id:1, label:"Coastal and Marine Spatial Planning",url:"http://gis.boemre.gov/arcgis/rest/services/BOEM_BSEE"},
-	{id:2, label:"Multipurpose Marine Cadastre",url:"http://www.csc.noaa.gov/ArcGISPUB/rest/services"},
-	{id:3, label:"NOAA Nautical Charts",url:"http://ocs-spatial.ncd.noaa.gov/wmsconnector/com.esri.wms.Esrimap/encdirect?"},
-	{id:4, label:"Bureau of Ocean Energy Management, Regulation and Enforcement",url:"http://gis.boemre.gov/arcgis/rest/services/BOEM_BSEE"}
-];*/
+var mapSvrChoices = ko.observable(
+[
+	{id:1, mapLabel:"Raster Nautical Charts (RNC)",url:"http://egisws02.nos.noaa.gov/ArcGIS/rest/services/RNC/NOAA_RNC/MapServer"},
+	{id:2, mapLabel:"BOEM",url:"http://gis.boemre.gov/arcgis/rest/services/BOEM_BSEE/MMC_Layers/MapServer"},
+	{id:3, mapLabel:"Marine Cadastre",url:"http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer"},
+	{id:4, mapLabel:"National Map", url: "http://services.nationalmap.gov/ArcGIS/rest/services/"},
+	//{id:5, mapLabel:"NOAA CMSP", url: ""},
+	{id:6, mapLabel:"SAFMC", url: "http://ocean.floridamarine.org/ArcGIS/rest/services/NauticalCharts/MapServer"}
+]);
 
 var extents = [];
 	
@@ -62,7 +67,14 @@ var initialExtent;
 var identifyTask, identifyParams, symbol;
 
 var navToolbar;
-var ly3;
+var initBasemap;
+var ly_Energy;
+var ly_Habitat;
+var ly_DEM;
+
+var MapSvcAllLayers = new CreateCollection("MapSvcList");
+
+var cMapTool = ko.observable( "pan" );
 
 var generalTabController;
 
@@ -133,88 +145,139 @@ function prepare_map_when_extents_finished(a) {
 				extent : initialExtent
 		});
 		
-		ko.applyBindings();
-		
-		dojo.connect(dijit.byId('map'), 'resize', map,map.resize);
 		dojo.connect(dijit.byId('map'), "onLoad", function() { });
 		
 		dojo.connect(map, "onMouseMove", showMouseCoordinates);
 		dojo.connect(map, "onMouseDrag", showMouseCoordinates);
 			
-		var initBasemap = new esri.layers.ArcGISDynamicMapServiceLayer("http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer");
-		map.addLayer(initBasemap);
-		
-		ly1 = new esri.layers.ArcGISDynamicMapServiceLayer
-			("http://tulip.gis.gatech.edu:6080/arcgis/rest/services/coastal213/MapServer");
-			
-		ly2 = new esri.layers.ArcGISImageServiceLayer("http://tulip.gis.gatech.edu:6080/arcgis/rest/services/coastdemwebm/ImageServer");
+		initBasemap = new esri.layers.ArcGISDynamicMapServiceLayer("http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer");
 
-		dojo.connect(ly1, "onLoad", function () {
-			init_layer_controls(map);
+		MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
+		MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/CDEM/MapServer", ServiceType_Dynamic, map, null));
+		MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/coastal213/MapServer", ServiceType_Dynamic, map, null));
+		
+		MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function () {
+			map.getLayer( map.layerIds[1] ).visibleLayers = [];
+			map.getLayer( map.layerIds[1] ).setVisibility(false);
+
+			ko.applyBindings();
+			
+			navToolbar = new esri.toolbars.Navigation(map);
+			
+			dojo.connect('onExtentHistoryChange', extentHistoryChangeHandler);
+			
+			$('#zoomInBtn').on('click', function(e) {
+				navToolbar.activate(esri.toolbars.Navigation.ZOOM_IN);
+			});
+
+			$('#zoomPrevBtn').on('click', function(e) {
+				navToolbar.zoomToPrevExtent();
+			});
+			
+			$('#zoomFullExtBtn').on('click', function(e) {
+				fullExtent();
+			});
+			
+			$('#allLayersLink').on('click', function(e) {
+				map.removeAllLayers();
+				MapSvcAllLayers = new CreateCollection("MapSvcList");
+				
+				MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
+				MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/CDEM/MapServer", ServiceType_Dynamic, map, null));
+				MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/coastal213/MapServer", ServiceType_Dynamic, map, null));				
+				MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function() {
+					map.getLayer( map.layerIds[1] ).visibleLayers = [];
+					map.getLayer( map.layerIds[1] ).setVisibility(false);
+
+					init_layer_controls(map);
+					init_id_funct(map);
+				});
+			});
+			
+			$('#energyLink').on('click', function(e) {
+				map.removeAllLayers();
+				MapSvcAllLayers = new CreateCollection("MapSvcList");
+				
+				MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
+				MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/CDEM/MapServer", ServiceType_Dynamic, map, null));
+				MapSvcAllLayers.add(new MapSvcDef("Energy", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/Energy/MapServer", ServiceType_Dynamic, map, null));				
+				MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function() {
+					map.getLayer( map.layerIds[1] ).visibleLayers = [];
+					map.getLayer( map.layerIds[1] ).setVisibility(false);
+
+					init_layer_controls(map);
+					init_id_funct(map);
+				});			
+			});
+			
+			$('#habitatLink').on('click', function(e) {
+				map.removeAllLayers();
+				MapSvcAllLayers = new CreateCollection("MapSvcList");
+				
+				MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
+				MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/CDEM/MapServer", ServiceType_Dynamic, map, null));
+				MapSvcAllLayers.add(new MapSvcDef("Habitat", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/habitat/MapServer", ServiceType_Dynamic, map, null));				
+				MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function() {
+					map.getLayer( map.layerIds[1] ).visibleLayers = [];
+					map.getLayer( map.layerIds[1] ).setVisibility(false);
+
+					init_layer_controls(map);
+					init_id_funct(map);
+				});			
+			});
+			
+			$('#fisheriesLink').on('click', function(e) {
+				map.removeAllLayers();
+				MapSvcAllLayers = new CreateCollection("MapSvcList");
+				
+				MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
+				MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/CDEM/MapServer", ServiceType_Dynamic, map, null));
+				MapSvcAllLayers.add(new MapSvcDef("Fisheries", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/Fisheries/MapServer", ServiceType_Dynamic, map, null));				
+				MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function() {
+					map.getLayer( map.layerIds[1] ).visibleLayers = [];
+					map.getLayer( map.layerIds[1] ).setVisibility(false);
+
+					init_layer_controls(map);
+					init_id_funct(map);
+				});			
+			});
+
+			$('#panBtn').on('click', function(e) {
+				navToolbar.activate(esri.toolbars.Navigation.PAN);
+			});
 			
 			scalebar = new esri.dijit.Scalebar({
 				map: map,
-				attachTo:"bottom-left"
+				/*attachTo:"top-left"*/
 			});
-			
+					
 			legend = new esri.dijit.Legend({
 				map:map
 			},"legendSection");
 			
+			createBasemapGallery();
+				
 			legend.startup();
+			init_layer_controls(map);
+			init_id_funct(map);
 		});
-		
-		map.addLayer(ly1);
-		//map.addLayer(ly2);
-		
-		dojo.connect(map, "onLoad", init_id_funct);
-		legendInfos = ly1.layerInfos;
-		
-		layerStoreMemory = new dojo.store.Memory({data: lyrs});
-		layerStore = new dojo.data.ObjectStore({objectStore: layerStoreMemory});
 			
-		var lyrSelect = new dijit.form.Select({
-			name: "",
-			style: "width: 15em; height: 2em;",
-			store: layerStore,
-			maxHeight: "20em;"},
-			"SelectMapLayer");
-
-		lyrSelect.startup();
-		
 		var args = {
-				url: "http://carto.gis.gatech.edu/proxypage_net/sites.ashx",
-				handleAs: "json",
-				load: function(data) {
-					serviceCatalog = [];
-					
-					for(var i = 0; i < data.length; i++) {
-						if(data[i].label != "") {
-							serviceCatalog.push(
-								{ url: data[i].url, label: data[i].label, id: i+1}
-							);
-						}
+			url: "http://carto.gis.gatech.edu/proxypage_net/sites.ashx",
+			handleAs: "json",
+			load: function(data) {
+				serviceCatalog = [];
+				
+				for(var i = 0; i < data.length; i++) {
+					if(data[i].label != "") {
+						serviceCatalog.push(
+							{ url: data[i].url, label: data[i].label, id: i+1}
+						);
 					}
-					
-		layerStoreChoicesMemory = new dojo.store.Memory({data: serviceCatalog});
-		layerStoreChoices = new dojo.data.ObjectStore({objectStore: layerStoreChoicesMemory});
-
-		var lyrSelect2 = new dijit.form.Select({
-			name: "",
-			style: "width: 15em; height: 2em; font-size: 8pt;",
-			store: layerStoreChoices,
-			maxHeight: "20em;"},
-			"SelectMapLayerCatalog");
-					
-		lyrSelect2.startup();
-		
-		dojo.connect(lyrSelect2, "onChange", function (nv) {
-			if(layerStoreChoicesMemory.get(nv) == null) return;
-			dijit.byId('AddMapSvcURL').set("value" , layerStoreChoicesMemory.get(nv).url);
-		});
-
 				}
-				};
+			}
+		};
+					
 		esri.request(args);
 }
 
@@ -229,13 +292,16 @@ function init() {
 	esri.config.defaults.io.corsEnabledServers.push("http://tasks.arcgisonline.com");
 
 	extents = [
+		/*
 		new esri.geometry.Extent( {"ymin": 31, "ymax": 33, "xmin" : -87, "xmax": -78, "spatialReference": { "wkid" : 4269 } } ) , //all
 		new esri.geometry.Extent( {"ymin": 31, "ymax": 33, "xmin" : -87, "xmax": -78, "spatialReference": { "wkid" : 4269 } } ) , //on-shore
 		new esri.geometry.Extent( {"ymin": 28, "ymax": 35, "xmin" : -81, "xmax": -73, "spatialReference": { "wkid" : 4269 } } ) , //coast
 		new esri.geometry.Extent( {"ymin": 31, "ymax": 33, "xmin" : -87, "xmax": -78, "spatialReference": { "wkid" : 4269 } } )   //ocean
+		*/
+		new esri.geometry.Extent( {"ymin": 30.561, "ymax": 32.422, "xmin": -82.319, "xmax": -79.973, "spatialReference": { "wkid" : 4269 }} )
 	];
 	
-	initialExtent = extents[2];
+	initialExtent = extents[0];
 		
 	cvtLatLongExtent_2_WebMercator( initialExtent, prepare_map_when_extents_finished);
 }
@@ -272,10 +338,13 @@ function showMouseCoordinates(e) {
 }
 
 function init_id_funct(map) {
-	createBasemapGallery();
 	//identifyTask = new esri.tasks.IdentifyTask("http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer");
-	identifyTask = new esri.tasks.IdentifyTask(ly1.url);
+	//identifyTask = new esri.tasks.IdentifyTask(ly1.url);
 	//"http://carto.gis.gatech.edu/ArcGIS/rest/services/ViewerJSResources/MapServer");
+	
+	identifyTask = new esri.tasks.IdentifyTask(
+		map.getLayer(map.layerIds[2]).url
+	/* "http://carto.gis.gatech.edu/ArcGIS/rest/services/TidalEnergyTest/MapServer"*/ );
 	
 	identifyParams = new esri.tasks.IdentifyParameters();
 	identifyParams.tolerance = 1;
@@ -328,29 +397,30 @@ function sliderChanged(value) {
 }
 
 var handleIdentify = null;
+var tabs;
 
 function jQueryReady() {
 	$(function() {
-				$('.scroll-pane').jScrollPane();
-				
-				$('a[data-toggle="tab"]').on('shown', function (e) {
-					if( $(e.target).attr('href') == "#identifyPane") {
-						handleIdentify = dojo.connect(map, "onClick", doIdentify);
-					}
-					else {
-						//dojo.connect(map, "onClick", doIdentify);
-						if(handleIdentify != null) {
-							dojo.disconnect(handleIdentify);
-							handleIdentify = null;
-						}
-					}
-					
-					//alert($(e.target).attr('href')) //e.target // activated tab
-					//e.relatedTarget // previous tab
-					$('.scroll-pane').jScrollPane();
-			})
+		$('.scroll-pane').jScrollPane();
+		
+		tabs = $('a[data-toggle="tab"]').on('shown', function (e) {
+			if( $(e.target).attr('href') == "#identifyPane") {
+				handleIdentify = dojo.connect(map, "onClick", doIdentify);
+			}
+			else {
+
+				if(handleIdentify != null) {
+					dojo.disconnect(handleIdentify);
+					handleIdentify = null;
+				}
+			}
 			
-			$('#intro').modal();
+			//alert($(e.target).attr('href')) //e.target // activated tab
+			//e.relatedTarget // previous tab
+			$('.scroll-pane').jScrollPane();
+		})
+	
+		$('#intro').modal();
 	});
 }
 
