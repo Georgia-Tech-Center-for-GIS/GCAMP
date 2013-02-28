@@ -85,27 +85,29 @@
 			<div class='span6' id='LeftPanel' style='height: 100%;'>
 				<div style='height: 100%'>
 					<div>
-					<ul class='nav nav-tabs nav-stacked' id='myTab' style='width: 48px; float: right;'>
-						<li><a id='panBtn' href='#' class='btn'
+					<ul class='nav nav-tabs' id='myTab' style=''>
+						<li><a title='Pan Map' id='panBtn' href='#' class='btn'
 							data-bind='css: { currTool: true }'>
 							<i class='icon zoompan'></i></a></li>
-						<li><a id='zoomInBtn' href='#' class='btn'>
+						<li><a title='Zoom In' id='zoomInBtn' href='#' class='btn'>
 							<i class='icon zoomInIcon'></i></a></li>
-						<li><a id='zoomPrevBtn' href='#'class='btn'>
+						<li><a title='Zoom to Previous Extent' id='zoomPrevBtn' href='#'class='btn'>
 							<i class='icon zoomprevIcon'></i></a></li>
-						<li><a id='zoomFullExtBtn' href='#'class='btn'>
+						<li><a title='Zoom to Initial Extent' id='zoomFullExtBtn' href='#'class='btn'>
 							<i class='icon zoomfullextIcon'></i></a></li>
-						<li class='active'><a href="#layersTab" data-toggle="tab">
+					</ul>
+					<ul class='nav nav-tabs nav-stacked' id='myTab' style='width: 48px; float: right;'>
+						<li class='active'><a title='Map Layers' href="#layersTab" data-toggle="tab">
 							<i class='icon Layers-icon'></i></a></li>
-						<li><a href="#basemapsTab" data-toggle="tab">
+						<li><a title='Basemaps' href="#basemapsTab" data-toggle="tab">
 							<i class='icon base-layer-icon'></i></a></li>
-						<li><a href="#otherDataTab" data-toggle="tab">
+						<li><a title='Add Map Services' href="#otherDataTab" data-toggle="tab">
 							<i class='icon open-maplayer-icon'></i></a></li>
-						<li><a href='#legendPane' data-toggle='tab'>
+						<li><a title='Map Legend' href='#legendPane' data-toggle='tab'>
 							<i class='icon map-legend-icon'></i></a></li>
-						<li><a href='#identifyPane' data-toggle='tab'>
+						<li><a title='Identify Feature' href='#identifyPane' data-toggle='tab'>
 							<i class='icon Identify-results'></i></a></li>
-						<li><a href='#metadataPane' id='mdtaLink' data-toggle='tab'>
+						<li><a title='' href='#metadataPane' id='mdtaLink' data-toggle='tab'>
 							<i class='icon metadataTabIcon'></i></a></li>
 					</ul>
 					</div>
@@ -154,11 +156,13 @@
 						</div>
 						<div class='tab-pane' id="basemapsTab" style='padding-left:1em;'>
 							<h2>Basemaps</h2>
+							<div style='padding-bottom: 2em;'><i class='btn' data-bind='click: return_to_LayerList'> Return to Layer list </i></div>
 							
 							<div id='basemapGallery'> </div>
 						</div>
 						<div class='tab-pane' id="otherDataTab" style='padding-left:1em;'>
 							<h2>Add Data</h2>
+							<div style='padding-bottom: 2em;'><i class='btn' data-bind='click: return_to_LayerList'> Return to Layer list </i></div>
 							
 							<h3>Available Map Services</h3>
 							
@@ -189,12 +193,15 @@
 							</div>
 						<div class='tab-pane' id='legendPane' style='padding-left:1em;'>
 							<h2>Map Legend</h2>
+							<div style='padding-bottom: 2em;'><i class='btn' data-bind='click: return_to_LayerList'> Return to Layer list </i></div>
+							
 							<div id='legendSection'></div>
 						</div>
 						<div class='tab-pane' id='resultsPane' style='padding-left:1em;'>
 						</div>
 						<div class='tab-pane' id='identifyPane'style='padding-left: 1em; padding-right: 1em; height: 90%;'>
 							<h2>Identify</h2>
+							<div style='padding-bottom: 2em;'><i class='btn' data-bind='click: return_to_LayerList'> Return to Layer list </i></div>
 							
 							<div style='height: 10%;'>
 								<p>Click on the map to identify map attributes for particular features.</p>
@@ -250,10 +257,28 @@
 						<!--div class='tab-pane' id='attribPane' style='padding-left:1em;'> </div-->
 						<div class='tab-pane' id='metadataPane' style='padding-left:1em; height: 90%;'>
 							<h2>Layer Metadata</h2>
-					
-							<h3 data-bind='text: lastMetadataLayerTitle'> </h3>
+							<div style='padding-bottom: 2em;'><i class='btn' data-bind='click: return_to_LayerList'> Return to Layer list </i></div>
 							
-							<div style='overflow: auto; height: 80%; width: 90%;' class='' data-bind='text: lastMetadata' id='metaArea'>
+							<h3 data-bind='text: lastMetadataLayerTitle'> </h3>
+							<div class='tab-pane' id='metadataPane' style='padding-left:1em; height: 90%;'>
+								<!-- div style='overflow: auto; height: 80%; width: 90%;' class='' data-bind='text: lastMetadata' id='metaArea'></div -->
+								<div class='accordion' id='infoAcc'>
+									<div class='accordion-heading'>
+										<a class='accordion-toggle' data-toggle='collapse' data-parent='#infoAcc' href='#infoAccCollapse1'>Attribute Data</a>
+									</div>
+									<div class='collapse' id='infoAccCollapse1'>
+										<!--div style='overflow: auto; height: 80%; width: 90%;' class='' data-bind='text: lastMetadata' id='metaArea'>
+										</div-->
+									</div>
+									
+									<div class='accordion-heading'>
+										<a class='accordion-toggle' data-toggle='collapse' data-parent='#infoAcc' href='#infoAccCollapse2'>Metadata</a>
+									</div>
+									<div class='collapse in' id='infoAccCollapse2' style='padding: 1em;'>
+										<div style='overflow: auto; height: 80%; width: 90%;' class='' data-bind='text: lastMetadata' id='metaArea'>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -268,7 +293,7 @@
 						<p>Prepared by the Center of GIS at Georgia Tech for the Georgia Department of Natural Resources Coastal Resources Division</p>
 					</div>
 					<div class="modal-footer">
-						<a href="#" class="btn" data-dismiss="modal">Close</a>
+						<a id='SplashCloseBtn' href="#" class="btn disabled" data-dismiss="modal" data-loading-text='Loading...'>Close</a>
 					</div>
 				</div>
 			</div>

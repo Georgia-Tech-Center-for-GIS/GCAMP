@@ -231,7 +231,6 @@ var viewModel = {
 				url: "http://carto.gis.gatech.edu/ViewerJSNew/metadata/" + a.name + ".xml",
 				handleAs: "xml",
 				load: function(data) {
-					//console.debug(data);
 					var text = data.querySelector("abstract").textContent;
 					
 					lastMetadata (data.querySelector("abstract").textContent);
@@ -239,8 +238,7 @@ var viewModel = {
 					
 					$('#mdtaLink').tab('show');
 					
-					//$('.scroll-pane').jScrollPane({verticalGutter: 0});
-					//$('#metaArea').data('jsp').reinitialise();
+					getAttributesLayer(a.url);
 				}
 		};
 		

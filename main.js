@@ -50,6 +50,8 @@ var cartoLayers = ["NauticalChart522", "Habitat522", "Wetlands530", "CoastalReso
 var marineLayers = ["2", "3", "4", "5"];
 var selectedNewMapSvc = ko.observable();
 
+var loaded = ko.observable();
+
 var mapSvrChoices = ko.observable(
 [
 	{id:1, mapLabel:"Raster Nautical Charts (RNC)",url:"http://egisws02.nos.noaa.gov/ArcGIS/rest/services/RNC/NOAA_RNC/MapServer"},
@@ -155,8 +157,11 @@ function prepare_map_when_extents_finished(a) {
 		MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
 		MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/CDEM/MapServer", ServiceType_Dynamic, map, null));
 		MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/coastal213/MapServer", ServiceType_Dynamic, map, null));
-		
+
 		MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function () {
+			loaded(true);
+			$('#SplashCloseBtn').button('reset');
+			
 			map.getLayer( map.layerIds[1] ).visibleLayers = [];
 			map.getLayer( map.layerIds[1] ).setVisibility(false);
 
@@ -332,16 +337,12 @@ function showMouseCoordinates(e) {
 	}
 	// DD
 	else {
-		map_x_coord(mp.x.toFixed(2));
-		map_y_coord(mp.y.toFixed(2))
+		map_x_coord(mp.x.toFixed(4));
+		map_y_coord(mp.y.toFixed(4))
 	}
 }
 
 function init_id_funct(map) {
-	//identifyTask = new esri.tasks.IdentifyTask("http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer");
-	//identifyTask = new esri.tasks.IdentifyTask(ly1.url);
-	//"http://carto.gis.gatech.edu/ArcGIS/rest/services/ViewerJSResources/MapServer");
-	
 	identifyTask = new esri.tasks.IdentifyTask(
 		map.getLayer(map.layerIds[2]).url
 	/* "http://carto.gis.gatech.edu/ArcGIS/rest/services/TidalEnergyTest/MapServer"*/ );
@@ -361,18 +362,9 @@ function init_id_funct(map) {
 	//getAttributesLayer("http://carto.gis.gatech.edu/ArcGIS/rest/services/coastal1112/MapServer/14");
 }
 
-function toggleIdentifyOn(pne) {
-	if(!pne._showing) {
-		pne.toggle();
-	}
+function return_to_LayerList() {
+	$('#layerTabLink').tab('show');
 }
-
-function toggleIdentifyOff(pne) {
-	if(pne._showing) {
-		pne.toggle();
-	}
-}
-
 
 function fullExtent() {
 	map.setExtent(initialExtent);
@@ -421,6 +413,8 @@ function jQueryReady() {
 		})
 	
 		$('#intro').modal();
+		
+		$('#SplashCloseBtn').button('loading');
 	});
 }
 
