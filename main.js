@@ -19,6 +19,11 @@ dojo.require("esri.layers.agsdynamic");
 dojo.require("esri.tasks.gp");
 dojo.require("esri.dijit.Legend");
 dojo.require("esri.dijit.Popup");
+dojo.require("esri.dijit.Measurement");
+dojo.require("esri.dijit.Print");
+
+dojo.require("esri.dijit.TimeSlider");
+
 dojo.require("dijit.form.DateTextBox");
 dojo.require("dijit.Toolbar");
 
@@ -57,9 +62,10 @@ var mapSvrChoices = ko.observable(
 	{id:1, mapLabel:"Raster Nautical Charts (RNC)",url:"http://egisws02.nos.noaa.gov/ArcGIS/rest/services/RNC/NOAA_RNC/MapServer"},
 	{id:2, mapLabel:"BOEM",url:"http://gis.boemre.gov/arcgis/rest/services/BOEM_BSEE/MMC_Layers/MapServer"},
 	{id:3, mapLabel:"Marine Cadastre",url:"http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer"},
-	{id:4, mapLabel:"National Map", url: "http://services.nationalmap.gov/ArcGIS/rest/services/"},
+	//{id:4, mapLabel:"National Map", url: "http://services.nationalmap.gov/ArcGIS/rest/services/"},
 	//{id:5, mapLabel:"NOAA CMSP", url: ""},
-	{id:6, mapLabel:"SAFMC", url: "http://ocean.floridamarine.org/ArcGIS/rest/services/NauticalCharts/MapServer"}
+	{id:5, mapLabel:"SAFMC", url: "http://ocean.floridamarine.org/ArcGIS/rest/services/NauticalCharts/MapServer"},
+	{id:6, mapLabel:"Carto/Coast", url: "http://carto.gis.gatech.edu/ArcGIS/rest/services/coastal113/MapServer"}
 ]);
 
 var extents = [];
@@ -67,12 +73,17 @@ var extents = [];
 var initialExtent;
 
 var identifyTask, identifyParams, symbol;
+var geometryService = null;
 
 var navToolbar;
+var drwToolbar;
 var initBasemap;
 var ly_Energy;
 var ly_Habitat;
 var ly_DEM;
+
+var printer;
+var timeSlider;
 
 var MapSvcAllLayers = new CreateCollection("MapSvcList");
 
@@ -140,6 +151,30 @@ function cvtLatLongExtent_2_WebMercator( extent, fn_when_finished ) {
 	geometryService.project(PrjParams, fn_when_finished );
 }
 
+function doMeasure(graphics) {
+	if(graphics[0].geometry.type != "POLYGON") {
+		var geometryService = new esri.tasks.GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
+		var lp = new esri.tasks.LengthsParameters();
+		lp.polylines = graphics;
+		lp.lengthUnit = esri.tasks.GeometryService.UNIT_FOOT;
+		
+		geometryService.lengths(lp, outputDistance);
+	}
+	else {
+		var geometryService = new esri.tasks.GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
+		var ap = new esri.tasks.AreasAndLengthsParameters();
+		ap.polygons = graphics;
+		ap.areaUnit = esri.tasks.GeometryService.UNIT_ACRE;
+		ap.lengthUnit = esri.tasks.GeometryService.UNIT_FOOT;
+		
+		geometryService.areasAndLengths(ap, outputDistance);
+	}
+}
+
+function outputDistance(result) {
+	console.debug(result);
+}
+
 function prepare_map_when_extents_finished(a) {
 		initialExtent = a[0];
 		
@@ -149,11 +184,57 @@ function prepare_map_when_extents_finished(a) {
 		
 		dojo.connect(dijit.byId('map'), "onLoad", function() { });
 		
+		printer = new esri.dijit.Print({
+			map: map,
+			url: //"http://servicesbeta4.esri.com/arcgis/rest/services/Utilities/ExportWebMap/GPServer/Export Web Map Task"
+			"http://tulip.gis.gatech.edu:6080/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
+			templates: [{
+					label: "Map",
+					format: "PDF",
+					layout: "MAP_ONLY",
+					exportOptions: {
+						width: 500,
+						height: 400,
+						dpi: 96
+					}
+				}, {
+					label: "Letter Portrait",
+					format: "PDF",
+					layout: "Letter ANSI A Portrait",
+					layoutOptions: {
+						titleText: "Georgia Coastal Atlas",
+						authorText: "Coastal Resources Divsion",
+						copyrightText: "Georgia Department of Natural Resources",
+						scalebarUnit: "Miles",
+					}
+				}, {
+					label: "11x17 Portrait",
+					format: "PDF",
+					layout: "Tabloid ANSI B Portrait",
+					layoutOptions: {
+						titleText: "Georgia Coastal Atlas",
+						authorText: "Coastal Resources Divsion",
+						copyrightText: "Georgia Department of Natural Resources",
+						scalebarUnit: "Miles",
+					}
+				}]
+		}, dojo.byId("printButton"));
+		
+		printer.startup();
+		
 		dojo.connect(map, "onMouseMove", showMouseCoordinates);
 		dojo.connect(map, "onMouseDrag", showMouseCoordinates);
-			
+		
 		initBasemap = new esri.layers.ArcGISDynamicMapServiceLayer("http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer");
-
+		
+		geometryService = new esri.tasks.GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
+		
+        dojo.connect(geometryService, "onLengthsComplete", outputDistance);
+        //dojo.connect(geometryService, "onProjectComplete", function(graphics) {
+          //call GeometryService.lengths() with projected geometry
+//		  geometryService.lengths(graphics);
+        //});
+		
 		MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
 		MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/CDEM/MapServer", ServiceType_Dynamic, map, null));
 		MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/coastal213/MapServer", ServiceType_Dynamic, map, null));
@@ -168,8 +249,25 @@ function prepare_map_when_extents_finished(a) {
 			ko.applyBindings();
 			
 			navToolbar = new esri.toolbars.Navigation(map);
+			drwToolbar = new esri.toolbars.Draw(map);
+
+			dojo.connect(drwToolbar, "onDrawEnd", function(geometry) {
+				map.graphics.clear();
+			  
+				var graphic = map.graphics.add(new esri.Graphic(geometry, new esri.symbol.SimpleLineSymbol()));
+				console.debug(graphic);
+				//doMeasure([graphic]);
+
+				var geometryService = new esri.tasks.GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
+				var PrjParams = new esri.tasks.ProjectParameters();
+				PrjParams.geometries = [geometry];
+				PrjParams.outSR = new esri.SpatialReference(32618);
+
+				geometryService.project(PrjParams, doMeasure );
+			});
 			
 			dojo.connect('onExtentHistoryChange', extentHistoryChangeHandler);
+			//dojo.connect('onDrawEnd', measureEnd);
 			
 			$('#zoomInBtn').on('click', function(e) {
 				navToolbar.activate(esri.toolbars.Navigation.ZOOM_IN);
@@ -181,6 +279,14 @@ function prepare_map_when_extents_finished(a) {
 			
 			$('#zoomFullExtBtn').on('click', function(e) {
 				fullExtent();
+			});
+			
+			$('#measLine').on('click', function(e) {
+				drwToolbar.activate(esri.toolbars.Draw.POLYLINE);
+			});
+
+			$('#measPoly').on('click', function(e) {
+				drwToolbar.activate(esri.toolbars.Draw.POLYGON);
 			});
 			
 			$('#allLayersLink').on('click', function(e) {
@@ -234,7 +340,7 @@ function prepare_map_when_extents_finished(a) {
 			$('#fisheriesLink').on('click', function(e) {
 				map.removeAllLayers();
 				MapSvcAllLayers = new CreateCollection("MapSvcList");
-				
+								
 				MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
 				MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/CDEM/MapServer", ServiceType_Dynamic, map, null));
 				MapSvcAllLayers.add(new MapSvcDef("Fisheries", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/Fisheries/MapServer", ServiceType_Dynamic, map, null));				
@@ -244,6 +350,29 @@ function prepare_map_when_extents_finished(a) {
 
 					init_layer_controls(map);
 					init_id_funct(map);
+					
+					var timeExtent = new esri.TimeExtent();
+					timeExtent.startTime = new Date("1/1/2011 EST");
+					map.setTimeExtent(timeExtent);
+
+					if(timeSlider == null) {
+						timeSlider = new esri.dijit.TimeSlider({
+						  style: "width: 800px;"
+						}, dojo.byId("timeSliderDiv"));
+					}
+					
+					map.setTimeSlider(timeSlider);
+					timeSlider.setThumbCount(2);
+										
+					var layerTimeExtent = map.getLayer( map.layerIds[2] ).timeInfo.timeExtent;
+					layerTimeExtent.startTime = timeExtent.startTime;
+					timeSlider.createTimeStopsByTimeInterval(layerTimeExtent, 1, 'esriTimeUnitsMonths');
+					timeSlider.setThumbMovingRate(1500);			
+					timeSlider.setLoop(true);
+					timeSlider.setLabels(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]);
+					timeSlider.startup();
+
+					$('#timePopoutPanel').dialog({title:"Time", width: 860 });
 				});			
 			});
 
@@ -261,7 +390,13 @@ function prepare_map_when_extents_finished(a) {
 			},"legendSection");
 			
 			createBasemapGallery();
-				
+
+		var measurement = new esri.dijit.Measurement({
+			map: map
+		}, dojo.byId('measurementDiv'));
+
+		measurement.startup();
+			
 			legend.startup();
 			init_layer_controls(map);
 			init_id_funct(map);
@@ -413,8 +548,12 @@ function jQueryReady() {
 		})
 	
 		$('#intro').modal();
-		
 		$('#SplashCloseBtn').button('loading');
+		
+		$('#meas').on('click', function(e) {
+			$('#measurePopoutPanel').dialog({width:250, title:"Measurement"});
+		});
+		
 	});
 }
 

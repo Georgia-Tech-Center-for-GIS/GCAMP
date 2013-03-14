@@ -95,9 +95,12 @@
 							<i class='icon zoomprevIcon'></i></a></li>
 						<li><a title='Zoom to Initial Extent' id='zoomFullExtBtn' href='#'class='btn'>
 							<i class='icon zoomfullextIcon'></i></a></li>
+						<li><a title='Measuring Tools' id='meas' href='#' class='btn'>
+							<i class='icon measureLine'></i></a></li>
+						<li><div id='printButton'></div> </li>
 					</ul>
 					<ul class='nav nav-tabs nav-stacked' id='myTab' style='width: 48px; float: right;'>
-						<li class='active'><a title='Map Layers' href="#layersTab" data-toggle="tab">
+						<li class='active'><a title='Map Layers' href="#layersTab" data-toggle="tab" id='layerTabLink'>
 							<i class='icon Layers-icon'></i></a></li>
 						<li><a title='Basemaps' href="#basemapsTab" data-toggle="tab">
 							<i class='icon base-layer-icon'></i></a></li>
@@ -194,7 +197,7 @@
 						<div class='tab-pane' id='legendPane' style='padding-left:1em;'>
 							<h2>Map Legend</h2>
 							<div style='padding-bottom: 2em;'><i class='btn' data-bind='click: return_to_LayerList'> Return to Layer list </i></div>
-							
+
 							<div id='legendSection'></div>
 						</div>
 						<div class='tab-pane' id='resultsPane' style='padding-left:1em;'>
@@ -258,19 +261,12 @@
 						<div class='tab-pane' id='metadataPane' style='padding-left:1em; height: 90%;'>
 							<h2>Layer Metadata</h2>
 							<div style='padding-bottom: 2em;'><i class='btn' data-bind='click: return_to_LayerList'> Return to Layer list </i></div>
-							
+						
 							<h3 data-bind='text: lastMetadataLayerTitle'> </h3>
+															
 							<div class='tab-pane' id='metadataPane' style='padding-left:1em; height: 90%;'>
-								<!-- div style='overflow: auto; height: 80%; width: 90%;' class='' data-bind='text: lastMetadata' id='metaArea'></div -->
-								<div class='accordion' id='infoAcc'>
-									<div class='accordion-heading'>
-										<a class='accordion-toggle' data-toggle='collapse' data-parent='#infoAcc' href='#infoAccCollapse1'>Attribute Data</a>
-									</div>
-									<div class='collapse' id='infoAccCollapse1'>
-										<!--div style='overflow: auto; height: 80%; width: 90%;' class='' data-bind='text: lastMetadata' id='metaArea'>
-										</div-->
-									</div>
-									
+								
+								<div class='accordion' id='infoAcc'>									
 									<div class='accordion-heading'>
 										<a class='accordion-toggle' data-toggle='collapse' data-parent='#infoAcc' href='#infoAccCollapse2'>Metadata</a>
 									</div>
@@ -283,19 +279,6 @@
 						</div>
 					</div>
 				</div>
-				
-				<div class="modal hide fade" id='intro'>
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h3>Georgia Coastal Atlas</h3>
-					</div>
-					<div class="modal-body">
-						<p>Prepared by the Center of GIS at Georgia Tech for the Georgia Department of Natural Resources Coastal Resources Division</p>
-					</div>
-					<div class="modal-footer">
-						<a id='SplashCloseBtn' href="#" class="btn disabled" data-dismiss="modal" data-loading-text='Loading...'>Close</a>
-					</div>
-				</div>
 			</div>
 			<div class='span9' id='MapPanel' style='height: 100%;'>
 				<div style='position: absolute; top: 24px;'>
@@ -306,16 +289,56 @@
 				</div>
 				<div id="map" style='height:100%;'> </div>
 				<div style='position: absolute; top: 5px; z-index: 255; right: 2.5em;'>
-					<img src='http://carto.gis.gatech.edu/ga-logo_dnr_09.jpg' alt='Georgia DNR Logo' style='height: 75px; margin-left: 5em;' />
+					<img src='http://carto.gis.gatech.edu/ga-logo_dnr_09.jpg' alt='Georgia DNR Logo' style='height: 75px; margin-left: 4em;' />
+					<img src='http://carto.gis.gatech.edu/CGIS_Logo_5.png' alt='Center for GIS Logo' style='height: 75px; margin-left: 4em;' />
 				</div>
 				<div style='position: absolute; bottom: 2px; z-index: 255; right: 2.5em;'>
 					<div id='coordinates' class='button button-group'>
 						Lat: <span data-bind='text: map_y_coord'></span> Long: <span data-bind='text: map_x_coord'></span>
 					</div>
 				</div>
+			</div>
 		</div>
-		<!--/div-->
+	</div>
+	<div class="modal hide fade" id='intro'>
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h3>Georgia Coastal Atlas</h3>
 		</div>
-	</div>	
+		<div class="modal-body">
+			<p>Prepared by the Center of GIS at Georgia Tech for the Georgia Department of Natural Resources Coastal Resources Division</p>
+		</div>
+		<div class="modal-footer">
+			<a id='SplashCloseBtn' href="#" class="btn disabled" data-dismiss="modal" data-loading-text='Loading...'>Close</a>
+		</div>
+	</div>
+	<div class='' id='measurePopoutPanel'>
+		<div id='measurementDiv'></div>
+	</div>
+	<div class='' id='timePopoutPanel'>
+		<div id='timeSliderDiv'></div>
+	</div>
+	<div class='' style='height: 10em;' id='attribPopoutPanel'>
+		<table>
+			<thead>
+			</thead>
+			<tbody>
+					<tr>
+					<!-- ko foreach: lastAttribFields -->
+						<th>
+							<span data-bind='text: $data' ></span>
+						</th>
+					<!-- /ko -->
+					</tr>
+				<!-- ko foreach: lastAttribFeatures -->
+					<tr>
+						<!-- ko foreach: lastAttribFields -->
+							<td data-bind='text: $parent[$data] '></td>
+						<!-- /ko -->
+					</tr>
+				<!-- /ko -->
+			</tbody>
+		</table>
+	</div>
 </body>
 </html>

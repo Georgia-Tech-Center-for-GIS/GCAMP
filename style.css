@@ -147,6 +147,13 @@ h3 {
 	height:25px;
 }
 
+.measureLine {
+	background-image: url("images/glyphicons_068_ruller.png");
+	background-repeat: no-repeat;
+	width: 25px;
+	height:25px;
+}
+
 div {
 
 }

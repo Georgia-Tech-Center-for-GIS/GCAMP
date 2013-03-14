@@ -127,7 +127,7 @@ function return_map_layers() {
 				
 				case 2:
 				dojo.forEach( lyr.layerInfos, function (li, i) {
-					console.debug( lyr.layerInfos);
+					//console.debug( lyr.layerInfos);
 					
 					if(i-1 < lastIndex) {
 					}

@@ -30,6 +30,9 @@ dojo.require("esri.dijit.Popup");
 var grid = null;
 var store = null;
 
+var lastAttribFields = ko.observableArray();
+var lastAttribFeatures = ko.observableArray();
+
 function initAttributesLayerList() {
 	var lyrList = [];
 		
@@ -68,6 +71,8 @@ function initAttributesLayerList() {
 }
 
 function getAttributesLayer (url) {
+	lastAttribFeatures.removeAll();
+	lastAttribFields.removeAll();
 	
 	var qt = new esri.tasks.QueryTask( url );
 	var query = new esri.tasks.Query();
@@ -80,11 +85,24 @@ function getAttributesLayer (url) {
 		//console.debug(results);
 			
 		var fields = dojo.map(results.fields, function(field) {
-			var item = [];
-			item['name'] = field.alias;
-			item['field']= field.name;
-			return dojo.clone(item);
+			lastAttribFields.push(field.alias);
+			return [];
+			
+			//var item = [];
+			//item['name'] = field.alias;
+			//item['field']= field.name;
+			//return dojo.clone(item);
 		});
+		
+		var items = dojo.map(results.features, function(feature) {	
+			lastAttribFeatures.push(dojo.clone(feature.attributes));
+			
+			return dojo.clone(feature.attributes);
+		});
+			
+		$('#attribPopoutPanel').dialog({height : 500, width: 650, title:"Attribute Table"});
+			
+		/*
 		
 		var layout = [fields];
 		
@@ -108,6 +126,7 @@ function getAttributesLayer (url) {
 		//grid.setStore( store);
 
 		grid.startup();
+		*/
 	});
 	
 }
