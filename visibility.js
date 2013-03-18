@@ -217,33 +217,10 @@ var viewModel = {
 		}
 		
 		var element = $('.scroll-pane').jScrollPane({verticalGutter: 0});
-		var api = element.data('jsp');
+		//var api = element.data('jsp');
 
 	},
 	
-	dispMetadata : function (a) {
-		//var lyr = map.getLayer(a.mapLayerId);
-		var nm = a.name;
-		
-		console.debug(a);
-		
-		var args = {
-				url: "http://carto.gis.gatech.edu/ViewerJSNew/metadata/" + a.name + ".xml",
-				handleAs: "xml",
-				load: function(data) {
-					var text = data.querySelector("abstract").textContent;
-					
-					lastMetadata (data.querySelector("abstract").textContent);
-					lastMetadataLayerTitle (a.name);
-					
-					$('#mdtaLink').tab('show');
-					
-					getAttributesLayer(a.url);
-				}
-		};
-		
-		esri.request(args);
-	},
 	
 	toggleVisibleLayer : function (a) {
 		var lyr = map.getLayer(a.mapLayerId);

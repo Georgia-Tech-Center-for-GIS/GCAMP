@@ -46,7 +46,7 @@
 	
 		<!-- the jScrollPane script -->
 	<script type="text/javascript" src="script/jquery.mousewheel.js"></script>
-	<script type="text/javascript" src="script/jquery.jscrollpane.min.js"></script>
+	<script type="text/javascript" src="script/jquery.jscrollpane.js"></script>
 	
 		<script src='script/knockout-2.2.1.js'></script>
 	<script src="/bootstrap/js/bootstrap.min.js"></script>
@@ -54,6 +54,7 @@
     <script src="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3compact"></script>
 	<script src="script/MapClasses.js" type="text/javascript"></script>
 	
+	<script src='metadata.js'> </script>
 	<script src='attributes.js'> </script>
 	<script src='visibility.js'> </script>
 	<script src='query.js'> </script>
@@ -119,8 +120,8 @@
 						<div class='tab-pane active' id="layersTab" style='padding-left:1em; height: 95%;'>
 							<h2>Data Layers</h2>
 							<!--div data-bind="text: ly1.visibleLayers.length"></div-->
-							<div class='scroll-pane metadataPane' style='overflow: auto; height: 95%;'>
-								<div style='padding-right: 1em;'>
+							<div class='scroll-pane metadataPane' style='overflow: auto; height: 95%; width: 100%;'>
+								<!--div class=' style='padding-right: 1em; height:100%; width: 100%;'-->
 									<div class='accordion' id='layersVisibList' data-bind="template: {name: 'layers_template', foreach: allMapLayers }">
 									</div>
 									
@@ -131,30 +132,31 @@
 											</div>
 											<div class='accordion-body collapse' data-bind="css: {'in': viewModel.isOpenTheme(name) }"
 													style='margin-left: 20px; overflow: auto;'>
-												<div data-bind="template: {name: 'layers_template', foreach: children }">
+												<div class='scroll-pane' data-bind="template: {name: 'layers_template', foreach: children }" style='margin-right: 5px; width: 95%;'>
 												</div>
 											</div>
 										<!-- /ko -->
 										<!-- ko if: (children.length == 0) -->
-											<div class='accordion-inner'>
+											<div class='accordion-inner' style='width: 100%; scroll: auto;'>
 												<div class='btn-group btn-group-layer'>
 													<span class='btn btn-layer' style='padding-top: 0px; margin: 0px;' data-bind='click: viewModel.toggleVisibleLayer'>
 														<i class='check icon-large icon-check'
 														data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq) "
-														style='padding: 4px; margin: 0px; width: 30px; background-image: url("images/glyphicons_152_check.png"); background-position: 0 0;'>
+														style='padding: 4px; margin: 0px; width: 15px; background-image: url("images/glyphicons_152_check.png"); background-position: 0 0;'>
 														</i>
 														<i class='check icon-large icon-check'
 														data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq) == false"
-														style='padding: 4px; margin: 0px; width: 30px; background-image: url("images/glyphicons_153_unchecked.png"); background-position: 0 0;'>
+														style='padding: 4px; margin: 0px; width: 15px; background-image: url("images/glyphicons_153_unchecked.png"); background-position: 0 0;'>
 														</i>
 													</span>
 													<!--a class='btn btn-info-sign'><i class='icon-info-sign icon-large'></i> </a-->
-													<span class='btn btn-layer' data-bind='text: name, click: viewModel.dispMetadata' style='text-align:left; min-width: 12em;'></span>
+													<span class='btn btn-layer' data-bind='click:  dispMetadata' style='text-align: left;'><i class='icon Information-Icon'></i></span>
+													<span class='btn btn-layer' data-bind='text: name, click: dispAttribTable' style='text-align:left; min-width: 12em;'></span>
 												</div>
 											</div>
 										<!-- /ko -->
 									</script>
-								</div>
+								<!--/div -->
 							</div>
 						</div>
 						<div class='tab-pane' id="basemapsTab" style='padding-left:1em;'>
@@ -310,6 +312,18 @@
 		</div>
 		<div class="modal-footer">
 			<a id='SplashCloseBtn' href="#" class="btn disabled" data-dismiss="modal" data-loading-text='Loading...'>Close</a>
+		</div>
+	</div>
+	<div class="modal hide fade" id='metaError'>
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h3>Georgia Coastal Atlas: Metadata Lookup</h3>
+		</div>
+		<div class="modal-body">
+			<p>No Metadata Found, or other error.</p>
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Close</a>
 		</div>
 	</div>
 	<div class='' id='measurePopoutPanel'>

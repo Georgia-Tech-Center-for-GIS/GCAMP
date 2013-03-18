@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+  <idinfo>
+    <citation>
+      <citeinfo>
+        <origin>North Atlantic Right Whale Consortium: Sighting Database </origin>
+        <pubdate>2001-2011</pubdate>
+        <title>North Atlantic Right Whale</title>
+      </citeinfo>
+    </citation>
+    <descript>
+      <abstract>This dataset, from the North Atlantic Right Whale (NARW) Consortium, shows the sightings per unit effort of the North Atlantic Right Whale.The North Atlantic Right Whale Consortium consists of a number of both non-governmental and governmental organizations and individuals in the United States and Canada who work to study and conserve North Atlantic Right Whales.  The data are summarized based on all sightings obtained by the NARW  program within a 5 x 5 minute grid of latitude and longitude between November and April from 2001-2011.
+
+</abstract>
+      <purpose>This data set was created for the purpose of describing the distribution and relative abundance of right whales in South Carolina's coastal waters through funding provided by NOAA through the Governor's Southeast Atlantic Alliance so that this endangered species can be considered for any planned energy development or other coastal use activities.
+
+</purpose>
+    </descript>
+    <timeperd>
+      <timeinfo>
+        <sngdate>
+          <caldate>October 2012</caldate>
+        </sngdate>
+      </timeinfo>
+      <current>publication date</current>
+    </timeperd>
+    <status>
+      <progress>Complete</progress>
+      <update>None planned</update>
+    </status>
+    <keywords>
+      <theme>
+        <themekey>North Atlantic Right Whale</themekey>
+        <themekey>Sighting Per Unit Effort (SPUE)</themekey>
+      </theme>
+      <place>
+        <placekey>Southeast</placekey>
+        <placekey>North Carolina</placekey>
+        <placekey>South Carolina</placekey>
+        <placekey>Georgia</placekey>
+        <placekey>Florida</placekey>
+      </place>
+    </keywords>
+    <accconst>None</accconst>
+    <useconst>Neither the State of South Carolina, the Department of Natural Resources, nor any of its employees, is responsible for any improper or incorrect use of the information described and/or contained herein, and  assume no responsibility for the use of the information.  The South Carolina Department of Natural Resources should be acknowledged as the data source in products derived from these data.
+
+North Atlantic Right Whale Consortium: "Raw sighting data from the NARWC database are not effort-corrected and the management documents in which they are used are not peer reviewed. Distributional patterns based on these data are likely to be biased by where, and when, surveys were conducted."
+</useconst>
+    <ptcontac>
+      <cntinfo>
+        <cntperp>
+          <cntper>Robert Kenney</cntper>
+          <cntorg>North Atlantic Right Whale Consortium: University of Rhode Island</cntorg>
+        </cntperp>
+        <cntpos>Associate Marine Research Scientist &amp; Adjunct Professor in Residence</cntpos>
+        <cntaddr>
+          <addrtype>mailing and physical address</addrtype>
+          <address>215 South Ferry Road</address>
+          <city>Narragansett </city>
+          <state>RI</state>
+          <postal>02882 </postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>401-874-6664 </cntvoice>
+        <cntfax>401-874-6523 </cntfax>
+        <cntemail>rkenney@gso.uri.edu </cntemail>
+      </cntinfo>
+    </ptcontac>
+  </idinfo>
+  <dataqual>
+    <lineage>
+      <procstep>
+        <procdesc>Dataset moved.</procdesc>
+        <srcused>\\Mrdnas\GIS\Boynton\GISProjects\2011\Other\Research\SCWindProject\Metadata\MetadataTemplate</srcused>
+        <procdate>20110615</procdate>
+        <proctime>10272100</proctime>
+      </procstep>
+      <procstep>
+        <procdesc>Metadata imported.</procdesc>
+        <srcused>\\Mrdnas\shellmap\Work\Wind\Metadata\FirstCopy\MetadataTemplate_fgdcxml.xml</srcused>
+        <procdate>20121101</procdate>
+        <proctime>17091300</proctime>
+      </procstep>
+      <procstep>
+        <proccont>
+          <cntinfo>
+            <cntperp>
+              <cntper>Jessica Boynton</cntper>
+              <cntorg>SCDNR, MRRI</cntorg>
+            </cntperp>
+            <cntpos>GIS Manager I</cntpos>
+            <cntaddr>
+              <addrtype>physical address</addrtype>
+              <address>217 Fort Johnson Rd.</address>
+              <city>Charleston</city>
+              <state>SC</state>
+              <postal>29412</postal>
+              <country>USA</country>
+            </cntaddr>
+            <cntvoice>843-953-9163</cntvoice>
+            <cntfax>843-953-9820</cntfax>
+            <cntemail>boyntonj@dnr.sc.gov</cntemail>
+          </cntinfo>
+        </proccont>
+        <procdesc>GIS processing: 1.) One point layer per species was created where each point was the mid-point of a 50 x 5 minute grid cell where there was in-water turtle sampling between 2008 and 2012.  A 5 x 5 min. grid of the whole offshore study area was created. 3.) A spatial selection was performed to select those 5 x 5 min. grid cells that contained In-Water turtle mid-points. A new layer was created with just the selected grid cells. 4.) The mid-points from the species layer were spatially joined to the 5 x 5 min. grid layer to create a final gridded layer with one value/grid (e.g. MeanCPUE). For the join, the point layer was joined to the grid polygon layer.  For the summarizing of attributes, we chose 'Maximum'.  5.) Deleted unnecessary attribute columns.  6.) Exported the joined layer to the final geodatabase.</procdesc>
+      </procstep>
+    </lineage>
+  </dataqual>
+  <eainfo>
+    <detailed Name="NARtWhale">
+      <enttyp>
+        <enttypl Sync="TRUE">NARtWhale</enttypl>
+        <enttypt Sync="TRUE">Feature Class</enttypt>
+        <enttypc Sync="TRUE">1385</enttypc>
+      </enttyp>
+      <attr>
+        <attrlabl Sync="TRUE">OBJECTID</attrlabl>
+        <attalias Sync="TRUE">OBJECTID</attalias>
+        <attrtype Sync="TRUE">OID</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef Sync="TRUE">Internal feature number.</attrdef>
+        <attrdefs Sync="TRUE">ESRI</attrdefs>
+        <attrdomv>
+          <udom Sync="TRUE">Sequential unique whole numbers that are automatically generated.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Shape</attrlabl>
+        <attrdef>Feature geometry.</attrdef>
+        <attrdefs>ESRI</attrdefs>
+        <attrdomv>
+          <udom>Coordinates defining the features.</udom>
+        </attrdomv>
+        <attalias Sync="TRUE">Shape</attalias>
+        <attrtype Sync="TRUE">Geometry</attrtype>
+        <attwidth Sync="TRUE">0</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">Effort</attrlabl>
+        <attalias Sync="TRUE">Effort</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>Effort is the kilometers of combined trackline in sea states of Beaufort 3 or lower, with visibility at least two nautical miles, at least one observer on watch, and altitude less than 1200 feet.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">Sightings</attrlabl>
+        <attalias Sync="TRUE">Sightings</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>Total number of right whale sightings.  Note:  Animals recorded as stranded or floating dead are excluded, as are those with identification coded as "unsure".</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">Whales</attrlabl>
+        <attalias Sync="TRUE">Whales</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>Total number of whales sighted.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">RIWH_SPUE</attrlabl>
+        <attalias Sync="TRUE">RIWH_SPUE</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>SPUE is sightings per unit effort, in units of whales per 1000 km of valid survey track. That is the effort-adjusted relative abundance index.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>Shape_Length</attrlabl>
+        <attrdef>Length of feature in internal units.</attrdef>
+        <attrdefs>ESRI</attrdefs>
+        <attrdomv>
+          <udom>Positive real numbers that are automatically generated.</udom>
+        </attrdomv>
+        <attalias Sync="TRUE">Shape_Length</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>Shape_Area</attrlabl>
+        <attrdef>Area of feature in internal units squared.</attrdef>
+        <attrdefs>ESRI</attrdefs>
+        <attrdomv>
+          <udom>Positive real numbers that are automatically generated.</udom>
+        </attrdomv>
+        <attalias Sync="TRUE">Shape_Area</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+    </detailed>
+  </eainfo>
+  <distinfo>
+    <distrib>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>South Carolina Department of Natural Resources</cntorg>
+        </cntorgp>
+        <cntpos>Spatial Data Manager</cntpos>
+        <cntaddr>
+          <addrtype>physical address</addrtype>
+          <address>1000 Assembly St.</address>
+          <city>Columbia</city>
+          <state>SC</state>
+          <postal>29201</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntaddr>
+          <addrtype>mailing address</addrtype>
+          <address>Rembert C. Dennis Building P.O. Box 167</address>
+          <city>Columbia</city>
+          <state>SC</state>
+          <postal>29202</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>803-734-9100</cntvoice>
+        <cntfax>803-734-7001</cntfax>
+        <cntemail>gisman@dnr.sc.gov</cntemail>
+      </cntinfo>
+    </distrib>
+    <resdesc>Downloadable Data</resdesc>
+    <stdorder>
+      <digform>
+        <digtinfo>
+          <transize>0.000</transize>
+        </digtinfo>
+      </digform>
+    </stdorder>
+  </distinfo>
+  <metainfo>
+    <metc>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>SCDNR, Marine Resources Division, MRRI</cntorg>
+          <cntper>Jessica Boynton</cntper>
+        </cntorgp>
+        <cntpos>GIS Manager I</cntpos>
+        <cntaddr>
+          <addrtype>physical address</addrtype>
+          <address>217 Fort Johnson Rd.</address>
+          <city>Charleston</city>
+          <state>SC</state>
+          <postal>29412</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntaddr>
+          <addrtype>mailing address</addrtype>
+          <address>P.O. Box 12559</address>
+          <city>Charleston</city>
+          <state>SC</state>
+          <postal>29422</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>843-953-9163</cntvoice>
+        <cntfax>843-953-9820</cntfax>
+        <cntemail>boyntonj@dnr.sc.gov</cntemail>
+      </cntinfo>
+    </metc>
+    <metextns>
+      <onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+      <metprof>ESRI Metadata Profile</metprof>
+    </metextns>
+    <metextns>
+      <onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+      <metprof>ESRI Metadata Profile</metprof>
+    </metextns>
+  </metainfo>
+  <Esri>
+    <MetaID>{B52510BB-6D39-4711-B5E8-E9F471F4A63C}</MetaID>
+    <CreaDate>20121102</CreaDate>
+    <CreaTime>15210300</CreaTime>
+    <SyncOnce>FALSE</SyncOnce>
+    <SyncDate>20121218</SyncDate>
+    <SyncTime>11430600</SyncTime>
+    <ModDate>20121218</ModDate>
+    <ModTime>11430600</ModTime>
+  </Esri>
+</metadata>

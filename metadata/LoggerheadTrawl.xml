@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+  <idinfo>
+    <citation>
+      <citeinfo>
+        <origin>Michael Arendt, SCDNR Marine Resources Division</origin>
+        <pubdate>October 2012</pubdate>
+        <title>Occurrence of loggerhead turtles during random trawling of southeast coastal waters.</title>
+      </citeinfo>
+    </citation>
+    <descript>
+      <abstract>Marine Spatial Data: The data are summarized based on all turtles collected by trawl within a 1x1 minute grid of latitude and longitude during the summers of 2008-2012.
+
+General In-Water Turtle:  The Marine Resources Division of the SC Department of Natural Resources manages a regional trawl survey to assess the relative abundance, distribution, health and demographics of sea turtles.  This research endeavor has been funded by the National Marine Fisheries Service via four awards since FY99: NA97FL0374, NA07FL0499, NA03NMF4720281 and NA08NMF4720502.  This research is carried out through numerous regional partnerships, notably the University of Georgia Marine Extension Service which conducts trawling aboard their R/V Georgia Bulldog south of the SC/GA border; off SC, trawling is conducted by SCDNR's R/V Lady Lisa.  Data have been collected in five phases since inception: a regional trawl survey between St. Augustine, FL and Winyah Bay, SC (2000-2003; 2008-2009; 2011-2012); a design evaluation study (2010); fishery-dependent data collection (2000-2003); and sampling in shipping channels and subsequent telemetry studies (2004-2007).  The data provided herein are thus a sub-set of all data collected by this study to date and pertain only to data collected since 2008 in the regional (and regional design) surveys off SC from 32°N to Winyah Bay.  
+
+Overall results from the regional trawl survey indicate that most of the sea turtles collected are loggerheads (Caretta caretta), with Kemp's ridley (Lepidocheyls kempi) and Green (Chelonia mydas) sea turtles being the second and third most captured species, respectively.  Eighty-five percent of loggerheads measured less than or equal to 75.1 cm minimum straight-line carapace length (SCLmin) suggesting that they are immature juveniles.  The loggerheads collected have occurred with a 2:1 female to male sex ratio (determined by testosterone radioimmunoassay) of which 90% possess one of two regionally dominant genetic haplotypes. A suite of parameters analyzed for blood and other tissues suggest that loggerheads collected in our study are generally healthy, despite approximately one-quarter to one-third exhibiting signs of physical injury.  Catch rates in the last decade were stable to increasing and were several times greater than catch rates during the 1970's and 1980's; however, sea turtle catch is infrequent in large part due to a random sampling design for a species with a clustered distribution.</abstract>
+      <purpose>Marine Spatial Data:  This data set was created for the purpose of describing the distribution and relative abundance of loggerhead sea turtles in southeastern coastal waters (Winyah Bay, SC to St. Augustine, Fl)  through funding provided by NOAA through the Governor's Southeast Atlantic Alliance so that this threatened species can be considered with respect to coastal use activities.
+General In-Water Overview:  All sea turtle species are globally listed as threatened or endangered species.  The loggerhead sea turtle was listed as a "threatened" species in 1978 and since 2008 a great debate has ensued regarding whether or not to re-list this species as "endangered" in the NW Atlantic Basin (where the second largest rookery in the world occurs).   The in-water surveys collect a wide range of turtle sizes/ages, but primarily juveniles as noted above. </purpose>
+    </descript>
+    <timeperd>
+      <timeinfo>
+        <mdattim>
+          <sngdate>
+            <caldate>May 27 - July 8 2008</caldate>
+          </sngdate>
+          <sngdate>
+            <caldate>May 26 - July 2 2009</caldate>
+          </sngdate>
+          <sngdate>
+            <caldate>May 24 - July 1 2010</caldate>
+          </sngdate>
+          <sngdate>
+            <caldate>May 24 - July 29 2011</caldate>
+          </sngdate>
+          <sngdate>
+            <caldate>May 22 - August 8 2012</caldate>
+          </sngdate>
+        </mdattim>
+      </timeinfo>
+      <current>Collection dates</current>
+    </timeperd>
+    <status>
+      <progress>Complete</progress>
+      <update>None planned</update>
+    </status>
+    <keywords>
+      <theme>
+        <themekey>Loggerhead Turtle</themekey>
+        <themekey>Trawl</themekey>
+      </theme>
+      <place>
+        <placekey>Southeast </placekey>
+        <placekey>North Carolina</placekey>
+        <placekey>South Carolina</placekey>
+        <placekey>Georgia</placekey>
+        <placekey>Florida</placekey>
+      </place>
+    </keywords>
+    <useconst>Neither the State of South Carolina, the Department of Natural Resources, nor any of its employees, is responsible for any improper or incorrect use of the information described and/or contained herein, and  assume no responsibility for the use of the information.  The South Carolina Department of Natural Resources should be acknowledged as the data source in products derived from these data.
+
+In-Water Turtle:  Data collected by the various phases of this research have been published in a series of annual and final reports to the National Marine Fisheries Service accessible from the "Sea Turtle Publications, Reports to NOAA" page on the NMFS Southeast Fisheries Science Center website: http://www.sefsc.noaa.gov/seaturtlecontractreports.jsp  Annual and final reports are listed under the following first authors: Arendt (2007-, Annual reports; 2004-2008, Final) Segars (2006 Annual) and Maier (2005 Annual, 2000-2003 Final).  Per the language specified by the NMFS SEFSC, the data are ".proprietary unpublished data. If you would like to use these data, you must contact the appropriate investigator(s) for permission."  Numerous aspects of the data have also been published (26 manuscripts since 2000) in the peer-reviewed literature by multiple program collaborators, including six manuscripts pertaining to catch rates, spatial distributions, and demographic parameters published in 2012.</useconst>
+    <ptcontac>
+      <cntinfo>
+        <cntperp>
+          <cntper>Michael Arendt</cntper>
+          <cntorg>SCDNR Marine Resources Division</cntorg>
+        </cntperp>
+        <cntpos>Principal Investigator</cntpos>
+        <cntaddr>
+          <addrtype>physical address</addrtype>
+          <address>217 Fort Johnson Road</address>
+          <city>Charleston</city>
+          <state>South Carolina</state>
+          <postal>29412</postal>
+        </cntaddr>
+        <cntvoice>843-953-9097</cntvoice>
+        <cntemail>arendtm@dnr.sc.gov</cntemail>
+      </cntinfo>
+    </ptcontac>
+  </idinfo>
+  <dataqual>
+    <lineage>
+      <procstep>
+        <procdesc>Dataset moved.</procdesc>
+        <srcused>\\Mrdnas\GIS\Boynton\GISProjects\2011\Other\Research\SCWindProject\Metadata\MetadataTemplate</srcused>
+        <procdate>20110615</procdate>
+        <proctime>10272100</proctime>
+      </procstep>
+      <procstep>
+        <proccont>
+          <cntinfo>
+            <cntperp>
+              <cntper>Mike Arendt</cntper>
+              <cntorg>SCDNR Marine Resources Division</cntorg>
+            </cntperp>
+            <cntpos>Principal Investigator</cntpos>
+            <cntaddr>
+              <addrtype>physical address</addrtype>
+              <address>217 Fort Johnson</address>
+              <city>Charleston</city>
+              <state>SC</state>
+              <postal>29412</postal>
+            </cntaddr>
+            <cntvoice>843-953-9097</cntvoice>
+            <cntemail>arendtm@dnr.sc.gov</cntemail>
+          </cntinfo>
+        </proccont>
+        <procdesc>Trawling was conducted using NMFS Turtle nets: paired 18.3 m (head rope), 4-seam, 4-legged, 2-bridle nets.  Net body consisted of 10.2 cm bar and 20.3 cm stretch mesh, with top's and sides made of #36 twisted nylon and bottom consisting of #84 braided nylon twine.  Trawl bottom time was 20 min in 2008-2010 at a target vessel towing speed of 2.8 kts, but the original (2000-2003) 30 min tow time was restored (Permit #15566) beginning in 2011. 
+
+At the beginning of each annual sampling season, stations were randomly selected from a sampling universe representing the center of 3.4 km2 grids of trawl-able bottom in water depths 4.5 to 17.5 m deep.  Six research cruises were completed each year with weekly alternation north and south of two vessel homeports (Charleston, SC and Brunswick, GA).  Aboard each vessel, daily station sampling order was selected to enable net latitudinal progress while alternating between stations located closer and further from shore in order to diversify longitudinal sampling with respect to time of day and tide stage.  
+
+In 2008-2009 and again in 2011-2012, trawling was conducted throughout the survey area between Winyah Bay, SC and St. Augustine, FL.  (Note: 69 trawling events targeting "hot spots" during 12-15 August 2008 were excluded due to the non-random nature of that sampling).  In 2010, trawling was conducted at selected SEAMAP strata pairs within this regional survey area in order to conduct repeat sampling at randomly selected stations to evaluate a modified sampling design.
+
+Two thousand four hundred sixty trawl events were retained after excluding for years prior to 2008 and the August 2008 "hot spot" sampling.  The start latitude and longitude of each trawl was used to assign it to a 1' x 1' SEAMAP grid cell (block), which resulted in the assignment of these data to 1,196 SEAMAP grid cells.   Data from all sampling locations within a grid cell were then averaged (e.g. Mean CPUE and CV)  and the resulting data values were reassigned to the mid-point of the grid cell with respect to latitude and longitude as described in the attributes section.  
+
+Eight hundred fourteen sea turtles were collected during 609 (25%) sampling events, of which 700 were loggerheads (86%), 110 were Kemp's ridleys (14%) and four were Green sea turtles.  
+
+No loggerheads were collected in 779 (65%) SEAMAP blocks.  Only one loggerhead was collected in 257 (22%) of SEAMAP blocks and only two loggerheads were collected in 105 (9%) SEAMAP blocks.  Three or more (maximum = 14) loggerheads were only collected in 55 (4%) SEAMAP blocks.
+
+No Kemp's ridley sea turtles were collected in 1,119 (93%) SEAMAP blocks.  Only one Kemp's ridley was collected in 62 (5%) SEAMAP blocks, with two or more (maximum = 5) Kemp's ridleys collected in just 19 SEAMAP blocks.</procdesc>
+      </procstep>
+      <procstep>
+        <proccont>
+          <cntinfo>
+            <cntperp>
+              <cntper>Jessica Boynton</cntper>
+              <cntorg>SCDNR, MRRI</cntorg>
+            </cntperp>
+            <cntpos>GIS Manager I</cntpos>
+            <cntaddr>
+              <addrtype>physical address</addrtype>
+              <address>217 Fort Johnson Rd.</address>
+              <city>Charleston</city>
+              <state>SC</state>
+              <postal>29412</postal>
+              <country>USA</country>
+            </cntaddr>
+            <cntvoice>843-953-9163</cntvoice>
+            <cntfax>843-953-9820</cntfax>
+            <cntemail>boyntonj@dnr.sc.gov</cntemail>
+          </cntinfo>
+        </proccont>
+        <procdesc>GIS processing: 1.) One point layer of the in-water turtle summary data was created where each point was the mid-point of a 1 x 1 minute grid cell where there was in-water turtle sampling between 2008 and 2012.  A 1 x 1 min. grid of the whole offshore study area was created. 3.) A spatial selection was performed to select those 1 x 1 min. grid cells that contained In-Water turtle summary data assigned to the grid cell mid-points. A new layer was created with just the selected grid cells. 4.) The mid-points from the in-water turtle data layer were spatially joined to the 1 x 1 min. grid layer to create a final gridded layer with one value/grid (e.g. MeanCPUE). For the join, the point layer was joined to the grid polygon layer.  For the summarizing of attributes, we chose 'Maximum'.  5.) Deleted unnecessary attribute columns.  6.) Exported the joined layer to the final geodatabase.</procdesc>
+      </procstep>
+    </lineage>
+    <attracc>
+      <attraccr>Ninety-six percent (2,364 out of 2,460) of sampling events were not confined to a single grid cell (block) given the towing speed and trawl duration associated with sampling.  Furthermore, at an estimated fishing width of 12 m per net and a target towing speed of 2.8 kts, a typical sampling event (two nets) covered 0.041 km2 in 2008-2010 and 0.062 km2 in 2011-2012.  Accordingly, trawling events during these timeframes were estimated to sample 1.4% and 2.0%, respectively, of the surface area contained within each 1' x 1' (2.97 km2) SEAMAP block.  Only two SEAMAP blocks were associated with the starting location for 8 replicate trawling events (i.e., maximum block area coverage ~16%), and 87% (1,043 out of 1,196) of SEAMAP blocks contained three or fewer replicate trawl start collections.</attraccr>
+    </attracc>
+  </dataqual>
+  <eainfo>
+    <detailed Name="InWaterLogger">
+      <enttyp>
+        <enttypl Sync="TRUE">InWaterLogger</enttypl>
+        <enttypt Sync="TRUE">Feature Class</enttypt>
+        <enttypc Sync="TRUE">1194</enttypc>
+      </enttyp>
+      <attr>
+        <attrlabl Sync="TRUE">OBJECTID_1</attrlabl>
+        <attalias Sync="TRUE">OBJECTID_1</attalias>
+        <attrtype Sync="TRUE">OID</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef Sync="TRUE">Internal feature number.</attrdef>
+        <attrdefs Sync="TRUE">ESRI</attrdefs>
+        <attrdomv>
+          <udom Sync="TRUE">Sequential unique whole numbers that are automatically generated.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Shape</attrlabl>
+        <attrdef>Feature geometry.</attrdef>
+        <attrdefs>ESRI</attrdefs>
+        <attrdomv>
+          <udom>Coordinates defining the features.</udom>
+        </attrdomv>
+        <attalias Sync="TRUE">Shape</attalias>
+        <attrtype Sync="TRUE">Geometry</attrtype>
+        <attwidth Sync="TRUE">0</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">N_Coll</attrlabl>
+        <attalias Sync="TRUE">N_Coll</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>Total number of trawl event start locations in the SEAMAP block during 2008-2012.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">Freq_Occ</attrlabl>
+        <attalias Sync="TRUE">Freq_Occ</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>The frequency of occurrence (0.0 to 1.0) of positive sea turtle catch events in the SEAMAP block; this value was used to group SEAMAP grids by sea turtle catch quartiles.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">MeanCPUE</attrlabl>
+        <attalias Sync="TRUE">MeanCPUE</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>The mean catch per unit effort (CPUE) per SEAMAP block, calculated as the mean loggerhead count per trawl collection.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">CV_CPUE</attrlabl>
+        <attalias Sync="TRUE">CV_CPUE</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>The Co-efficient of Variation (CV) for mean SEAMAP block CPUE, calculated as the standard deviation of loggerhead counts per trawl event divided by mean CPUE in column C.  For SEAMAP blocks where CPUE = 0.0, standard deviation could not be calculated; however, CV was subsequently set to 0.0. </attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">Mid_Lat</attrlabl>
+        <attalias Sync="TRUE">Mid_Lat</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>Mid latitude point for the SEAMAP block; calculated as 0.5 added to the latitude minutes integer then divided by 60 to express latitude in decimal degrees.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">Mid_Long</attrlabl>
+        <attalias Sync="TRUE">Mid_Long</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>Mid longitude point for the SEAMAP block; calculated as 0.5 added to the longitude minutes integer then divided by 60 to express longitude in decimal degrees.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">BLOCK</attrlabl>
+        <attalias Sync="TRUE">BLOCK</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>SEAMAP block ID, assigned using trawl start latitude and longitude as described.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">Shape_Length</attrlabl>
+        <attalias Sync="TRUE">Shape_Length</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef Sync="TRUE">Length of feature in internal units.</attrdef>
+        <attrdefs Sync="TRUE">ESRI</attrdefs>
+        <attrdomv>
+          <udom Sync="TRUE">Positive real numbers that are automatically generated.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">Shape_Area</attrlabl>
+        <attalias Sync="TRUE">Shape_Area</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef Sync="TRUE">Area of feature in internal units squared.</attrdef>
+        <attrdefs Sync="TRUE">ESRI</attrdefs>
+        <attrdomv>
+          <udom Sync="TRUE">Positive real numbers that are automatically generated.</udom>
+        </attrdomv>
+      </attr>
+    </detailed>
+  </eainfo>
+  <distinfo>
+    <distrib>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>South Carolina Department of Natural Resources</cntorg>
+        </cntorgp>
+        <cntpos>Spatial Data Manager</cntpos>
+        <cntaddr>
+          <addrtype>physical address</addrtype>
+          <address>1000 Assembly St.</address>
+          <city>Columbia</city>
+          <state>SC</state>
+          <postal>29201</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntaddr>
+          <addrtype>mailing address</addrtype>
+          <address>Rembert C. Dennis Building P.O. Box 167</address>
+          <city>Columbia</city>
+          <state>SC</state>
+          <postal>29202</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>803-734-9100</cntvoice>
+        <cntfax>803-734-7001</cntfax>
+        <cntemail>gisman@dnr.sc.gov</cntemail>
+      </cntinfo>
+    </distrib>
+    <resdesc>Downloadable Data</resdesc>
+    <stdorder>
+      <digform>
+        <digtinfo>
+          <transize>0.000</transize>
+        </digtinfo>
+      </digform>
+    </stdorder>
+  </distinfo>
+  <metainfo>
+    <metc>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>SCDNR, Marine Resources Division, MRRI</cntorg>
+          <cntper>Jessica Boynton</cntper>
+        </cntorgp>
+        <cntpos>GIS Manager I</cntpos>
+        <cntaddr>
+          <addrtype>physical address</addrtype>
+          <address>217 Fort Johnson Rd.</address>
+          <city>Charleston</city>
+          <state>SC</state>
+          <postal>29412</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntaddr>
+          <addrtype>mailing address</addrtype>
+          <address>P.O. Box 12559</address>
+          <city>Charleston</city>
+          <state>SC</state>
+          <postal>29422</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>843-953-9163 (Boynton)</cntvoice>
+        <cntfax>843-953-9820</cntfax>
+        <cntemail>boyntonj@dnr.sc.gov</cntemail>
+      </cntinfo>
+    </metc>
+    <metextns>
+      <onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+      <metprof>ESRI Metadata Profile</metprof>
+    </metextns>
+  </metainfo>
+  <Esri>
+    <MetaID>{66D0D7E0-9A69-48CB-9996-C32F9CAE5EF0}</MetaID>
+    <CreaDate>20121101</CreaDate>
+    <CreaTime>17091300</CreaTime>
+    <SyncOnce>FALSE</SyncOnce>
+    <SyncDate>20130128</SyncDate>
+    <SyncTime>10190600</SyncTime>
+    <ModDate>20130128</ModDate>
+    <ModTime>10190600</ModTime>
+  </Esri>
+</metadata>

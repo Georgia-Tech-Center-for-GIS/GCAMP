@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+	<idinfo>
+		<citation>
+			<citeinfo>
+				<origin>U.S. Fish and Wildlife Service</origin>
+				<pubdate>January 2009</pubdate>
+				<title>Coastal Marshlands of Georgia 2009</title>
+				<geoform Sync="TRUE">vector digital data</geoform>
+				<serinfo>
+					<sername>Classification of Wetlands and Deepwater Habitats of the United States.  U.S. Department of the Interior, Fish and Wildlife Service, Washington, DC.  FWS/OBS-79/31.</sername>
+				</serinfo>
+				<pubinfo>
+					<pubplace>Washington, D.C.</pubplace>
+					<publish>U.S. Fish and Wildlife Service, Division of Habitat and Resouce Conservation</publish>
+				</pubinfo>
+				<onlink>http://wetlandsfws.er.usgs.gov</onlink>
+				<ftname Sync="TRUE">CoastalMarshland</ftname></citeinfo>
+		</citation>
+		<descript>
+			<abstract>Coastal Marshlands of Georgia as extracted from NWI maps that were reclassified to represent the Generalized Wetlands of Georgia according to the Coastal Marshlands Protection Act.
+
+This data set represents the extent, approximate location and type of wetlands and deepwater habitats in Georgia.  These data delineate the areal extent of wetlands and surface waters as defined by Cowardin et al. (1979).  
+
+Certain wetland habitats are excluded from the National mapping program because of the limitations of aerial imagery as the primary data source used to detect wetlands.  These habitats include seagrasses or submerged aquatic vegetation that are found in the intertidal and subtidal zones of estuaries and near shore coastal waters.  Some deepwater reef communities (coral or tuberficid worm reefs) have also been excluded from the inventory.  These habitats, because of their depth, go undetected by aerial imagery.     
+
+By policy, the Service also excludes certain types of "farmed wetlands" as may be defined by the Food Security Act or that do not coincide with the Cowardin et al. definition.  Contact the Service's Regional Wetland Coordinator for additional information on what types of farmed wetlands are included on wetland maps.
+
+DCA obtained the 'seamless' NWI maps for Georgia using the 'Wetlands Data Extraction Tool' at http://www.fws.gov/wetlands/Data/DataDownload.html. There were 39 units of 100,000-scale  quadrangles and 20 units of 24,000-scale  quadrangles extracted, downloaded, merged, and clipped to the 24,000-scale quarter quadrangle boundary covering the state (same as NAIP coverage area). Quadrangle boundary seams resulting from the download and merge processes were not removed. Upland areas, that were coded 'U', and some uncoded areas that were identified as uplands in 2007 NAIP photography, were eliminated. The statewide map was projected into the Georgia Lambert Conformal Conic projection and the 'ACRES' field metrics recalculated for the statewide map and for the derived regional maps. An index of Georgia 'Generalized Wetlands' codes and descriptions based on DCA's cross-index of the Coawardin classification to the Georgia Department of Natural Resources 'Environmental Planning Criteria', Rules Chapter 391-3-16, were added. The Coastal Marshlands DNR category were selected from this statewide map to produce this Coastal Marshlands map.</abstract>
+			<purpose>Serve as 'Generalized Wetlands' as described by the Georgia Department of Natural Resources 'Environmental Planning Criteria', Rules Chapter 391-3-16, for coordinated comprehensive planning.</purpose>
+			<supplinf>Subject: Extract of 'Coastal Marshlands' DNR type from the Generalized Wetlands Maps for Georgia and Constructing the cross-index of NWI Cowardin codes to reclass them as Georgia DNR Wetlands categories for DCA Generalized Wetlands mapping
+
+The Cowardin Marine and Estuarine Systems do not strictly correlate with the State Wetlands definitions. These Systems were assigned to 'Coastal Marshlands'.  These areas could not be checked to confirm that all such are within the prescribed 5.6-feet above-and-below the mean tide level as prescribed for in DNR Rules 12-5-282(7).
+
+The wetland maps were produced as topical overlays using U.S. Geological Survey topographic maps as the base.  The hard copy product is a composite map showing topographic and planimetric features from the USGS map base and wetlands and deepwater habitats from the Service's topical overlay.  Thus, the data are intended for use in publications, at a scale of 1:24,000 or smaller. Due to the scale, the primary intended use is for regional and watershed data display and analysis, rather than specific project data analysis.  The map products were neither designed or intended to represent legal or regulatory products.
+
+Comments regarding the interpretation or classification of wetlands or deepwater habitats can be directed to the U.S. Fish and Wildlife Service, Division of Federal Program Activities, Branch of Habitat Assessment http://www.fws.gov/duspit/contactus.htm
+
+Comments regarding the interpretation or classification of wetlands or deepwater habitats by the Georgia Department of Community Affairs with respect to the Environmental Planning Criteria Rules of the Georgia Department of Natural Resources should be directed to GIS@dca.ga.gov.
+
+These data were developed in conjunction with the publication Cowardin, L.M., V. Carter, F.C. Golet, and E.T. LaRoe.  1979.  Classification of Wetlands and Deepwater Habitats of the United States.  U.S. Department of the Interior, Fish and Wildlife Service, Washington, DC.  FWS/OBS-79/31.  Alpha-numeric map codes have been developed to correspond to the wetland and deepwater classifications described.
+
+These spatial data are not designed to stand alone.  They form topical overlays to the U.S. Geological Survey 1:24,000 or 1:25,000 scale topographic quadrangles.  Note that coastline delineations were drawn to follow the extent of wetland or deepwater features as described by this project and may not match the coastline shown in other base maps.
+
+Any use of trade, product, or firm names is for descriptive purposes only and does not imply endorsement by the U.S. Government.
+
+Although this Federal Geographic Data Committee-compliant metadata file is intended to document the data set in nonproprietary form, as well as in Arc/INFO format, this metadata file may include some Arc/INFO-specific terminology.
+
+To: Georgia 'Generalized Wetlands Map' users
+
+Subject: Constructing the cross-index of NWI Cowardin codes to reclass them as Georgia DNR Wetlands categories for DCA Generalized Wetlands mapping
+
+The cross-index was originally created by DCA in 2002 for the NWI project to complete the statewide map then underway by the Georgia GIS Data Clearinghouse, GIS Coordinating Committee, DCA and other contributors. To create the Georgia-NWI cross-index, Cowardin's Classification Guide was consulted, particularly the schematic cross-sections of each System, Figures 2- 6, which were grouped into corresponding State categories. Map occurrences and associations of these were then examined in detail to confirm that their overall description agreed with the State-defined categories.
+
+There are 1243 unique Cowardin wetlands codes in the Georgia NWI maps (this 2009 edition).  For pruposes of reclassification DCA parsed the NWI Codes down to the subclass level which was sufficient to produce the cross index, in fact, it was found that the reclass could be accomplished principally at the Subsystem level.
+
+The Cowardin Marine and Estuarine Systems do not strictly correlate with the State Wetlands definitions. These Systems were assigned to 'Coastal Marshlands'.  These areas could not be checked to confirm that all such are within the prescribed 5.6-feet above-and-below the mean tide level as prescribed for in DNR Rules 12-5-282(7).
+
+The subcategories of the State's 'Forested Wetlands' category were not used. All the subcategories were within the Palustrine System and there was no way to segregate 'floodplain' from 'non-alluvial' forest. Further, there was no subclass in the NWI scheme that equated to the State subcategory of 'Mixed floodplain forest'.
+
+Interpretation of complex Cowardin codes were completed using the online NWI code description tool at http://www.fws.gov/wetlands/Data/wetlandcodes.html 
+
+Many occurrences have two classes listed in their description such as PFO/EM1F, a Palustrine wetland with both 'Forested' and 'Emergent' vegetation. There is no description or discussion of either constructing or interpreting such a composite code in the Cowardin manual. In constructing the cross-index DCA made the assumption that the first vegetation class listed is the predominant one of the two, and assigned it to what we thought to be the matching State category accordingly, in this case to the 'Forested Wetlands' category. On the other hand, if the order of the two vegetation classes had been reversed, i.e., if it had been PEM/FO1F, we would have instead assigned it to the 'Non-forested Emergent Wetlands' category.
+
+Terry Jackson
+Director, Office of Decision Support Systems
+Planning and Environmental Management Division
+Georgia Department of Community Affairs
+60 Executive Park South, NE
+Atlanta, Georgia 30329-2231
+
+voice: 404-679-4946
+fax: 404-679-0572
+email: Terry.Jackson@dca.ga.gov</supplinf>
+			<langdata Sync="TRUE">en</langdata></descript>
+		<timeperd>
+			<timeinfo>
+				<rngdates>
+					<begdate>1977</begdate>
+					<enddate>present</enddate>
+				</rngdates>
+			</timeinfo>
+			<current>REQUIRED: The basis on which the time period of content information is determined.</current>
+		</timeperd>
+		<status>
+			<progress>Ongoing</progress>
+			<update>In Continuous Increments</update>
+		</status>
+		<spdom>
+			<bounding>
+				<westbc Sync="TRUE">-81.751839</westbc>
+				<eastbc Sync="TRUE">-80.806753</eastbc>
+				<northbc Sync="TRUE">32.146134</northbc>
+				<southbc Sync="TRUE">30.674260</southbc>
+			</bounding>
+			<lboundng><leftbc Sync="TRUE">549709.076912</leftbc><rightbc Sync="TRUE">833489.498195</rightbc><bottombc Sync="TRUE">11791113.206068</bottombc><topbc Sync="TRUE">12320713.890959</topbc></lboundng></spdom>
+		<keywords>
+			<theme>
+				<themekt>REQUIRED: Reference to a formally registered thesaurus or a similar authoritative source of theme keywords.</themekt>
+				<themekey>Wetlands</themekey>
+				<themekey>Deepwater habitats</themekey>
+				<themekey>Hydrography</themekey>
+				<themekey>Surface water</themekey>
+				<themekey>Swamps, marshes, bogs, fens</themekey>
+				<themekey>Planning Act</themekey><themekey>comprehensive plan</themekey><themekey>Environmental Planning Criteria</themekey><themekey>Generalized Wetlands</themekey><themekey>Coastal Marshlands</themekey></theme>
+			<place>
+				<placekey>United States</placekey>
+				<placekey>Georgia</placekey></place>
+		</keywords>
+		<accconst>None</accconst>
+		<useconst>None. Acknowledgement of the U.S. Fish and Wildlife Service and (or) the National Wetlands Inventory would be appreciated in products derived from these data</useconst>
+		<ptcontac>
+			<cntinfo>
+				<cntpos>Divison of Habitat and Resouce Conservation</cntpos>
+				<cntaddr>
+					<address>555 Lester Ave.</address>
+					<city>Onalaska</city>
+					<state>WI</state>
+					<postal>54650</postal>
+					<country>USA</country>
+					<addrtype>mailing address</addrtype></cntaddr>
+				<cntvoice>608-783-8425</cntvoice>
+				<cntfax>608-783-8450</cntfax>
+				<cntemail>tom_dahl@fws.gov</cntemail>
+				<cntorgp><cntorg>U.S. Fish and Wildlife Service</cntorg><cntper>Tom Dahl</cntper></cntorgp></cntinfo>
+		</ptcontac>
+		<browse>
+			<browsed>Topical overlay showing the extent and type of wetland and deepwater habitats.</browsed>
+		</browse>
+		<native Sync="TRUE">Microsoft Windows 2000 Version 5.2 (Build 3790) Service Pack 2; ESRI ArcCatalog 9.3.1.1850</native>
+		<crossref>
+			<citeinfo>
+				<origin>U.S. Fish and Wildlife Serivce, National Wetlands Inventory</origin>
+				<pubdate>Various</pubdate>
+				<title>Wetlands and Deepwater Habitats of the Conterminous United States</title>
+				<edition>Version 1.0</edition>
+				<pubinfo>
+					<pubplace>Washington, D.C.  USA</pubplace>
+					<publish>U.S. Fish and Wildlife Service</publish>
+				</pubinfo>
+			</citeinfo>
+		</crossref>
+		<natvform Sync="TRUE">File Geodatabase Feature Class</natvform></idinfo>
+	<dataqual>
+		<attracc>
+			<attraccr>The source data was checked using standard review procedures. Attributes were checked by using visual inspection as well as automated verification routines.  Quality of the attribute information varies with age and mapping protocols used when individual maps were prepared</attraccr>
+			<qattracc>
+				<attraccv>All polygons are attributed.</attraccv>
+			</qattracc>
+		</attracc>
+		<logic>Polygon and chain-node topology are present. Every polygon has a label.</logic>
+		<complete>This data set represents the extent of wetlands and deepwater habitats that can be determined with the use of remotely sensed data and within the timeframe for which the maps were produced. Wetlands are shown in Georgia.  The accuracy of image interpretation depends on the quality of the imagery, the experience of the image analysts, the amount and quality of the collateral data, and the amount of ground truth verification work conducted.  
+
+There is a margin error inherent in the use of imagery, thus detailed on-the-ground inspection of any particular site, may result in revision of the wetland boundaries or classification, established through image analysis.
+
+Wetlands or other mapped features may have changed since the date or the imagery and/or field work.  There may be occasional differences in polygon boundaries or classifications between the information depicted on the map and the actual conditions on site.</complete>
+		<lineage>
+			<srcinfo>
+				<srccite>
+					<citeinfo>
+						<origin>U.S. Fish and Wildlife Service</origin>
+						<pubdate>1977 to present</pubdate>
+						<title>Wetlands and Deepwater Habitats of the Conterminous United States</title>
+						<serinfo>
+							<sername>National Wetlands Inventory Maps</sername>
+						</serinfo>
+						<pubinfo>
+							<pubplace>Washington, D.C.</pubplace>
+							<publish>U.S. Fish and Wildlife Service</publish>
+						</pubinfo>
+					</citeinfo>
+				</srccite>
+				<srcscale>1:24,000 and 1:25,000</srcscale>
+				<typesrc>Digital file and hard copy paper</typesrc>
+				<srctime>
+					<timeinfo>
+						<rngdates>
+							<begdate>1977</begdate>
+							<enddate>present</enddate>
+						</rngdates>
+					</timeinfo>
+					<srccurr>Various dates</srccurr>
+				</srctime>
+				<srccontr>Spatial information</srccontr>
+			</srcinfo>
+			<procstep>
+				<procdesc>Original stable base hard copy maps of wetland and deepwater habitats were created based on USGS state and quadrangle boundaries.  These maps were converted to digital files using various software packages (WAMS, ARC and others).  The digital files were stored as ESRI Import/Export files corresponding to a single 1:24,000 USGS quadrangle.  These digital files were imported and converted to ESRI Coverage format and checked for topological and attribute errors.  All coverages were converted from a UTM map projection to an Alber's Equal Area map projection and the horizontal datum was converted from NAD27 to NAD83 were necessary.  Polygons attributed as "Uplands" were removed from the dataset and polygons were merged at quadrangle boundaries where the quadrangle line divided polygons with the same attribute.  The data was loaded into a seamless SDE geodatabase for the conterminous United States.  These steps were conducted using both Arc Macro Language (AML) and ArcMap editing tools.  All point data from the original ESRI Coverages were buffered by 11.28 meters (1/10 of an acre) and incorporated into this polygon feature class.  Linear features from the original ESRI Coverages were merged at quadrangle boundaries where the quadrangle line divided lines with the same attribute.  Linear data is stored in a separate feature class.
+
+Further data improvements included the conversion of all old wetland codes that contained 'OW' to the new code containing 'UB'.  All polygons labeled as 'OUT', 'No Data' and 'NP' were removed from the database.
+
+</procdesc>
+				<srcused>NWI</srcused>
+			</procstep>
+			<procstep>
+				<procdesc>The file was converted to NAD83 in geographic coordinates, and saved in geodatabase format.</procdesc>
+				<procdate>200401</procdate>
+			</procstep>
+			<procstep>
+				<procdesc>Metadata imported.</procdesc>
+			</procstep>
+			<procstep>
+				<procdesc>Dataset copied.</procdesc>
+			</procstep>
+			<procstep><procdesc Sync="TRUE">Metadata imported.</procdesc><date Sync="TRUE">20060301</date><time Sync="TRUE">10304000</time></procstep><procstep><procdesc Sync="TRUE">Dataset copied.</procdesc><srcused Sync="TRUE">Server=igsarchwdbgis01; Service=5151; User=NWIDBA; Version=SDE.DEFAULT</srcused><date Sync="TRUE">20070413</date><time Sync="TRUE">19083400</time></procstep><procstep><procdesc Sync="TRUE">Metadata imported.</procdesc><srcused Sync="TRUE">F:\NWI\wetland_polys.xml</srcused><procdate Sync="TRUE">20090414</procdate><proctime Sync="TRUE">18412200</proctime></procstep><procstep><procdesc>DCA obtained the NWI maps for Georgia using the 'Wetlands Data Extraction Tool' at http://www.fws.gov/wetlands/Data/DataDownload.html. Areas were selected by 100,000-scale and 24,000-scale quadrangle (where necessary), downloaded, merged, and clipped to the 24,000-scale quarter quadrangle boundary covering the state. Upland areas, that were coded 'U' and some uncoded areas that were identified as uplands in 2007 NAIP photography were eliminated. An index of Georgia 'Generalized Wetlands' codes and descriptions based on the Georgia Department of Natural Resources 'Environmental Planning Criteria', Rules Chapter 391-3-16, were added.</procdesc></procstep><procstep><procdesc Sync="TRUE">Dataset copied.</procdesc><procdate Sync="TRUE">20090414</procdate><proctime Sync="TRUE">19373900</proctime></procstep><procstep><procdesc>The statewide map was projected into the Georgia Lambert Conformal Conic projection and the 'ACRES' field metrics recalculated. </procdesc></procstep><procstep><procdesc Sync="TRUE">Dataset copied.</procdesc><srcused Sync="TRUE"></srcused><procdate Sync="TRUE">20090417</procdate><proctime Sync="TRUE">10441800</proctime></procstep></lineage>
+	</dataqual>
+	<spdoinfo>
+		<direct Sync="TRUE">Vector</direct>
+		<ptvctinf><esriterm Name="CoastalMarshland"><efeatyp Sync="TRUE">Simple</efeatyp><efeageom Sync="TRUE">4</efeageom><esritopo Sync="TRUE">FALSE</esritopo><efeacnt Sync="TRUE">0</efeacnt><spindex Sync="TRUE">TRUE</spindex><linrefer Sync="TRUE">FALSE</linrefer></esriterm></ptvctinf></spdoinfo>
+	<spref>
+		<horizsys>
+			<geodetic>
+				<horizdn Sync="TRUE">North American Datum of 1983</horizdn>
+				<ellips Sync="TRUE">Geodetic Reference System 80</ellips>
+				<semiaxis Sync="TRUE">6378137.000000</semiaxis>
+				<denflat Sync="TRUE">298.257222</denflat>
+			</geodetic>
+			<cordsysn><geogcsn Sync="TRUE">GCS_North_American_1983</geogcsn><projcsn Sync="TRUE">NAD_1983_Georgia_Statewide_Lambert</projcsn></cordsysn></horizsys>
+		<vertdef>
+			<altsys>
+				<altres Sync="TRUE">1.000000</altres>
+				<altenc Sync="TRUE">Explicit elevation coordinate included with horizontal coordinates</altenc>
+			</altsys>
+		</vertdef>
+	</spref>
+	<eainfo>
+		<detailed Name="CoastalMarshland">
+			<enttyp>
+				<enttypl Sync="TRUE">CoastalMarshland</enttypl>
+				<enttypd>Reference:  Cowardin et al. 1979</enttypd>
+				<enttypds>U.S. Fish and Wildlife Service</enttypds>
+				<enttypt Sync="TRUE">Feature Class</enttypt><enttypc Sync="TRUE">0</enttypc></enttyp>
+			<attr><attrlabl Sync="TRUE">OBJECTID</attrlabl><attalias Sync="TRUE">OBJECTID</attalias><attrtype Sync="TRUE">OID</attrtype><attwidth Sync="TRUE">4</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef Sync="TRUE">Internal feature number.</attrdef><attrdefs Sync="TRUE">ESRI</attrdefs><attrdomv><udom Sync="TRUE">Sequential unique whole numbers that are automatically generated.</udom></attrdomv></attr><attr>
+				<attrlabl>SHAPE</attrlabl>
+				<attrdef>Feature geometry.</attrdef>
+				<attrdefs>ESRI</attrdefs>
+				<attrdomv>
+					<udom>Coordinates defining the features.</udom>
+				</attrdomv>
+				<attalias Sync="TRUE">Shape</attalias><attrtype Sync="TRUE">Geometry</attrtype><attwidth Sync="TRUE">0</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr>
+			<attr>
+				<attrlabl>ACRES</attrlabl>
+				<attalias Sync="TRUE">ACRES</attalias><attrtype Sync="TRUE">Double</attrtype><attwidth Sync="TRUE">8</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr>
+			<attr><attrlabl Sync="TRUE">GLOBALID</attrlabl><attalias Sync="TRUE">GLOBALID</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">38</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">AREA</attrlabl><attalias Sync="TRUE">AREA</attalias><attrtype Sync="TRUE">Double</attrtype><attwidth Sync="TRUE">8</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">LEN</attrlabl><attalias Sync="TRUE">LEN</attalias><attrtype Sync="TRUE">Double</attrtype><attwidth Sync="TRUE">8</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">NWI_CODE</attrlabl><attalias Sync="TRUE">NWI_CODE</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">20</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">NWI_SYSTEM</attrlabl><attalias Sync="TRUE">NWI_SYSTEM</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">50</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">PLAN_CODE</attrlabl><attalias Sync="TRUE">PLAN_CODE</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">2</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">DNR_TYPE</attrlabl><attalias Sync="TRUE">DNR_TYPE</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">50</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr><attr><attrlabl Sync="TRUE">Shape_Length</attrlabl><attalias Sync="TRUE">Shape_Length</attalias><attrtype Sync="TRUE">Double</attrtype><attwidth Sync="TRUE">8</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef Sync="TRUE">Length of feature in internal units.</attrdef><attrdefs Sync="TRUE">ESRI</attrdefs><attrdomv><udom Sync="TRUE">Positive real numbers that are automatically generated.</udom></attrdomv></attr><attr><attrlabl Sync="TRUE">Shape_Area</attrlabl><attalias Sync="TRUE">Shape_Area</attalias><attrtype Sync="TRUE">Double</attrtype><attwidth Sync="TRUE">8</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef Sync="TRUE">Area of feature in internal units squared.</attrdef><attrdefs Sync="TRUE">ESRI</attrdefs><attrdomv><udom Sync="TRUE">Positive real numbers that are automatically generated.</udom></attrdomv></attr></detailed>
+		<detailed><enttyp><enttypl>Georgia Generalized Wetlands</enttypl><enttypd>Protected Wetlands</enttypd><enttypds>'Generalized Wetlands' as described by the Georgia Department of Natural Resources 'Environmental Planning Criteria', Rules Chapter 391-3-16</enttypds></enttyp><attr><atnumdec/></attr><attr><atnumdec/></attr><attr><atnumdec/></attr><attr/><attr><atnumdec/></attr><attr><atnumdec Sync="TRUE">9</atnumdec></attr></detailed></eainfo>
+	<distinfo>
+		<distrib>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>U.S. Fish and Wildlife Service</cntorg>
+					<cntper>Tom Dahl</cntper>
+				</cntorgp>
+				<cntaddr>
+					<addrtype>mailing address</addrtype>
+					<address>555 Lester Ave.</address>
+					<city>Onalaska</city>
+					<state>WI</state>
+					<postal>54650</postal>
+					<country>USA</country></cntaddr>
+				<cntvoice>608-783-8425</cntvoice>
+				<cntinst>
+Hard copy maps can be purchased through Cooperator-Run Distribution Centers. Each Center establishes its own pricing structure, product types and order procedures. View Cooperator-Run Distribution Centers.
+The wetlands data can also be viewed by accessing The National Map.
+</cntinst>
+				<cntpos>Division of Habitat and Resource Conservation</cntpos><cntfax>608-783-8450</cntfax><cntemail>tom_dahl@fws.gov</cntemail></cntinfo>
+		</distrib>
+		<resdesc>Downloadable Data</resdesc>
+		<distliab>Although these data have been processed successfully on a computer system at the U.S. Fish and Wildlife Service, no warranty expressed or implied is made by the U.S. Fish and Wildlife Service regarding the utility of the data on any other system, nor shall the act of distribution constitute any such warranty. No responsibility is assumed by the U.S. Fish and Wildlife Service in the use of these data.</distliab>
+		<stdorder>
+			<digform>
+				<digtinfo>
+					<formname>ESRI Shapefile or Personal Geodatabase</formname>
+					<transize Sync="TRUE">23.586</transize><dssize Sync="TRUE">23.586</dssize></digtinfo>
+				<digtopt>
+					<offoptn>
+						<offmedia>CD-ROM or DVD</offmedia>
+						<recfmt>tar</recfmt>
+					</offoptn>
+					<onlinopt><computer><networka><networkr>http://wetlandsfws.er.usgs.gov/NWI/download.html</networkr></networka></computer></onlinopt></digtopt>
+			</digform>
+			<fees>There is no charge for the online option.  Requests for large amounts of data are handled on a cost reimbursable basis.</fees>
+			<ordering>To order files on CD-ROM, please see</ordering>
+		</stdorder>
+	</distinfo>
+	<metainfo>
+		<metd Sync="TRUE">20090417</metd>
+		<metc>
+			<cntinfo>
+				<cntpos>Director, Office of Decision Support Systems</cntpos>
+				<cntaddr>
+					<addrtype>mailing and physical address</addrtype>
+					<address>60 Executive Park S</address>
+					<city>Atlanta</city>
+					<state>GA</state>
+					<postal>30329</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>404-679-4946</cntvoice>
+				<cntfax>404-679-0572</cntfax>
+				<cntemail>Terry.Jackson@dca.ga.gov</cntemail>
+				<cntperp><cntper>Terry Jackson</cntper><cntorg>Georgia Department of Community Affairs</cntorg></cntperp></cntinfo>
+		</metc>
+		<metstdn Sync="TRUE">FGDC Content Standards for Digital Geospatial Metadata</metstdn>
+		<metstdv Sync="TRUE">FGDC-STD-001-1998</metstdv>
+		<mettc Sync="TRUE">local time</mettc>
+		<metsi>
+			<metscs>None</metscs>
+			<metsc>Unclassified</metsc>
+			<metshd>None</metshd>
+		</metsi>
+		<metextns>
+			<onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+			<metprof>ESRI Metadata Profile</metprof>
+		</metextns>
+		<langmeta Sync="TRUE">en</langmeta></metainfo>
+	<Esri><CreaDate>20130124</CreaDate><CreaTime>13534700</CreaTime><SyncOnce>FALSE</SyncOnce><SyncDate>20120530</SyncDate><SyncTime>10125600</SyncTime><ModDate>20120530</ModDate><ModTime>10125600</ModTime><DataProperties><lineage><Process ToolSource="C:\Program Files\ArcGIS\ArcToolbox\Toolboxes\Data Management Tools.tbx\Project" Date="20090414" Time="193751">Project F:\NWI\GA_NWI.shp F:\NWI\GA_NWI_Lambert.shp PROJCS['NAD_1983_Georgia_Statewide_Lambert',GEOGCS['GCS_North_American_1983',DATUM['D_North_American_1983',SPHEROID['GRS_1980',6378137.0,298.257222101]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Lambert_Conformal_Conic'],PARAMETER['False_Easting',0.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',-83.5],PARAMETER['Standard_Parallel_1',31.41666666666667],PARAMETER['Standard_Parallel_2',34.28333333333333],PARAMETER['Latitude_Of_Origin',0.0],UNIT['Foot_US',0.3048006096012192]] # GEOGCS['GCS_North_American_1983',DATUM['D_North_American_1983',SPHEROID['GRS_1980',6378137.0,298.257222101]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]]</Process><Process ToolSource="C:\Program Files\ArcGIS\ArcToolbox\Toolboxes\Conversion Tools.tbx\FeatureClassToFeatureClass" Date="20090417" Time="110730">FeatureClassToFeatureClass F:\NWI\CoastalMarshland.shp F:\NWI\Coastal_Resources.gdb CoastalMarshland # "ACRES 'ACRES' true true false 19 Double 8 18 ,First,#,F:\NWI\CoastalMarshland.shp,ACRES,-1,-1;GLOBALID 'GLOBALID' true true false 38 Text 0 0 ,First,#,F:\NWI\CoastalMarshland.shp,GLOBALID,-1,-1;AREA 'AREA' true true false 19 Double 9 18 ,First,#,F:\NWI\CoastalMarshland.shp,AREA,-1,-1;LEN 'LEN' true true false 19 Double 9 18 ,First,#,F:\NWI\CoastalMarshland.shp,LEN,-1,-1;NWI_CODE 'NWI_CODE' true true false 20 Text 0 0 ,First,#,F:\NWI\CoastalMarshland.shp,NWI_CODE,-1,-1;NWI_SYSTEM 'NWI_SYSTEM' true true false 50 Text 0 0 ,First,#,F:\NWI\CoastalMarshland.shp,NWI_SYSTEM,-1,-1;PLAN_CODE 'PLAN_CODE' true true false 2 Text 0 0 ,First,#,F:\NWI\CoastalMarshland.shp,PLAN_CODE,-1,-1;DNR_TYPE 'DNR_TYPE' true true false 50 Text 0 0 ,First,#,F:\NWI\CoastalMarshland.shp,DNR_TYPE,-1,-1" # F:\NWI\Coastal_Resources.gdb\CoastalMarshland</Process><Process ToolSource="C:\Program Files\ArcGIS\Desktop10.0\ArcToolbox\Toolboxes\Data Management Tools.tbx\CopyFeatures" Date="20120530" Time="101302">CopyFeatures Y:\Tony\GACMSP\GISDATA\Coastal_Resources.gdb\CoastalMarshland Y:\Tony\GACMSP\GISDATA\FileGDB\Coastal_NAD1983.gdb\Coastal_Resources\CoastalMarshland # 0 0 0</Process><Process ToolSource="c:\program files (x86)\arcgis\desktop10.0\ArcToolbox\Toolboxes\Data Management Tools.tbx\Project" Date="20130122" Time="151020">Project Environmental\CoastalMarshland-DCA C:\GISDATA\GACMSP\GCAMP\WGS84\DCA\CoastalMarshland-DCA.shp PROJCS['World_Mercator',GEOGCS['GCS_WGS_1984',DATUM['D_WGS_1984',SPHEROID['WGS_1984',6378137.0,298.257223563]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Mercator'],PARAMETER['False_Easting',0.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',0.0],PARAMETER['Standard_Parallel_1',0.0],UNIT['Meter',1.0]] NAD_1983_To_WGS_1984_1 PROJCS['NAD_1983_UTM_Zone_17N',GEOGCS['GCS_North_American_1983',DATUM['D_North_American_1983',SPHEROID['GRS_1980',6378137.0,298.257222101]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Transverse_Mercator'],PARAMETER['False_Easting',500000.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',-81.0],PARAMETER['Scale_Factor',0.9996],PARAMETER['Latitude_Of_Origin',0.0],UNIT['Meter',1.0]]</Process><Process ToolSource="c:\program files (x86)\arcgis\desktop10.0\ArcToolbox\Toolboxes\Data Management Tools.tbx\Project" Date="20130124" Time="135348">Project Environmental\CoastalMarshland-DCA C:\GISDATA\GACMSP\GCAMP\WM84\DCA\CoastalMarshland-DCA.shp PROJCS['WGS_1984_Web_Mercator_Auxiliary_Sphere',GEOGCS['GCS_WGS_1984',DATUM['D_WGS_1984',SPHEROID['WGS_1984',6378137.0,298.257223563]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Mercator_Auxiliary_Sphere'],PARAMETER['False_Easting',0.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',0.0],PARAMETER['Standard_Parallel_1',0.0],PARAMETER['Auxiliary_Sphere_Type',0.0],UNIT['Meter',1.0]] # PROJCS['World_Mercator',GEOGCS['GCS_WGS_1984',DATUM['D_WGS_1984',SPHEROID['WGS_1984',6378137.0,298.257223563]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Mercator'],PARAMETER['False_Easting',0.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',0.0],PARAMETER['Standard_Parallel_1',0.0],UNIT['Meter',1.0]]</Process></lineage><itemProps><itemName Sync="TRUE">CoastalMarshland</itemName><imsContentType Sync="TRUE">002</imsContentType><itemLocation><linkage Sync="TRUE">file://\\tornado\research3\Tony\GACMSP\GISDATA\FileGDB\Coastal_NAD1983.gdb</linkage><protocol Sync="TRUE">Local Area Network</protocol></itemLocation></itemProps><coordRef><type Sync="TRUE">Geographic</type><geogcsn Sync="TRUE">GCS_North_American_1983</geogcsn><peXml Sync="TRUE">&lt;GeographicCoordinateSystem xsi:type='typens:GeographicCoordinateSystem' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xs='http://www.w3.org/2001/XMLSchema' xmlns:typens='http://www.esri.com/schemas/ArcGIS/10.0'&gt;&lt;WKT&gt;GEOGCS[&amp;quot;GCS_North_American_1983&amp;quot;,DATUM[&amp;quot;D_North_American_1983&amp;quot;,SPHEROID[&amp;quot;GRS_1980&amp;quot;,6378137.0,298.257222101]],PRIMEM[&amp;quot;Greenwich&amp;quot;,0.0],UNIT[&amp;quot;Degree&amp;quot;,0.0174532925199433],AUTHORITY[&amp;quot;EPSG&amp;quot;,4269]]&lt;/WKT&gt;&lt;XOrigin&gt;-399.99999999999989&lt;/XOrigin&gt;&lt;YOrigin&gt;-399.99999999999989&lt;/YOrigin&gt;&lt;XYScale&gt;1000000000.0000001&lt;/XYScale&gt;&lt;ZOrigin&gt;-100000&lt;/ZOrigin&gt;&lt;ZScale&gt;10000&lt;/ZScale&gt;&lt;MOrigin&gt;-100000&lt;/MOrigin&gt;&lt;MScale&gt;10000&lt;/MScale&gt;&lt;XYTolerance&gt;8.9831528411952117e-009&lt;/XYTolerance&gt;&lt;ZTolerance&gt;0.001&lt;/ZTolerance&gt;&lt;MTolerance&gt;0.001&lt;/MTolerance&gt;&lt;HighPrecision&gt;true&lt;/HighPrecision&gt;&lt;LeftLongitude&gt;-180&lt;/LeftLongitude&gt;&lt;WKID&gt;4269&lt;/WKID&gt;&lt;/GeographicCoordinateSystem&gt;</peXml></coordRef></DataProperties><ArcGISFormat>1.0</ArcGISFormat></Esri><dataIdInfo><envirDesc Sync="TRUE">Microsoft Windows XP Version 5.1 (Build 2600) Service Pack 3; ESRI ArcGIS 10.0.0.2414</envirDesc><dataLang><languageCode Sync="TRUE" value="en" country="US"></languageCode></dataLang><idCitation><resTitle Sync="TRUE">CoastalMarshland</resTitle><presForm><PresFormCd Sync="TRUE" value="005"></PresFormCd></presForm></idCitation><spatRpType><SpatRepTypCd Sync="TRUE" value="001"></SpatRepTypCd></spatRpType><dataExt><geoEle><GeoBndBox esriExtentType="native"><westBL Sync="TRUE">549709.076912</westBL><eastBL Sync="TRUE">833489.498195</eastBL><northBL Sync="TRUE">12320713.890959</northBL><southBL Sync="TRUE">11791113.206068</southBL><exTypeCode Sync="TRUE">1</exTypeCode></GeoBndBox></geoEle></dataExt><geoBox esriExtentType="decdegrees"><westBL Sync="TRUE">-81.751839</westBL><eastBL Sync="TRUE">-80.806753</eastBL><northBL Sync="TRUE">32.146134</northBL><southBL Sync="TRUE">30.67426</southBL><exTypeCode Sync="TRUE">1</exTypeCode></geoBox><descKeys><thesaName uuidref="723f6998-058e-11dc-8314-0800200c9a66"></thesaName><keyword Sync="TRUE">002</keyword></descKeys></dataIdInfo><mdLang><languageCode Sync="TRUE" value="en"></languageCode></mdLang><mdStanName Sync="TRUE">ISO 19115 Geographic Information - Metadata</mdStanName><mdStanVer Sync="TRUE">DIS_ESRI1.0</mdStanVer><mdChar><CharSetCd Sync="TRUE" value="004"></CharSetCd></mdChar><mdHrLv><ScopeCd Sync="TRUE" value="005"></ScopeCd></mdHrLv><mdHrLvName Sync="TRUE">dataset</mdHrLvName><distInfo><distributor><distorTran><onLineSrc><orDesc Sync="TRUE">002</orDesc><linkage Sync="TRUE">file://\\CUMBERLAND\F$\NWI\Coastal_Resources.gdb</linkage><protocol Sync="TRUE">Local Area Network</protocol></onLineSrc><transSize Sync="TRUE">23.586</transSize></distorTran><distorFormat><formatName Sync="TRUE">File Geodatabase Feature Class</formatName></distorFormat></distributor><distFormat><formatName Sync="TRUE">File Geodatabase Feature Class</formatName></distFormat></distInfo><refSysInfo><RefSystem><refSysID><identCode Sync="TRUE" code="4269">NAD_1983_Georgia_Statewide_Lambert</identCode><idCodeSpace Sync="TRUE">EPSG</idCodeSpace><idVersion Sync="TRUE">7.4.1</idVersion></refSysID></RefSystem></refSysInfo><spatRepInfo><VectSpatRep><topLvl><TopoLevCd Sync="TRUE" value="001"></TopoLevCd></topLvl><geometObjs Name="CoastalMarshland"><geoObjTyp><GeoObjTypCd Sync="TRUE" value="002"></GeoObjTypCd><geoObjCnt Sync="TRUE">0</geoObjCnt></geoObjTyp><geoObjCnt Sync="TRUE">6750</geoObjCnt></geometObjs></VectSpatRep></spatRepInfo><mdDateSt Sync="TRUE">20120530</mdDateSt></metadata>

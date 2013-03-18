@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:xdt="http://www.w3.org/2005/xpath-datatypes">
+  <idinfo>
+    <citation>
+      <citeinfo>
+        <origin>Florida Fish and Wildlife Conservation Commission-Fish and Wildlife Research Institute</origin>
+        <pubdate>Unpublished Material</pubdate>
+        <title>Wading Bird Colonies Florida </title>
+        <edition>2005</edition>
+        <geoform>vector digital data</geoform>
+        <onlink>http://research.myfwc.com/</onlink>
+      </citeinfo>
+    </citation>
+    <descript>
+      <abstract>This shapefile includes estimates of percent composition of wading bird colonies located in 1999 by the Florida Fish and Wildlife Conservation Commission.
+The Florida Fish and Wildlife Conservation Commission conducted a statewide aerial survey during 26 January-25 June 1999 to locate waterbird (herons, egrets, ibises, spoonbills, storks, anhingas, cormorants, and pelicans) breeding colonies and estimate colony size and species composition. Fixed-wing aircraft were used to fly statewide East-West survey transects at 5-km intervals. Survey routes deviated at times to allow inventory of previously known colonies from earlier surveys. Of the 1,065 sites visited in 1999, 371 (34.8%) were active colonies supporting one or more species of waterbirds, while 694 (65.2%) were inactive sites. The largest number of active colonies (n=158, 42.6%) were located in central Florida between 27º-29ºN latitude; only 72 (19.4%) of the colonies were located in northern Florida above 29ºN; the remaining colonies (n=141, 38.0%) were found in the southern part of the state below 27ºN. Of the 371 active colonies located in 1999, 72.5% (n=269) contained 2 or more nesting species, while only 12.1% (n=45) exhibited 5 or more nesting species. The colonies in the central region tended to contain more species per colony than both the northern and southern regions of the state. Fewer colonies were found in 1999 (n=371) compared to previous statewide surveys during 1976-1978 (n=378) and 1986-1989 (n=635). Except for the brown pelican and cattle egret, most species continued a trend of nesting in smaller numbers and in fewer colonies during 1999 compared to previous surveys. Of the active colonies located in 1999, 51.2% (n=190) were previously undocumented colonies, 43.9% (n=163) were active during 1986-1989, and 21.0% (n=78) were active during 1976-1978. Only 60 (16.2%) 1999 colonies were active during the 1976-1978, 1986-1989, and 1999 surveys.
+
+This database contains records for all known and verified colonies in the state of Florida that were surveyed by the FWC during the period 1999 nesting season. Nests discovered more recently than this are not included in the database. Each year, a number of new colony sites are found. For this reason, users of this database are cautioned that the absence of a colony record for a given property does not necessarily mean wading birds are not present. This colony locator service is not meant to replace a specific on-the-ground survey.  Disturbance to the colony may occur if a visit is made, and many of the colonies are located on private land. Providing these locations does not confer any permission by FWC to access private property.</abstract>
+      <purpose>These data are available for all people interested in wading bird colonies in the state of Florida</purpose>
+      <supplinf>"Wading Bird Colony Species Presence by Era Florida" and "Wading Bird Colonies Florida 1999" are related data sets. "Wading Bird Colonies Florida 1999" includes estimates of percent composition of colony by species from the 1999 survey. "Wading Bird Colony Species Presence by Era Florida" indicates presence/absence of species as well as indicating if the presence/absence was not determined, if the colony was inactive, or if information was not collected for a species.</supplinf>
+    </descript>
+    <timeperd>
+      <timeinfo>
+        <sngdate>
+          <caldate>2005</caldate>
+        </sngdate>
+      </timeinfo>
+      <current>ground condition</current>
+    </timeperd>
+    <status>
+      <progress>Complete for 2005</progress>
+      <update>As needed</update>
+    </status>
+    <spdom>
+      <bounding>
+        <westbc>-87.336594</westbc>
+        <eastbc>-79.890725</eastbc>
+        <northbc>31.001255</northbc>
+        <southbc>24.488039</southbc>
+      </bounding>
+    </spdom>
+    <keywords>
+      <theme>
+        <themekey>Florida, FWC</themekey>
+      </theme>
+    </keywords>
+    <accconst>Available without restriction. All data must be verified by Principal Investigator or Group Database Analyst prior to release.  It is strongly recommended that this data is directly acquired from FWC and not indirectly through other sources which may have changed the data in some way. FWC makes no claims as to the data's suitability for other purposes.</accconst>
+    <useconst>
+Numeric results should be used with caution as aerial estimates are variable and some species are difficult to detect (i.e., small, dark species nesting under the tree canopy). Some colonies were also visited by ground surveys.  If the ground survey numbers indicated a better count, the results from the ground survey were used.
+
+Acknowledgement of the FWC-FWRI (Florida Fish and Wildlife Conservation Commission-Fish and Wildlife Research Institute) as the data source would be appreciated in any products developed from these data, and such acknowledgment as is standard for citation and legal practices for data source is expected by users of this data.  Please cite the original metadata when using portions of the record to create a similar record of slightly altered data, such as reprojection. If any data are modified or adjusted, please share the edited information with FWC. Users should be aware that comparison with other data sets for the same area from other time periods may be inaccurate due to inconsistencies resulting from changes in mapping conventions, data collection, and computer processes over time. FWC shall not be liable for improper or incorrect use of this data. These data are not legal documents and are not to be used as such.  This is not a survey data set and should not be utilized as such. These data are not to be used for navigation.
+</useconst>
+    <ptcontac>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>Florida Fish and Wildlife Conservation Commission</cntorg>
+        </cntorgp>
+        <cntpos>GIS Specialist</cntpos>
+        <cntaddr>
+          <addrtype>mailing address</addrtype>
+          <address>Wildlife Technology Services Section</address>
+          <address>Florida Fish and Wildlife Conservation Commission</address>
+          <address>620 South Meridian St</address>
+          <city>Tallahassee</city>
+          <state>FL</state>
+          <postal>32399-1600</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>(850) 488-0588</cntvoice>
+        <cntfax>(850) 410-5269</cntfax>
+        <cntemail>gisrequests@myfwc.com</cntemail>
+        <hours>Monday - Friday 8 am -5 pm</hours>
+      </cntinfo>
+    </ptcontac>
+    <datacred>
+Created by:
+Florida Fish and Wildlife Conservation Commission
+620 South Meridian St.
+Tallahassee, FL 32344
+</datacred>
+    <native>Microsoft Windows Vista Version 6.1 (Build 7600) ; ESRI ArcCatalog 9.3.1.3000</native>
+  </idinfo>
+  <dataqual>
+    <attracc>
+      <attraccr>
+Numeric results should be used with caution as aerial estimates are variable and some species are difficult to detect (i.e., small, dark species nesting under the tree canopy).
+
+The great blue heron counts for Monroe county in 80s include great white heron.
+</attraccr>
+    </attracc>
+    <logic>Logically consistent. All attribute values fall within defined values</logic>
+    <complete>Visually inspected for completeness to ensure all values fell within specified ranges.</complete>
+    <lineage>
+      <srcinfo>
+        <srctime>
+          <timeinfo>
+            <sngdate>
+              <caldate>2002</caldate>
+            </sngdate>
+          </timeinfo>
+          <srccurr>ground condition</srccurr>
+        </srctime>
+      </srcinfo>
+      <procstep>
+        <procdesc>The data was clipped to a five mile buffer from the coast inland for the purposes of inclusion in the NOAA funded Govenor's Southeast Atlantic Alliance coastal mapping project.  This project was published in the spring of 2013.</procdesc>
+      </procstep>
+    </lineage>
+  </dataqual>
+  <spdoinfo>
+    <direct>Vector</direct>
+  </spdoinfo>
+  <spref>
+    <horizsys>
+      <planar>
+        <planci>
+          <plance>coordinate pair</plance>
+          <coordrep>
+            <absres>0.000128</absres>
+            <ordres>0.000128</ordres>
+          </coordrep>
+          <plandu>meters</plandu>
+        </planci>
+      </planar>
+      <geodetic>
+        <horizdn>North American Datum of 1983</horizdn>
+        <ellips>Geodetic Reference System 80</ellips>
+        <semiaxis>6378137.000000</semiaxis>
+        <denflat>298.257222</denflat>
+      </geodetic>
+    </horizsys>
+    <vertdef>
+      <altsys>
+        <altres>1.000000</altres>
+        <altenc>Explicit elevation coordinate included with horizontal coordinates</altenc>
+      </altsys>
+    </vertdef>
+  </spref>
+  <eainfo>
+    <detailed Name="CoastalWadingBird_FL">
+      <enttyp>
+        <enttypl>GIS.FWC.wading_bird_rookeries_1999</enttypl>
+        <enttypt Sync="TRUE">Feature Class</enttypt>
+        <enttypc Sync="TRUE">126</enttypc>
+      </enttyp>
+      <attr>
+        <attrlabl Sync="TRUE">OBJECTID</attrlabl>
+        <attalias Sync="TRUE">OBJECTID</attalias>
+        <attrtype Sync="TRUE">OID</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef Sync="TRUE">Internal feature number.</attrdef>
+        <attrdefs Sync="TRUE">Esri</attrdefs>
+        <attrdomv>
+          <udom Sync="TRUE">Sequential unique whole numbers that are automatically generated.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Shape</attrlabl>
+        <attrdef>Feature geometry.</attrdef>
+        <attrdefs>ESRI</attrdefs>
+        <attrdomv>
+          <udom>Coordinates defining the features.</udom>
+        </attrdomv>
+        <attalias Sync="TRUE">Shape</attalias>
+        <attrtype Sync="TRUE">Geometry</attrtype>
+        <attwidth Sync="TRUE">0</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>ATLASNUM</attrlabl>
+        <attrdef>Breeding colony atlas identification number</attrdef>
+        <attalias Sync="TRUE">ATLASNUM</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>DATE_</attrlabl>
+        <attrdef>Date the colony was visited (DBF date-field version)</attrdef>
+        <attalias Sync="TRUE">DATE_</attalias>
+        <attrtype Sync="TRUE">Date</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>DATECH</attrlabl>
+        <attrdef>Date the colony was visited (character string version)</attrdef>
+        <attalias Sync="TRUE">DATECH</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">10</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>OBSERVER</attrlabl>
+        <attrdef>Observer's initials</attrdef>
+        <attalias Sync="TRUE">OBSERVER</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">2</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>OBSMODE</attrlabl>
+        <attrdef>Observation mode (aerial or ground visit)</attrdef>
+        <attalias Sync="TRUE">OBSMODE</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">11</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>COUNTY</attrlabl>
+        <attrdef>County name</attrdef>
+        <attalias Sync="TRUE">COUNTY</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">12</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>CONUM</attrlabl>
+        <attrdef>County number (alphabetic sequence number as a 2-digit character string)</attrdef>
+        <attalias Sync="TRUE">CONUM</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>LONGDM</attrlabl>
+        <attrdef>Longitude in degrees, minutes.hundredth minutes</attrdef>
+        <attalias Sync="TRUE">LONGDM</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>LATDM</attrlabl>
+        <attrdef>Latitude in degrees, minutes.hundredth minutes</attrdef>
+        <attalias Sync="TRUE">LATDM</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>TOWNSHIP</attrlabl>
+        <attrdef>Township</attrdef>
+        <attalias Sync="TRUE">TOWNSHIP</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">3</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>RANGE</attrlabl>
+        <attrdef>Range</attrdef>
+        <attalias Sync="TRUE">RANGE</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">3</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>SECTION</attrlabl>
+        <attrdef>Section</attrdef>
+        <attalias Sync="TRUE">SECTION</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">6</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>GAZPAGE</attrlabl>
+        <attrdef>Page number of Florida Gazetteer map that contains the colony location</attrdef>
+        <attalias Sync="TRUE">GAZPAGE</attalias>
+        <attrtype Sync="TRUE">Integer</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>ERA</attrlabl>
+        <attrdef>Survey era when colony was first observed as active (70's, 80's, or 90's)</attrdef>
+        <attalias Sync="TRUE">ERA</attalias>
+        <attrtype Sync="TRUE">Integer</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>NEW90</attrlabl>
+        <attrdef>New active colony in the 90's era? (yes/no)</attrdef>
+        <attalias Sync="TRUE">NEW90</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">3</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>STATUS90</attrlabl>
+        <attrdef>Colony status in the 90's survey. A 0 value in the percent composition fields can be interpreted based on the STATUS90 field: if status is 'active' then 0 means active, just not present for that species; if status90 is 'inactive' then 0 is 'inactive'; if status90 is 'Not checked' then 0 would be 'unknown'.</attrdef>
+        <attalias Sync="TRUE">STATUS90</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">18</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>STATUS80</attrlabl>
+        <attrdef>Colony status in the 80's survey</attrdef>
+        <attalias Sync="TRUE">STATUS80</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">18</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>STATUS70</attrlabl>
+        <attrdef>Colony status in the 70's survey</attrdef>
+        <attalias Sync="TRUE">STATUS70</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">18</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>SUBSTRAT</attrlabl>
+        <attrdef>Colony substrate (tree/shrub/herbaceous)</attrdef>
+        <attalias Sync="TRUE">SUBSTRAT</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">12</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>CANOPY</attrlabl>
+        <attrdef>Was the colony in closed or open canopy?</attrdef>
+        <attalias Sync="TRUE">CANOPY</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">12</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>LOCATION</attrlabl>
+        <attrdef>Was the colony coastal or inland?</attrdef>
+        <attalias Sync="TRUE">LOCATION</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">7</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>SIZE_</attrlabl>
+        <attrdef>Was the colony on an island? (yes/no)</attrdef>
+        <attalias Sync="TRUE">SIZE_</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">12</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>ISLAND</attrlabl>
+        <attrdef>Estimated number of breeding colony nesting pairs</attrdef>
+        <attalias Sync="TRUE">ISLAND</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">3</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>SIZECONF</attrlabl>
+        <attrdef>Confidence level of colony size estimate</attrdef>
+        <attalias Sync="TRUE">SIZECONF</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">6</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>SPECCONF</attrlabl>
+        <attrdef>Confidence level of colony species composition</attrdef>
+        <attalias Sync="TRUE">SPECCONF</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">6</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>BRPE</attrlabl>
+        <attrdef>Percent composition of colony by brown pelicans</attrdef>
+        <attalias Sync="TRUE">BRPE</attalias>
+        <attrtype Sync="TRUE">Integer</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>DCCO</attrlabl>
+        <attrdef>Percent composition of colony by double-crested cormorants</attrdef>
+        <attalias Sync="TRUE">DCCO</attalias>
+        <attrtype Sync="TRUE">Integer</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>ANHI</attrlabl>
+        <attrdef>Percent composition of colony by anhingas</attrdef>
+        <attalias Sync="TRUE">ANHI</attalias>
+        <attrtype Sync="TRUE">Integer</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>GBHE</attrlabl>
+        <attrdef>Percent composition of colony by great blue herons</attrdef>
+        <attalias Sync="TRUE">GBHE</attalias>
+        <attrtype Sync="TRUE">Integer</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>GWHE</attrlabl>
+        <attrdef>Percent composition of colony by great white herons</attrdef>
+        <attalias Sync="TRUE">GWHE</attalias>
+        <attrtype Sync="TRUE">Integer</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>GREG</attrlabl>
+        <attrdef>Percent composition of colony by great egrets</attrdef>
+        <attalias Sync="TRUE">GREG</attalias>
+        <attrtype Sync="TRUE">Integer</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>SNEG</attrlabl>
+        <attrdef>Percent composition of colony by snowy egrets</attrdef>
+        <attalias Sync="TRUE">SNEG</attalias>
+        <attrtype Sync="TRUE">Integer</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>LBHE</attrlabl>
+        <attrdef>Percent composition of colony by little blue herons</attrdef>
+        <attalias Sync="TRUE">LBHE</attalias>
+        <attrtype Sync="TRUE">Integer</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>TCHE</attrlabl>
+        <attrdef>Percent composition of colony by tricolored herons</attrdef>
+        <attalias Sync="TRUE">TCHE</attalias>
+        <attrtype Sync="TRUE">Integer</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>REEG</attrlabl>
+        <attrdef>Percent composition of colony by reddish egrets</attrdef>
+        <attalias Sync="TRUE">REEG</attalias>
+        <attrtype Sync="TRUE">Integer</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>CAEG</attrlabl>
+        <attrdef>Percent composition of colony by cattle egrets</attrdef>
+        <attalias Sync="TRUE">CAEG</attalias>
+        <attrtype Sync="TRUE">Integer</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>GRHE</attrlabl>
+        <attrdef>Percent composition of colony by green herons</attrdef>
+        <attalias Sync="TRUE">GRHE</attalias>
+        <attrtype Sync="TRUE">Integer</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>BCNH</attrlabl>
+        <attrdef>Percent composition of colony by black-crowned night herons</attrdef>
+        <attalias Sync="TRUE">BCNH</attalias>
+        <attrtype Sync="TRUE">Integer</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>YCNH</attrlabl>
+        <attrdef>Percent composition of colony by white-crowned night herons</attrdef>
+        <attalias Sync="TRUE">YCNH</attalias>
+        <attrtype Sync="TRUE">Integer</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>WHIB</attrlabl>
+        <attrdef>Percent composition of colony by white ibis</attrdef>
+        <attalias Sync="TRUE">WHIB</attalias>
+        <attrtype Sync="TRUE">Integer</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>GLIB</attrlabl>
+        <attrdef>Percent composition of colony by glossy ibis</attrdef>
+        <attalias Sync="TRUE">GLIB</attalias>
+        <attrtype Sync="TRUE">Integer</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>ROSP</attrlabl>
+        <attrdef>Percent composition of colony by roseate spoonbills</attrdef>
+        <attalias Sync="TRUE">ROSP</attalias>
+        <attrtype Sync="TRUE">Integer</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>WOST</attrlabl>
+        <attrdef>Percent composition of colony by wood storks</attrdef>
+        <attalias Sync="TRUE">WOST</attalias>
+        <attrtype Sync="TRUE">Integer</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>SMWT</attrlabl>
+        <attrdef>Percent composition of colony by small white species</attrdef>
+        <attalias Sync="TRUE">SMWT</attalias>
+        <attrtype Sync="TRUE">Integer</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>LGWT</attrlabl>
+        <attrdef>Percent composition of colony by large white species</attrdef>
+        <attalias Sync="TRUE">LGWT</attalias>
+        <attrtype Sync="TRUE">Integer</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>SMDK</attrlabl>
+        <attrdef>Percent composition of colony by small dark species</attrdef>
+        <attalias Sync="TRUE">SMDK</attalias>
+        <attrtype Sync="TRUE">Integer</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>LGDK</attrlabl>
+        <attrdef>Percent composition of colony by large dark species</attrdef>
+        <attalias Sync="TRUE">LGDK</attalias>
+        <attrtype Sync="TRUE">Integer</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>LONGDEC</attrlabl>
+        <attrdef>Longitude in decimal degrees</attrdef>
+        <attalias Sync="TRUE">LONGDEC</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>LATDEC</attrlabl>
+        <attrdef>Latitude in decimal degrees</attrdef>
+        <attalias Sync="TRUE">LATDEC</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>LONGALB</attrlabl>
+        <attrdef>Longitude in custom statewide albers projection</attrdef>
+        <attalias Sync="TRUE">LONGALB</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>LATALB</attrlabl>
+        <attrdef>Latitude in custom statewide albers projection</attrdef>
+        <attalias Sync="TRUE">LATALB</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+    </detailed>
+  </eainfo>
+  <distinfo>
+    <distrib>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>Florida Fish and Wildlife Conservation Commission</cntorg>
+        </cntorgp>
+        <cntvoice>(850) 488-0588</cntvoice>
+        <cntfax>(850) 922-5679</cntfax>
+        <cntemail>gisrequests@fwc.state.fl.us</cntemail>
+        <hours>8-5, Monday - Friday</hours>
+      </cntinfo>
+    </distrib>
+    <resdesc>Available from the FWC</resdesc>
+    <distliab>This data set is in the public domain, and the recipient may not assert any proprietary rights thereto nor represent it to anyone as other than a FWC-FWRI produced data set; it is provided "as-is" without warranty of any kind, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose. The user assumes all responsibility for the accuracy and suitability of this data set for a specific application. In no event will the staff of the Fish and Wildlife Research Institute be liable for any damages, including lost profits, lost savings, or other incidental or consequential damages arising from the use of or the inability to use this data set.</distliab>
+    <stdorder>
+      <digform>
+        <digtinfo>
+          <transize>0.262</transize>
+        </digtinfo>
+        <digtopt>
+          <onlinopt>
+            <computer>
+              <networka>
+                <networkr>http://research.myfwc.com</networkr>
+              </networka>
+            </computer>
+          </onlinopt>
+        </digtopt>
+      </digform>
+      <fees>None</fees>
+    </stdorder>
+  </distinfo>
+  <metainfo>
+    <metd>20110428</metd>
+    <metc>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>Florida Fish and Wildlife Conservation Commission</cntorg>
+        </cntorgp>
+        <cntpos>GIS Specialist</cntpos>
+        <cntaddr>
+          <addrtype>mailing and physical address</addrtype>
+          <address>Florida Fish and Wildlife Conservation Commission</address>
+          <address>620 S. Meridian St.</address>
+          <city>Tallahassee</city>
+          <state>FL</state>
+          <postal>32399-1600</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>(850) 488-0588</cntvoice>
+        <cntfax>(850) 410-5269</cntfax>
+        <cntemail>gisrequests@myfwc.com</cntemail>
+        <hours>8-5, Monday - Friday</hours>
+      </cntinfo>
+    </metc>
+    <metstdn>FGDC Content Standards for Digital Geospatial Metadata</metstdn>
+    <metstdv>FGDC-STD-001-1998</metstdv>
+    <mettc>local time</mettc>
+    <metextns>
+      <onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+      <metprof>ESRI Metadata Profile</metprof>
+    </metextns>
+    <metextns>
+      <onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+      <metprof>ESRI Metadata Profile</metprof>
+    </metextns>
+  </metainfo>
+  <Esri>
+    <CreaDate>20130102</CreaDate>
+    <CreaTime>11310200</CreaTime>
+    <SyncOnce>FALSE</SyncOnce>
+    <SyncDate>20130129</SyncDate>
+    <SyncTime>15275600</SyncTime>
+    <ModDate>20130129</ModDate>
+    <ModTime>15275600</ModTime>
+    <DataProperties>
+      <lineage>
+        <Process ToolSource="C:\Program Files\ArcGIS\ArcToolbox\Toolboxes\Data Management Tools.tbx\CopyFeatures" Date="20121002" Time="211929">CopyFeatures "Database Connections\GIS.FWC_GIS_User.sde\GIS.FWC.Fish_and_Wildlife_Species_Locations\GIS.FWC.wading_bird_rookeries_1999" \\Bishop\nas1\MRGIS_shapefiles\2012_10_02current\Fish_and_Wildlife_Species_Locations\wading_bird_rookeries_1999\wading_bird_rookeries_1999.shp # 0 0 0</Process>
+        <Process ToolSource="c:\arcgis\desktop10.1\ArcToolbox\Toolboxes\Conversion Tools.tbx\FeatureClassToFeatureClass" Date="20130102" Time="114104">FeatureClassToFeatureClass \\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp \\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Final\SoutheastGIS\Biological.gdb\Avian CoastalWadingBird_FL # "ATLASNUM "ATLASNUM" true true false 8 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,ATLASNUM,-1,-1;DATECH "DATECH" true true false 10 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,DATECH,-1,-1;DATE_ "DATE_" true true false 8 Date 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,DATE_,-1,-1;OBSERVER "OBSERVER" true true false 2 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,OBSERVER,-1,-1;OBSMODE "OBSMODE" true true false 11 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,OBSMODE,-1,-1;COUNTY "COUNTY" true true false 12 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,COUNTY,-1,-1;CONUM "CONUM" true true false 8 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,CONUM,-1,-1;LONGDM "LONGDM" true true false 8 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,LONGDM,-1,-1;LATDM "LATDM" true true false 8 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,LATDM,-1,-1;TOWNSHIP "TOWNSHIP" true true false 3 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,TOWNSHIP,-1,-1;RANGE "RANGE" true true false 3 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,RANGE,-1,-1;SECTION "SECTION" true true false 6 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,SECTION,-1,-1;GAZPAGE "GAZPAGE" true true false 5 Long 0 5 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,GAZPAGE,-1,-1;ERA "ERA" true true false 5 Long 0 5 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,ERA,-1,-1;NEW90 "NEW90" true true false 3 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,NEW90,-1,-1;STATUS90 "STATUS90" true true false 18 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,STATUS90,-1,-1;STATUS80 "STATUS80" true true false 18 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,STATUS80,-1,-1;STATUS70 "STATUS70" true true false 18 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,STATUS70,-1,-1;SUBSTRAT "SUBSTRAT" true true false 12 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,SUBSTRAT,-1,-1;CANOPY "CANOPY" true true false 12 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,CANOPY,-1,-1;LOCATION "LOCATION" true true false 7 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,LOCATION,-1,-1;ISLAND "ISLAND" true true false 3 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,ISLAND,-1,-1;SIZE_ "SIZE_" true true false 12 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,SIZE_,-1,-1;SIZECONF "SIZECONF" true true false 6 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,SIZECONF,-1,-1;SPECCONF "SPECCONF" true true false 6 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,SPECCONF,-1,-1;BRPE "BRPE" true true false 5 Long 0 5 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,BRPE,-1,-1;DCCO "DCCO" true true false 5 Long 0 5 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,DCCO,-1,-1;ANHI "ANHI" true true false 5 Long 0 5 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,ANHI,-1,-1;GBHE "GBHE" true true false 5 Long 0 5 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,GBHE,-1,-1;GWHE "GWHE" true true false 5 Long 0 5 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,GWHE,-1,-1;GREG "GREG" true true false 5 Long 0 5 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,GREG,-1,-1;SNEG "SNEG" true true false 5 Long 0 5 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,SNEG,-1,-1;LBHE "LBHE" true true false 5 Long 0 5 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,LBHE,-1,-1;TCHE "TCHE" true true false 5 Long 0 5 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,TCHE,-1,-1;REEG "REEG" true true false 5 Long 0 5 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,REEG,-1,-1;CAEG "CAEG" true true false 5 Long 0 5 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,CAEG,-1,-1;GRHE "GRHE" true true false 5 Long 0 5 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,GRHE,-1,-1;BCNH "BCNH" true true false 5 Long 0 5 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,BCNH,-1,-1;YCNH "YCNH" true true false 5 Long 0 5 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,YCNH,-1,-1;WHIB "WHIB" true true false 5 Long 0 5 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,WHIB,-1,-1;GLIB "GLIB" true true false 5 Long 0 5 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,GLIB,-1,-1;ROSP "ROSP" true true false 5 Long 0 5 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,ROSP,-1,-1;WOST "WOST" true true false 5 Long 0 5 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,WOST,-1,-1;SMWT "SMWT" true true false 5 Long 0 5 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,SMWT,-1,-1;LGWT "LGWT" true true false 5 Long 0 5 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,LGWT,-1,-1;SMDK "SMDK" true true false 5 Long 0 5 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,SMDK,-1,-1;LGDK "LGDK" true true false 5 Long 0 5 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,LGDK,-1,-1;LONGDEC "LONGDEC" true true false 11 Double 6 10 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,LONGDEC,-1,-1;LATDEC "LATDEC" true true false 11 Double 6 10 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,LATDEC,-1,-1;LONGALB "LONGALB" true true false 11 Double 2 10 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,LONGALB,-1,-1;LATALB "LATALB" true true false 11 Double 2 10 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\FL\CoastalWadingBird_FL.shp,LATALB,-1,-1" #</Process>
+      </lineage>
+    </DataProperties>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <ArcGISstyle>FGDC CSDGM Metadata</ArcGISstyle>
+  </Esri>
+</metadata>

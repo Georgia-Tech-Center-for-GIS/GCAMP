@@ -1,0 +1,322 @@
+﻿<metadata>
+  <idinfo>
+    <citation>
+      <citeinfo>
+        <title>HabitatnatServ</title>
+        <geoform>vector digital data</geoform>
+      </citeinfo>
+    </citation>
+    <accconst>None</accconst>
+    <useconst>None</useconst>
+    <native>Microsoft Windows 7 Version 6.1 (Build 7601) Service Pack 1; ESRI ArcGIS 10.0.4.4000</native>
+  </idinfo>
+  <spdoinfo>
+    <direct>Vector</direct>
+    <ptvctinf>
+      <sdtsterm>
+        <sdtstype>GT-polygon composed of chains</sdtstype>
+        <ptvctcnt>0</ptvctcnt>
+      </sdtsterm>
+    </ptvctinf>
+  </spdoinfo>
+  <spref>
+    <horizsys>
+      <planar>
+        <mapproj>
+          <mapprojn>Transverse Mercator</mapprojn>
+          <transmer>
+            <sfctrmer>0.9996</sfctrmer>
+            <longcm>-81.0</longcm>
+            <latprjo>0.0</latprjo>
+            <feast>500000.0</feast>
+            <fnorth>0.0</fnorth>
+          </transmer>
+        </mapproj>
+        <planci>
+          <plance>coordinate pair</plance>
+          <coordrep>
+            <absres>0.000000002220024164500956</absres>
+            <ordres>0.000000002220024164500956</ordres>
+          </coordrep>
+          <plandu />
+        </planci>
+      </planar>
+      <geodetic>
+        <horizdn>D North American 1983</horizdn>
+        <ellips>GRS 1980</ellips>
+        <semiaxis>6378137.0</semiaxis>
+        <denflat>298.257222101</denflat>
+      </geodetic>
+    </horizsys>
+  </spref>
+  <eainfo>
+    <detailed>
+      <enttyp>
+        <enttypl>HabitatnatServ</enttypl>
+      </enttyp>
+      <attr>
+        <attrlabl>FID</attrlabl>
+        <attrdef>Internal feature number.</attrdef>
+        <attrdefs>ESRI</attrdefs>
+        <attrdomv>
+          <udom>Sequential unique whole numbers that are automatically generated.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>SHAPE</attrlabl>
+        <attrdef>Feature geometry.</attrdef>
+        <attrdefs>ESRI</attrdefs>
+        <attrdomv>
+          <udom>Coordinates defining the features.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Comment</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>NS_ECO_ID</attrlabl>
+        <attrdef>Natureserve ecological system code</attrdef>
+        <attrdomv>
+          <edom>
+            <edomv>CES203.384</edomv>
+            <edomvd>This ecological system occupies large, seasonally inundated basins with peaty substrates. These basins are nonriverine and do not receive overbank flooding. Examples are generally forested; the vegetation is characterized by Taxodium distichum, Nyssa biflora, evergreen "bay" shrubs, and/or mixed hardwoods. Emergent Pinus elliottii may also be present. Some characteristic shrubs include Cliftonia monophylla, Cyrilla racemiflora, Lyonia lucida, and Smilax laurifolia.</edomvd>
+            <edomvds>NatureServe. 2010. NatureServe Explorer: An online encyclopedia of life [web application]. Version 7.1. NatureServe, Arlington, Virginia. Available http://www.natureserve.org/explorer. (Accessed: December 17, 2010 ). </edomvds>
+          </edom>
+          <edom>
+            <edomv>CES203.252</edomv>
+            <edomvd>This ecological system encompasses seepage-fed wetlands in dissected landscapes. Examples are usually associated with ravines or along headwater streams. Vegetation consists of open to closed forests of acid-tolerant wetland hardwoods or pine. Generally there is a dense shrub layer.</edomvd>
+            <edomvds>NatureServe. 2010. NatureServe Explorer: An online encyclopedia of life [web application]. Version 7.1. NatureServe, Arlington, Virginia. Available http://www.natureserve.org/explorer. (Accessed: December 17, 2010 ). </edomvds>
+          </edom>
+          <edom>
+            <edomv>CES203.247</edomv>
+            <edomvd>Occurs in floodplains of small streams that carry little mineral sediment. A variety of tree species may be present; wetter examples are often strongly dominated by Taxodium distichum and Nyssa biflora. Other examples have mixtures of these species with Quercus spp. and other bottomland hardwoods tolerant of blackwater conditions. Species richness ranges from low to moderate, but is lower than in comparable brownwater systems. Flooding is an important ecological factor in this system and may be the most important factor separating it from adjacent systems.</edomvd>
+            <edomvds>NatureServe. 2010. NatureServe Explorer: An online encyclopedia of life [web application]. Version 7.1. NatureServe, Arlington, Virginia. Available http://www.natureserve.org/explorer. (Accessed: December 17, 2010 ). </edomvds>
+          </edom>
+          <edom>
+            <edomv>CES203.536</edomv>
+            <edomvd>Examples of this system and component community associations share the common features of wet, seasonally saturated, mineral soils and historic exposure to frequent low-intensity fire. The vegetation is naturally dominated by Pinus palustris or, on wetter sites, Pinus elliottii or less commonly Pinus serotina. In natural condition (frequent fires, including a growing-season component) there tends to be a dense ground cover of herbs and low shrubs; grasses can dominate, but there is often a large diversity of other herbs and shrubs.</edomvd>
+            <edomvds>NatureServe. 2010. NatureServe Explorer: An online encyclopedia of life [web application]. Version 7.1. NatureServe, Arlington, Virginia. Available http://www.natureserve.org/explorer. (Accessed: December 17, 2010 ). </edomvds>
+          </edom>
+          <edom>
+            <edomv>CES203.281</edomv>
+            <edomvd>This system of upland Pinus palustris-dominated vegetation was once perhaps the most extensive system in the Outer Coastal Plain within its range. Examples and associations share the common feature of upland (non-wetland) moisture regimes and natural exposure to frequent fire. They occur on a variety of well- to excessively drained soils, and on the higher parts of upland-wetland mosaics. Most associations have an understory of scrub oaks. The herb layer is generally well-developed and dominated by grasses.</edomvd>
+            <edomvds>NatureServe. 2010. NatureServe Explorer: An online encyclopedia of life [web application]. Version 7.1. NatureServe, Arlington, Virginia. Available http://www.natureserve.org/explorer. (Accessed: December 17, 2010 ). </edomvds>
+          </edom>
+          <edom>
+            <edomv>CES203.494</edomv>
+            <edomvd>Thick stands of Quercus virginiana and/or Quercus geminata are diagnostic of this system. Examples often occupy locally distinct microhabitats that differ from the surrounding landscape, such as shallow depressions or slight topographic highs in a predominantly longleaf pine-dominated landscape. Under more frequent fire regimes, these sites would likely be occupied by longleaf pine.</edomvd>
+            <edomvds>NatureServe. 2010. NatureServe Explorer: An online encyclopedia of life [web application]. Version 7.1. NatureServe, Arlington, Virginia. Available http://www.natureserve.org/explorer. (Accessed: December 17, 2010 ). </edomvds>
+          </edom>
+          <edom>
+            <edomv>CES203.262</edomv>
+            <edomvd>This ecological system consists of wetlands in small basins formed in unconsolidated sediments. Vegetation usually ranges from open water or floating-leaved aquatics in the center of the deepest basins, to emergent marsh zones in semipermanent water, to drawdown zones with diverse small graminoid and forb vegetation, to dense shrub or woodland edges. A smaller number of basins may have emergent trees throughout their extent.</edomvd>
+            <edomvds>NatureServe. 2010. NatureServe Explorer: An online encyclopedia of life [web application]. Version 7.1. NatureServe, Arlington, Virginia. Available http://www.natureserve.org/explorer. (Accessed: December 17, 2010 ). </edomvds>
+          </edom>
+          <edom>
+            <edomv>CES203.497</edomv>
+            <edomvd>The vegetation consists of an assemblage of xeric communities that also occur in other xeric habitats in the Coastal Plain. These include Pinus palustris - Quercus laevis communities and a scrub community akin to Inland Florida Scrub.This system is distinguished from more typical xeric sandhills of the Coastal Plain by its occurrence on the deep sands of river dunes. In addition this environment is naturally topographically isolated and consequently has a lower fire-return interval than other upland systems of which Pinus palustris is a component.</edomvd>
+            <edomvds>NatureServe. 2010. NatureServe Explorer: An online encyclopedia of life [web application]. Version 7.1. NatureServe, Arlington, Virginia. Available http://www.natureserve.org/explorer. (Accessed: December 17, 2010 ). </edomvds>
+          </edom>
+          <edom>
+            <edomv>CES203.476</edomv>
+            <edomvd>This forested system of the southern East Gulf and Atlantic coastal plains occurs on steep slopes, bluffs, or sheltered ravines where fire is naturally rare, generally within the natural range of Pinus glabra. Stands are mesic, and vegetation typically includes species such as Fagus grandifolia, Magnolia grandiflora, Illicium floridanum, and other species rarely encountered outside this system in the region.</edomvd>
+            <edomvds>NatureServe. 2010. NatureServe Explorer: An online encyclopedia of life [web application]. Version 7.1. NatureServe, Arlington, Virginia. Available http://www.natureserve.org/explorer. (Accessed: December 17, 2010 ). </edomvds>
+          </edom>
+          <edom>
+            <edomv>CES203.241</edomv>
+            <edomvd>Oak-dominated forests of somewhat fire-sheltered dry to dry-mesic sites. Sites where this system occurs are somewhat protected from most natural fires by some combination of steeper topography, isolation from the spread of fire, and limited flammability of the vegetation. If fires were more frequent, more fire-tolerant southern pines, especially Pinus palustris, would likely replace the vegetation.</edomvd>
+            <edomvds>NatureServe. 2010. NatureServe Explorer: An online encyclopedia of life [web application]. Version 7.1. NatureServe, Arlington, Virginia. Available http://www.natureserve.org/explorer. (Accessed: December 17, 2010 ). </edomvds>
+          </edom>
+          <edom>
+            <edomv>NA</edomv>
+            <edomvd>NA</edomvd>
+          </edom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>NS_ECO_NAM</attrlabl>
+        <attrdef>Natureserve ecological system name</attrdef>
+        <attrdomv>
+          <edom>
+            <edomv>Atlantic Coastal Plain Blackwater Stream Floodplain Forest</edomv>
+            <edomvd>Occurs in floodplains of small streams that carry little mineral sediment. A variety of tree species may be present; wetter examples are often strongly dominated by Taxodium distichum and Nyssa biflora. Other examples have mixtures of these species with Quercus spp. and other bottomland hardwoods tolerant of blackwater conditions. Species richness ranges from low to moderate, but is lower than in comparable brownwater systems. Flooding is an important ecological factor in this system and may be the most important factor separating it from adjacent systems.</edomvd>
+            <edomvds>NatureServe. 2010. NatureServe Explorer: An online encyclopedia of life [web application]. Version 7.1. NatureServe, Arlington, Virginia. Available http://www.natureserve.org/explorer. (Accessed: December 17, 2010 ). </edomvds>
+          </edom>
+          <edom>
+            <edomv>Atlantic Coastal Plain Dry and Dry-Mesic Oak Forest</edomv>
+            <edomvd>Oak-dominated forests of somewhat fire-sheltered dry to dry-mesic sites. Sites where this system occurs are somewhat protected from most natural fires by some combination of steeper topography, isolation from the spread of fire, and limited flammability of the vegetation. If fires were more frequent, more fire-tolerant southern pines, especially Pinus palustris, would likely replace the vegetation.</edomvd>
+            <edomvds>NatureServe. 2010. NatureServe Explorer: An online encyclopedia of life [web application]. Version 7.1. NatureServe, Arlington, Virginia. Available http://www.natureserve.org/explorer. (Accessed: December 17, 2010 ). </edomvds>
+          </edom>
+          <edom>
+            <edomv>Atlantic Coastal Plain Streamhead Seepage Swamp, Pocosin and Baygall</edomv>
+            <edomvd>This ecological system encompasses seepage-fed wetlands in dissected landscapes. Examples are usually associated with ravines or along headwater streams. Vegetation consists of open to closed forests of acid-tolerant wetland hardwoods or pine. Generally there is a dense shrub layer.</edomvd>
+            <edomvds>NatureServe. 2010. NatureServe Explorer: An online encyclopedia of life [web application]. Version 7.1. NatureServe, Arlington, Virginia. Available http://www.natureserve.org/explorer. (Accessed: December 17, 2010 ). </edomvds>
+          </edom>
+          <edom>
+            <edomv>Atlantic Coastal Plain Upland Longleaf Pine Woodland</edomv>
+            <edomvd>This system of upland Pinus palustris-dominated vegetation was once perhaps the most extensive system in the Outer Coastal Plain within its range. Examples and associations share the common feature of upland (non-wetland) moisture regimes and natural exposure to frequent fire. They occur on a variety of well- to excessively drained soils, and on the higher parts of upland-wetland mosaics. Most associations have an understory of scrub oaks. The herb layer is generally well-developed and dominated by grasses.</edomvd>
+            <edomvds>NatureServe. 2010. NatureServe Explorer: An online encyclopedia of life [web application]. Version 7.1. NatureServe, Arlington, Virginia. Available http://www.natureserve.org/explorer. (Accessed: December 17, 2010 ). </edomvds>
+          </edom>
+          <edom>
+            <edomv>Nonalluvial (Blackwater) Rivers and Swamps</edomv>
+            <edomvd>River with little mineral sediment, low levels of turbidity and high levels of tannins. Originate within the coastal plain.</edomvd>
+            <edomvds>NatureServe. 2010. NatureServe Explorer: An online encyclopedia of life [web application]. Version 7.1. NatureServe, Arlington, Virginia. Available http://www.natureserve.org/explorer. (Accessed: December 17, 2010 ). </edomvds>
+          </edom>
+          <edom>
+            <edomv>Developed</edomv>
+            <edomvd>Urban areas with little or no tree canopy.</edomvd>
+          </edom>
+          <edom>
+            <edomv>Early Successional Vegetation</edomv>
+            <edomvd>Timber recently harvested and in early stages of regeneration. </edomvd>
+          </edom>
+          <edom>
+            <edomv>Impoundment</edomv>
+            <edomvd>Man-made pond or small lake.</edomvd>
+          </edom>
+          <edom>
+            <edomv>Loblolly Pine-Water Oak-Sweetgum Successional Vegetation</edomv>
+            <edomvd>Occurs after timber is harvested, agriculture abandoned, etc. and land is left idle. Mid to late succession dominated by loblolly pine, water oak, and sweetgum.</edomvd>
+          </edom>
+          <edom>
+            <edomv>Open Field</edomv>
+            <edomvd>Open grassland created by man, often agricultural.</edomvd>
+          </edom>
+          <edom>
+            <edomv>Orchard</edomv>
+            <edomvd>Cropland dedicated to trees. Often peaches or pecans.</edomvd>
+          </edom>
+          <edom>
+            <edomv>Pine Plantation</edomv>
+            <edomvd>Land dedicated to the monoculture or intensive silviculture of pine trees.</edomvd>
+          </edom>
+          <edom>
+            <edomv>Quarries</edomv>
+            <edomvd>Exposed rock and soil from industrial uses, gravel pits, landfills.</edomvd>
+          </edom>
+          <edom>
+            <edomv>Southern Atlantic Coastal Plain Depressional Pondshore</edomv>
+            <edomvd>This ecological system consists of wetlands in small basins formed in unconsolidated sediments. Vegetation usually ranges from open water or floating-leaved aquatics in the center of the deepest basins, to emergent marsh zones in semipermanent water, to drawdown zones with diverse small graminoid and forb vegetation, to dense shrub or woodland edges. Many may be more densely forested.</edomvd>
+            <edomvds>NatureServe. 2010. NatureServe Explorer: An online encyclopedia of life [web application]. Version 7.1. NatureServe, Arlington, Virginia. Available http://www.natureserve.org/explorer. (Accessed: December 17, 2010 ). </edomvds>
+          </edom>
+          <edom>
+            <edomv>Southern Atlantic Coastal Plain Wet Pine Savanna and Flatwoods</edomv>
+            <edomvd>Examples of this system and component community associations share the common features of wet, seasonally saturated, mineral soils and historic exposure to frequent low-intensity fire. The vegetation is naturally dominated by Pinus palustris or, on wetter sites, Pinus elliottii or less commonly Pinus serotina. In natural condition (frequent fires, including a growing-season component) there tends to be a dense ground cover of herbs and low shrubs; grasses can dominate, but there is often a large diversity of other herbs and shrubs.</edomvd>
+            <edomvds>NatureServe. 2010. NatureServe Explorer: An online encyclopedia of life [web application]. Version 7.1. NatureServe, Arlington, Virginia. Available http://www.natureserve.org/explorer. (Accessed: December 17, 2010 ). </edomvds>
+          </edom>
+          <edom>
+            <edomv>Southern Atlantic Coastal Plain Xeric River Dune</edomv>
+            <edomvd>The vegetation consists of an assemblage of xeric communities that also occur in other xeric habitats in the Coastal Plain. These include Pinus palustris - Quercus laevis communities and a scrub community akin to Inland Florida Scrub.This system is distinguished from more typical xeric sandhills of the Coastal Plain by its occurrence on the deep sands of river dunes. In addition this environment is naturally topographically isolated and consequently has a lower fire-return interval than other upland systems of which Pinus palustris is a component.</edomvd>
+            <edomvds>NatureServe. 2010. NatureServe Explorer: An online encyclopedia of life [web application]. Version 7.1. NatureServe, Arlington, Virginia. Available http://www.natureserve.org/explorer. (Accessed: December 17, 2010 ). </edomvds>
+          </edom>
+          <edom>
+            <edomv>Southern Coastal Plain Mesic Slope Forest</edomv>
+            <edomvd>This forested system of the southern East Gulf and Atlantic coastal plains occurs on steep slopes, bluffs, or sheltered ravines where fire is naturally rare, generally within the natural range of Pinus glabra. Stands are mesic, and vegetation typically includes species such as Fagus grandifolia, Magnolia grandiflora, Illicium floridanum, and other species rarely encountered outside this system in the region.</edomvd>
+            <edomvds>NatureServe. 2010. NatureServe Explorer: An online encyclopedia of life [web application]. Version 7.1. NatureServe, Arlington, Virginia. Available http://www.natureserve.org/explorer. (Accessed: December 17, 2010 ). </edomvds>
+          </edom>
+          <edom>
+            <edomv>Southern Coastal Plain Nonriverine Basin Swamp</edomv>
+            <edomvd>This ecological system occupies large, seasonally inundated basins with peaty substrates. These basins are nonriverine and do not receive overbank flooding. Examples are generally forested; the vegetation is characterized by Taxodium distichum, Nyssa biflora, evergreen "bay" shrubs, and/or mixed hardwoods. Emergent Pinus elliottii may also be present. Some characteristic shrubs include Cliftonia monophylla, Cyrilla racemiflora, Lyonia lucida, and Smilax laurifolia.</edomvd>
+            <edomvds>NatureServe. 2010. NatureServe Explorer: An online encyclopedia of life [web application]. Version 7.1. NatureServe, Arlington, Virginia. Available http://www.natureserve.org/explorer. (Accessed: December 17, 2010 ). </edomvds>
+          </edom>
+          <edom>
+            <edomv>Southern Coastal Plain Oak Dome and Hammock</edomv>
+            <edomvd>Thick stands of Quercus virginiana and/or Quercus geminata are diagnostic of this system. Examples often occupy locally distinct microhabitats that differ from the surrounding landscape, such as shallow depressions or slight topographic highs in a predominantly longleaf pine-dominated landscape.</edomvd>
+            <edomvds>NatureServe. 2010. NatureServe Explorer: An online encyclopedia of life [web application]. Version 7.1. NatureServe, Arlington, Virginia. Available http://www.natureserve.org/explorer. (Accessed: December 17, 2010 ). </edomvds>
+          </edom>
+          <edom>
+            <edomv>Transportation</edomv>
+            <edomvd>Roads, railroads, airports, and runways.</edomvd>
+          </edom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>NS_ALL_ID</attrlabl>
+        <attrdef>Natureserve alliance code</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>NS_ALL_NAM</attrlabl>
+        <attrdef>Natureserve alliance name</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>NS_ASC_ID</attrlabl>
+        <attrdef>Natureserve association code</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>NS_ASC_NAM</attrlabl>
+        <attrdef>Natureserve association name</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>Disturbanc</attrlabl>
+        <attrdef>Comments about human disturbance.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>G_Rank</attrlabl>
+        <attrdef>Global rarity rank value.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>S_rank</attrlabl>
+        <attrdef>State rarity rank value.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>NOTE_</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>Avg_Grank</attrlabl>
+        <attrdef>Average global rank.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>Verified</attrlabl>
+        <attrdef>Community verified during preliminary field visits or accuracy assessment.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>SWAP_COMM</attrlabl>
+        <attrdef>Georgia State Wildlife Action Plan ecosystem classification.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl>SHAPE_Leng</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>SHAPE_Area</attrlabl>
+        <attrdef>Area of feature in internal units squared.</attrdef>
+        <attrdefs>ESRI</attrdefs>
+        <attrdomv>
+          <udom>Positive real numbers that are automatically generated.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Shape_Le_1</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>Acres</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>Gen_Landco</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>Id</attrlabl>
+      </attr>
+    </detailed>
+    <overview>
+      <eaover>Values indicate specific land cover types.</eaover>
+    </overview>
+  </eainfo>
+  <distinfo>
+    <distliab>See access and use constraints information.</distliab>
+    <stdorder>
+      <digform>
+        <digtinfo>
+          <formname>File Geodatabase Feature Class</formname>
+          <transize>10.937</transize>
+        </digtinfo>
+        <digtopt />
+      </digform>
+    </stdorder>
+  </distinfo>
+  <metainfo>
+    <metd>20121120</metd>
+    <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+    <metstdv>FGDC-STD-001-1998</metstdv>
+    <mettc>local time</mettc>
+  </metainfo>
+</metadata>

@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+  <idinfo>
+    <citation>
+      <citeinfo>
+        <origin>SCDNR, Marine Resources Division</origin>
+        <pubdate>2013</pubdate>
+      </citeinfo>
+    </citation>
+    <descript>
+      <abstract>Marine Spatial Data: This dataset came from the Southeast Area Monitoring and Assessment Program (SEAMAP), which has conducted a shallow water trawl survey in the coastal zone of the South Atlantic bight since 1986.  This dataset was based on a recent five year time frame (2006-2010). The data are summarized based on all samples obtained by the SEAMAP program within a 1 x 1 minute grid of latitude and longitude during a recent five-year time frame that data were available (2006-2010).  From 2006 to 2010, the abundance and biomass of species off the coast of the southeastern United States (Cape Hatteras, NC to Cape Canaveral, FL) were collected using paired 75-ft (22.9-m) mongoose-type Falcon trawl nets without TED's during seasonal cruises (spring, summer fall).  Sampling cruises were conducted in established strata between Cape Hatteras, North Carolina (35o 13.2'N) and Cape Canaveral, Florida (28o 30.0'N).  Stations were randomly selected from a pool of stations within each stratum. The number of stations assigned to each of twenty four shallow water strata varied annually.  Using optimal allocation, stations in each stratum were allocated from total number of stations sampled each season.  A total of 102 stations were sampled in 2006-2008 (306 stations/year) and 112 stations sampled in 2009-2010 (336 total).  Sampling was conducted during daylight hours.  SEAMAP cruises provides long-term, fishery-independent data on the distribution and relative abundance of resident and transient fishes, elasmobranchs, decapod and stomatopod crustaceans, sea turtles, horseshoe crabs, and cephalopods that are accessible by high-rise trawls.
+
+General SEAMAP overview: The SEAMAP - South Atlantic Coastal Survey, funded by the National Marine Fisheries Service (NMFS) and conducted by the South Carolina Department of Natural Resources - Marine Resources Division (SCDNR-MRD), began in 1986.  This survey provides long-term, fishery-independent data on the distribution and relative abundance of resident and transient fishes, elasmobranchs, decapod and stomatopod crustaceans, sea turtles, horseshoe crabs, and cephalopods that are accessible by high-rise trawls.  Twenty-three finfish species (Archosargus probatocephalus, Brevoortia smithi, Brevoortia tyrannus, Centropristis striata, Chaetodipterus faber, Cynoscion nebulosus, Cynoscion regalis, Leiostomus xanthurus, Menticirrhus americanus, M. littoralis, M. saxatilis, Micropogonias undulatus, Mycteroperca microlepis, Paralichthys albigutta, P. dentatus, P. lethostigma, Peprilus paru, P. triacanthus, Pogonias cromis, Pomatomus saltatrix, Sciaenops ocellata, Scomberomorus cavalla, S. maculatus), four decapod species (Callinectes sapidus, Farfantepenaeus aztecus, F. duorarum, and Litopenaeus setiferus), all marine turtles, all coastal shark species, and horseshoe crabs were selected as priority species by the SEAMAP-SA Committee. Additional data recorded for priority species include measurements of length or width for all priority species, sex and individual weights for blue crab, sharks, sea turtles, and horseshoe crabs, and reproductive information on commercially important penaeid shrimp and blue crabs. SEAMAP has the only existing long-term program in coastal waters (30 to 60 ft depth) waters off the Atlantic coast of the southeastern United States that monitors species composition, length frequency, abundance, and life history based on fishery-independent data.  These data provide critical input for the assessments of stock status conducted by NOAA Fisheries, and greatly assist stock assessment scientists and the Council in the management of species of the South Atlantic Bight.  SEAMAP cruises provide long-term, fishery-independent data on the distribution and relative abundance of resident and transient fishes, elasmobranchs, decapod and stomatopod crustaceans, sea turtles, horseshoe crabs, and cephalopods that are accessible by high-rise trawls. The current SEAMAP objectives are:
+1.)  To monitor the distribution and abundance of coastal species in the South Atlantic Bight with emphasis on critical life stages of commercially or recreationally important Atlantic species including, but not limited to penaeid shrimps, king and Spanish mackerel, and several select sciaenid species for the purpose of compiling a long-term data base of biological, ecological and associated environmental parameters of coastal waters;
+2.)  obtain reproductive data and monitor (grossly) for signs of disease for commercial shrimp species and blue crabs;
+3.)  obtain length, sex, and individual mass data for coastal shark species;
+4.)  tag marine turtles to contribute to knowledge of their abundance and movement patterns;
+5.)  obtain age-growth  and reproductive stage data on selected species (weakfish, Atlantic croaker, southern kingfish, Spanish mackerel, king mackerel, bluefish);
+6.)  Provide biological specimens to cooperating agencies and other investigators upon request; subject to federal and state permitting requirements, time, and space limitations.</abstract>
+      <purpose>This GIS data set was created for the purpose of describing the distribution and abundance of sea turtles caught in SEAMAP trawls.  This layer was assembled so that these biological resources can be considered for any planned energy development or other coastal use activities.</purpose>
+    </descript>
+    <timeperd>
+      <timeinfo>
+        <sngdate>
+          <caldate>7/10/2006 - 7/23/2010</caldate>
+        </sngdate>
+      </timeinfo>
+      <current>ground condition</current>
+    </timeperd>
+    <status>
+      <progress>Complete</progress>
+      <update>None planned</update>
+    </status>
+    <keywords>
+      <theme>
+        <themekey>SEAMAP</themekey>
+        <themekey>Trawl survey</themekey>
+        <themekey>Fishery-independent</themekey>
+        <themekey>Fisheries</themekey>
+        <themekey>SCDNR</themekey>
+        <themekey>High-rise trawl</themekey>
+        <themekey>Sea Turtles</themekey>
+      </theme>
+      <place>
+        <placekey>South Carolina</placekey>
+        <placekey>South Atlantic Bight</placekey>
+        <placekey>North Carolina</placekey>
+        <placekey>Georgia</placekey>
+        <placekey>Florida</placekey>
+      </place>
+    </keywords>
+    <accconst>None</accconst>
+    <useconst>1.) For information purposes, email the full citation of any publication made (printed or electronic) that cites this data source or any constituent part.  Acknowledge the use of specific records from contributing SEAMAP databases and recognize the limitations of data.
+2.)  Neither the State of South Carolina, the Department of Natural Resources, nor any of its employees, is responsible for any improper or incorrect use of the information described and/or contained herein, and  assume no responsibility for the use of the information.  The South Carolina Department of Natural Resources should be acknowledged as the data source in products derived from these data.</useconst>
+    <ptcontac>
+      <cntinfo>
+        <cntperp>
+          <cntper>Dr. Marcel Reichert</cntper>
+          <cntorg>SCDNR</cntorg>
+        </cntperp>
+        <cntpos>Associate Fishery Scientist, MARMAP and SEAMAP-SA programs; Coastal Finfish Section Manager</cntpos>
+        <cntaddr>
+          <addrtype>physical address</addrtype>
+          <address>217 Fort Johnson Rd.</address>
+          <city>Charleston</city>
+          <state>SC</state>
+          <postal>29412</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>843-953-5778</cntvoice>
+        <cntfax>843-953-9820</cntfax>
+        <cntemail>Reichertm@dnr.sc.gov</cntemail>
+      </cntinfo>
+    </ptcontac>
+  </idinfo>
+  <dataqual>
+    <lineage>
+      <procstep>
+        <procdesc>Field Data Collection:
+Sampling cruises are conducted seasonally: spring (April-May), summer (July-August), and fall (October-November) in established strata between Cape Hatteras, North Carolina (35o 13.2'N) and Cape Canaveral, Florida (28o 30.0'N).  One hundred and twelve stations in a band delineated by 4.6 and 9.1 meter contours (previously the inner strata) are sampled each season.  Stations are allocated to strata according to results of an Optimal Allocation Analysis.  Sampling is conducted during daylight hours.  
+
+Operations at each site include collections with paired 22.9 m mongoose-type Falcon trawls (designed and constructed by Beaufort Marine Supply) with tickler chains which are towed for 20 minutes bottom time from the R/V Lady Lisa, a 22.9 m St. Augustine shrimp trawler.  Nets do not contain TED's or BRD's so that density estimates for all sizes of each species can be calculated, and to maintain comparability with previous survey data.  Contents of each net are sorted separately to species, and total biomass and number of individuals are recorded for all species of finfish, elasmobranchs, decapod and stomatopod crustaceans, cephalopods, sea turtles, xiphosurans, and cannonball jellies. Only total biomass is recorded for all other miscellaneous invertebrates (excluding cannonball jellies) and algae, which are treated as two separate taxonomic groups.  Marine turtles are released in good condition according to NMFS permitting guidelines. 
+
+Where large numbers of individuals of a species occur in a collection, the entire catch is sorted and all individuals of that species are weighed, but only a randomly selected subsample are processed and total number is calculated. For large trawl catches, the contents of each net are weighed prior to sorting and a randomly chosen subsample of the total catch is then sorted and processed. 
+
+In every collection, each of the priority species is weighed collectively and individuals are measured. For large collections of the priority species, a random subsample consisting of thirty to fifty individuals is weighed and measured. Depending on the species, measurements of finfish are recorded as total length or fork length, measured to the nearest centimeter. Additional data are collected on individual specimens of penaeid shrimp (total length in mm, sex, female ovarian development, male spermatophore development, occurrence of mated females), blue crabs (carapace width in mm, individual weight, sex, presence and developmental stage of eggs), sharks (total and fork lengths in cm, individual weight, sex), horseshoe crabs (prosoma width and length in mm, individual weight, sex), and sea turtles (curved and straight lengths and widths in cm, individual weight, PIT and flipper tag numbers).</procdesc>
+        <srcused>\\Mrdnas\GIS\Boynton\GISProjects\2011\Other\Research\SCWindProject\Metadata\MetadataTemplate</srcused>
+        <procdate>20110615</procdate>
+        <proctime>10272100</proctime>
+        <proccont>
+          <cntinfo>
+            <cntperp>
+              <cntper>Dr. Marcel Reichert</cntper>
+              <cntorg>SCDNR</cntorg>
+            </cntperp>
+            <cntpos>Associate Fishery Scientist</cntpos>
+            <cntvoice>843-953-5778</cntvoice>
+            <cntemail>reichertm@dnr.sc.gov</cntemail>
+          </cntinfo>
+        </proccont>
+      </procstep>
+      <procstep>
+        <procdesc>GIS processing:
+1.)  One point layer per species was created where each point was the mid-point of a 1 x 1 minute grid cell where there was SEAMAP sampling between 2006-2010.  
+2.)  A 1 x 1 mid grid of the whole offshore study area was created.  
+3.) A spatial selection was performed to select those 1 x 1 min grid cells that contained SEAMAP mid-points.  A new layer was created with just the selected grid cells.  
+4.) The mid-points from the species layer were spatially joined to the 1 x 1 min grid layer to create a final grid layer per species</procdesc>
+        <srcused>\\MRDNAS\Shellmap\Work\Wind\Metadata\MetadataTemplate_fgdcxml.xml</srcused>
+        <procdate>20110621</procdate>
+        <proctime>15592800</proctime>
+        <proccont>
+          <cntinfo>
+            <cntperp>
+              <cntper>Jessica Boynton</cntper>
+              <cntorg>SCDNR</cntorg>
+            </cntperp>
+            <cntpos>GIS Manager</cntpos>
+            <cntvoice>843-953-9163</cntvoice>
+            <cntemail>boyntonj@dnr.sc.gov</cntemail>
+          </cntinfo>
+        </proccont>
+      </procstep>
+      <procstep>
+        <procdesc>Metadata imported.</procdesc>
+        <srcused>\\MRDNAS\Shellmap\Work\Wind\Metadata\FirstCopy\SEAMAPnew.xml</srcused>
+        <procdate>20110802</procdate>
+        <proctime>14311700</proctime>
+      </procstep>
+      <procstep>
+        <procdesc>Metadata imported.</procdesc>
+        <srcused>\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Metadata\seamapturtlewindphasei.xml</srcused>
+        <procdate>20130131</procdate>
+        <proctime>15235900</proctime>
+      </procstep>
+    </lineage>
+  </dataqual>
+  <eainfo>
+    <detailed Name="SEAMAP_turtle2">
+      <enttyp>
+        <enttypl Sync="TRUE">SEAMAP_turtle2</enttypl>
+        <enttypt Sync="TRUE">Feature Class</enttypt>
+        <enttypc Sync="TRUE">291</enttypc>
+      </enttyp>
+      <attr>
+        <attrlabl>OBJECTID</attrlabl>
+        <attrdef>Internal feature number.</attrdef>
+        <attrdefs>ESRI</attrdefs>
+        <attrdomv>
+          <udom>Sequential unique whole numbers that are automatically generated.</udom>
+        </attrdomv>
+        <attalias Sync="TRUE">OBJECTID</attalias>
+        <attrtype Sync="TRUE">OID</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>Shape</attrlabl>
+        <attrdef>Feature geometry.</attrdef>
+        <attrdefs>ESRI</attrdefs>
+        <attrdomv>
+          <udom>Coordinates defining the features.</udom>
+        </attrdomv>
+        <attalias Sync="TRUE">Shape</attalias>
+        <attrtype Sync="TRUE">Geometry</attrtype>
+        <attwidth Sync="TRUE">0</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>N_Coll</attrlabl>
+        <attrdef>total number of trawls collected within a 1 x 1 minute grid cell.</attrdef>
+        <attalias Sync="TRUE">N_Coll</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">Freq_Occ</attrlabl>
+        <attalias Sync="TRUE">Freq_Occ</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>Pct_Occ</attrlabl>
+        <attrdef>The percent occurrence of a species in trawls collected within a 1 x 1 minute grid cell was determined by calculating the number of nets deployed with a positive occurrence divided by the total number of nets deployed and converted to a percentage by multiplying by 100.</attrdef>
+        <attalias Sync="TRUE">Pct_Occ</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>MeanCPUE</attrlabl>
+        <attrdef>Mean catch per unit effort within a 1 x 1 minute grid was determined by calculating the number of turtles caught per net, divided by the total number of nets deployed.</attrdef>
+        <attalias Sync="TRUE">MeanCPUE</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>CV_CPUE</attrlabl>
+        <attrdef>Coefficient of variance for the catch per unit effort was determined by dividing the standard deviation of the catch per unit effort by the total catch per unit effort.</attrdef>
+        <attalias Sync="TRUE">CV_CPUE</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>Mid_Lat</attrlabl>
+        <attrdef>This is the latitude for the center point for each 1 x 1 min. grid cell.</attrdef>
+        <attalias Sync="TRUE">Mid_Lat</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>Mid_Lon</attrlabl>
+        <attrdef>This is the longitude for the center point for each 1 x 1 min. grid cell.</attrdef>
+        <attalias Sync="TRUE">Mid_Lon</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>BLOCK</attrlabl>
+        <attrdef>The BLOCK number is the lat and long (lat degree lat min long degree long min) for the lower right corner of each 1 x 1 min. grid cell.</attrdef>
+        <attalias Sync="TRUE">BLOCK</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>Shape_Length</attrlabl>
+        <attrdef>Length of feature in internal units.</attrdef>
+        <attrdefs>ESRI</attrdefs>
+        <attrdomv>
+          <udom>Positive real numbers that are automatically generated.</udom>
+        </attrdomv>
+        <attalias Sync="TRUE">Shape_Length</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>Shape_Area</attrlabl>
+        <attrdef>Area of feature in internal units squared.</attrdef>
+        <attrdefs>ESRI</attrdefs>
+        <attrdomv>
+          <udom>Positive real numbers that are automatically generated.</udom>
+        </attrdomv>
+        <attalias Sync="TRUE">Shape_Area</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+    </detailed>
+  </eainfo>
+  <distinfo>
+    <distrib>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>South Carolina Department of Natural Resources</cntorg>
+        </cntorgp>
+        <cntpos>Spatial Data Manager</cntpos>
+        <cntaddr>
+          <addrtype>physical address</addrtype>
+          <address>1000 Assembly St.</address>
+          <city>Columbia</city>
+          <state>SC</state>
+          <postal>29201</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntaddr>
+          <addrtype>mailing address</addrtype>
+          <address>Rembert C. Dennis Building P.O. Box 167</address>
+          <city>Columbia</city>
+          <state>SC</state>
+          <postal>29202</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>803-734-9100</cntvoice>
+        <cntfax>803-734-7001</cntfax>
+        <cntemail>gisman@dnr.sc.gov</cntemail>
+      </cntinfo>
+    </distrib>
+    <resdesc>Downloadable Data</resdesc>
+    <stdorder>
+      <digform>
+        <digtinfo>
+          <transize>0.000</transize>
+        </digtinfo>
+      </digform>
+    </stdorder>
+  </distinfo>
+  <metainfo>
+    <metc>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>SCDNR, Marine Resources Division, MRRI</cntorg>
+          <cntper>Jessica Boynton</cntper>
+        </cntorgp>
+        <cntpos>GIS Manager I</cntpos>
+        <cntaddr>
+          <addrtype>physical address</addrtype>
+          <address>217 Fort Johnson Rd.</address>
+          <city>Charleston</city>
+          <state>SC</state>
+          <postal>29412</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntaddr>
+          <addrtype>mailing address</addrtype>
+          <address>P.O. Box 12559</address>
+          <city>Charleston</city>
+          <state>SC</state>
+          <postal>29422</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>843-953-9163</cntvoice>
+        <cntfax>843-953-9820</cntfax>
+        <cntemail>boyntonj@dnr.sc.gov</cntemail>
+      </cntinfo>
+    </metc>
+    <metextns>
+      <onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+      <metprof>ESRI Metadata Profile</metprof>
+    </metextns>
+    <metextns>
+      <onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+      <metprof>ESRI Metadata Profile</metprof>
+    </metextns>
+    <metextns>
+      <onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+      <metprof>ESRI Metadata Profile</metprof>
+    </metextns>
+    <metextns>
+      <onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+      <metprof>ESRI Metadata Profile</metprof>
+    </metextns>
+  </metainfo>
+  <Esri>
+    <MetaID>{91500B7A-C37D-48F3-8B38-0B3E973E3141}</MetaID>
+    <CreaDate>20130208</CreaDate>
+    <CreaTime>18350500</CreaTime>
+    <SyncOnce>FALSE</SyncOnce>
+    <SyncDate>20130208</SyncDate>
+    <SyncTime>18404200</SyncTime>
+    <ModDate>20130208</ModDate>
+    <ModTime>18404200</ModTime>
+  </Esri>
+</metadata>

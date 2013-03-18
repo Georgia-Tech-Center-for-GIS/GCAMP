@@ -87,7 +87,11 @@ h3 {
 }
 
 .Information-Icon {
-	background-image: url("images/Information-icon.png");
+	background-image: url("images/glyphicons_195_circle_info.png");
+	width: 15px;
+	height:15px;
+	
+	background-size: 15px 15px;
 }
 
 .base-layer-icon{
@@ -106,7 +110,7 @@ h3 {
 }
 
 .zoomInIcon {
-	background-image: url("images/esriZoomFullExtent.png");
+	background-image: url("images/glyphicons_236_zoom_in.png");
 	width: 25px;
 	height:25px;
 }
@@ -130,13 +134,13 @@ h3 {
 }
 
 .zoomprevIcon {
-	background-image: url("images/backward.png");
+	background-image: url("images/glyphicons_216_circle_arrow_left.png");
 	width: 25px;
 	height:25px;
 }
 
 .zoompan {
-	background-image: url("images/esriPan.png");
+	background-image: url("images/glyphicons_186_move.png");
 	width: 25px;
 	height:25px;
 }
@@ -310,9 +314,9 @@ a.attributeLink {
 	border-right: none;
 }
 
-.jspHorizontalBar { background-color: transparent; }
-.jspVerticalBar{
- background-color: transparent;
+.jspHorizontalBar , .jspVerticalBar{
+	background-color: gray;
+	z-index: 5;
 }
 
 #map {
@@ -359,4 +363,13 @@ h3 {
 .currTool {
 	font-weight: bold;
 	font-size: 110%;
+}
+
+/* Styles specific to this particular page */
+.scroll-pane,
+.scroll-pane-arrows
+{
+	width: 100%;
+	height: 200px;
+	overflow: auto;
 }

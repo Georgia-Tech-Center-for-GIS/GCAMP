@@ -130,3 +130,7 @@ function getAttributesLayer (url) {
 	});
 	
 }
+
+function dispAttribTable(a) {
+	getAttributesLayer(a.url);
+}

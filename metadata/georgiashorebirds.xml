@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20130129</CreaDate>
+    <CreaTime>14473800</CreaTime>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <ArcGISstyle>FGDC CSDGM Metadata</ArcGISstyle>
+    <SyncOnce>FALSE</SyncOnce>
+    <DataProperties>
+      <lineage>
+        <Process ToolSource="c:\arcgis\desktop10.1\ArcToolbox\Toolboxes\Conversion Tools.tbx\FeatureClassToFeatureClass" Date="20130129" Time="144738">FeatureClassToFeatureClass \\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\GA\Shorebirds_GA.shp \\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Final\SoutheastGIS\Biological.gdb\Avian Shorebirds_GA # "SiteID "SiteID" true true false 16 Double 6 15 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\GA\Shorebirds_GA.shp,SiteID,-1,-1;SiteName "SiteName" true true false 254 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\GA\Shorebirds_GA.shp,SiteName,-1,-1;SiteCode "SiteCode" true true false 254 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\GA\Shorebirds_GA.shp,SiteCode,-1,-1;County "County" true true false 254 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\GA\Shorebirds_GA.shp,County,-1,-1;Latitude "Latitude" true true false 16 Double 6 15 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\GA\Shorebirds_GA.shp,Latitude,-1,-1;Longitude "Longitude" true true false 16 Double 6 15 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\GA\Shorebirds_GA.shp,Longitude,-1,-1;HabitatTyp "HabitatTyp" true true false 254 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\GA\Shorebirds_GA.shp,HabitatTyp,-1,-1;BrnPelicn_ "BrnPelicn_" true true false 16 Double 6 15 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\GA\Shorebirds_GA.shp,BrnPelicn_,-1,-1;BrnPelicn1 "BrnPelicn1" true true false 16 Double 6 15 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\GA\Shorebirds_GA.shp,BrnPelicn1,-1,-1;LaughingGu "LaughingGu" true true false 16 Double 6 15 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\GA\Shorebirds_GA.shp,LaughingGu,-1,-1;Laughing_1 "Laughing_1" true true false 16 Double 6 15 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\GA\Shorebirds_GA.shp,Laughing_1,-1,-1;RoyalTern_ "RoyalTern_" true true false 16 Double 6 15 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\GA\Shorebirds_GA.shp,RoyalTern_,-1,-1;RoyalTernC "RoyalTernC" true true false 16 Double 6 15 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\GA\Shorebirds_GA.shp,RoyalTernC,-1,-1;SandwichTe "SandwichTe" true true false 16 Double 6 15 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\GA\Shorebirds_GA.shp,SandwichTe,-1,-1;Sandwich_1 "Sandwich_1" true true false 254 Text 0 0 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\GA\Shorebirds_GA.shp,Sandwich_1,-1,-1;LeastTern_ "LeastTern_" true true false 16 Double 6 15 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\GA\Shorebirds_GA.shp,LeastTern_,-1,-1;LeastTern1 "LeastTern1" true true false 16 Double 6 15 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\GA\Shorebirds_GA.shp,LeastTern1,-1,-1;Gullbilled "Gullbilled" true true false 16 Double 6 15 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\GA\Shorebirds_GA.shp,Gullbilled,-1,-1;Gullbill_1 "Gullbill_1" true true false 16 Double 6 15 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\GA\Shorebirds_GA.shp,Gullbill_1,-1,-1;BlackSkimm "BlackSkimm" true true false 16 Double 6 15 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\GA\Shorebirds_GA.shp,BlackSkimm,-1,-1;BlackSki_1 "BlackSki_1" true true false 16 Double 6 15 ,First,#,\\Mrdnas\gis\Boynton\GISProjects\2012\Other\Research\MarinePlanPhaseII\Avian\GA\Shorebirds_GA.shp,BlackSki_1,-1,-1" #</Process>
+      </lineage>
+    </DataProperties>
+    <SyncDate>20130207</SyncDate>
+    <SyncTime>09520700</SyncTime>
+    <ModDate>20130207</ModDate>
+    <ModTime>09520700</ModTime>
+  </Esri>
+  <eainfo>
+    <detailed Name="Shorebirds_GA">
+      <enttyp>
+        <enttypl Sync="TRUE">Shorebirds_GA</enttypl>
+        <enttypt Sync="TRUE">Feature Class</enttypt>
+        <enttypc Sync="TRUE">18</enttypc>
+      </enttyp>
+      <attr>
+        <attrlabl Sync="TRUE">OBJECTID</attrlabl>
+        <attalias Sync="TRUE">OBJECTID</attalias>
+        <attrtype Sync="TRUE">OID</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef Sync="TRUE">Internal feature number.</attrdef>
+        <attrdefs Sync="TRUE">Esri</attrdefs>
+        <attrdomv>
+          <udom Sync="TRUE">Sequential unique whole numbers that are automatically generated.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">Shape</attrlabl>
+        <attalias Sync="TRUE">Shape</attalias>
+        <attrtype Sync="TRUE">Geometry</attrtype>
+        <attwidth Sync="TRUE">0</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef Sync="TRUE">Feature geometry.</attrdef>
+        <attrdefs Sync="TRUE">Esri</attrdefs>
+        <attrdomv>
+          <udom Sync="TRUE">Coordinates defining the features.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">SiteID</attrlabl>
+        <attalias Sync="TRUE">SiteID</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>This is an automatically assigned ID as a site is entered into our Seabird database</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">SiteName</attrlabl>
+        <attalias Sync="TRUE">SiteName</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">254</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>This is the general location description.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">SiteCode</attrlabl>
+        <attalias Sync="TRUE">SiteCode</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">254</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>This is the code associated with each location.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">County</attrlabl>
+        <attalias Sync="TRUE">County</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">254</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>The county associated with each location.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">Latitude</attrlabl>
+        <attalias Sync="TRUE">Latitude</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>General latitude associated with the location.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">Longitude</attrlabl>
+        <attalias Sync="TRUE">Longitude</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>General longitude associated with the location.</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">HabitatTyp</attrlabl>
+        <attalias Sync="TRUE">HabitatTyp</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">254</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>Describes whether colony is a rooftop, barrier island baech, or sand bar/spit. </attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">BrnPelicn_</attrlabl>
+        <attalias Sync="TRUE">BrnPelicn_</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>Brown Pelican Average Nests: Average nests between 2010-2012</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">BrnPelicn1</attrlabl>
+        <attalias Sync="TRUE">BrnPelicn1</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>Brown Pelican CV: CV of average nests</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">LaughingGu</attrlabl>
+        <attalias Sync="TRUE">LaughingGu</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>Laughing Gull Average Nests: Average nests between 2010-2012</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">Laughing_1</attrlabl>
+        <attalias Sync="TRUE">Laughing_1</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>Laughing Gull CV: CV of average nests</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">RoyalTern_</attrlabl>
+        <attalias Sync="TRUE">RoyalTern_</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>Royal Tern Average Nests: Average nests between 2010-2012</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">RoyalTernC</attrlabl>
+        <attalias Sync="TRUE">RoyalTernC</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>Royal Tern CV: CV of average nests</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">SandwichTe</attrlabl>
+        <attalias Sync="TRUE">SandwichTe</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>Sandwich Tern Average Nests: Average nests between 2010-2012</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">Sandwich_1</attrlabl>
+        <attalias Sync="TRUE">Sandwich_1</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">254</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>Sandwich Tern CV: CV of average nests</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">LeastTern_</attrlabl>
+        <attalias Sync="TRUE">LeastTern_</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>Least Tern Average Nests: Average nests between 2010-2012</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">LeastTern1</attrlabl>
+        <attalias Sync="TRUE">LeastTern1</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>Least Tern CV: CV of average nests</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">Gullbilled</attrlabl>
+        <attalias Sync="TRUE">Gullbilled</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>GullBilled Tern Average Nests: Average nests between 2010-2012</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">Gullbill_1</attrlabl>
+        <attalias Sync="TRUE">Gullbill_1</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>GullBilled Tern CV: CV of average nests</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">BlackSkimm</attrlabl>
+        <attalias Sync="TRUE">BlackSkimm</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>Black Skimmer Average Nests: Average nests between 2010-2012</attrdef>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">BlackSki_1</attrlabl>
+        <attalias Sync="TRUE">BlackSki_1</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef>Black Skimmer CV: CV of average nests</attrdef>
+      </attr>
+    </detailed>
+  </eainfo>
+  <idinfo>
+    <ptcontac>
+      <cntinfo>
+        <cntperp>
+          <cntper>Tim Keyes</cntper>
+          <cntorg>Nongame Conservation Section; Wildlife Resources Division, Georgia DNR</cntorg>
+        </cntperp>
+        <cntpos>Wildlife Biologist</cntpos>
+        <cntaddr>
+          <addrtype>physical address</addrtype>
+          <address>One Conservation Way</address>
+          <city>Brunswick</city>
+          <state>GA</state>
+          <postal>31520</postal>
+        </cntaddr>
+        <cntvoice>910-262-3191</cntvoice>
+        <cntemail>tim.keyes@gadnr.org</cntemail>
+      </cntinfo>
+    </ptcontac>
+    <descript>
+      <abstract>a.	This dataset is based on the summaries of observed nesting activities along the Georgia coastline between 2010 and 2012.  Nest counts were done at 18 locations, for 7 species, including brown pelican, laughing gull, royal tern, sandwich tern, least tern, gull-billed tern, and black skimmer.  Colonies are visited several times (at least) throughout the nesting season to estimate a maximum number of nests, as well as determine whether the colony was productive or failed. These visits start as soon as a colony is active – usually late April to early May primary initiation, and continue until colony fails or fledging young.  Data is collected in various methods (ground and aerial), depending on species and site accessibility.  
+b.	This data is derived from a number of partners on the Georgia Coast, all members of the Georgia Shorebird Alliance, as well as graduate students working on certain species.  Partners include staff from Little St Simons Island, St Catherines Island, Little Cumberland Island, Cumberland Island National Park, and US Fish and Wildlife Service. The Nongame Conservation Section of Georgia DNR coordinates these efforts and maintains a single database
+</abstract>
+      <purpose>a.	This GIS data set was created for the purpose of describing the location and species of seabird nesting along the Georgia coastline so that these nesting activities can be considered for any planned energy development or other coastal use activities.</purpose>
+    </descript>
+    <useconst>a.	Neither the State of South Carolina, the Department of Natural Resources, nor any of its employees, is responsible for any improper or incorrect use of the information described and/or contained herein, and assume no responsibility for the use of the information.  The South Carolina Department of Natural Resources should be acknowledged as the data source in products derived from these data.” If you have additional constraints, this is the section to use.
+b.	Neither the State of Georgia, the Department of Natural Resources, nor any of its employees, is responsible for any improper or incorrect use of the information described and/or contained herein, and assume no responsibility for the use of the information.  The Georgia Department of Natural Resources should be acknowledged as the data source in products derived from these data.” If you have additional constraints, this is the section to use.
+
+</useconst>
+    <citation>
+      <citeinfo>
+        <origin>GADNR</origin>
+        <pubdate>February 2013</pubdate>
+        <title>Seabird Nesting: Average and CV for Seabird Nests between 2010-2012</title>
+      </citeinfo>
+    </citation>
+    <keywords>
+      <theme>
+        <themekey>Seabirds</themekey>
+        <themekey>Shorebirds</themekey>
+        <themekey>Nesting</themekey>
+        <themekey>Brown pelican</themekey>
+        <themekey>Laughing gull</themekey>
+        <themekey>Royal tern</themekey>
+        <themekey>Sandwich tern</themekey>
+        <themekey>Least tern</themekey>
+        <themekey>Gull-billed tern</themekey>
+        <themekey>Black skimmer</themekey>
+      </theme>
+      <place>
+        <placekey>Georgia</placekey>
+        <placekey>southeast</placekey>
+      </place>
+    </keywords>
+    <timeperd>
+      <timeinfo>
+        <rngdates>
+          <begdate>2010</begdate>
+          <endtime>2012</endtime>
+        </rngdates>
+      </timeinfo>
+    </timeperd>
+    <status>
+      <progress>Complete</progress>
+      <update>None planned</update>
+    </status>
+  </idinfo>
+  <dataqual>
+    <lineage>
+      <procstep>
+        <proccont>
+          <cntinfo>
+            <cntperp>
+              <cntper>Tim Keyes</cntper>
+              <cntorg>GADNR</cntorg>
+            </cntperp>
+            <cntpos>Wildlife Biologist</cntpos>
+            <cntaddr>
+              <addrtype>physical address</addrtype>
+              <address>One Conservation Way</address>
+              <city>Brunswick</city>
+              <state>GA</state>
+              <postal>31520</postal>
+            </cntaddr>
+            <cntvoice>910-262-3191</cntvoice>
+            <cntemail>tim.keyes@gadnr.org</cntemail>
+          </cntinfo>
+        </proccont>
+        <procdesc>Seabird colony data is collected in several ways depending on the species and location. An attempt is made to survey each colony every 2 weeks, though there is variability in colony visitation.  For example, during the 2011-2012 period a graduate student was working with Least Tern and so those colonies were visited several times a week. Most counts were done from the ground at the edge of a colony so birds were not disturbed, though the Least Tern colonies were counted with walk through surveys finding and marking every nest.  The Brunswick Dredge Island colony was surveyed by aerial surveys where nests were counted from photographs, as well as a single walk through nest count during the peak of nesting season. Our aerial photographs are detailed enough to separate tern species such as Royal Tern and Sandwich Tern. Little Egg Island Bar Brown Pelican colony is typically counted from aerial photographs. The type of count is recorded in the Seabird Database.</procdesc>
+      </procstep>
+      <procstep>
+        <proccont>
+          <cntinfo>
+            <cntperp>
+              <cntper>Jessica Boynton</cntper>
+              <cntorg>SCDNR, MRRI</cntorg>
+            </cntperp>
+            <cntpos>GIS Manager I</cntpos>
+            <cntaddr>
+              <addrtype>physical address</addrtype>
+              <address>217 Fort Johnson Rd.</address>
+              <city>Charleston</city>
+              <state>SC</state>
+              <postal>29412</postal>
+              <country>USA</country>
+            </cntaddr>
+            <cntvoice>843-953-9163</cntvoice>
+            <cntfax>843-953-9820</cntfax>
+            <cntemail>boyntonj@dnr.sc.gov</cntemail>
+          </cntinfo>
+        </proccont>
+        <procdesc>b.	Data processing: The nests were summed by species over a maximum of three years by species.  An average and a coefficient of variance were computed.  The following locations and species had less than three years:  Little Tybee, Least Tern, 2 years; Burnt Pot Island, all species, 1 year; Wilmington Island Publix, Least Tern, 2 years; Little Egg Island Bar, Laughing Gull, 2 years; Cumberland Island, Least Tern, 2 years; Kingsland Publix, Least Tern, 2 years; Kings Bay Hanger, all species, 2 years, Pompey Island Rake, all species, 2 years, Wolf Island NWR, all species, 2 years, Little Cumberland Island, all species, 2 years; Bock's Board Packaging, all species, 1 year.</procdesc>
+      </procstep>
+      <procstep>
+        <proccont>
+          <cntinfo>
+            <cntperp>
+              <cntper>Jessica Boynton</cntper>
+              <cntorg>SCDNR, MRRI</cntorg>
+            </cntperp>
+            <cntpos>GIS Manager I</cntpos>
+            <cntaddr>
+              <addrtype>physical address</addrtype>
+              <address>217 Fort Johnson Rd.</address>
+              <city>Charleston</city>
+              <state>SC</state>
+              <postal>29412</postal>
+              <country>USA</country>
+            </cntaddr>
+            <cntvoice>843-953-9163</cntvoice>
+            <cntfax>843-953-9820</cntfax>
+            <cntemail>boyntonj@dnr.sc.gov</cntemail>
+          </cntinfo>
+        </proccont>
+        <procdesc>c.	GIS Processing: The GIS point feature class was created from lat/longs for each location.</procdesc>
+      </procstep>
+    </lineage>
+    <attracc>
+      <attraccr>Coordinates taken in Field with hand-held GPSmap 60CSx Garmin units. Coordinates also collected from Google Earth. </attraccr>
+    </attracc>
+  </dataqual>
+  <distinfo>
+    <distrib>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>South Carolina Department of Natural Resources</cntorg>
+        </cntorgp>
+        <cntpos>Spatial Data Manager</cntpos>
+        <cntaddr>
+          <addrtype>physical address</addrtype>
+          <address>1000 Assembly St.</address>
+          <city>Columbia</city>
+          <state>SC</state>
+          <postal>29201</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>803-734-9100</cntvoice>
+        <cntfax>803-734-7001</cntfax>
+        <cntemail>gisman@dnr.sc.gov</cntemail>
+      </cntinfo>
+    </distrib>
+  </distinfo>
+  <metainfo>
+    <metc>
+      <cntinfo>
+        <cntperp>
+          <cntper>Jessica Boynton</cntper>
+          <cntorg>SCDNR</cntorg>
+        </cntperp>
+        <cntpos>GIS Manager I</cntpos>
+        <cntaddr>
+          <addrtype>physical address</addrtype>
+          <address>217 Fort Johnson Rd.</address>
+          <city>Charleston</city>
+          <state>SC</state>
+          <postal>29412</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>843-953-9163</cntvoice>
+        <cntfax>843-953-9820</cntfax>
+        <cntemail>boyntonj@dnr.sc.gov</cntemail>
+      </cntinfo>
+    </metc>
+  </metainfo>
+</metadata>

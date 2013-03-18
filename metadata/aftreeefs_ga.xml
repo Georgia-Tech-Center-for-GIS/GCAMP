@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+  <idinfo>
+    <citation>
+      <citeinfo>
+        <origin>South Carolina Department of Natural Resources</origin>
+        <pubdate>Feb 2013</pubdate>
+      </citeinfo>
+    </citation>
+    <descript>
+      <abstract>The artificial reef program was created to enhance recreational fishing and sport diving opportunities in coastal waters, but future uses may emphasize increasing the amount of productive hard-bottom fish habitat in the form of sanctuaries or reserves.This file contains the location of all public artificial reef zones off the coast of South Carolina.  The actual location of reef material can vary within each zone.  The zone marks the potential extent of the reef.  There is a standard degree of error (+/- 15m) associated with the GPS coordinates used to create these zones, therefore care must be taken when approaching these areas on the ocean bottom. These data are only accurate to the date of publication, and new zones can be created at any time.</abstract>
+      <purpose>This GIS dataset was created for purpose of describing artificial reef zones for the state of South Carolina so that these data can be considered with respect to other data on coastal resources and activities.</purpose>
+    </descript>
+    <timeperd>
+      <timeinfo>
+        <sngdate>
+          <caldate>Feb 2013</caldate>
+        </sngdate>
+      </timeinfo>
+      <current>publication date</current>
+    </timeperd>
+    <status>
+      <progress>Complete</progress>
+      <update>None planned</update>
+    </status>
+    <keywords>
+      <theme>
+        <themekey>artificial reef zones</themekey>
+      </theme>
+      <place>
+        <placekey>South Carolina</placekey>
+      </place>
+    </keywords>
+    <accconst>None</accconst>
+    <useconst>If these data are being used to avoid potential disturbance or destruction of artificial reefs, please contact SCDNR to obtain the latest information.  Neither the State of South Carolina, the Department of Natural Resources, nor any of its employees, is responsible for any improper or incorrect use of the information described and/or contained herein, and  assume no responsibility for the use of the information.  The South Carolina Department of Natural Resources should be acknowledged as the data source in products derived from these data.</useconst>
+    <ptcontac>
+      <cntinfo>
+        <cntperp>
+          <cntper>Bob Martore</cntper>
+          <cntorg>SCDNR, Marine Resources Division</cntorg>
+        </cntperp>
+        <cntpos>Artificial Reef Coordinator</cntpos>
+        <cntaddr>
+          <addrtype>mailing address</addrtype>
+          <address>P.O. Box 12559</address>
+          <city>Charleston</city>
+          <state>SC</state>
+          <postal>29422</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>843-953-9303</cntvoice>
+        <cntemail>martoreb@dnr.sc.gov</cntemail>
+      </cntinfo>
+    </ptcontac>
+  </idinfo>
+  <dataqual>
+    <lineage>
+      <procstep>
+        <procdesc>Creation of Zones:  Geographic GPS positions were obtained for the corners of each rectangular zone.  Midpoints were obtained for circular zones.  Rectangular areas were created from these corner points.  A 400 yd. buffer was created surrounding the midpoint of the circular areas to create the circular zones.</procdesc>
+        <srcused>\\Mrdnas\GIS\Boynton\GISProjects\2011\Other\Research\SCWindProject\Metadata\MetadataTemplate</srcused>
+        <proccont>
+          <cntinfo>
+            <cntorgp>
+              <cntorg>SCDNR; MRRI</cntorg>
+              <cntper>Kristin Schulte</cntper>
+            </cntorgp>
+            <cntpos>Biologist II</cntpos>
+            <cntvoice>843-953-5977</cntvoice>
+            <cntemail>schultek@dnr.sc.gov</cntemail>
+          </cntinfo>
+        </proccont>
+      </procstep>
+      <procstep>
+        <procdesc>Metadata imported.</procdesc>
+        <srcused>\\Mrdnas\shellmap\Work\Wind\Metadata\MetadataTemplate_fgdcxml.xml</srcused>
+        <procdate>20110628</procdate>
+        <proctime>16412800</proctime>
+      </procstep>
+      <procstep>
+        <procdesc>Dataset copied.</procdesc>
+        <srcused>\\Mrdnas\ShellMap\Work\Wind\ArtificialReefZones</srcused>
+        <procdate>20110714</procdate>
+        <proctime>11283600</proctime>
+      </procstep>
+    </lineage>
+  </dataqual>
+  <eainfo>
+    <detailed Name="ArtReefs_GA">
+      <enttyp>
+        <enttypl Sync="TRUE">ArtReefs_GA</enttypl>
+        <enttypt Sync="TRUE">Feature Class</enttypt>
+        <enttypc Sync="TRUE">300</enttypc>
+      </enttyp>
+      <attr>
+        <attrlabl>OBJECTID</attrlabl>
+        <attrdef>Internal feature number.</attrdef>
+        <attrdefs>ESRI</attrdefs>
+        <attrdomv>
+          <udom>Sequential unique whole numbers that are automatically generated.</udom>
+        </attrdomv>
+        <attalias Sync="TRUE">OBJECTID</attalias>
+        <attrtype Sync="TRUE">OID</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>Shape</attrlabl>
+        <attrdef>Feature geometry.</attrdef>
+        <attrdefs>ESRI</attrdefs>
+        <attrdomv>
+          <udom>Coordinates defining the features.</udom>
+        </attrdomv>
+        <attalias Sync="TRUE">Shape</attalias>
+        <attrtype Sync="TRUE">Geometry</attrtype>
+        <attwidth Sync="TRUE">0</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">REEF_NAME</attrlabl>
+        <attalias Sync="TRUE">REEF_NAME</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">254</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">REEFCODE</attrlabl>
+        <attalias Sync="TRUE">REEFCODE</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">254</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">STRNUM</attrlabl>
+        <attalias Sync="TRUE">STRNUM</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">STRCODE</attrlabl>
+        <attalias Sync="TRUE">STRCODE</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">254</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">BUOYED</attrlabl>
+        <attalias Sync="TRUE">BUOYED</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">DESCRIPTIO</attrlabl>
+        <attalias Sync="TRUE">DESCRIPTIO</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">254</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">STRUCTURE</attrlabl>
+        <attalias Sync="TRUE">STRUCTURE</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">254</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">HEADING_DI</attrlabl>
+        <attalias Sync="TRUE">HEADING_DI</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">254</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">LATDD</attrlabl>
+        <attalias Sync="TRUE">LATDD</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">LATMMMMM</attrlabl>
+        <attalias Sync="TRUE">LATMMMMM</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">LATITUDE</attrlabl>
+        <attalias Sync="TRUE">LATITUDE</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">LONDD</attrlabl>
+        <attalias Sync="TRUE">LONDD</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">LONMMMMM</attrlabl>
+        <attalias Sync="TRUE">LONMMMMM</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">LONGITUDE</attrlabl>
+        <attalias Sync="TRUE">LONGITUDE</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">PERMITTED_</attrlabl>
+        <attalias Sync="TRUE">PERMITTED_</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">254</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">STR_TYPE</attrlabl>
+        <attalias Sync="TRUE">STR_TYPE</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">254</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">PHOTO_LOC</attrlabl>
+        <attalias Sync="TRUE">PHOTO_LOC</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">254</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">PHOTO_NAME</attrlabl>
+        <attalias Sync="TRUE">PHOTO_NAME</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">254</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+    </detailed>
+  </eainfo>
+  <distinfo>
+    <distrib>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>South Carolina Department of Natural Resources</cntorg>
+        </cntorgp>
+        <cntpos>Spatial Data Manager</cntpos>
+        <cntaddr>
+          <addrtype>physical address</addrtype>
+          <address>1000 Assembly St.</address>
+          <city>Columbia</city>
+          <state>SC</state>
+          <postal>29201</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntaddr>
+          <addrtype>mailing address</addrtype>
+          <address>Rembert C. Dennis Building P.O. Box 167</address>
+          <city>Columbia</city>
+          <state>SC</state>
+          <postal>29202</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>803-734-9100</cntvoice>
+        <cntfax>803-734-7001</cntfax>
+        <cntemail>gisman@dnr.sc.gov</cntemail>
+      </cntinfo>
+    </distrib>
+    <resdesc>Downloadable Data</resdesc>
+    <stdorder>
+      <digform>
+        <digtinfo>
+          <transize>0.000</transize>
+        </digtinfo>
+      </digform>
+    </stdorder>
+  </distinfo>
+  <metainfo>
+    <metc>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>SCDNR, Marine Resources Division, MRRI</cntorg>
+          <cntper>Jessica Boynton</cntper>
+        </cntorgp>
+        <cntpos>GIS Manager I</cntpos>
+        <cntaddr>
+          <addrtype>physical address</addrtype>
+          <address>217 Fort Johnson Rd.</address>
+          <city>Charleston</city>
+          <state>SC</state>
+          <postal>29412</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntaddr>
+          <addrtype>mailing address</addrtype>
+          <address>P.O. Box 12559</address>
+          <city>Charleston</city>
+          <state>SC</state>
+          <postal>29422</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>843-953-9163</cntvoice>
+        <cntfax>843-953-9820</cntfax>
+        <cntemail>boyntonj@dnr.sc.gov</cntemail>
+      </cntinfo>
+    </metc>
+    <metextns>
+      <onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+      <metprof>ESRI Metadata Profile</metprof>
+    </metextns>
+    <metextns>
+      <onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+      <metprof>ESRI Metadata Profile</metprof>
+    </metextns>
+  </metainfo>
+  <Esri>
+    <MetaID>{2428C3EF-8E17-4427-8196-2A5498469F8C}</MetaID>
+    <CreaDate>20130211</CreaDate>
+    <CreaTime>17463100</CreaTime>
+    <SyncOnce>FALSE</SyncOnce>
+    <SyncDate>20130211</SyncDate>
+    <SyncTime>17463900</SyncTime>
+    <ModDate>20130211</ModDate>
+    <ModTime>17463900</ModTime>
+  </Esri>
+</metadata>

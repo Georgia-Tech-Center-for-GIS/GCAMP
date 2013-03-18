@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<metadata>
+	<idinfo>
+		<citation>
+			<citeinfo>
+				<origin>Bureau of Ocean Energy Management, Regulation and Enforcement, Mapping and Boundary Branch</origin>
+				<pubdate>20101005</pubdate>
+				<title>Atlantic NAD 83 Official Protraction Diagram (OPD) Outlines (clipped)</title>
+				<geoform Sync="TRUE">vector digital data</geoform>
+				<serinfo>
+					<sername>Digital Offshore Cadastre</sername>
+					<issue>current</issue>
+				</serinfo>
+				<pubinfo>
+					<pubplace>Herndon, Virginia</pubplace>
+					<publish>Bureau of Ocean Energy Management, Regulation and Enforcement, Mapping and Boundary Branch</publish>
+				</pubinfo>
+				<onlink>http://www.boemre.gov/offshore/mapping/Atlantic/GIS/ATL_PROTCLP.zip</onlink>
+				<onlink>http://www.boemre.gov/offshore/mapping/atlantic.htm</onlink>
+				<lworkcit>
+					<citeinfo>
+						<origin>Bureau of Ocean Energy Management, Regulation and Enforcement, Mapping and Boundary Branch</origin>
+						<pubdate>20101005</pubdate>
+						<title>BOEMRE Offshore Cadastral Data</title>
+						<geoform>map</geoform>
+						<pubinfo>
+							<pubplace>Herndon, Virginia</pubplace>
+							<publish>
+Bureau of Ocean Energy Management, Regulation and Enforcement, Mapping and Boundary
+Branch
+</publish>
+						</pubinfo>
+					</citeinfo>
+				</lworkcit>
+				<ftname Sync="TRUE">ATL_PROTCLP</ftname></citeinfo>
+		</citation>
+		<descript>
+			<abstract>This data set contains Official Protraction Diagram (OPD) outlines
+in ESRI shapefile format.  Atlantic Region OPDs are approximately 2
+degrees wide by one degree high.  OPDs are further subdivided into blocks
+that are 4800 x 4800 meters on a UTM plane (but this file does not include
+those blocks - only the OPD outline).  Where the OPD hits the UTM
+zone boundary, that zone boundary will be a geodesic line - which will
+appear slightly curved on the UTM plane.  OPDs are numbered using the
+United Nations International Map of the World Numbering System, and
+are generally named for land or hydrographic features contained within
+the limits of the diagram.  These OPD outlines were clipped along the
+Submerged Lands Act Boundary (3 mile line), Continental Shelf Boundary
+(international boundaries), and the dividing line between the Gulf and
+Atlantic Regions.  Further information on the historic development of
+OPD's can be found in OCS Report MMS 99-0006: Boundary Development on
+the Outer Continental Shelf: http://www.boemre.gov/itd/pubs/1999/99-0006.PDF
+Because GIS projection and topology functions can change or generalize
+coordinates, these GIS files are considered to be approximate and are NOT an
+OFFICIAL record for the exact OPD coordinates or areas. The Official
+Protraction Diagrams (OPDs) and Supplemental Official Block Diagrams (SOBDs),
+available on the web in pdf format, serve as the legal definition for BOEMRE
+offshore boundary coordinates and area descriptions.</abstract>
+			<purpose>
+These block polygons and other cadastre information the BOEMRE produces are
+generated in accordance with 30 Code of Federal Regulations (CFR) 256.8
+to support Federal land ownership and mineral resource management.
+</purpose>
+			<supplinf>
+The BOEMRE is making its existing cadastre data available at
+http://www.boemre.gov/offshore/mapping/.  These data include Official
+Protraction Diagrams (OPDs), and Supplemental Official OCS Block
+Diagrams (SOBDs) in pdf format, and digital spatial data in ArcGIS
+shapefile format.
+</supplinf>
+			<langdata Sync="TRUE">en</langdata></descript>
+		<timeperd>
+			<timeinfo>
+				<rngdates><begdate>2005</begdate><enddate>2008</enddate></rngdates></timeinfo>
+			<current>publication date</current>
+		</timeperd>
+		<status>
+			<progress>Complete</progress>
+			<update>As needed</update>
+		</status>
+		<spdom>
+			<bounding>
+				<westbc Sync="TRUE">-82.999844</westbc>
+				<eastbc Sync="TRUE">-64.108329</eastbc>
+				<northbc Sync="TRUE">44.769023</northbc>
+				<southbc Sync="TRUE">23.817923</southbc>
+			</bounding>
+			<lboundng><leftbc Sync="TRUE">-82.999844</leftbc><rightbc Sync="TRUE">-64.108329</rightbc><bottombc Sync="TRUE">23.817923</bottombc><topbc Sync="TRUE">44.769023</topbc></lboundng></spdom>
+		<keywords>
+			<theme>
+				<themekt>None</themekt>
+				<themekey>Offshore</themekey>
+				<themekey>Cadastre</themekey>
+				<themekey>Limit of '8(g) Zone'</themekey>
+				<themekey>Submerged Lands Act Boundary, SLA</themekey>
+				<themekey>State Seaward Boundary, SSB</themekey>
+				<themekey>Fed State Boundary</themekey>
+				<themekey>Lease blocks</themekey>
+				<themekey>Marine Sanctuaries</themekey>
+				<themekey>Outer Continental Shelf, OCS</themekey>
+				<themekey>OCS blocks</themekey>
+				<themekey>Supplemental Official OCS Block Diagram, SOBD</themekey>
+				<themekey>Bureau of Ocean Energy Management, Regulation and Enforcement, BOEMRE</themekey>
+				<themekey>Oil and gas</themekey>
+				<themekey>Alternative Energy</themekey>
+				<themekey>Official Protraction Diagram (OPD)</themekey>
+				<themekey>Renewable Energy</themekey></theme>
+			<place>
+				<placekt>None</placekt>
+				<placekey>USA</placekey>
+				<placekey>Atlantic Ocean</placekey>
+				<placekey>Exclusive Economic Zone, EEZ</placekey>
+				<placekey>Maine, ME</placekey>
+				<placekey>New Hampshire, NH</placekey>
+				<placekey>Massachusetts, MA</placekey>
+				<placekey>Rhode Island, RI</placekey>
+				<placekey>New York, NY</placekey>
+				<placekey>New Jersey, NJ</placekey>
+				<placekey>Delaware, DE</placekey>
+				<placekey>Maryland, MD</placekey>
+				<placekey>Virginia, VA</placekey>
+				<placekey>North Carolina, NC</placekey>
+				<placekey>South Carolina, SC</placekey>
+				<placekey>Georgia, GA</placekey>
+				<placekey>Florida, FL</placekey>
+			</place>
+		</keywords>
+		<accconst>
+None. The Block and Boundary data is in the public
+domain.
+</accconst>
+		<useconst>
+The data was developed within the U.S. Government; no proprietary rights
+may be attached to them nor may they be sold to the U.S. Government as
+part of any procurement of ADP products or services.
+</useconst>
+		<ptcontac>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>
+Bureau of Ocean Energy Management, Regulation and Enforcement, Mapping &amp; Boundary
+Branch
+</cntorg>
+				</cntorgp>
+				<cntpos>Branch Chief</cntpos>
+				<cntaddr>
+					<addrtype>Mailing address</addrtype>
+					<address>381 Elden Street</address>
+					<address>Mail Stop 4011</address>
+					<city>Herndon</city>
+					<state>Virginia</state>
+					<postal>20170</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>(703) 787-1312</cntvoice>
+				<cntfax>(703) 787-1236</cntfax>
+				<cntemail>mapping.boundary.branch@boemre.gov</cntemail>
+				<hours>9:00am-4:00pm ET</hours>
+			</cntinfo>
+		</ptcontac>
+		<browse>
+			<browsen>http://www.boemre.gov/offshore/mapping/atlantic/metadata/ATL_PROTCLP.gif</browsen>
+			<browsed>An image of the BOEMRE Atlantic Region, with coastline in gray and OPD outlines in blue</browsed>
+			<browset>GIF</browset>
+		</browse>
+		<native Sync="TRUE">Microsoft Windows XP Version 5.1 (Build 2600) Service Pack 3; ESRI ArcCatalog 9.3.1.1850</native>
+		<crossref>
+			<citeinfo>
+				<origin>Bureau of Ocean Energy Management, Regulation and Enforcement, Mapping and Boundary Branch</origin>
+				<pubdate>2001-2010</pubdate>
+				<title>Supplemental Official OCS Block Diagrams (SOBDs)</title>
+				<edition>current version</edition>
+				<geoform>diagram</geoform>
+				<pubinfo>
+					<pubplace>Herndon, Virginia</pubplace>
+					<publish>Bureau of Ocean Energy Management, Regulation and Enforcement, Mapping and Boundary Branch</publish>
+				</pubinfo>
+				<othercit>
+SOBDs contain official coordinate and area
+descriptions for individual blocks.
+</othercit>
+				<onlink>http://www.boemre.gov/offshore/mapping/atlantic.htm</onlink>
+				<lworkcit>
+					<citeinfo>
+						<origin>Bureau of Ocean Energy Management, Regulation and Enforcement, Mapping and Boundary Branch</origin>
+						<pubdate>2001-2010</pubdate>
+						<title>BOEMRE Offshore Cadastral Data</title>
+					</citeinfo>
+				</lworkcit>
+			</citeinfo>
+		</crossref>
+		<crossref>
+			<citeinfo>
+				<origin>Bureau of Ocean Energy Management, Regulation and Enforcement, Mapping and Boundary Branch</origin>
+				<pubdate>2001-2010</pubdate>
+				<title>Official Protraction Diagrams (OPDs)</title>
+				<pubinfo>
+					<pubplace>Herndon, Virginia</pubplace>
+					<publish>Bureau of Ocean Energy Management, Regulation and Enforcement, Mapping and Boundary Branch</publish>
+				</pubinfo>
+				<othercit>
+Atlantic Region OPDs show the OCS blocks for an area approximately two
+degrees wide and one degree high.
+</othercit>
+				<lworkcit>
+					<citeinfo>
+						<origin>Bureau of Ocean Energy Management, Regulation and Enforcement</origin>
+						<pubdate>2001-2010</pubdate>
+						<title>BOEMRE Offshore Cadastral Data</title>
+					</citeinfo>
+				</lworkcit>
+			</citeinfo>
+		</crossref>
+		<natvform Sync="TRUE">Shapefile</natvform></idinfo>
+	<dataqual>
+		<logic>The file is believed to be free of topologic errors.</logic>
+		<complete>Clipped outlines for all Atlantic OPDs are included.</complete>
+		<posacc>
+			<horizpa>
+				<horizpar>Coordinates values have been computed to .00000001 of a degree, but this shapefile is considered to be approximate.  Where differences occur between the shapefile and the OPD and SOBD diagrams, the diagrams take precidence.
+This shapefile was created by extracting the X-Y UTM coordinates from the TIMS database.  In order to create this Regional shapefile, which spans multiple UTM zones, all coordinates were re-projected to a single UTM zone (Zone 18).  This file was then re-projected to geographic for distribution purposes.  This resulted in some distortion (up to 0.009 meters) at the far East and West edges of the shapefile.</horizpar>
+			</horizpa>
+		</posacc>
+		<lineage>
+			<srcinfo>
+				<srccite>
+					<citeinfo>
+						<origin>BOEMRE</origin>
+						<pubdate>Unpublished Material</pubdate>
+						<title>BOEMRE Technical Information Management System</title>
+						<geoform>database</geoform>
+						<pubinfo>
+							<pubplace>Herndon, VA</pubplace>
+							<publish>Bureau of Ocean Energy Management, Regulation and Enforcement</publish>
+						</pubinfo>
+					</citeinfo>
+				</srccite>
+				<typesrc>digital tape media</typesrc>
+				<srctime>
+					<timeinfo>
+						<rngdates>
+							<begdate>2005</begdate>
+							<enddate>2008</enddate>
+						</rngdates>
+					</timeinfo>
+					<srccurr>publication date</srccurr>
+				</srctime>
+				<srccitea>TIMS</srccitea>
+				<srccontr>Coordinates and attributes for OPD polygons.</srccontr>
+			</srcinfo>
+			<procstep>
+				<procdesc>
+In house programs were used to protract offshore blocks OPD by OPD,
+on a UTM grid for the offshore areas. Additional boundaries, including
+the Submerged Lands Act boundary, the Continental Shelf boundary, and
+others were also computed and intersected with the OPD blocks. The
+resulting points were then stored in the TIMS database.  Other in-house
+programs were used to create an ArcInfo Coverage from the data stored
+in the TIMS database.  That coverage was converted into a shapefile
+(AT_SUBBLK.SHP) using ArcGIS.  Portions of blocks outside federal
+jurisdiction were removed, and the shapefile was further "dissolved"
+to yeild just the clipped OPD outlines.
+</procdesc>
+				<srcused>TIMS</srcused>
+				<procdate>2009</procdate>
+				<proccont>
+					<cntinfo>
+						<cntorgp>
+							<cntorg>
+Bureau of Ocean Energy Management, Regulation and Enforcement, Mapping and
+Boundary Branch
+</cntorg>
+						</cntorgp>
+						<cntpos>Branch Chief</cntpos>
+						<cntaddr>
+							<addrtype>Mailing address</addrtype>
+							<address>381 Elden St.</address>
+							<address>Mail Stop 4011</address>
+							<city>Herndon</city>
+							<state>Virginia</state>
+							<postal>20170</postal>
+							<country>USA</country>
+						</cntaddr>
+						<cntvoice>(703) 787-1312</cntvoice>
+						<cntfax>(703) 787-1236</cntfax>
+						<cntemail>mapping.boundary.branch@boemre.gov</cntemail>
+						<hours>9:00am-4:00pm ET</hours>
+					</cntinfo>
+				</proccont>
+			</procstep>
+			<procstep><procdesc Sync="TRUE">Dataset copied.</procdesc><procdate Sync="TRUE">20100830</procdate><proctime Sync="TRUE">10385600</proctime></procstep><procstep><procdesc Sync="TRUE">Dataset copied.</procdesc><procdate Sync="TRUE">20100830</procdate><proctime Sync="TRUE">10402400</proctime></procstep><procstep><procdesc Sync="TRUE">Dataset copied.</procdesc><procdate Sync="TRUE">20100830</procdate><proctime Sync="TRUE">10550000</proctime></procstep><procstep><procdesc Sync="TRUE">Dataset moved.</procdesc><procdate Sync="TRUE">20100908</procdate><proctime Sync="TRUE">09581200</proctime></procstep><procstep><procdesc Sync="TRUE">Dataset copied.</procdesc><procdate Sync="TRUE">20100929</procdate><proctime Sync="TRUE">14301800</proctime></procstep><procstep><procdesc Sync="TRUE">Dataset copied.</procdesc><srcused Sync="TRUE">X:\WEB_Updates\Atlantic_FRN_2010\GIS\Shapefiles\ATL_PROTCLP</srcused><procdate Sync="TRUE">20101013</procdate><proctime Sync="TRUE">08232500</proctime></procstep></lineage>
+	</dataqual>
+	<spdoinfo>
+		<indspref>U.S. Atlantic Outer Continental Shelf (OCS)</indspref>
+		<direct Sync="TRUE">Vector</direct>
+		<ptvctinf>
+			<sdtsterm Name="ATL_PROTCLP">
+				<sdtstype Sync="TRUE">G-polygon</sdtstype>
+				<ptvctcnt Sync="TRUE">80</ptvctcnt>
+			</sdtsterm>
+			<esriterm Name="ATL_PROTCLP"><efeatyp Sync="TRUE">Simple</efeatyp><efeageom Sync="TRUE">Polygon</efeageom><esritopo Sync="TRUE">FALSE</esritopo><efeacnt Sync="TRUE">80</efeacnt><spindex Sync="TRUE">TRUE</spindex><linrefer Sync="TRUE">FALSE</linrefer></esriterm></ptvctinf>
+	</spdoinfo>
+	<spref>
+		<horizsys>
+			<geodetic>
+				<horizdn Sync="TRUE">North American Datum of 1983</horizdn>
+				<ellips Sync="TRUE">Geodetic Reference System 80</ellips>
+				<semiaxis Sync="TRUE">6378137.000000</semiaxis>
+				<denflat Sync="TRUE">298.257222</denflat>
+			</geodetic>
+			<cordsysn><geogcsn Sync="TRUE">GCS_North_American_1983</geogcsn></cordsysn><geograph><geogunit Sync="TRUE">Decimal degrees</geogunit><latres>0.000001</latres><longres>0.000001</longres></geograph></horizsys>
+	</spref>
+	<eainfo>
+		<detailed Name="ATL_PROTCLP">
+			<enttyp>
+				<enttypl Sync="TRUE">ATL_PROTCLP</enttypl>
+				<enttypt Sync="TRUE">Feature Class</enttypt><enttypc Sync="TRUE">80</enttypc></enttyp>
+			<attr>
+				<attrlabl>PROT_NUMBE</attrlabl>
+				<attrdef>Protraction Number</attrdef>
+				<attrdefs>BOEMRE</attrdefs>
+				<attalias Sync="TRUE">PROT_NUMBE</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">7</attwidth></attr>
+			<attr>
+				<attrlabl>PROT_APRV_</attrlabl>
+				<attrdef>Protraction Approval Date</attrdef>
+				<attrdefs>BOEMRE</attrdefs>
+				<attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">11</attwidth><attalias Sync="TRUE">PROT_APRV_</attalias></attr>
+			<attr>
+				<attrlabl>FID</attrlabl>
+				<attrdef>Internal feature number.</attrdef>
+				<attrdefs>ESRI</attrdefs>
+				<attrdomv>
+					<udom>Sequential unique whole numbers that are automatically generated.</udom>
+				</attrdomv>
+				<attrtype Sync="TRUE">OID</attrtype><attwidth Sync="TRUE">4</attwidth><attalias Sync="TRUE">FID</attalias><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr>
+			<attr>
+				<attrlabl>Shape</attrlabl>
+				<attrdef>Feature geometry.</attrdef>
+				<attrdefs>ESRI</attrdefs>
+				<attrdomv>
+					<udom>Coordinates defining the features.</udom>
+				</attrdomv>
+				<attrtype Sync="TRUE">Geometry</attrtype><attwidth Sync="TRUE">0</attwidth><attalias Sync="TRUE">Shape</attalias><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr>
+			<attr><attrlabl Sync="TRUE">MMS_REGION</attrlabl><attalias Sync="TRUE">MMS_REGION</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">1</attwidth><attrdef>Planning Region (Atlantic only for this dataset)</attrdef></attr></detailed>
+		<overview>
+			<eaover>Atttributes to describe the OPDs, primarily the Protraction number and approval date.</eaover>
+			<eadetcit>Bureau of Ocean Energy Management, Regulation and Enforcement</eadetcit>
+		</overview>
+	</eainfo>
+	<distinfo>
+		<distrib>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>
+Bureau of Ocean Energy Management, Regulation and Enforcement, Mapping and
+Boundary Branch
+</cntorg>
+				</cntorgp>
+				<cntaddr>
+					<addrtype>Mailing address</addrtype>
+					<address>381 Elden St.</address>
+					<address>Mail Stop 4011</address>
+					<city>Herndon</city>
+					<state>Virginia</state>
+					<postal>20170</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>(703) 787-1312</cntvoice>
+				<cntfax>(703) 787-1236</cntfax>
+				<cntemail>mapping.boundary.branch@boemre.gov</cntemail>
+				<hours>9:00am-4:00pm ET</hours>
+			</cntinfo>
+		</distrib>
+		<resdesc>Digital Offshore Cadastre</resdesc>
+		<distliab>
+As is.  No responsibility is assumed for the
+correctness of this data.
+</distliab>
+		<stdorder>
+			<digform>
+				<digtinfo>
+					<formname>ASHP</formname>
+					<formvern>9.2</formvern>
+					<dssize Sync="TRUE">4.911</dssize><transize Sync="TRUE">4.911</transize></digtinfo>
+				<digtopt>
+					<onlinopt>
+						<computer>
+							<networka>
+								<networkr>http://www.boemre.gov/offshore/mapping/atlantic.htm</networkr>
+							</networka>
+						</computer>
+						<accinstr>From the GIS Files section of the webpage, click on the shapefile
+you wish to download.  The downloaded file will need to be unzipped.</accinstr>
+						<oncomp>Windows</oncomp>
+					</onlinopt>
+				</digtopt>
+			</digform>
+		</stdorder>
+	</distinfo>
+	<metainfo>
+		<metd Sync="TRUE">20101013</metd>
+		<metrd>20100928</metrd>
+		<metc>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>
+Bureau of Ocean Energy Management, Regulation and Enforcement, Mapping and
+Boundary Branch
+</cntorg>
+				</cntorgp>
+				<cntpos>Branch Chief</cntpos>
+				<cntaddr>
+					<addrtype>Mailing address</addrtype>
+					<address>381 Elden St</address>
+					<address>Mail Stop 4011</address>
+					<city>Herndon</city>
+					<state>Virginia</state>
+					<postal>20170</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>(703) 787-1312</cntvoice>
+				<cntfax>(703) 787-1236</cntfax>
+				<cntemail>mapping.boundary.branch@boemre.gov</cntemail>
+				<hours>9:00am - 4:00pm ET</hours>
+			</cntinfo>
+		</metc>
+		<metstdn Sync="TRUE">FGDC Content Standards for Digital Geospatial Metadata</metstdn>
+		<metstdv Sync="TRUE">FGDC-STD-001-1998</metstdv>
+		<mettc Sync="TRUE">local time</mettc>
+		<langmeta Sync="TRUE">en</langmeta><metextns><onlink Sync="TRUE">http://www.esri.com/metadata/esriprof80.html</onlink><metprof Sync="TRUE">ESRI Metadata Profile</metprof></metextns></metainfo>
+	<Esri><CreaDate>20130125</CreaDate><CreaTime>23472000</CreaTime><SyncOnce>FALSE</SyncOnce><SyncDate>20101013</SyncDate><SyncTime>08315900</SyncTime><ModDate>20101013</ModDate><ModTime>08315900</ModTime><DataProperties><lineage><Process ToolSource="C:\ArcGIS\ArcToolbox\Toolboxes\Data Management Tools.tbx\Project" Date="20100830" Time="104025">Project "J:\My Documents\Metadata\Archive\AT_PROTCLP_UTM17.shp" "J:\My Documents\Metadata\Archive\AT_PROTCLP_UTM17_Project.shp" GEOGCS['GCS_North_American_1983',DATUM['D_North_American_1983',SPHEROID['GRS_1980',6378137.0,298.257222101]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]] # PROJCS['NAD_1983_UTM_Zone_18N',GEOGCS['GCS_North_American_1983',DATUM['D_North_American_1983',SPHEROID['GRS_1980',6378137.0,298.257222101]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Transverse_Mercator'],PARAMETER['False_Easting',500000.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',-75.0],PARAMETER['Scale_Factor',0.9996],PARAMETER['Latitude_Of_Origin',0.0],UNIT['Meter',1.0]]</Process></lineage></DataProperties><ArcGISFormat>1.0</ArcGISFormat></Esri><dataIdInfo><envirDesc Sync="TRUE">Microsoft Windows XP Version 5.1 (Build 2600) Service Pack 3; ESRI ArcCatalog 9.3.1.1850</envirDesc><dataLang><languageCode Sync="TRUE" value="en"></languageCode></dataLang><idCitation><resTitle Sync="TRUE">ATL_PROTCLP</resTitle><presForm><PresFormCd Sync="TRUE" value="005"></PresFormCd></presForm></idCitation><spatRpType><SpatRepTypCd Sync="TRUE" value="001"></SpatRepTypCd></spatRpType><dataExt><geoEle><GeoBndBox esriExtentType="native"><westBL Sync="TRUE">-82.999844</westBL><eastBL Sync="TRUE">-64.108329</eastBL><northBL Sync="TRUE">44.769023</northBL><southBL Sync="TRUE">23.817923</southBL><exTypeCode Sync="TRUE">1</exTypeCode></GeoBndBox></geoEle></dataExt><geoBox esriExtentType="decdegrees"><westBL Sync="TRUE">-82.999844</westBL><eastBL Sync="TRUE">-64.108329</eastBL><northBL Sync="TRUE">44.769023</northBL><southBL Sync="TRUE">23.817923</southBL><exTypeCode Sync="TRUE">1</exTypeCode></geoBox></dataIdInfo><mdLang><languageCode Sync="TRUE" value="en"></languageCode></mdLang><mdStanName Sync="TRUE">ISO 19115 Geographic Information - Metadata</mdStanName><mdStanVer Sync="TRUE">DIS_ESRI1.0</mdStanVer><mdChar><CharSetCd Sync="TRUE" value="004"></CharSetCd></mdChar><mdHrLv><ScopeCd Sync="TRUE" value="005"></ScopeCd></mdHrLv><mdHrLvName Sync="TRUE">dataset</mdHrLvName><distInfo><distributor><distorTran><onLineSrc><orDesc Sync="TRUE">002</orDesc><linkage Sync="TRUE">file://\\imshrnna1\archera\My Documents\Website\Atlantic\GIS\ATL_PROTCLP.shp</linkage><protocol Sync="TRUE">Local Area Network</protocol></onLineSrc><transSize Sync="TRUE">4.911</transSize></distorTran><distorFormat><formatName Sync="TRUE">Shapefile</formatName></distorFormat></distributor></distInfo><refSysInfo><RefSystem><refSysID><identCode Sync="TRUE">GCS_North_American_1983</identCode></refSysID></RefSystem></refSysInfo><spatRepInfo><VectSpatRep><topLvl><TopoLevCd Sync="TRUE" value="001"></TopoLevCd></topLvl><geometObjs Name="ATL_PROTCLP"><geoObjTyp><GeoObjTypCd Sync="TRUE" value="001"></GeoObjTypCd></geoObjTyp><geoObjCnt Sync="TRUE">80</geoObjCnt></geometObjs></VectSpatRep></spatRepInfo><mdDateSt Sync="TRUE">20101013</mdDateSt><Binary><Enclosure><Descript></Descript><Data EsriPropertyType="Image" OriginalFileName="ATL_PROTCLP.gif">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
+</Data></Enclosure></Binary></metadata>

@@ -1,0 +1,205 @@
+Identification_Information:
+  Citation:
+    Citation_Information:
+      Originator: AWS Truewind, LLC
+      Publication_Date: REQUIRED: The date when the data set is published or otherwise made available for release.
+      Title: Georgia Offshore Annual Wind Power Density at 90 Meters
+      Geospatial_Data_Presentation_Form: raster digital data
+      Online_Linkage: \\tornado\research3\CoastEnergy\gisdata\orginals\aws\Georgia\Grids\ga_off_pwr90
+  Description:
+    Abstract:
+      Received from AWS Truewind on 9/7/09 by the Center for Geographic Information Systems at Georgia Institute of Technology.
+
+      This raster file contains a portion of the offshore wind resource database of annual wind power density at 90 meters.
+    Purpose: To be used for the Southeast Ocean Based Renewable Energy project as a resource to analyze and identify potential alternative energy facilities within Georgia waters and federal waters beyond state jurisdiction.
+    Supplemental_Information: For more information about AWS Truewind, please visit http://www.awstruewind.com/.
+  Time_Period_of_Content:
+    Time_Period_Information:
+      Single_Date/Time:
+        Calendar_Date: REQUIRED: The year (and optionally month, or month and day) for which the data set corresponds to the ground.
+    Currentness_Reference: publication date
+  Status:
+    Progress: In work
+    Maintenance_and_Update_Frequency: REQUIRED: The frequency with which changes and additions are made to the data set after the initial data set is completed.
+  Spatial_Domain:
+    Bounding_Coordinates:
+      West_Bounding_Coordinate: -81.541043
+      East_Bounding_Coordinate: -79.799698
+      North_Bounding_Coordinate: 32.050925
+      South_Bounding_Coordinate: 30.324034
+  Keywords:
+    Theme:
+      Theme_Keyword_Thesaurus: REQUIRED: Reference to a formally registered thesaurus or a similar authoritative source of theme keywords.
+      Theme_Keyword: REQUIRED: Common-use word or phrase used to describe the subject of the data set.
+  Access_Constraints: REQUIRED: Restrictions and legal prerequisites for accessing the data set.
+  Use_Constraints: REQUIRED: Restrictions and legal prerequisites for using the data set after access is granted.
+  Native_Data_Set_Environment: Microsoft Windows XP Version 5.1 (Build 2600) Service Pack 3; ESRI ArcCatalog 9.3.1.3000
+Data_Quality_Information:
+  Lineage:
+    Process_Step:
+      Process_Description: Dataset copied.
+      Source_Used_Citation_Abbreviation: T:\Projects\NREL\Georgia\GIS\CSV_SHAPES\GA_OFF_ANN_ROSE
+    Process_Step:
+      Process_Description: Metadata imported.
+      Source_Used_Citation_Abbreviation: C:\DOCUME~1\LDOUAN~1\LOCALS~1\Temp\xml58C.tmp
+      Process_Date: 20090926
+      Process_Time: 18475000
+    Process_Step:
+      Process_Description: Metadata imported.
+      Source_Used_Citation_Abbreviation: C:\DOCUME~1\LDOUAN~1\LOCALS~1\Temp\xml594.tmp
+      Process_Date: 20090926
+      Process_Time: 19240800
+    Process_Step:
+      Process_Description: Metadata imported.
+      Source_Used_Citation_Abbreviation: C:\DOCUME~1\LDOUAN~1\LOCALS~1\Temp\xml5A3.tmp
+      Process_Date: 20090926
+      Process_Time: 20052100
+    Process_Step:
+      Process_Description: Metadata imported.
+      Source_Used_Citation_Abbreviation: C:\DOCUME~1\LDOUAN~1\LOCALS~1\Temp\xml5AB.tmp
+      Process_Date: 20090926
+      Process_Time: 20201800
+Spatial_Data_Organization_Information:
+  Direct_Spatial_Reference_Method: Raster
+  Point_and_Vector_Object_Information:
+    SDTS_Terms_Description:
+      SDTS_Point_and_Vector_Object_Type: Entity point
+      Point_and_Vector_Object_Count: 4037
+  Raster_Object_Information:
+    Raster_Object_Type: Grid Cell
+    Row_Count: 954
+    Column_Count: 822
+    Vertical_Count: 1
+Spatial_Reference_Information:
+  Horizontal_Coordinate_System_Definition:
+    Planar:
+      Grid_Coordinate_System:
+        Grid_Coordinate_System_Name: Universal Transverse Mercator
+        Universal_Transverse_Mercator:
+          UTM_Zone_Number: 17
+          Transverse_Mercator:
+            Scale_Factor_at_Central_Meridian: 0.999600
+            Longitude_of_Central_Meridian: -81.000000
+            Latitude_of_Projection_Origin: 0.000000
+            False_Easting: 500000.000000
+            False_Northing: 0.000000
+      Planar_Coordinate_Information:
+        Planar_Coordinate_Encoding_Method: row and column
+        Coordinate_Representation:
+          Abscissa_Resolution: 200.000000
+          Ordinate_Resolution: 200.000000
+        Planar_Distance_Units: meters
+    Geodetic_Model:
+      Horizontal_Datum_Name: D_WGS_1984
+      Ellipsoid_Name: WGS_1984
+      Semi-major_Axis: 6378137.000000
+      Denominator_of_Flattening_Ratio: 298.257224
+Entity_and_Attribute_Information:
+  Detailed_Description:
+    Entity_Type:
+      Entity_Type_Label: GA_OFF_ANN_HOUR
+    Attribute:
+      Attribute_Label: FID
+      Attribute_Definition: Internal feature number.
+      Attribute_Definition_Source: ESRI
+      Attribute_Domain_Values:
+        Unrepresentable_Domain: Sequential unique whole numbers that are automatically generated.
+    Attribute:
+      Attribute_Label: Shape
+      Attribute_Definition: Feature geometry.
+      Attribute_Definition_Source: ESRI
+      Attribute_Domain_Values:
+        Unrepresentable_Domain: Coordinates defining the features.
+    Attribute:
+      Attribute_Label: X
+    Attribute:
+      Attribute_Label: Y
+    Attribute:
+      Attribute_Label: LONGITUDE
+    Attribute:
+      Attribute_Label: LATITUDE
+    Attribute:
+      Attribute_Label: HOUR1
+    Attribute:
+      Attribute_Label: HOUR2
+    Attribute:
+      Attribute_Label: HOUR3
+    Attribute:
+      Attribute_Label: HOUR4
+    Attribute:
+      Attribute_Label: HOUR5
+    Attribute:
+      Attribute_Label: HOUR6
+    Attribute:
+      Attribute_Label: HOUR7
+    Attribute:
+      Attribute_Label: HOUR8
+    Attribute:
+      Attribute_Label: HOUR9
+    Attribute:
+      Attribute_Label: HOUR10
+    Attribute:
+      Attribute_Label: HOUR11
+    Attribute:
+      Attribute_Label: HOUR12
+    Attribute:
+      Attribute_Label: HOUR13
+    Attribute:
+      Attribute_Label: HOUR14
+    Attribute:
+      Attribute_Label: HOUR15
+    Attribute:
+      Attribute_Label: HOUR16
+    Attribute:
+      Attribute_Label: HOUR17
+    Attribute:
+      Attribute_Label: HOUR18
+    Attribute:
+      Attribute_Label: HOUR19
+    Attribute:
+      Attribute_Label: HOUR20
+    Attribute:
+      Attribute_Label: HOUR21
+    Attribute:
+      Attribute_Label: HOUR22
+    Attribute:
+      Attribute_Label: HOUR23
+    Attribute:
+      Attribute_Label: HOUR24
+Distribution_Information:
+  Resource_Description: Downloadable Data
+  Standard_Order_Process:
+    Digital_Form:
+      Digital_Transfer_Information:
+        Transfer_Size: 3.766
+Metadata_Reference_Information:
+  Metadata_Date: 20100105
+  Metadata_Contact:
+    Contact_Information:
+      Contact_Organization_Primary:
+        Contact_Organization: REQUIRED: The organization responsible for the metadata information.
+        Contact_Person: REQUIRED: The person responsible for the metadata information.
+      Contact_Address:
+        Address_Type: REQUIRED: The mailing and/or physical address for the organization or individual.
+        City: REQUIRED: The city of the address.
+        State_or_Province: REQUIRED: The state or province of the address.
+        Postal_Code: REQUIRED: The ZIP or other postal code of the address.
+      Contact_Voice_Telephone: REQUIRED: The telephone number by which individuals can speak to the organization or individual.
+  Metadata_Standard_Name: FGDC Content Standards for Digital Geospatial Metadata
+  Metadata_Standard_Version: FGDC-STD-001-1998
+  Metadata_Time_Convention: local time
+  Metadata_Extensions:
+    Online_Linkage: http://www.esri.com/metadata/esriprof80.html
+    Profile_Name: ESRI Metadata Profile
+  Metadata_Extensions:
+    Online_Linkage: http://www.esri.com/metadata/esriprof80.html
+    Profile_Name: ESRI Metadata Profile
+  Metadata_Extensions:
+    Online_Linkage: http://www.esri.com/metadata/esriprof80.html
+    Profile_Name: ESRI Metadata Profile
+  Metadata_Extensions:
+    Online_Linkage: http://www.esri.com/metadata/esriprof80.html
+    Profile_Name: ESRI Metadata Profile
+  Metadata_Extensions:
+    Online_Linkage: http://www.esri.com/metadata/esriprof80.html
+    Profile_Name: ESRI Metadata Profile

@@ -1,0 +1,1073 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+	<idinfo>
+		<citation>
+			<citeinfo>
+				<origin>Minerals Management Service, Mapping and Boundary Branch</origin>
+				<pubdate>20090529</pubdate>
+				<title>Digital Offshore Cadastre (DOC) - Atlantic Federal Outer Continental Shelf (OCS) Administrative Boundaries (Preliminary)</title>
+				<geoform>map</geoform>
+				<serinfo>
+					<sername>Digital Offshore Cadastre</sername>
+					<issue>current</issue>
+				</serinfo>
+				<pubinfo>
+					<pubplace>Herndon, Virginia</pubplace>
+					<publish>Minerals Management Service, Mapping and Boundary Branch</publish>
+				</pubinfo>
+				<onlink>http://www.mms.gov/ld/AdminBoundaries.htm</onlink>
+				<lworkcit>
+					<citeinfo>
+						<origin>Minerals Management Service, Mapping and Boundary Branch</origin>
+						<pubdate>Unpublished Material</pubdate>
+						<title>Technical Information Management System (TIMS), Mapping System, Block and Boundary Component</title>
+						<geoform>map</geoform>
+						<pubinfo>
+							<pubplace>Herndon, VA</pubplace>
+							<publish>
+Minerals Management Service, Mapping and Boundary
+Branch
+</publish>
+						</pubinfo>
+					</citeinfo>
+				</lworkcit>
+				<ftname Sync="TRUE">OCS_adminboundaries</ftname></citeinfo>
+		</citation>
+		<descript>
+			<abstract>This data set contains the Preliminary Federal Outer Continental Shelf (OCS) Administrative Boundaries Extending from the Submerged Lands Act Boundary seaward to the Limit of the United States Outer Continental Shelf (The U.S. 200 nautical mile Limit, or other marine boundary), in ESRI shape file format, for the MMS Atlantic Region.  The precise coordinates in this file are preliminary, pending final review.  These shapefiles have been densified to approximately 1 nautical mile, so that when projected to something other than geographic, the lines will retain the proper shape.  Because GIS files can be altered slightly by topology building commands, these GIS shape files do not represent the precise legal definition for these boundaries.  The official legal definitions for all Block &amp; Boundary cadastral data are represented by the Official Protraction Diagrams(OPDs) and Supplemental Official OCS Block Diagrams (SOBDs).</abstract>
+			<purpose>These boundaries will provide the basis for more accurate delineation of OCS planning areas; assist in determining affected state status under the Coastal Zone Management Act and OCS Lands Act; and assist in the section 18 comparative analysis to determine an equitable sharing of developmental benefits and environmental risks among regions.  For further information please see the Federal Register Notice from January 3, 2006.  See http://edocket.access.gpo.gov/2006/pdf/05-24659.pdf</purpose>
+			<supplinf>The MMS is making its existing cadastre data available at http://www.mms.gov/ld/Maps.htm.  These data include digital images of MMS diagrams at the regional, planning area, Official Protraction Diagram (OPD), and Supplemental Official OCS Block Diagram (SOBD) levels and digital spatial data in Arc/Info export or Arc/View shape format at the regional or planning area levels.  OPDs &amp; SOBDs for Federal OCS Administrative Boundaries have not yet been created.</supplinf>
+			<langdata Sync="TRUE">en</langdata></descript>
+		<timeperd>
+			<timeinfo>
+				<sngdate>
+					<caldate>20090529</caldate>
+				</sngdate>
+			</timeinfo>
+			<current>publication date</current>
+		</timeperd>
+		<status>
+			<progress>Complete</progress>
+			<update>As needed</update>
+		</status>
+		<spdom>
+			<bounding>
+				<westbc>-81.35</westbc>
+				<eastbc>-66.92</eastbc>
+				<northbc>44.96</northbc>
+				<southbc>30.19</southbc>
+			</bounding>
+			<lboundng><leftbc Sync="TRUE">-81.348601</leftbc><rightbc Sync="TRUE">-66.918856</rightbc><bottombc Sync="TRUE">30.195772</bottombc><topbc Sync="TRUE">42.957579</topbc></lboundng></spdom>
+		<keywords>
+			<theme>
+				<themekt>None</themekt>
+				<themekey>Offshore</themekey>
+				<themekey>Marine Cadastre</themekey>
+				<themekey>Submerged Lands Act Boundary, SLA</themekey>
+				<themekey>Federal OCS Administrative Boundaries</themekey>
+				<themekey>Exclusive Economic Zone (EEZ)</themekey>
+				<themekey>Outer Continental Shelf, OCS</themekey>
+				<themekey>Minerals Management Service, MMS</themekey>
+				<themekey>Oil and gas</themekey>
+				<themekey>States</themekey>
+			</theme>
+			<place>
+				<placekt>None</placekt>
+				<placekey>USA</placekey>
+				<placekey>Atlantic Ocean</placekey>
+				<placekey>Exclusive Economic Zone, EEZ</placekey>
+				<placekey>Maine, ME</placekey>
+				<placekey>New Hampshire, NH</placekey>
+				<placekey>Massachusetts, MA</placekey>
+				<placekey>Rhode Island, RI</placekey>
+				<placekey>Connecticut, CT</placekey>
+				<placekey>New York, NY</placekey>
+				<placekey>New Jersey, NJ</placekey>
+				<placekey>Delaware, DE</placekey>
+				<placekey>Maryland, MD</placekey>
+				<placekey>Virginia, VA</placekey>
+				<placekey>North Carolina, NC</placekey>
+				<placekey>South Carolina, SC</placekey>
+				<placekey>Georgia, GA</placekey>
+				<placekey>Florida, FL</placekey>
+			</place>
+		</keywords>
+		<accconst>
+None. The Block and Boundary data is in the public
+domain.
+</accconst>
+		<useconst>The data was developed within the U.S. Government; no proprietary rights may be attached to them nor may they be sold to the U.S. Government as part of any procurement of ADP products or services.</useconst>
+		<ptcontac>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>Minerals Management Service, Mapping &amp; Boundary Branch</cntorg>
+				</cntorgp>
+				<cntpos>Chief, Mapping and Boundary Branch</cntpos>
+				<cntaddr>
+					<addrtype>mailing address</addrtype>
+					<address>381 Elden Street </address>
+					<address>Mail Stop 4011</address>
+					<city>Herndon</city>
+					<state>Virginia</state>
+					<postal>20170-4817</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>(703)787-1312</cntvoice>
+				<cntfax>(703)787-1236</cntfax>
+				<hours>6:00am-3:30pm EST</hours>
+				<cntemail>mapping.boundary.branch@mms.gov</cntemail></cntinfo>
+		</ptcontac>
+		<browse>
+			<browsen>atl_admn.gif</browsen>
+			<browsed>Administrative Boundaries shown in yellow</browsed>
+			<browset>GIF</browset>
+		</browse>
+		<native>Shapefiles were created in CARIS version 4, service pack 6.</native>
+		<crossref>
+			<citeinfo>
+				<origin>Minerals Management Service, Mapping and Boundary Branch</origin>
+				<pubdate>Unknown</pubdate>
+				<title>Supplemental Official OCS Block Diagrams (SOBDs)</title>
+				<edition>planned version</edition>
+				<geoform>diagram</geoform>
+				<pubinfo>
+					<pubplace>Herndon, Virginia</pubplace>
+					<publish>Minerals Management Service, Mapping and Boundary Branch</publish>
+				</pubinfo>
+				<othercit>SOBDs contain additional coordinate and area
+calculations for individual blocks.  SOBDs showing the Federal OCS Administrative Boundaries are not yet complete.</othercit>
+				<onlink>http://www.mms.gov/ld/Maps.htm</onlink>
+				<lworkcit>
+					<citeinfo>
+						<origin>Minerals Management Service, Mapping and Boundary Branch</origin>
+						<pubdate>Unknown</pubdate>
+						<title>
+Technical Information Management System (TIMS), Mapping
+System, Block and Boundary Component
+</title>
+					</citeinfo>
+				</lworkcit>
+			</citeinfo>
+		</crossref>
+		<natvform Sync="TRUE">Shapefile</natvform></idinfo>
+	<dataqual>
+		<logic>These are preliminary data and no tests or reviews for logical consistency have been completed.</logic>
+		<complete>All Atlantic Region Federal OCS Administrative Boundaries are included.  They have been clipped at the approximate SLA boundary and U.S. 200 NM Limits.</complete>
+		<posacc>
+			<horizpa>
+				<horizpar>Coordinates for points forming the Federal OCS Administrative Boundaries were calculated in CARIS to 0.001 meter resolution.  Note however that these are geodetic lines.  They have been densified as geodesics in CARIS to add a vertex every 1 nautical mile, in order to preserve the proper shape between turning points (when/if they are projected to some other projection).</horizpar>
+			</horizpa>
+		</posacc>
+		<lineage>
+			<srcinfo>
+				<srccite>
+					<citeinfo>
+						<origin>National Oceanic and Atmospheric Administration (NOAA), National Ocean Service (NOS), Office of Coast Survey (OCS).</origin>
+						<pubdate>Unpublished Material</pubdate>
+						<title>National Baseline</title>
+						<geoform>map</geoform>
+						<pubinfo>
+							<pubplace>Silver Spring, MD</pubplace>
+							<publish>NOAA</publish>
+						</pubinfo>
+					</citeinfo>
+				</srccite>
+				<typesrc>Digital File</typesrc>
+				<srctime>
+					<timeinfo>
+						<sngdate>
+							<caldate>2005</caldate>
+						</sngdate>
+					</timeinfo>
+					<srccurr>Calendar date</srccurr>
+				</srctime>
+				<srccitea>NOAA NB</srccitea>
+				<srccontr>Baseline points from which the Federal OCS Administrative Boundaries were projected.</srccontr>
+			</srcinfo>
+			<procstep>
+				<procdesc>The National Baseline points were obtained from NOAA via MOU.  Although the National Baseline is unpublished, the marine boundaries and informtion which describe NOAA's National Baseline processes are available from
+www.ccjdc.org/events/workshops/shows/Tidal_Datum_Web/Monterey/westington.pps and http://www.nauticalcharts.noaa.gov/csdl/mbound.htm. The National Baseline file was reformatted as required for input into the CARIS Limits and Boundaries Program.  In some areas, additional baseline points landward of selected Bay, Harbor, or River Closing Lines, were digitized as needed and added to the baseline in CARIS. Equidistant lines were then projected by CARIS using the EQUIDISTANT LINE tool, and densified with the LINE TO GEODESIC tool.  Shapefiles were than exported from CARIS.</procdesc>
+				<srcused>NOAA NB</srcused>
+				<procdate>200512</procdate>
+				<proccont>
+					<cntinfo>
+						<cntorgp>
+							<cntorg>Minerals Management Service, Mapping and Boundary Branch</cntorg>
+						</cntorgp>
+						<cntpos>Chief, Mapping and Boundary Branch</cntpos>
+						<cntaddr>
+							<addrtype>mailing address</addrtype>
+							<address>381 Elden St.</address>
+							<address>Mail Stop 4011</address>
+							<city>Herndon</city>
+							<state>Virginia</state>
+							<postal>20170-4817</postal>
+							<country>USA</country>
+						</cntaddr>
+						<cntvoice>703) 787-1312</cntvoice>
+						<cntfax>(703) 787-1236</cntfax>
+						<cntemail>mapping.boundary.branch@mms.gov</cntemail>
+						<hours>6:00am-3:30pm EST</hours>
+					</cntinfo>
+				</proccont>
+				<procsv>CARIS version 4, Service Pack 6</procsv></procstep>
+			<procstep><procdesc Sync="TRUE">Dataset copied.</procdesc><srcused Sync="TRUE">X:\CoastEnergy\gisdata\orginals\MMS\OCS_adminboundaries</srcused><procdate Sync="TRUE">20100104</procdate><proctime Sync="TRUE">23040300</proctime></procstep></lineage>
+	</dataqual>
+	<spdoinfo>
+		<indspref>U.S. Atlantic Outer Continental Shelf (OCS)</indspref>
+		<direct>Vector</direct>
+		<ptvctinf><esriterm Name="OCS_adminboundaries"><efeatyp Sync="TRUE">Simple</efeatyp><efeageom Sync="TRUE">Polyline</efeageom><esritopo Sync="TRUE">FALSE</esritopo><efeacnt Sync="TRUE">17</efeacnt><spindex Sync="TRUE">FALSE</spindex><linrefer Sync="TRUE">FALSE</linrefer></esriterm><sdtsterm Name="OCS_adminboundaries"><sdtstype Sync="TRUE">String</sdtstype><ptvctcnt Sync="TRUE">17</ptvctcnt></sdtsterm></ptvctinf></spdoinfo>
+	<spref>
+		<horizsys>
+			<geograph>
+				<latres>0.00000001</latres>
+				<longres>0.00000001</longres>
+				<geogunit>Decimal degrees</geogunit>
+			</geograph>
+			<geodetic>
+				<horizdn>North American Datum 1983</horizdn>
+				<ellips>Geodetic Reference System 80</ellips>
+				<semiaxis>6378137 m</semiaxis>
+				<denflat>298.25722210088</denflat>
+			</geodetic>
+			<cordsysn><geogcsn Sync="TRUE">GCS_North_American_1983</geogcsn></cordsysn></horizsys>
+	</spref>
+	<eainfo>
+		<overview>
+			<eadetcit>Minerals Management Service</eadetcit>
+			<dsoverv>Equidistant Offshore Administrative Boundaries between States</dsoverv><eaover>Default attributes assigned by ESRI</eaover></overview>
+		<detailed Name="OCS_adminboundaries"><enttyp><enttypl Sync="TRUE">OCS_adminboundaries</enttypl><enttypt Sync="TRUE">Feature Class</enttypt><enttypc Sync="TRUE">17</enttypc><enttypd>shapefile attribute table</enttypd><enttypds>none</enttypds></enttyp><attr><attrlabl Sync="TRUE">FID</attrlabl><attalias Sync="TRUE">FID</attalias><attrtype Sync="TRUE">OID</attrtype><attwidth Sync="TRUE">4</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef Sync="TRUE">Internal feature number.</attrdef><attrdefs Sync="TRUE">ESRI</attrdefs><attrdomv><rdom><rdommin>0</rdommin><rdommax>16</rdommax></rdom><udom Sync="TRUE">Sequential unique whole numbers that are automatically generated.</udom></attrdomv></attr><attr><attrlabl Sync="TRUE">Shape</attrlabl><attalias Sync="TRUE">Shape</attalias><attrtype Sync="TRUE">Geometry</attrtype><attwidth Sync="TRUE">0</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef Sync="TRUE">Feature geometry.</attrdef><attrdefs Sync="TRUE">ESRI</attrdefs><attrdomv><udom Sync="TRUE">Coordinates defining the features.</udom></attrdomv></attr><attr><attrlabl Sync="TRUE">Id</attrlabl><attalias Sync="TRUE">Id</attalias><attrtype Sync="TRUE">Number</attrtype><attwidth Sync="TRUE">6</attwidth><attrdef>Id</attrdef><attrdefs>ESRI</attrdefs><attrdomv><edom><edomv>0</edomv><edomvd>all values set to 0</edomvd><edomvds>MMS</edomvds></edom></attrdomv></attr></detailed></eainfo>
+	<distinfo>
+		<distrib>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>Minerals Management Service, Mapping and Boundary Branch</cntorg>
+				</cntorgp>
+				<cntaddr>
+					<addrtype>mailing address</addrtype>
+					<address>381 Elden St</address>
+					<address>Mail Stop 4011</address>
+					<city>Herndon</city>
+					<state>Virginia</state>
+					<postal>20170-4817</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>(703) 787-1312</cntvoice>
+				<cntfax>(703) 787-1236</cntfax>
+				<cntemail>mapping.boundary.branch@mms.gov</cntemail>
+				<hours>6:00am-3:30pm EST</hours>
+				<cntpos>Chief, Mapping &amp; Boundary Branch</cntpos></cntinfo>
+		</distrib>
+		<resdesc>Digital Offshore Cadastre</resdesc>
+		<distliab>As is, preliminary.  No responsibility is assumed for the correctness of this data.</distliab>
+		<stdorder>
+			<digform>
+				<digtinfo>
+					<formname>ASHP</formname>
+					<formvern>9.1</formvern>
+					<transize>1.6 Mbytes</transize>
+					<dssize Sync="TRUE">0.035</dssize></digtinfo>
+				<digtopt>
+					<onlinopt>
+						<computer>
+							<networka>
+								<networkr>http://www.mms.gov/ld/AdminBoundaries.htm</networkr>
+							</networka>
+						</computer>
+						<accinstr>Download the zip file from the web site.  The downloaded file will need to be unzipped.  The result will be the necessary ArcView shapefiles and .dbf file.</accinstr>
+						<oncomp>Dell Pentium server running Windows XP</oncomp>
+					</onlinopt>
+				</digtopt>
+			</digform>
+			<fees>None</fees>
+		</stdorder>
+	</distinfo>
+	<metainfo>
+		<metd>20090529</metd>
+		<metrd>20090529</metrd>
+		<metc>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>Minerals Management Service, Mapping and Boundary Branch</cntorg>
+					<cntper>REQUIRED: The person responsible for the metadata information.</cntper></cntorgp>
+				<cntpos>Chief, Mapping &amp; Boundary Branch</cntpos>
+				<cntaddr>
+					<addrtype>mailing address</addrtype>
+					<address>381 Elden St</address>
+					<address>Mail Stop 4011</address>
+					<city>Herndon</city>
+					<state>Virginia</state>
+					<postal>20170</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>(703) 787-1312</cntvoice>
+				<cntemail>mapping.boundary.branch@mms.gov</cntemail>
+				<hours>6:00am - 3:30pm EST</hours>
+				<cntfax>(703) 787-1236</cntfax></cntinfo>
+		</metc>
+		<metstdn>Content Standard for Digital Geospatial Metadata</metstdn>
+		<metstdv>FGDC-STD-001-1998</metstdv>
+		<mettc>local time</mettc>
+		<langmeta Sync="TRUE">en</langmeta><metextns><onlink Sync="TRUE">http://www.esri.com/metadata/esriprof80.html</onlink><metprof Sync="TRUE">ESRI Metadata Profile</metprof></metextns></metainfo>
+	<Esri><ModDate>20100202</ModDate><ModTime>14014800</ModTime><SyncDate>20100202</SyncDate><SyncTime>14014800</SyncTime><DataProperties><lineage><Process ToolSource="C:\Program Files\ArcGIS\ArcToolbox\Toolboxes\Data Management Tools.tbx\DefineProjection" Date="20091018" Time="075553">DefineProjection X:\CoastEnergy\gisdata\orginals\MMS\OCS_adminboundaries.shp GEOGCS['GCS_North_American_1983',DATUM['D_North_American_1983',SPHEROID['GRS_1980',6378137.0,298.257222101]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]] X:\CoastEnergy\gisdata\orginals\MMS\OCS_adminboundaries.shp</Process><Process ToolSource="c:\program files (x86)\arcgis\desktop10.0\ArcToolbox\Toolboxes\Data Management Tools.tbx\Project" Date="20130122" Time="145932">Project Administrative\OCS_Boundary C:\GISDATA\GACMSP\GCAMP\WGS84\MMC\OCS_Boundary.shp PROJCS['World_Mercator',GEOGCS['GCS_WGS_1984',DATUM['D_WGS_1984',SPHEROID['WGS_1984',6378137.0,298.257223563]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Mercator'],PARAMETER['False_Easting',0.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',0.0],PARAMETER['Standard_Parallel_1',0.0],UNIT['Meter',1.0]] NAD_1983_To_WGS_1984_1 PROJCS['NAD_1983_UTM_Zone_17N',GEOGCS['GCS_North_American_1983',DATUM['D_North_American_1983',SPHEROID['GRS_1980',6378137.0,298.257222101]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Transverse_Mercator'],PARAMETER['False_Easting',500000.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',-81.0],PARAMETER['Scale_Factor',0.9996],PARAMETER['Latitude_Of_Origin',0.0],UNIT['Meter',1.0]]</Process><Process ToolSource="c:\program files (x86)\arcgis\desktop10.0\ArcToolbox\Toolboxes\Data Management Tools.tbx\Project" Date="20130124" Time="134513">Project Administrative\OCS_Boundary C:\GISDATA\GACMSP\GCAMP\WM84\MMC\OCS_Boundary.shp PROJCS['WGS_1984_Web_Mercator_Auxiliary_Sphere',GEOGCS['GCS_WGS_1984',DATUM['D_WGS_1984',SPHEROID['WGS_1984',6378137.0,298.257223563]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Mercator_Auxiliary_Sphere'],PARAMETER['False_Easting',0.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',0.0],PARAMETER['Standard_Parallel_1',0.0],PARAMETER['Auxiliary_Sphere_Type',0.0],UNIT['Meter',1.0]] # PROJCS['World_Mercator',GEOGCS['GCS_WGS_1984',DATUM['D_WGS_1984',SPHEROID['WGS_1984',6378137.0,298.257223563]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Mercator'],PARAMETER['False_Easting',0.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',0.0],PARAMETER['Standard_Parallel_1',0.0],UNIT['Meter',1.0]]</Process></lineage><itemProps><itemLocation><linkage Sync="TRUE">file://\\GISP390A\C\Documents and Settings\mna6\Desktop\GRA_2011Fall\Week15\Coastall.gdb</linkage><protocol Sync="TRUE">Local Area Network</protocol></itemLocation></itemProps></DataProperties><CreaDate>20130124</CreaDate><CreaTime>13451300</CreaTime><SyncOnce>FALSE</SyncOnce><ArcGISFormat>1.0</ArcGISFormat></Esri><mdDateSt Sync="TRUE">20100202</mdDateSt><Binary><Enclosure><Descript>Thumbnail of Atlantic Administrative Boundary lines (in yellow).</Descript><Data EsriPropertyType="Image" OriginalFileName="atl_admn.gif">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</Data></Enclosure><Enclosure><Descript>Federal Register Notice for Administrative Boundaries (.pdf)</Descript><Data EsriPropertyType="Base64" OriginalFileName="frn.pdf">JVBERi0xLjQNJeLjz9MNCjI1IDAgb2JqIDw8L0xpbmVhcml6ZWQgMS9MIDIxMDEyL08gMjcvRSA3
+NDE0L04gNi9UIDIwNDY1L0ggWyA1OTYgMjM5XT4+DWVuZG9iag0gICAgICAgICAgICAgICAgICAg
+DQp4cmVmDQoyNSAxNQ0KMDAwMDAwMDAxNiAwMDAwMCBuDQowMDAwMDAwODM1IDAwMDAwIG4NCjAw
+MDAwMDA5MTUgMDAwMDAgbg0KMDAwMDAwMTA0NCAwMDAwMCBuDQowMDAwMDAxMTc2IDAwMDAwIG4N
+CjAwMDAwMDE1OTYgMDAwMDAgbg0KMDAwMDAwMjEyOSAwMDAwMCBuDQowMDAwMDAyMTYzIDAwMDAw
+IG4NCjAwMDAwMDI0MTEgMDAwMDAgbg0KMDAwMDAwMjY1MyAwMDAwMCBuDQowMDAwMDAyNzI5IDAw
+MDAwIG4NCjAwMDAwMDQzNzYgMDAwMDAgbg0KMDAwMDAwNDUyNCAwMDAwMCBuDQowMDAwMDA0NzQ1
+IDAwMDAwIG4NCjAwMDAwMDA1OTYgMDAwMDAgbg0KdHJhaWxlcg0KPDwvU2l6ZSA0MC9QcmV2IDIw
+NDU0L1Jvb3QgMjYgMCBSL0luZm8gMjQgMCBSL0lEWzw0MDQwNzI1Qjg0Qzg3RUJGN0FFQjUzREYy
+MTFBQUM2Nj48MUE2OTczNTZDQkVCOTY0QUFGQzA4OTM5MDg5NzM3OTk+XT4+DQpzdGFydHhyZWYN
+CjANCiUlRU9GDQogICAgICAgICAgICAgDQozOSAwIG9iajw8L0xlbmd0aCAxNTIvRmlsdGVyL0Zs
+YXRlRGVjb2RlL0kgMTY5L0wgMTUzL1MgMTA2Pj5zdHJlYW0NCnjaYmBgYGZgYFrCwMLAwLiYgZcB
+AXiBYiDIMUFAYB/jtHMH0otKGxhmtqeCJFmSV5Zqu5kHnQbiLcm128y9gYLGDQwMrBEMDIIWYDZr
+A4MGQiMQCDEw2AYDaR4g5gPbocTAw/ohSULxMwPDNV4GrZQLRdy7vEUKKsGSIgwM9uFAmgmIrYFY
+goHBjx9IMwLxC4AAAwBJHCEnDQplbmRzdHJlYW0NZW5kb2JqDTI2IDAgb2JqPDwvTWV0YWRhdGEg
+MjMgMCBSL1BhZ2VzIDIyIDAgUi9UeXBlL0NhdGFsb2cvUGFnZUxhYmVscyAyMCAwIFI+Pg1lbmRv
+YmoNMjcgMCBvYmo8PC9Dcm9wQm94WzAgMCA2MTIgNzkyXS9QYXJlbnQgMjIgMCBSL0NvbnRlbnRz
+IDM1IDAgUi9Sb3RhdGUgMC9NZWRpYUJveFswIDAgNjEyIDc5Ml0vUmVzb3VyY2VzIDI4IDAgUi9U
+eXBlL1BhZ2U+Pg1lbmRvYmoNMjggMCBvYmo8PC9Db2xvclNwYWNlPDwvQ3M2IDMxIDAgUj4+L0Zv
+bnQ8PC9UVDIgMjkgMCBSL1RUNCAzMCAwIFIvVFQ2IDM2IDAgUj4+L1Byb2NTZXRbL1BERi9UZXh0
+XS9FeHRHU3RhdGU8PC9HUzEgMzQgMCBSPj4+Pg1lbmRvYmoNMjkgMCBvYmo8PC9TdWJ0eXBlL1Ry
+dWVUeXBlL0ZvbnREZXNjcmlwdG9yIDMyIDAgUi9MYXN0Q2hhciAxMjEvV2lkdGhzWzI1MCAwIDAg
+MCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDMzMyAwIDAgMCAw
+IDAgMCA3MjIgNjY3IDcyMiA3MjIgNjY3IDYxMSA3NzggNzc4IDM4OSAwIDAgNjY3IDk0NCA3MjIg
+Nzc4IDYxMSAwIDcyMiA1NTYgNjY3IDcyMiAwIDAgMCA3MjIgMCAwIDAgMCAwIDAgMCA1MDAgMCA0
+NDQgNTU2IDQ0NCAwIDUwMCA1NTYgMjc4IDAgNTU2IDI3OCA4MzMgNTU2IDUwMCAwIDU1NiA0NDQg
+Mzg5IDMzMyA1NTYgNTAwIDAgMCA1MDBdL0Jhc2VGb250L1RpbWVzTmV3Um9tYW5QUy1Cb2xkTVQv
+Rmlyc3RDaGFyIDMyL0VuY29kaW5nL1dpbkFuc2lFbmNvZGluZy9UeXBlL0ZvbnQ+Pg1lbmRvYmoN
+MzAgMCBvYmo8PC9TdWJ0eXBlL1RydWVUeXBlL0ZvbnREZXNjcmlwdG9yIDMzIDAgUi9MYXN0Q2hh
+ciAxNTAvV2lkdGhzWzI1MCAwIDAgMCAwIDAgMCAwIDMzMyAzMzMgMCAwIDI1MCAzMzMgMjUwIDI3
+OCA1MDAgNTAwIDUwMCA1MDAgNTAwIDUwMCA1MDAgNTAwIDUwMCA1MDAgMjc4IDI3OCAwIDAgMCAw
+IDAgNzIyIDY2NyA2NjcgNzIyIDYxMSA1NTYgNzIyIDcyMiAzMzMgMCAwIDYxMSA4ODkgNzIyIDcy
+MiA1NTYgMCA2NjcgNTU2IDYxMSA3MjIgMCA5NDQgMCAwIDYxMSAwIDAgMCAwIDUwMCAwIDQ0NCA1
+MDAgNDQ0IDUwMCA0NDQgMzMzIDUwMCA1MDAgMjc4IDI3OCA1MDAgMjc4IDc3OCA1MDAgNTAwIDUw
+MCA1MDAgMzMzIDM4OSAyNzggNTAwIDUwMCA3MjIgNTAwIDUwMCA0NDQgMCAwIDAgMCAwIDAgMCAw
+IDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDMzMyA0NDQgNDQ0IDAgNTAwXS9CYXNlRm9u
+dC9UaW1lc05ld1JvbWFuUFNNVC9GaXJzdENoYXIgMzIvRW5jb2RpbmcvV2luQW5zaUVuY29kaW5n
+L1R5cGUvRm9udD4+DWVuZG9iag0zMSAwIG9ialsvSUNDQmFzZWQgMzggMCBSXQ1lbmRvYmoNMzIg
+MCBvYmo8PC9TdGVtViAxMzYvRm9udE5hbWUvVGltZXNOZXdSb21hblBTLUJvbGRNVC9Gb250U3Ry
+ZXRjaC9Ob3JtYWwvRm9udFdlaWdodCA3MDAvRmxhZ3MgMzQvRGVzY2VudCAtMjE2L0ZvbnRCQm94
+Wy01NTggLTMwNyAyMDAwIDEwMjZdL0FzY2VudCA4OTEvRm9udEZhbWlseShUaW1lcyBOZXcgUm9t
+YW4pL0NhcEhlaWdodCA2NTYvWEhlaWdodCAtNTQ2L1R5cGUvRm9udERlc2NyaXB0b3IvSXRhbGlj
+QW5nbGUgMD4+DWVuZG9iag0zMyAwIG9iajw8L1N0ZW1WIDgyL0ZvbnROYW1lL1RpbWVzTmV3Um9t
+YW5QU01UL0ZvbnRTdHJldGNoL05vcm1hbC9Gb250V2VpZ2h0IDQwMC9GbGFncyAzNC9EZXNjZW50
+IC0yMTYvRm9udEJCb3hbLTU2OCAtMzA3IDIwMDAgMTAwN10vQXNjZW50IDg5MS9Gb250RmFtaWx5
+KFRpbWVzIE5ldyBSb21hbikvQ2FwSGVpZ2h0IDY1Ni9YSGVpZ2h0IC01NDYvVHlwZS9Gb250RGVz
+Y3JpcHRvci9JdGFsaWNBbmdsZSAwPj4NZW5kb2JqDTM0IDAgb2JqPDwvT1BNIDEvT1AgZmFsc2Uv
+b3AgZmFsc2UvVHlwZS9FeHRHU3RhdGUvU0EgZmFsc2UvU00gMC4wMj4+DWVuZG9iag0zNSAwIG9i
+ajw8L0xlbmd0aCAxNTc3L0ZpbHRlci9GbGF0ZURlY29kZT4+c3RyZWFtDQpIiZxXTXPaSBC98yv6
+ONoyChJIQHJyiJN4K9gpoxx2nT0MYoBJiRHRjEz8N5JUfm+6Z0ZI2E62KuUqLCRNf733uptnbxYR
+bHTvZdZ7lmUxRJCte1EMA/zDf9MBjAeTcDKCbNd7NtMp5No+G4DOVa8/CAeDwRiyvNdcHXq37NXF
++/ObbB7003DKLoIoHLKrDK5fQxb0h+GYvQ36MT2By6vs4uby+gaC/7K/ewPA20PIXjljQzJrPcQT
+Z3culah4oWHOFd+InVAGFqK6k7mwBjCDkc9gGA6SBKMkYzY8ssAgyD71+v4hOounT3ijS/L2WqzI
+G1zXRlQwK5VB98rgncVWFGv4yK5ni48BnK92wSSMmLQxRHg5dY5vmZLaVNzIOwEvy1qteCWFhosv
+RqiVVBtYV6U7C2YrXBH6zsBJJZI2tqmLbVEv6eCQiWojVvCOq5WG89w0bu5BC37g1QpMaW2/k+59
+aaBc2zsflDR4dGG4wZhckjaC7K9e48p7TbzXtgbBCGH0hQiGiGUYDPATGhg8kdCUCzttMTh/c3E1
+++c5IdHiNQrTtIHrFI0ocb4B4CH8tnIi6JNnZIIrP56Ju5Ymbe08izxjEL95kLA5QngGl8oIzCll
+lSyDJJywKuhHYczChxn1I3yrhceFGHWym2WX11ePshsOu1zsBANIYGOIC0e6zRYI0VoHfYpjW1YC
+ODJsjF88wzCC6MlaOeZ2WbdsWbcU96XyeHsdTMLp6JdM83XXp0wrLNPWZQWvxJ5Xxj8jEMYEgiWX
+CzMJ41EXiajVc2rjFLbsWPEK9mhXSYoqDUfNqX57rLmi7DZnkJdlhQLCHEt1BhiSSyiOutg8cOqO
+3zJXzCkWE1+MusXa19W+1EKH8Esej1qkFx/m8/Obh0ROHhB51PofHYmcbaUGVRpioVRYTKpizLTV
+5b5eFjL3bO62MbIRt7qIbRRmy409Np8vYMs1rMSdKMo9QkUksvRpwB7Hp7V5HBtfuUgksX/SrU2B
+2tO2X4Hg+RYp+amUinibl1xb6WBX8A1wGnURjHzhC9CWezZIdyTHzxg1t8Rwlxj2AUv/lt+RWcxJ
+d1oimTwJvlMJGzxzEUpFXMK67qvyTqIfuEP6UwWwM4wnXWLFR2K5UpY1iUSJtTT6DA3lRU1N+rmr
+3zTEKXSMoKVBFHoCpI4A6MUn76ZNS432ydNQXqgtV7nPHdtCXgmDnfyrBr6UhTT31MuFsrkkYRJ3
+x5uzY83oGiE/0uLbqD/7qr/DD8Rpt6uVzL1oHCmcHTsJk1PNsLxUui6Mfd1KDEW3F1WjuaKgWut6
+vy8rY61F4zCZPJ652BHIFDZdZ+oHcAyQbiE8FQKPfHDBuPO/Qtn1DI05CbXB9m+xFmtUj9FUGbSG
+02l9D4etRIIujI0pDSdpW/ROC2oYj4TcBinj1MEaCZIIJqwMIqYNesEeJewFtbYU2xaNign7gs9p
+kGMKnqbW2Un8aSux1DusBG+l6ReAEQMkHRYFZw/Gog2RGcmY8xpF4Ae2VPYp0sIKDscBUkXV9uZu
+idPbVnrn7IkqlzhMmoHucm46YI6SxmNj3AZoMpTK2rcDKKD9zBYjYXYWnSHGpHcNCP7OKXwcjqad
+orZVbaROyawxxoiKiJ8V9o/PtXC3bHPBwb0CRXvElJm6chcFbHhz0MYQ2Q6BvbqgSHFaozB9rW0M
+v2317CCRtfvyICo3Iw78jsiDg+z+hadcmDyl6fhPNZ0+GHG37L1tQ07UFimElWvpRujODvc8x/yN
+73U0NePfDPdbthJEDtIS2hsyRbDTzuBGKDriniAJe9ESs9v720SHf5pouyfEfk8415iVXWRQJ9/4
+ei3y43r5HbRdGA0hj/QyRFoEkyAeMnDfUEiuAmk4GD89Ql2jvEU6EV9nOHhoG/+3RK20K2HstpEJ
+bSO0EdvtoCkDWf6fhYdMUz2POzXOpNcIlvjC3bKzLwSKAtOTDWLT+FEr9iNFQTRp9HtiFCrxuZbY
+V9zm75vx9MGEHh8NDuNmefVjgVpe00Rdpy/4AeWxKXFDtqI5a1NHtcRPz56Bt7svcemwzWANp+Dp
+8DsuqfTzAWXIq+LeS/Ai6/0UYADazMWTCg0KZW5kc3RyZWFtDWVuZG9iag0zNiAwIG9iajw8L1N1
+YnR5cGUvVHJ1ZVR5cGUvRm9udERlc2NyaXB0b3IgMzcgMCBSL0xhc3RDaGFyIDMyL1dpZHRoc1sy
+NzhdL0Jhc2VGb250L0FyaWFsTVQvRmlyc3RDaGFyIDMyL0VuY29kaW5nL1dpbkFuc2lFbmNvZGlu
+Zy9UeXBlL0ZvbnQ+Pg1lbmRvYmoNMzcgMCBvYmo8PC9TdGVtViA4OC9Gb250TmFtZS9BcmlhbE1U
+L0ZvbnRTdHJldGNoL05vcm1hbC9Gb250V2VpZ2h0IDQwMC9GbGFncyAzMi9EZXNjZW50IC0yMTEv
+Rm9udEJCb3hbLTY2NSAtMzI1IDIwMDAgMTAwNl0vQXNjZW50IDkwNS9Gb250RmFtaWx5KEFyaWFs
+KS9DYXBIZWlnaHQgNzE4L1hIZWlnaHQgNTE1L1R5cGUvRm9udERlc2NyaXB0b3IvSXRhbGljQW5n
+bGUgMD4+DWVuZG9iag0zOCAwIG9iajw8L0xlbmd0aCAyNTc1L0ZpbHRlci9GbGF0ZURlY29kZS9O
+IDMvQWx0ZXJuYXRlL0RldmljZVJHQj4+c3RyZWFtDQpIiZyWeVRTdxbHf2/JnpCVsMNjDVuAsAaQ
+NWxhkR0EUQhJCAESQkjYBUFEBRRFRISqlTLWbXRGT0WdLq5jrQ7WferSA/Uw6ug4tBbXjp0XOEed
+Tmem0+8f7/c593fv793fvfed8wCgJ6WqtdUwCwCN1qDPSozFFhUUYqQJAAMKIAIRADJ5rS4tOyEH
+4JLGS7Ba3An8i55eB5BpvSJMysAw8P+JLdfpDQBAGTgHKJS1cpw7ca6qN+hM9hmceaWVJoZRE+vx
+BHG2NLFqnr3nfOY52sQKjVaBsylnnUKjMPFpnFfXGZU4I6k4d9WplfU4X8XZpcqoUeP83BSrUcpq
+AUDpJrtBKS/H2Q9nuj4nS4LzAgDIdNU7XPoOG5QNBtOlJNW6Rr1aVW7A3OUemCg0VIwlKeurlAaD
+MEMmr5TpFZikWqOTaRsBmL/znDim2mJ4kYNFocHBQn8f0TuF+q+bv1Cm3s7Tk8y5nkH8C29tP+dX
+PQqAeBavzfq3ttItAIyvBMDy5luby/sAMPG+Hb74zn34pnkpNxh0Yb6+9fX1Pmql3MdU0Df6nw6/
+QO+8z8d03JvyYHHKMpmxyoCZ6iavrqo26rFanUyuxIQ/HeJfHfjzeXhnKcuUeqUWj8jDp0ytVeHt
+1irUBnW1FlNr/1MTf2XYTzQ/17i4Y68Br9gHsC7yAPK3CwDl0gBStA3fgd70LZWSBzLwNd/h3vzc
+zwn691PhPtOjVq2ai5Nk5WByo75ufs/0WQICoAIm4AErYA+cgTsQAn8QAsJBNIgHySAd5IACsBTI
+QTnQAD2oBy2gHXSBHrAebALDYDsYA7vBfnAQjIOPwQnwR3AefAmugVtgEkyDh2AGPAWvIAgiQQyI
+C1lBDpAr5AX5Q2IoEoqHUqEsqAAqgVSQFjJCLdAKqAfqh4ahHdBu6PfQUegEdA66BH0FTUEPoO+g
+lzAC02EebAe7wb6wGI6BU+AceAmsgmvgJrgTXgcPwaPwPvgwfAI+D1+DJ+GH8CwCEBrCRxwRISJG
+JEg6UoiUIXqkFelGBpFRZD9yDDmLXEEmkUfIC5SIclEMFaLhaBKai8rRGrQV7UWH0V3oYfQ0egWd
+QmfQ1wQGwZbgRQgjSAmLCCpCPaGLMEjYSfiIcIZwjTBNeEokEvlEATGEmEQsIFYQm4m9xK3EA8Tj
+xEvEu8RZEolkRfIiRZDSSTKSgdRF2kLaR/qMdJk0TXpOppEdyP7kBHIhWUvuIA+S95A/JV8m3yO/
+orAorpQwSjpFQWmk9FHGKMcoFynTlFdUNlVAjaDmUCuo7dQh6n7qGept6hMajeZEC6Vl0tS05bQh
+2u9on9OmaC/oHLonXUIvohvp6+gf0o/Tv6I/YTAYboxoRiHDwFjH2M04xfia8dyMa+ZjJjVTmLWZ
+jZgdNrts9phJYboyY5hLmU3MQeYh5kXmIxaF5caSsGSsVtYI6yjrBmuWzWWL2OlsDbuXvYd9jn2f
+Q+K4ceI5Ck4n5wPOKc5dLsJ15kq4cu4K7hj3DHeaR+QJeFJeBa+H91veBG/GnGMeaJ5n3mA+Yv6J
++SQf4bvxpfwqfh//IP86/6WFnUWMhdJijcV+i8sWzyxtLKMtlZbdlgcsr1m+tMKs4q0qrTZYjVvd
+sUatPa0zreutt1mfsX5kw7MJt5HbdNsctLlpC9t62mbZNtt+YHvBdtbO3i7RTme3xe6U3SN7vn20
+fYX9gP2n9g8cuA6RDmqHAYfPHP6KmWMxWBU2hJ3GZhxtHZMcjY47HCccXzkJnHKdOpwOON1xpjqL
+ncucB5xPOs+4OLikubS47HW56UpxFbuWu252Pev6zE3glu+2ym3c7b7AUiAVNAn2Cm67M9yj3Gvc
+R92vehA9xB6VHls9vvSEPYM8yz1HPC96wV7BXmqvrV6XvAneod5a71HvG0K6MEZYJ9wrnPLh+6T6
+dPiM+zz2dfEt9N3ge9b3tV+QX5XfmN8tEUeULOoQHRN95+/pL/cf8b8awAhICGgLOBLwbaBXoDJw
+W+Cfg7hBaUGrgk4G/SM4JFgfvD/4QYhLSEnIeyE3xDxxhrhX/HkoITQ2tC3049AXYcFhhrCDYX8P
+F4ZXhu8Jv79AsEC5YGzB3QinCFnEjojJSCyyJPL9yMkoxyhZ1GjUN9HO0YrondH3YjxiKmL2xTyO
+9YvVx34U+0wSJlkmOR6HxCXGdcdNxHPic+OH479OcEpQJexNmEkMSmxOPJ5ESEpJ2pB0Q2onlUt3
+S2eSQ5KXJZ9OoadkpwynfJPqmapPPZYGpyWnbUy7vdB1oXbheDpIl6ZvTL+TIcioyfhDJjEzI3Mk
+8y9ZoqyWrLPZ3Ozi7D3ZT3Nic/pybuW65xpzT+Yx84ryduc9y4/L78+fXOS7aNmi8wXWBeqCI4Wk
+wrzCnYWzi+MXb1o8XRRU1FV0fYlgScOSc0utl1Yt/aSYWSwrPlRCKMkv2VPygyxdNiqbLZWWvlc6
+I5fIN8sfKqIVA4oHyghlv/JeWURZf9l9VYRqo+pBeVT5YPkjtUQ9rP62Iqlie8WzyvTKDyt/rMqv
+OqAha0o0R7UcbaX2dLV9dUP1JZ2Xrks3WRNWs6lmRp+i31kL1S6pPWLg4T9TF4zuxpXGqbrIupG6
+5/V59Yca2A3ahguNno1rGu81JTT9phltljefbHFsaW+ZWhazbEcr1FraerLNua2zbXp54vJd7dT2
+yvY/dfh19Hd8vyJ/xbFOu87lnXdXJq7c22XWpe+6sSp81fbV6Gr16ok1AWu2rHndrej+osevZ7Dn
+h1557xdrRWuH1v64rmzdRF9w37b1xPXa9dc3RG3Y1c/ub+q/uzFt4+EBbKB74PtNxZvODQYObt9M
+3WzcPDmU+k8ApAFb/pi4mSSZkJn8mmia1ZtCm6+cHJyJnPedZJ3SnkCerp8dn4uf+qBpoNihR6G2
+oiailqMGo3aj5qRWpMelOKWpphqmi6b9p26n4KhSqMSpN6mpqhyqj6sCq3Wr6axcrNCtRK24ri2u
+oa8Wr4uwALB1sOqxYLHWskuywrM4s660JbSctRO1irYBtnm28Ldot+C4WbjRuUq5wro7urW7Lrun
+vCG8m70VvY++Cr6Evv+/er/1wHDA7MFnwePCX8Lbw1jD1MRRxM7FS8XIxkbGw8dBx7/IPci8yTrJ
+uco4yrfLNsu2zDXMtc01zbXONs62zzfPuNA50LrRPNG+0j/SwdNE08bUSdTL1U7V0dZV1tjXXNfg
+2GTY6Nls2fHadtr724DcBdyK3RDdlt4c3qLfKd+v4DbgveFE4cziU+Lb42Pj6+Rz5PzlhOYN5pbn
+H+ep6DLovOlG6dDqW+rl63Dr++yG7RHtnO4o7rTvQO/M8Fjw5fFy8f/yjPMZ86f0NPTC9VD13vZt
+9vv3ivgZ+Kj5OPnH+lf65/t3/Af8mP0p/br+S/7c/23//wIMAPeE8/sKDQplbmRzdHJlYW0NZW5k
+b2JqDTEgMCBvYmo8PC9Dcm9wQm94WzAgMCA2MTIgNzkyXS9QYXJlbnQgMjIgMCBSL0NvbnRlbnRz
+IDMgMCBSL1JvdGF0ZSAwL01lZGlhQm94WzAgMCA2MTIgNzkyXS9SZXNvdXJjZXMgMiAwIFIvVHlw
+ZS9QYWdlPj4NZW5kb2JqDTIgMCBvYmo8PC9Db2xvclNwYWNlPDwvQ3M2IDMxIDAgUj4+L0ZvbnQ8
+PC9UVDIgMjkgMCBSL1RUNCAzMCAwIFIvVFQ2IDM2IDAgUj4+L1Byb2NTZXRbL1BERi9UZXh0XS9F
+eHRHU3RhdGU8PC9HUzEgMzQgMCBSPj4+Pg1lbmRvYmoNMyAwIG9iajw8L0xlbmd0aCAxNzIwL0Zp
+bHRlci9GbGF0ZURlY29kZT4+c3RyZWFtDQpIiZxX23KbSBB911fMI2xZBJC4KHlyHGc3W/GlbFJb
+W8k+IDSSxsbAApJX+YxNPnhPT48A2Yq3KuXYgYHp6T59+nTz6tdbT6ya0dtk9CpJpsITyXLk+cLF
+D/6buWISO1EokofRq7MmFFmjH7miyYqRK5KM/jyOLGEndyMvcqJAjF3HdQORvBtZPq2OvSktB4ET
+B3qZnrtT2qtf9aZk4bPVyKxVZSG8mUiLNN81qhG1/HtjB87UUrVsRLuW4lZmtWzT2v4r+X3khY7r
+B/BmbzXqrPoTtroTbSnmaZ4WsBNZmRRFSsekuVBFK2HWnjozq7XHnhNYjXhU7Vq/qU/Tp4zNMWPf
+mRzx3+eDvj3KPB/PtbfSxpPYUsVKlEttKFOt+iqLht12nSA2Xg8gNK+myyWQkAtx26at/P5GMIi+
+48adC9bUoVWkLOSUuQSxtsip6JPZP9F+T3rc9anXdblVC/I0FQ9ljeOzbFPjYIBGGViWNeOuExw6
+02hgLO5BiBkFk50dYIgtgj4ri0Yt9K2sRbOpqrJuyeqJgOUOX5g9gNfvLDO+Vjm/Y36ABuUJnNXo
+/MsUkdo5JHDCzo2fhOqzjaYljzS5vkqRSwSoM7TUkM2caBIcDc41wam2Ec0aIDWOEH/Y2ICldblp
+EVe2NsH4nuOHT8jS0xLk1qbSxYMdg3CKeVeopgXoagu3VCGbE6FaoZiaYqGWS5Vt8pZP8CZOEBx3
+dBqwdUS5kEsYotQ1yGmNWLvM5pydN3v0A8cNBg73jAx+kmRe55ApwtMGVGoJbFVoNqHWEVtsccHb
+oRXbngWuECixVeEm1XBwwIEzcYcBh31mQkM7IxnaqCKKAABUN9mDeACIb2khwBTVpvNc9pGT4R8Q
+zzOF3azT2lTyQm5lXlawasmihYTMZQGcQYu0WAi593YWDr0Nehqa9BRbVZcF+TYxdmrV3MPIQ4lz
+arkimjvfhbjtaWXMHvjaE3wPtCYPNCzPBZn3rNJ2cYgpa6Qd15oBA34YVgG5vZTCQ5nJpkEdi7Rp
+Nmyq0qa4BIHF4zptiVh7/3j/gX89D4zYfDOxQdQIMBY25yj3wp8VuGeH/ibzivJnIk6rqi6rWpHE
+Gdk47CFPpeezRRqG8tN9QzuuCggYsYCXGEDPiY/qLOemoxE1GBYvUpH3JIIEg+8/x6+XDbrUPP8n
+Zd2ocnki+o6pO9YXS36xRbqBJNVoNg3qSa+XlTTakq70Qi0lWwH52J/DnsOqr6NKfvkBqlrxUpy/
+RWfDDugLo8KQmGhPGGL0xOlLEFt3JZqxqNClC72rllslH4lmtAY57OnCtg5weq7Usi+x0JQYX5eF
+akvyzNHhoRFDkkOaaMwVzTXoz5H/vD9rBwbTjzMMadbrhqnyZA0hwj8JUYqsLapnBle0H5GuyxnV
+pXqghqinEzOFTCzOCZVmzZszSlSV6muU5aorOvQan7DwZ0Hf9zS6Q/6aweK8kPVqJ67LXGU7cZq1
+hK9PAvW4Rh+KoJQZOTC1jOigL/v+Ud3dz2yrdMsacnFxy8MLs6/VY1fVCXDbd3p2+CURS3Mod2EY
+i7zXENlHLduSI6hYyMhXQpJu7ugG+GbQ4r3vM28wDTBrS24/V2e3qL2LtNiZoQs9Eqpwx9s1zfT2
+A0cH0RtHtc7O0bLLLKXiQXPDYDohyulyIFwzSuS+b8+i433b69oY4bjG5kK3aGIJmiQQoHYZ8lw5
+tYoWAj7nmQqM0lUoXyQ0NnezzZOhfUho/6nE+iyx4wnELXxZ3D9b769uxPtPN4mN92bWb+c34sMl
+1i5Okw9Xl+Ls6jI5PUteC85Pr98YmNyDuc3r+MtJu0HakbMaI+PZWsnlifhoRrd3UJ8GcnNiNFRb
+6mZk9DlZrUtofuROxlEcYYiGfDyJzdUbvP74uDveiMntp+vrj/Z4ArjPL1An1vllwrenN3+KD/Y4
+RGoubSqcLtzXHKXbeTMMTUf1Ns3uV3W5McI26Gdc0McmEk0TCAvzBFtl3ZblPRhGM0/a3BPpcrVa
+69LeT+wH0tt/t7imhqkgVJHVBtNCt3vfmmNcp+prd5WENV3HYl6268HQ/v9CjKmWh39FbUFfpUzi
+XFsvymJ8+A6kWpe5XtlB+bUacAVFP/qW6aSDZkbSg71W6JtxLXMqUG4jLBgt6tSz1hRk38T2vXxs
+vmSHsfVjnBv0wLGS3B40Q5TqxKL6z/L9ZBDFwZDhTxTa2iwwEpNv9LuqIaq5WNRysUJC+PvPY41/
+oYXmCt9BSwUZgnRizs/FCjqyhsWc0kpGzpPRfwIMABGxLqEKDQplbmRzdHJlYW0NZW5kb2JqDTQg
+MCBvYmo8PC9Dcm9wQm94WzAgMCA2MTIgNzkyXS9QYXJlbnQgMjIgMCBSL0NvbnRlbnRzIDYgMCBS
+L1JvdGF0ZSAwL01lZGlhQm94WzAgMCA2MTIgNzkyXS9SZXNvdXJjZXMgNSAwIFIvVHlwZS9QYWdl
+Pj4NZW5kb2JqDTUgMCBvYmo8PC9Db2xvclNwYWNlPDwvQ3M2IDMxIDAgUj4+L0ZvbnQ8PC9UVDIg
+MjkgMCBSL1RUNCAzMCAwIFIvVFQ4IDE4IDAgUj4+L1Byb2NTZXRbL1BERi9UZXh0XS9FeHRHU3Rh
+dGU8PC9HUzEgMzQgMCBSPj4+Pg1lbmRvYmoNNiAwIG9iajw8L0xlbmd0aCAxNzI3L0ZpbHRlci9G
+bGF0ZURlY29kZT4+c3RyZWFtDQpIiXxX247juBF991fwUQraGsm2ZBv7NNM7CRL0TAOxFwEyuw9s
+ibY5qyYVkrKnvyP54JwiKUt9GzTg9kUqVp0651Tpw992BTva2af97MN+v2IF2x9mxYLl+MO/bc6W
+m2xdsf3j7MOtrVht/U85s7Wa5Wxf08tllrB0/31WrLN1yeZ5lucl2/86S5b07Tx8XZbZpvRf0+95
+QffOh7eIcOC1bKWTwv7CLlI1N+zCz+KGcdWwujdGKMeEEub4xI74789DakWJZIagq2tQ5I6g3xLD
+ndSKdUZ/F7VDaAr3mG6yRcJTXLlJjKz71vWGjrLsItqW/qd/7P+BzMMB80W29PVodxKGSaX0GXHP
+gvVWWKYPDN8z61MqsmobMkoEv2FW8AeBWsQPaZ1UR6Zl63M48nj5thoqGNFEzE6E1G1A4P52d73V
+g7pYZlU5pubLX47lh+qPqESqg+HWmb6mIpEpdx6AIgCwTZ7Yg2Bdb2wvGlyNK3zx6NqyGrEd+1VU
+Ibhgh3SV9GmRuD6tEiMyxvbAR9DX2uAFkBIwX77scEQrxRmXCTq0QIVIJF0Bf5cu8cqkGzD3517r
+GkGRlvEOjeyM5A6FaNYgqBL0QR8O9qRRngd1lRWbCS2KEZdFGXLnzWO6RRoyQKDQHCScLYEJZYfe
+phU+CUYHpCUljB/KhAE8d0ImToYAKNqnDfEsgnjm8XiqoKAU5iPfQyFfhDvpRrcaVKZ8R+HldNdi
++15Dk/sz6EeQdugocxfNngQ39grzDfvqScPbQY/bqTx8Dsl9LbhiO2HOso76+lV03LhHkhjIvHME
+6SDd7QuSLUYw1z6pE2SK/grF+q7hnuSUztdA8DyrqpcpTGUf0/3ErW8mu5xkfSK9nmUjBoms3xF5
+FdVC5z1wi74ctAEtzqLVHSUSpLLIqmX5JqWUE0YNkH3vjbSNrKPsbD8IejU5fSy/WPkYyJaHDPbC
+GOk06NkCXog/ApCXr5owReBWKyePve4t+7dWsSOff9Rtb8liQglkKy8aUY2ZLAOrP9daadL2KpH1
+EGz0ND7BKEi8HCU+guL5BZlpCz940L1quIErk5VduGkGuwv8KJ+J9UV7Qla7/iEYLrwbEe9QnmUf
+a8es59kFL8bCO/4lmKdSb0NyWwR9C/fcW3tCrgoPoFTED0fU7QxH72r+0Ebj8XwU0TB9vCHTb8lV
+KFfmeUMxBPnVTcgmNjAJn0+VradEGOHPoyF6FwlzYQIbHLWOTengIVXSSq5q1C3dabA8H/o9FOMk
+43UtOqqmhlT10fDuBGNakYUVMNB6KD/asHfd0zDJMMg2gyXOhwMoak9NJqxCjouk692AjNUHn7YL
+J6D5gv2p9EU9G5CbzcjLoe31bNL/24///PuO3aXzEuHv0znZ/X7H/jv45iZ4H/x2+zOZ3MlH6awX
+x6crus/tE4ZcvBqm35Lsf4zdKzEQ9zFdIwNORS0S9cQOGEkV7QM0H+M0h0pQvfMlSxuGZqy4zMq8
+DD5dvtGuAVjMM8f/FKS6zohGgOQB4NgvReIaqEdFTS9RQ9OqvHzbe+IItlOmHfzNGiRbJCaoywaa
+we/Ff3rZgKBcubF3Vf7CU9avPMXnR44R43kouNcG6LdOvvPajw3/wVBtS0xJ9iga0HxYJIrq7TLy
+yG12PUV38B0JWwjH3XiMGh8ezfKlYf3TAAsOd10YKP478hn6UfO27r1g2rBXZf4DaWXa7AuobTtR
+ywOMpG2f2FDCtpjKZ0CnEVYeqZUwj7BUibBVCseeDxdCHn1qJvY7j2GfqYem/zXfNozTF/uqmvrL
+Dc7BqGjout8UkLvq/U0xFX4BSpq4KFiG6XNGA2lJ1srr445fnns8xXpnz8wjDhh37Pfkt6+3d/e7
+31NmiG1GTBDBjuXI5Fkoff+XdxjN4A8llXl981dtgiCxotJMwnOBoEUQ+2RwrgstCtGhF4ufjlr0
+82qjpLlWAzXfGYIPi6WqZdd6pwilh4g/LT4ZleW99+NUa3XcSBfZaj2hT5hgnvQoTEfuh9UHy4t5
+Yp2W8cbnJW3H7SsSRYHH2+DRUF7s4RDaZ+IvkOECSircEDm4WL3aLIrFq+GDlZ5MJTAQk2Kb+GOw
+fMMyMXl1WnnfgkGHtyoldx0WM6zQVK3/hTxLDKrKl6/WD+oETaU4xgKWhAVG0bOHvc0IRdR4LA7D
+UEyaSc8NQ7GQ/OrdfTaPiNLMB2nxGHBd073r0TT1e65QjTZ+O3ryFYL3w8pSvT3DirAqQx3MGTyx
+PMHYeucnA3ehuO1qajDLsFyKsFmGe64Pf5/3s/8LMACltUdrCg0KZW5kc3RyZWFtDWVuZG9iag03
+IDAgb2JqPDwvU3RlbVYgNzEuNzQyL0ZvbnROYW1lL1RpbWVzTmV3Um9tYW5QUy1JdGFsaWNNVC9G
+b250U3RyZXRjaC9Ob3JtYWwvRm9udFdlaWdodCA0MDAvRmxhZ3MgOTgvRGVzY2VudCAtMjE2L0Zv
+bnRCQm94Wy00OTggLTMwNyAxMTIwIDEwMjNdL0FzY2VudCA4OTEvRm9udEZhbWlseShUaW1lcyBO
+ZXcgUm9tYW4pL0NhcEhlaWdodCA2NTYvWEhlaWdodCAtNTQ2L1R5cGUvRm9udERlc2NyaXB0b3Iv
+SXRhbGljQW5nbGUgLTE1Pj4NZW5kb2JqDTggMCBvYmo8PC9Dcm9wQm94WzAgMCA2MTIgNzkyXS9Q
+YXJlbnQgMjIgMCBSL0NvbnRlbnRzIDEwIDAgUi9Sb3RhdGUgMC9NZWRpYUJveFswIDAgNjEyIDc5
+Ml0vUmVzb3VyY2VzIDkgMCBSL1R5cGUvUGFnZT4+DWVuZG9iag05IDAgb2JqPDwvQ29sb3JTcGFj
+ZTw8L0NzNiAzMSAwIFI+Pi9Gb250PDwvVFQyIDI5IDAgUi9UVDQgMzAgMCBSPj4vUHJvY1NldFsv
+UERGL1RleHRdL0V4dEdTdGF0ZTw8L0dTMSAzNCAwIFI+Pj4+DWVuZG9iag0xMCAwIG9iajw8L0xl
+bmd0aCAxNzU3L0ZpbHRlci9GbGF0ZURlY29kZT4+c3RyZWFtDQpIiXxXTY/bNhC9+1fwKBc2o2/J
+vSVpE7RogQLrIodFD7RMr5l6JVek193+jfYH9w2HsmTHCQJkbVkcvXkz8+bpzceHRDzZ2bv17M16
+nYtErHezJBUx/uHPKhZZLatSrJ9nb97bUjTW/xQL27SzWKwb+u88i8R8/XmWVLIqxDKWcVyI9Q+z
+KKerS75cFLIu/GX6Pc7o7HL4eJ49RntlxUbrVpys3orNq3B7LR5Ox14/z2uZRFq87069E93O//J7
+O/9j/fMsqWWZFQBEgUc8xiHGg1NO24Ww4a9qt6JVznStFa4T+q+TcWpzeBUMkyMtU5ldUOYjytzH
+1ZZOGLsXm+7UblVvtJX+/Po7vjFLOR0xX2ZFKuvxw4+qx7NMK4yzYm+s6/rXBeciHySnTZi2hjOr
+ZBoPmRGC9AIm8c+IgKVtNEWkIG8bz02SeDgrmVZ8djkcxokPetOfVP8qkjouFiL1FDH+ZVrKvBrz
+f4yyJCN4yomteTFboDuekHsjDiDSUoVQmEjPl0mk5ssysnM8qoxOvmCRbpElJ7KSWTbJ4wtSUfjm
+0Fkt8OHYWWs2B+0x1dMMEl/d8AmnUMF/mS7iwYld3z2HTCp64LcL6fb0QHfuRNP1re6tOO9Ns+c+
+jidoy5H1mitLj9uKjlm3irozJxooeXEwrZb/ceJLBLqguPRmaI14+PNT63TPbakO4PaMKjqMQa93
+BIsalWnMZVHebYd45VO6cNFoKcTb3pkGPJbDwCSrohYfdatfVGh4H/CKpmRMlkl+37UvqCSwDQnj
+ikOOrQPYh70+7BaiB/idCQqAg7fDOI6zb/QHjWw1xftBN/p5o3uRLwCvTBZiEAxEmQLzuCKe4+/9
+TanMr6HXI/SSaf60173mIs0LatEYdaJqlVytPELtx2Tsfg6JipCRMFao7WdmvZBVOmG9GFkv+DGq
+0S1OFpGjWtHjUM/eYLqhDfNcVpGvADqt68VzB0ihOXzkZSKT4k5NMb1EHUsYepO6temUxVAphOiO
+GBSInNAKTds5T345kn8tsamX2Ah8sN4E7XodWmNKA1fAh7rG9kVvWKq+UMej7p0yrWmfiAB7AqAA
+2+7VwSPLZf1NDg9QfrHVII7qk0UA43tGPfVa8yWgw03uTBsiEEhRrzFOhjXnyEiPBxQj8RN3sNpY
+TbqJ5C/xc4q/GOYsTYq7PPKqivwiObUHbVGMtkPMfqSUBIAaaBgxinUBuRxalaB9PlmaG87UHnVj
+QH9j+ubEC49H2d6UDKHpe9iJ1MeraGtU6x+8EPpF4yafyLCRAupjZ1q/IVjoAkRs/ZS3fuXX9heC
+yxM86mw4FKwC2nta2bFH4ipoHcnyvAJI4eZLDHa0n8d+m7cajWyd8Ljs0IobZTVlYoOec6UTPKa4
+qXX+Ra05MR+l12rr9kPQMJCY0jzqwTLXOSNbcldPhxVutaIQfsZ8SxNrfrkpizW3lQM+H2qEd+OL
+8MNk0KMP3eHQnWlcvByyejaKRfZKq1lSv7E6HyMv56NKL65dU3pxTQFoTUhSma6KO8KZ1qMTG9yI
+10SDHQ/qhu1CY47SdYcXDO30Bnv0306Yfaa4lFl5vz1YQi4TzdLuZ5SSrkZTt7wVn4JPrvXfgPki
+xS/dyVgMgKKDP65nWR3LuhZZDtUQq0SimtjMPkavZzuyuqPBzatErgTWsExTMrk3jPCoRsyqL2WW
+yDr9qktM87A1ifKLVwSTCosdXYgBvwwypR5ke3Sw9xoxIoI4XRKeS74A1Xenp/0ILoT62kpnHVDb
+7jj0GmRjaqG8eWELxH2SXVUAh3+l/dVjbbfuAPOKxoOCQgapZXC5e2rNP0jX7W/cwH0LpydPR1sd
+e9M23kfUF/d6o8AJW53jwdtePzqvNEnq4mExOFf5lzc26TFivVds2KALJiyAm9JUZAZ0O/oWIv9X
+/bdpSEhg9XbY5yAQKqYGD/7xhI0IXvm2GxkOtqSDQos0jgU/1hyC1vlvrDUNgDjg+LPlR51bssbD
+W0Gd3afmsvDEJ7QePKX4qI4YqTXeNcRZ8d5we9NvBzXwsb7iooIGOmQHE1NGjmnR/kvwTz5pb0xY
+J1pIe40jMD4Q8kFl0+r+Ng2TTEITvOWdbkClw/tJksq4Kr5a3MDueqjWO14knj8SwedAt3Na+3bd
+mZ4v4aVsOqoehD/mVY3ea3LKir94aIHLwOJkVKYu/4LfN8rWb0F+XYIsY/M3vqHMxP0PhrMobs3S
+uMa9V5q8egpK+DfMIF7Q6CWoCw7KD+HEahY3zN2amscoUJQEitDRyaqKp1r/QW9ZwkDt0IxJ0Hfg
+IuMTlnno5yQKZoNeYgaKGROE+n8BBgBlC3R4Cg0KZW5kc3RyZWFtDWVuZG9iag0xMSAwIG9iajw8
+L0Nyb3BCb3hbMCAwIDYxMiA3OTJdL1BhcmVudCAyMiAwIFIvQ29udGVudHMgMTMgMCBSL1JvdGF0
+ZSAwL01lZGlhQm94WzAgMCA2MTIgNzkyXS9SZXNvdXJjZXMgMTIgMCBSL1R5cGUvUGFnZT4+DWVu
+ZG9iag0xMiAwIG9iajw8L0NvbG9yU3BhY2U8PC9DczYgMzEgMCBSPj4vRm9udDw8L1RUNCAzMCAw
+IFIvVFQxMCAxOSAwIFI+Pi9Qcm9jU2V0Wy9QREYvVGV4dF0vRXh0R1N0YXRlPDwvR1MxIDM0IDAg
+Uj4+Pj4NZW5kb2JqDTEzIDAgb2JqPDwvTGVuZ3RoIDExMjQvRmlsdGVyL0ZsYXRlRGVjb2RlPj5z
+dHJlYW0NCkiJjFZdb+s2DH3Pr+CjPDSKv+Psce02bECf6rd7h0G1lUaFY3uS0tzuZ+wXj6QcO2kv
+sLVAq8rx4eHhIdnNr08JvLjVT/VqU9c5JFDvV0kKMX7jr10MWSW3JdTH1ebeldA4fhSDa/pVDHVD
+P84rAVH9ukq2clvAOpZxXED9sBIF3a7DdVHIquBreh6n9C5/NMkZ4U1ZM5wcvJ6sca1pvBl61YHq
+W3geTn2r7DsY507acahSVlmBPC54GeF9EXfgTs0BlINfdKut6jZPUSkL4ZXXC844mN47iP6of0d6
+AWqdyuyCliQLu4TYfRHEwx806G+Ilwivo1zuRO9h2OMpEfxwurWWr4wfpgMHShKZb68Yb+cY6XaK
+0YHTSgLUiHU/HI9RhdSNj9acgtZwUBNrBIurKX/GiJny5URorbG68TrQftCjsv4YYSmEjtaJzAL3
+SYM0lUVxq0FcLvwCIOH81keFLJELFstycVTXwRAuCbcUB40PXnTfGO3AD6DGsQucS5knN5ynvN+R
+IiJshXHgvKIatWB6aPmSNC1QG9O/ODgbf4CGb4YoxqcKX+A/u6WcFGVOZfGoIxM4Jr1H8mgBbXs1
++Ww82XFw2sngZJneipHNYtARwahEJ2868zcjkJRsj79OpjWURKNhtKZntEIW2VXeSRnybszYaZKo
+teoMqqV6p+gWlLESPaJYxH6bfUt6zjlus1vHLoatAjgphRqSOJWwiCk0mscflL+5I53HqBSnKBFW
+d+/cN+F5+NikK+YwF29pYAyDmlqHncnpP2vnAdPAWL0jTVRzMPoNS3dhXtxW51bbudma5oS56zvY
+K2PvuGSkrFfP3VUboyVQEuxIJljJPL/iVyyo2eRfTeYtRIvGwbZCTns7kOaZQNtRk6GdPFmAGtDp
+Cf9sutlbHOOG/DLHYhYe7d+NrMWTbqz2xJPoPz4+kdQKaM5p/05zI4zMLL3piTTM08mdaMxO9T2R
+ZRG+YRIt9vRXkd//475GcJmwhPIdzzfDYFsTXP5fHl88FEYIe3yOuDjbz8LTIzM5PKs+uSOoP02P
+WW6B/luXXIVUvOIkpuRoSmc0QVLBk1o5HYIoqxfTF9WSZCC6m2adHg3POsySB/HB4rSkYIpcPk7G
+3w9dN5yxvpd5FF8P5HwZeGElPQ4YvMUamk7TQMKpcQxKot3VG16zHxE4VIHxbiTdLZLuliG6jzLc
+EjS/doIIGfLlTrzwBZz1szO8SbbiRyaKmzmJp9WMWNN25lOyw9LnkMdYAN7SH3fy97Z6Gmcyra5e
+Wi/5Y0efzzJaY5+K49HJl3Ac3jZdu+mo2VUnD7hJiNjP9WrGyqg1kjyWVQWxLNlEVq/29K/FEjrL
+cSGWH/mK4Mh1mkgcXxcFQwIx/Z3uipsb/Fy4+PN/fAG/Vf+Ar19OH+sdavPAG3PAgfOI3sNEHTyq
+HndZGMy4N2MazB5b276ZZjImwX0QnWN9Onwmds2G1614IPfTNUr7rwADAP6viu4KDQplbmRzdHJl
+YW0NZW5kb2JqDTE0IDAgb2JqPDwvU3RlbVYgNDIvRm9udE5hbWUvQ291cmllck5ld1BTTVQvRm9u
+dFN0cmV0Y2gvTm9ybWFsL0ZvbnRXZWlnaHQgNDAwL0ZsYWdzIDM0L0Rlc2NlbnQgLTMwMC9Gb250
+QkJveFstMjEgLTY4MCA2MzggMTAyMV0vQXNjZW50IDgzMi9Gb250RmFtaWx5KENvdXJpZXIgTmV3
+KS9DYXBIZWlnaHQgNTc4L1hIZWlnaHQgLTU3OC9UeXBlL0ZvbnREZXNjcmlwdG9yL0l0YWxpY0Fu
+Z2xlIDA+Pg1lbmRvYmoNMTUgMCBvYmo8PC9Dcm9wQm94WzAgMCA2MTIgNzkyXS9QYXJlbnQgMjIg
+MCBSL0NvbnRlbnRzIDE3IDAgUi9Sb3RhdGUgMC9NZWRpYUJveFswIDAgNjEyIDc5Ml0vUmVzb3Vy
+Y2VzIDE2IDAgUi9UeXBlL1BhZ2U+Pg1lbmRvYmoNMTYgMCBvYmo8PC9Db2xvclNwYWNlPDwvQ3M2
+IDMxIDAgUj4+L0ZvbnQ8PC9UVDQgMzAgMCBSPj4vUHJvY1NldFsvUERGL1RleHRdL0V4dEdTdGF0
+ZTw8L0dTMSAzNCAwIFI+Pj4+DWVuZG9iag0xNyAwIG9iajw8L0xlbmd0aCAxMTEvRmlsdGVyL0Zs
+YXRlRGVjb2RlPj5zdHJlYW0NCkiJJIpJCsMwFEP3OoWW6SL2d5pvp9sO5ADVDQwpFNqNF71+MyB4
+gifF+Zn4argKURqZqAVpoK1Z62I8T6Fk6oN4a5m17ZOx1S+Mqht+6HjSG6mE4uwtmDl1R5c32x/a
+PUx+6P38EP4CDACfJBpXCg0KZW5kc3RyZWFtDWVuZG9iag0xOCAwIG9iajw8L1N1YnR5cGUvVHJ1
+ZVR5cGUvRm9udERlc2NyaXB0b3IgNyAwIFIvTGFzdENoYXIgMTE3L1dpZHRoc1syNTAgMCAwIDAg
+MCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAw
+IDAgNjExIDAgMCAwIDAgMCAwIDAgMCAwIDU1NiAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAg
+MCAwIDAgMCAwIDAgNTAwIDAgMCA1MDAgNDQ0IDAgMCAwIDI3OCAwIDAgMCA3MjIgNTAwIDUwMCAw
+IDAgMzg5IDM4OSAyNzggNTAwXS9CYXNlRm9udC9UaW1lc05ld1JvbWFuUFMtSXRhbGljTVQvRmly
+c3RDaGFyIDMyL0VuY29kaW5nL1dpbkFuc2lFbmNvZGluZy9UeXBlL0ZvbnQ+Pg1lbmRvYmoNMTkg
+MCBvYmo8PC9TdWJ0eXBlL1RydWVUeXBlL0ZvbnREZXNjcmlwdG9yIDE0IDAgUi9MYXN0Q2hhciAz
+Mi9XaWR0aHNbNjAwXS9CYXNlRm9udC9Db3VyaWVyTmV3UFNNVC9GaXJzdENoYXIgMzIvRW5jb2Rp
+bmcvV2luQW5zaUVuY29kaW5nL1R5cGUvRm9udD4+DWVuZG9iag0yMCAwIG9iajw8L051bXNbMCAy
+MSAwIFJdPj4NZW5kb2JqDTIxIDAgb2JqPDwvUy9EPj4NZW5kb2JqDTIyIDAgb2JqPDwvQ291bnQg
+Ni9UeXBlL1BhZ2VzL0tpZHNbMjcgMCBSIDEgMCBSIDQgMCBSIDggMCBSIDExIDAgUiAxNSAwIFJd
+Pj4NZW5kb2JqDTIzIDAgb2JqPDwvU3VidHlwZS9YTUwvTGVuZ3RoIDM1NDgvVHlwZS9NZXRhZGF0
+YT4+c3RyZWFtDQo8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6
+a2M5ZCI/Pgo8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSIzLjEt
+NzAxIj4KICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIy
+LXJkZi1zeW50YXgtbnMjIj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAg
+ICAgICAgICAgeG1sbnM6cGRmPSJodHRwOi8vbnMuYWRvYmUuY29tL3BkZi8xLjMvIj4KICAgICAg
+ICAgPHBkZjpQcm9kdWNlcj5BY3JvYmF0IEVsZW1lbnRzIDcuMCAoV2luZG93cyk8L3BkZjpQcm9k
+dWNlcj4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgICAgIDxyZGY6RGVzY3JpcHRpb24gcmRm
+OmFib3V0PSIiCiAgICAgICAgICAgIHhtbG5zOnhhcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAv
+MS4wLyI+CiAgICAgICAgIDx4YXA6Q3JlYXRvclRvb2w+UFNjcmlwdDUuZGxsIFZlcnNpb24gNS4y
+PC94YXA6Q3JlYXRvclRvb2w+CiAgICAgICAgIDx4YXA6TW9kaWZ5RGF0ZT4yMDA2LTAxLTAyVDEx
+OjUyOjQ3LTA3OjAwPC94YXA6TW9kaWZ5RGF0ZT4KICAgICAgICAgPHhhcDpDcmVhdGVEYXRlPjIw
+MDYtMDEtMDJUMTE6NTI6NDctMDc6MDA8L3hhcDpDcmVhdGVEYXRlPgogICAgICA8L3JkZjpEZXNj
+cmlwdGlvbj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAg
+eG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIj4KICAgICAgICAgPGRj
+OmZvcm1hdD5hcHBsaWNhdGlvbi9wZGY8L2RjOmZvcm1hdD4KICAgICAgICAgPGRjOnRpdGxlPgog
+ICAgICAgICAgICA8cmRmOkFsdD4KICAgICAgICAgICAgICAgPHJkZjpsaSB4bWw6bGFuZz0ieC1k
+ZWZhdWx0Ij5NaWNyb3NvZnQgV29yZCAtIExhdGVyYWwgQm91bmRhcmllcy5ydGY8L3JkZjpsaT4K
+ICAgICAgICAgICAgPC9yZGY6QWx0PgogICAgICAgICA8L2RjOnRpdGxlPgogICAgICAgICA8ZGM6
+Y3JlYXRvcj4KICAgICAgICAgICAgPHJkZjpTZXE+CiAgICAgICAgICAgICAgIDxyZGY6bGk+am9o
+bnNvbnI8L3JkZjpsaT4KICAgICAgICAgICAgPC9yZGY6U2VxPgogICAgICAgICA8L2RjOmNyZWF0
+b3I+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjph
+Ym91dD0iIgogICAgICAgICAgICB4bWxuczp4YXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAv
+MS4wL21tLyI+CiAgICAgICAgIDx4YXBNTTpEb2N1bWVudElEPnV1aWQ6YjZiNGUyYWQtNTJhMi00
+MjNiLTk0YzItNGE2MWM2M2UxMWE4PC94YXBNTTpEb2N1bWVudElEPgogICAgICAgICA8eGFwTU06
+SW5zdGFuY2VJRD51dWlkOjVkNmViNTM2LThjYmQtNGUxZi04M2VhLTExZDA3YzY2ODAwMDwveGFw
+TU06SW5zdGFuY2VJRD4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94
+OnhtcG1ldGE+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAog
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAg
+ICAgICAKPD94cGFja2V0IGVuZD0idyI/Pg0KZW5kc3RyZWFtDWVuZG9iag0yNCAwIG9iajw8L0Ny
+ZWF0aW9uRGF0ZShEOjIwMDYwMTAyMTE1MjQ3LTA3JzAwJykvQXV0aG9yKGpvaG5zb25yKS9DcmVh
+dG9yKFBTY3JpcHQ1LmRsbCBWZXJzaW9uIDUuMikvUHJvZHVjZXIoQWNyb2JhdCBFbGVtZW50cyA3
+LjAgXChXaW5kb3dzXCkpL01vZERhdGUoRDoyMDA2MDEwMjExNTI0Ny0wNycwMCcpL1RpdGxlKE1p
+Y3Jvc29mdCBXb3JkIC0gTGF0ZXJhbCBCb3VuZGFyaWVzLnJ0Zik+Pg1lbmRvYmoNeHJlZg0KMCAy
+NQ0KMDAwMDAwMDAwMCA2NTUzNSBmDQowMDAwMDA3NDE0IDAwMDAwIG4NCjAwMDAwMDc1NDAgMDAw
+MDAgbg0KMDAwMDAwNzY3MSAwMDAwMCBuDQowMDAwMDA5NDYwIDAwMDAwIG4NCjAwMDAwMDk1ODYg
+MDAwMDAgbg0KMDAwMDAwOTcxNyAwMDAwMCBuDQowMDAwMDExNTEzIDAwMDAwIG4NCjAwMDAwMTE3
+NjcgMDAwMDAgbg0KMDAwMDAxMTg5NCAwMDAwMCBuDQowMDAwMDEyMDE0IDAwMDAwIG4NCjAwMDAw
+MTM4NDEgMDAwMDAgbg0KMDAwMDAxMzk3MCAwMDAwMCBuDQowMDAwMDE0MDkyIDAwMDAwIG4NCjAw
+MDAwMTUyODYgMDAwMDAgbg0KMDAwMDAxNTUxOSAwMDAwMCBuDQowMDAwMDE1NjQ4IDAwMDAwIG4N
+CjAwMDAwMTU3NTggMDAwMDAgbg0KMDAwMDAxNTkzOCAwMDAwMCBuDQowMDAwMDE2Mjk5IDAwMDAw
+IG4NCjAwMDAwMTY0NTQgMDAwMDAgbg0KMDAwMDAxNjQ4OSAwMDAwMCBuDQowMDAwMDE2NTEzIDAw
+MDAwIG4NCjAwMDAwMTY1OTcgMDAwMDAgbg0KMDAwMDAyMDIyMiAwMDAwMCBuDQp0cmFpbGVyDQo8
+PC9TaXplIDI1Pj4NCnN0YXJ0eHJlZg0KMTE2DQolJUVPRg0K</Data></Enclosure><Enclosure><Descript>Text file with turning point coordinates (degrees, minutes, second) for Administrative Boundary lines.  Note that before projecting to something other than geographic, the lines defined by these coordinaes would need to be densified so that the line between the turning points would be properly curved on the new projection.</Descript><Data EsriPropertyType="Base64" OriginalFileName="Atl_DMS.txt">TkggLSBNRQ0KDQo0Mi01Ny0yNy4yOU4gICAgIDcwLTMyLTA0LjAzVyANCjQyLTU0LTIwLjIxTiAg
+ICAgNzAtMTMtNTAuOTBXIA0KNDItNTAtNTUuMzdOICAgICA3MC0wNi0xMC44N1cgDQoNCk1BIC0g
+TkgNCg0KNDItNTEtMjguMjVOICAgICA3MC00NC00OS42N1cgDQo0Mi01MS0xMy4zNU4gICAgIDcw
+LTQ0LTAyLjA3VyANCjQyLTUxLTExLjY5TiAgICAgNzAtNDMtNTUuNjFXIA0KNDItNTEtMDcuMTFO
+ICAgICA3MC00My0zNC42NVcgDQo0Mi01MC01NC40NE4gICAgIDcwLTM4LTU2LjcxVyANCjQyLTUw
+LTU0LjM4TiAgICAgNzAtMzgtNTUuMjRXIA0KNDItNTAtMzYuMzNOICAgICA3MC0zOC0yNy42OFcg
+DQo0Mi00OS00OC40OU4gICAgIDcwLTM3LTI0LjYyVyANCjQyLTQ5LTQwLjM3TiAgICAgNzAtMzct
+MTMuOTNXIA0KNDItNDktMzkuMzNOICAgICA3MC0zNi01NS4wOVcgDQo0Mi00OS0zNC4wN04gICAg
+IDcwLTM1LTE4Ljc0VyANCjQyLTQ5LTMxLjU0TiAgICAgNzAtMzQtMzIuNjZXIA0KNDItNDktMzAu
+NzhOICAgICA3MC0zNC0xOC44MFcgDQo0Mi00OS0yOC4xNE4gICAgIDcwLTMzLTI5LjUxVyANCjQy
+LTQ5LTIzLjY1TiAgICAgNzAtMzItMDIuNzBXIA0KNDItNDktMjAuNTNOICAgICA3MC0zMS0wMS41
+M1cgDQo0Mi00OS0yMC40M04gICAgIDcwLTMwLTU5LjUyVyANCjQyLTQ5LTIxLjQzTiAgICAgNzAt
+MzAtNDQuNDFXIA0KNDItNTAtMDQuMzFOICAgICA3MC0xOS00My4yOFcgDQo0Mi01MC01NS4zN04g
+ICAgIDcwLTA2LTEwLjg3VyANCg0KTUEgLSBNRQ0KDQo0Mi01MC01NS4zN04gICAgIDcwLTA2LTEw
+Ljg3VyANCjQyLTQ3LTA5LjM2TiAgICAgNjktMzQtNDQuNjlXIA0KNDItNDUtNDQuNTFOICAgICA2
+OS0yMy0xMi45MVcgDQo0Mi00NS01Ni40NU4gICAgIDY5LTIyLTEwLjY2VyANCjQyLTQ3LTI5LjQx
+TiAgICAgNjktMTQtMTkuNDFXIA0KNDItNDYtNTguMjROICAgICA2OS0xMi0xMC4wM1cgDQo0Mi00
+Ni0yMi42OU4gICAgIDY5LTA5LTQxLjY3VyANCjQyLTQ0LTU1Ljc5TiAgICAgNjktMDMtMzUuNzhX
+IA0KNDItNDQtNTUuNDdOICAgICA2OS0wMy0zNC40NlcgDQo0Mi00NC0yOS43NE4gICAgIDY5LTAx
+LTQ2LjA2VyANCjQyLTQzLTM5LjYyTiAgICAgNjgtNTgtMTQuMDBXIA0KNDItNDEtNTUuODBOICAg
+ICA2OC01My0zOC4wNlcgDQo0Mi00MS01Mi4xMU4gICAgIDY4LTUzLTI4LjI0VyANCjQyLTQxLTA4
+LjIwTiAgICAgNjgtNTEtMzEuMjdXIA0KNDItNDAtNTUuOTlOICAgICA2OC01MC01OC43M1cgDQo0
+Mi00MC0zNy4zM04gICAgIDY4LTUwLTA4Ljk4VyANCjQyLTQwLTIxLjA3TiAgICAgNjgtNDktMjUu
+NTdXIA0KNDItMzgtNTUuOTdOICAgICA2OC00NS0zNy4xM1cgDQo0Mi0zOC0wMS41NE4gICAgIDY4
+LTQzLTA4LjYwVyANCjQyLTM2LTM4Ljg3TiAgICAgNjgtMzktMjIuOTlXIA0KNDItMzYtMTkuNDZO
+ICAgICA2OC0zOC0yOS41MVcgDQo0Mi0zMy01Ny4zM04gICAgIDY4LTMxLTU5LjAxVyANCjQyLTMz
+LTQxLjI0TiAgICAgNjgtMzEtMTQuNjFXIA0KNDItMzItMzQuNjFOICAgICA2OC0yOC0wNy43OFcg
+DQo0Mi0zMS01MS4wNk4gICAgIDY4LTI2LTA1Ljc1VyANCjQyLTMwLTM2LjM0TiAgICAgNjgtMjIt
+MzYuMjhXIA0KNDItMjktMzAuOTNOICAgICA2OC0xOS0zMS41OFcgDQo0Mi0yNy0zOS44OU4gICAg
+IDY4LTE0LTE1LjAxVyANCjQyLTI2LTQ3LjAzTiAgICAgNjgtMTEtNDMuMjlXIA0KNDItMjQtMzEu
+OTFOICAgICA2OC0wNS0xMS45N1cgDQo0Mi0yNC0yMi43M04gICAgIDY4LTA0LTQ1LjI0VyANCjQy
+LTIzLTIxLjkxTiAgICAgNjgtMDEtNDguMTFXIA0KNDItMjItMjkuMjVOICAgICA2Ny01OS0xMy45
+M1cgDQo0Mi0yMi0xMi4wNU4gICAgIDY3LTU4LTIzLjU3VyANCjQyLTE3LTMyLjc4TiAgICAgNjct
+NDQtMzYuMjRXIA0KNDItMTYtMTYuODdOICAgICA2Ny00Mi0wNC42MlcgDQo0Mi0xNS0zNC44MU4g
+ICAgIDY3LTQwLTQwLjAxVyANCjQyLTEzLTMzLjU0TiAgICAgNjctMzYtMzEuNzFXIA0KNDItMTIt
+NTIuMjZOICAgICA2Ny0zNS0wNi40NVcgDQo0Mi0xMC00MC45NU4gICAgIDY3LTMwLTM1Ljc3VyAN
+CjQyLTA5LTU1LjU3TiAgICAgNjctMjktMDIuMzJXIA0KNDItMDgtMjcuOTBOICAgICA2Ny0yNi0w
+MS44NVcgDQo0Mi0wMy00NC4zMU4gICAgIDY3LTE2LTA4LjUxVyANCjQyLTAwLTU3LjY2TiAgICAg
+NjctMTAtMTguODRXIA0KNDEtNTMtNDAuNjFOICAgICA2Ni01NS0wNy44OFcgDQoNClJJIC0gTUEN
+Cg0KNDEtMjUtMjQuMTdOICAgICA3MS0wNS00NC41NlcgIA0KNDEtMjUtMjEuNzlOICAgICA3MS0w
+NS00NS4zOFcgIA0KNDEtMjQtMjAuODZOICAgICA3MS0wNS01NS4yNVcgIA0KNDEtMjItMzQuNjhO
+ICAgICA3MS0wNS00OS40MlcgIA0KNDEtMjItMDMuNzFOICAgICA3MS0wNi0wNS44M1cgIA0KNDEt
+MjEtMjguMTJOICAgICA3MS0wNi0yNC4zMlcgIA0KNDEtMjAtNDYuNDlOICAgICA3MS0wNi00MC4z
+OVcgIA0KNDEtMjAtMjkuMjROICAgICA3MS0wNi00Ny4wM1cgIA0KNDEtMTAtMzQuNjNOICAgICA3
+MS0xMC0zNC4zOVcgIA0KNDEtMTAtMjIuNDhOICAgICA3MS0xMC00NS41M1cgIA0KNDEtMDUtNDcu
+NzJOICAgICA3MS0wOS0zNS45NlcgIA0KNDEtMDQtNTIuNjBOICAgICA3MS0wOS0yMi4wNFcgIA0K
+NDEtMDQtNDMuMzdOICAgICA3MS0wOS0xOS43NFcgIA0KNDEtMDMtMjMuNDdOICAgICA3MS0wOC01
+OS45NVcgIA0KNDEtMDItMTEuMDZOICAgICA3MS0wOC00Mi4wNlcgIA0KNDAtNTctNTkuMTZOICAg
+ICA3MS0wNy00My43MFcgIA0KNDAtNDMtMDkuNzlOICAgICA3MS0wNC0xOC42OFcgIA0KNDAtMzYt
+MTguMjROICAgICA3MS0wMi00Mi4zMFcgIA0KNDAtMzEtNTMuODdOICAgICA3MS0wMS00MC41OFcg
+IA0KNDAtMzEtMjIuODlOICAgICA3MS0wMS0zMy4yOFcgIA0KNDAtMTgtNDguMTFOICAgICA3MC01
+OC00MS42M1cgIA0KNDAtMTgtMDYuNjROICAgICA3MC01OC0zMi4yOFcgIA0KNDAtMTYtNDUuNTFO
+ICAgICA3MC01OC0xNC4wMlcgIA0KNDAtMDItMTEuNDlOICAgICA3MC01NC01Ny43NlcgIA0KMzkt
+NTktMDIuOTJOICAgICA3MC01NC0xNS45M1cgIA0KMzktMTUtMzQuNjdOICAgICA3MC00NC00NS41
+OVcgIA0KDQpOWSAtIFJJDQoNCjQxLTExLTA4LjEwTiAgICAgNzEtNDctMjcuNjdXICANCjQxLTEx
+LTA4LjEyTiAgICAgNzEtNDctMjAuNTJXICANCjQxLTExLTA4LjU2TiAgICAgNzEtNDYtNDEuNzNX
+ICANCjQxLTEwLTI4LjkwTiAgICAgNzEtNDYtMTcuNTdXICANCjQxLTA5LTQ0LjQ3TiAgICAgNzEt
+NDUtNTAuNTVXICANCjQxLTA5LTA3LjI4TiAgICAgNzEtNDUtMjcuNDRXICANCjQxLTA4LTI0Ljk3
+TiAgICAgNzEtNDUtMDAuOTBXICANCjQxLTA3LTA5LjAwTiAgICAgNzEtNDQtMTYuODlXICANCjQx
+LTA2LTI4LjA0TiAgICAgNzEtNDMtNTIuNzVXICANCjQxLTA1LTM4Ljk4TiAgICAgNzEtNDMtMjMu
+ODhXICANCjQxLTA0LTQ3LjM0TiAgICAgNzEtNDItNTMuMjdXICANCjQxLTA0LTMxLjU4TiAgICAg
+NzEtNDItNDMuOTVXICANCjQxLTA0LTI0LjA1TiAgICAgNzEtNDItMzkuNjNXICANCjQxLTA0LTA1
+LjgyTiAgICAgNzEtNDItMjkuMzJXICANCjQxLTAyLTU4LjUyTiAgICAgNzEtNDEtNTEuMDVXICAN
+CjQxLTAyLTE1Ljk4TiAgICAgNzEtNDEtMjguNzFXICANCjQxLTAxLTUwLjg2TiAgICAgNzEtNDEt
+MTUuNTZXICANCjQxLTAwLTU3LjIzTiAgICAgNzEtNDAtNDcuNTlXICANCjQxLTAwLTQ2Ljc4TiAg
+ICAgNzEtNDAtNDIuMTVXICANCjQxLTAwLTQ0LjM5TiAgICAgNzEtNDAtNDAuOTJXICANCjQxLTAw
+LTI0LjE5TiAgICAgNzEtNDAtMzAuNDhXICANCjQwLTU5LTQ1LjA1TiAgICAgNzEtNDAtMTAuMTVX
+ICANCjQwLTU5LTEzLjAwTiAgICAgNzEtMzktNTMuNTVXICANCjQwLTU4LTQ5LjEzTiAgICAgNzEt
+MzktNDEuNDRXICANCjQwLTU1LTQ3LjIxTiAgICAgNzEtMzgtMDUuMjdXICANCjQwLTU0LTE3LjYx
+TiAgICAgNzEtMzctMTQuODlXICANCjQwLTUxLTU4LjUyTiAgICAgNzEtMzUtNTMuMjFXICANCjQw
+LTUxLTI0LjYzTiAgICAgNzEtMzUtMzMuNjFXICANCjQwLTQ5LTM0LjUyTiAgICAgNzEtMzQtMjku
+NzhXICANCjQwLTQzLTIxLjkzTiAgICAgNzEtMzAtNTQuNDZXICANCjQwLTQyLTU5LjQ1TiAgICAg
+NzEtMzAtNDIuMjlXICANCjQwLTMzLTMyLjIzTiAgICAgNzEtMjUtMzUuMzZXICANCjQwLTI1LTAx
+Ljk0TiAgICAgNzEtMjEtMDAuOThXICANCjQwLTEyLTA5LjgzTiAgICAgNzEtMTQtMDcuODVXICAN
+CjM5LTMxLTU1LjYwTiAgICAgNzAtNTMtMTYuNDlXICANCjM5LTE1LTM0LjY3TiAgICAgNzAtNDQt
+NDUuNTlXICANCjM5LTE1LTM0LjY3TiAgICAgNzAtNDQtNDUuNTlXICANCg0KTlkgLSBNQQ0KDQoz
+OS0xNS0zNC42N04gICAgIDcwLTQ0LTQ1LjU5VyAgDQozOC01OS0yMS4xM04gICAgIDcwLTM5LTQx
+LjQ5VyAgDQozOC0yOS0zNi42M04gICAgIDcwLTMwLTI5LjkwVyAgDQozOC0xMC0zNS44NE4gICAg
+IDcwLTI3LTA0LjMzVyAgDQozOC0wNi0yNC4yMk4gICAgIDcwLTI2LTEzLjAxVyAgDQozOC0wNS0y
+Ni4zOE4gICAgIDcwLTI2LTAwLjg2VyAgDQozOC0wMi0xNi4zM04gICAgIDcwLTI1LTE2LjI4VyAg
+DQozNy01Ny0wNy44ME4gICAgIDcwLTI0LTAwLjc3VyAgDQozNy01NC00My44NU4gICAgIDcwLTIz
+LTI1LjU0VyAgDQoNCk5KIC0gTlkNCg0KNDAtMjgtNTQuNDBOICAgICA3My01NC01MS4yNlcgICAg
+DQo0MC0yOC01MC42OU4gICAgIDczLTU0LTM4LjAyVyAgICANCjQwLTI4LTQyLjYzTiAgICAgNzMt
+NTQtMDkuMDlXICAgIA0KNDAtMjgtMzEuNzdOICAgICA3My01My0yOS40NlcgICAgDQo0MC0yOC0x
+NS40N04gICAgIDczLTUyLTI5LjI4VyAgICANCjQwLTI4LTA5LjA3TiAgICAgNzMtNTItMDUuMzFX
+ICAgIA0KNDAtMjgtMDcuOTROICAgICA3My01Mi0wMS4wM1cgICAgDQo0MC0yOC0wMC43OU4gICAg
+IDczLTUxLTQ1LjM4VyAgICANCjQwLTI3LTQ4LjUwTiAgICAgNzMtNTEtMTguMzVXICAgIA0KNDAt
+MjctMzIuMDBOICAgICA3My01MC00My42NlcgICAgDQo0MC0yNy0yOS43OU4gICAgIDczLTUwLTM4
+Ljk5VyAgICANCjQwLTI3LTI0LjcwTiAgICAgNzMtNTAtMjcuNjVXICAgIA0KNDAtMjctMTkuNDNO
+ICAgICA3My01MC0xNi4xNlcgICAgDQo0MC0yNy0wOC40NE4gICAgIDczLTQ5LTUyLjcyVyAgICAN
+CjQwLTI2LTQ4LjU2TiAgICAgNzMtNDktMTEuMDZXICAgIA0KNDAtMjYtNDUuMDZOICAgICA3My00
+OS0wMy45OFcgICAgDQo0MC0yNi00MC4xNk4gICAgIDczLTQ4LTU0LjU4VyAgICANCjQwLTI2LTE3
+LjE3TiAgICAgNzMtNDgtMDAuMDhXICAgIA0KNDAtMjYtMTQuMTVOICAgICA3My00Ny01My4zN1cg
+ICAgDQo0MC0yNS01OS44N04gICAgIDczLTQ3LTIxLjU0VyAgICANCjQwLTI1LTQ3LjAyTiAgICAg
+NzMtNDYtNTIuMThXICAgIA0KNDAtMjUtNDAuMjlOICAgICA3My00Ni0zNi44OVcgICAgDQo0MC0y
+NS0zNS45MU4gICAgIDczLTQ2LTI3LjA0VyAgICANCjQwLTI1LTMxLjMyTiAgICAgNzMtNDYtMTYu
+OTRXICAgIA0KNDAtMjUtMjYuNzZOICAgICA3My00Ni0xMS4wMlcNCjQwLTI1LTAyLjMwTiAgICAg
+NzMtNDUtMzcuNDNXICAgIA0KNDAtMjQtMzUuNzFOICAgICA3My00NC01OS44N1cgICAgDQo0MC0y
+NC0yNy4wME4gICAgIDczLTQ0LTQ3LjAyVyAgICANCjQwLTI0LTA2Ljk1TiAgICAgNzMtNDQtMTcu
+MTNXICAgIA0KNDAtMjMtNDYuMDVOICAgICA3My00My00NC4xNFcgICAgDQo0MC0yMy0yOC4yN04g
+ICAgIDczLTQzLTIxLjM4VyAgICANCjQwLTIzLTE2Ljc1TiAgICAgNzMtNDMtMDUuOTlXICAgIA0K
+NDAtMjMtMTMuNzhOICAgICA3My00My0wMi4wNVcgICAgDQo0MC0yMy0wMi42NE4gICAgIDczLTQy
+LTQ2Ljg3VyAgICANCjQwLTIyLTMwLjIwTiAgICAgNzMtNDItMDMuMTRXICAgIA0KNDAtMjEtNTIu
+NjNOICAgICA3My00MS0xMS41MFcgICAgDQo0MC0yMS00Ni4yM04gICAgIDczLTQxLTAyLjkyVyAg
+ICANCjQwLTIxLTQ1LjM4TiAgICAgNzMtNDEtMDEuODRXICAgIA0KNDAtMjEtNDQuNzBOICAgICA3
+My00MS0wMC45N1cgICAgDQo0MC0yMS0zMi45Mk4gICAgIDczLTQwLTQ1Ljg0VyAgICANCjQwLTIx
+LTE5LjkzTiAgICAgNzMtNDAtMzAuMjZXICAgIA0KNDAtMjEtMDguMjBOICAgICA3My00MC0xNi4z
+NFcgICAgDQo0MC0yMC0yNy4xOE4gICAgIDczLTM5LTI2LjY0VyAgICANCjQwLTIwLTE2LjgxTiAg
+ICAgNzMtMzktMTYuODdXICAgIA0KNDAtMjAtMTAuNTROICAgICA3My0zOS0xMC44M1cgICAgDQo0
+MC0xOC0wMi4wNU4gICAgIDczLTM2LTU4LjE3VyAgICANCjQwLTE3LTIyLjgzTiAgICAgNzMtMzYt
+MTcuNzBXICAgIA0KNDAtMTMtNTQuMDJOICAgICA3My0zMi0xNS43NFcgICAgDQo0MC0xMy0wNy43
+N04gICAgIDczLTMxLTIxLjMyVyAgICANCjQwLTEyLTM0LjQyTiAgICAgNzMtMzAtMzkuOTRXICAg
+IA0KNDAtMTItMTAuMzFOICAgICA3My0zMC0wOS42MVcgICAgDQo0MC0xMi0wNS42NE4gICAgIDcz
+LTMwLTAzLjcyVyAgICANCjQwLTA5LTQ2LjIxTiAgICAgNzMtMjctMDIuMjRXICAgIA0KNDAtMDYt
+NTEuNzBOICAgICA3My0yMy0wMy43M1cgICAgDQo0MC0wNS0zMS40MU4gICAgIDczLTIxLTExLjQ2
+VyAgICANCjQwLTAzLTE1Ljk4TiAgICAgNzMtMTctNDYuODJXICAgIA0KNDAtMDItNDguMTVOICAg
+ICA3My0xNy0xMC41MVcgICAgDQo0MC0wMi0wNS4wN04gICAgIDczLTE2LTE0LjM5VyAgICANCjQw
+LTAxLTUzLjE3TiAgICAgNzMtMTUtNTguOTlXICAgIA0KNDAtMDEtMTYuMTBOICAgICA3My0xNS0y
+MC44NVcgICAgDQo0MC0wMC00MC45ME4gICAgIDczLTE0LTQ2LjEyVyAgICANCjM5LTU5LTI4Ljc1
+TiAgICAgNzMtMTMtMjMuODNXICAgIA0KMzktNTUtMzguNzZOICAgICA3My0wOS0wMi40N1cgICAg
+DQozOS01NS0wNC4yN04gICAgIDczLTA4LTIxLjc2VyAgICANCjM5LTU0LTU4LjA5TiAgICAgNzMt
+MDgtMTQuMTdXICAgIA0KMzktNTQtMzQuOTFOICAgICA3My0wNy00NS43OFcgICAgDQozOS01My01
+NC40Nk4gICAgIDczLTA2LTU2LjIxVyAgICANCjM5LTUyLTM4LjU0TiAgICAgNzMtMDUtMjIuNTZX
+ICAgIA0KMzktNTItMzIuNThOICAgICA3My0wNS0xNC45NlcgICAgDQozOS01MS01NC44OE4gICAg
+IDczLTA0LTI2Ljk5VyAgICANCjM5LTUxLTMyLjM2TiAgICAgNzMtMDMtNTguNDVXICAgIA0KMzkt
+NTEtMDIuOTROICAgICA3My0wMy0xNy45MFcgICAgDQozOS01MC0yOC4wOU4gICAgIDczLTAyLTMw
+LjIwVyAgICANCjM5LTUwLTEyLjk3TiAgICAgNzMtMDItMDkuNjFXICAgIA0KMzktNDktNDUuODlO
+ICAgICA3My0wMS0zMi45NlcgICAgDQozOS00OS0wNy40NE4gICAgIDczLTAwLTQxLjIwVyAgICAN
+CjM5LTQ5LTAxLjc1TiAgICAgNzMtMDAtMzMuNDZXICAgIA0KMzktNDctNDQuMzBOICAgICA3Mi01
+OC00OC41NVcgICAgDQozOS00Ny0wOC44Mk4gICAgIDcyLTU4LTAwLjE2VyAgICANCjM5LTQ3LTA2
+LjkxTiAgICAgNzItNTctNTcuNTVXICAgIA0KMzktNDYtMzcuNjdOICAgICA3Mi01Ny0xNC45N1cg
+ICAgDQozOS00Ni0zMy45M04gICAgIDcyLTU3LTA5LjUyVyAgICANCjM5LTQ2LTEwLjUxTiAgICAg
+NzItNTYtMzUuODBXICAgIA0KMzktNDUtNTIuNzFOICAgICA3Mi01Ni0wOS42MVcgICAgDQozOS00
+NS0yMy4wMU4gICAgIDcyLTU1LTI1LjI0VyAgICANCjM5LTQ0LTI1LjM1TiAgICAgNzItNTMtNTcu
+MTdXICAgIA0KMzktNDMtNTIuNjROICAgICA3Mi01My0wNi41MFcgICAgDQozOS00My00MC4xMk4g
+ICAgIDcyLTUyLTQ3LjE2VyAgICANCjM5LTQyLTE2LjUzTiAgICAgNzItNTAtMzAuNDRXICAgIA0K
+MzktNDAtMDEuMzlOICAgICA3Mi00Ni01MC41MFcgICAgDQozOS0zOS0yNC42Mk4gICAgIDcyLTQ1
+LTUxLjcyVyAgICANCjM5LTM5LTIxLjQ4TiAgICAgNzItNDUtNDYuODhXICAgIA0KMzktMzgtNDUu
+MThOICAgICA3Mi00NC01MS4zMVcgICAgDQozOS0zOC0wMi42Nk4gICAgIDcyLTQzLTQ2LjAxVyAg
+ICANCjM5LTM3LTU4LjgxTiAgICAgNzItNDMtNDAuMjBXICAgIA0KMzktMzUtMjIuNzdOICAgICA3
+Mi0zOS00Ni4zN1cgICAgDQozOS0zNS0yMi4wME4gICAgIDcyLTM5LTQ1LjI0VyAgICANCjM5LTM0
+LTI1LjU3TiAgICAgNzItMzgtMjMuMDZXICAgIA0KMzktMzItMzQuNzlOICAgICA3Mi0zNS00Mi4y
+MVcgICAgDQozOS0yOC0yMS44OU4gICAgIDcyLTI5LTM2LjE3VyAgICANCjM5LTI3LTA5LjEyTiAg
+ICAgNzItMjctNTEuNDFXICAgIA0KMzktMjQtMDYuNDVOICAgICA3Mi0yMy0yOS41MlcgICAgDQoz
+OS0yNC0wNC4xNk4gICAgIDcyLTIzLTI2LjI5VyAgICANCjM5LTE5LTE4LjQ0TiAgICAgNzItMTYt
+NDQuMjZXICAgIA0KMzktMTktMDkuNjVOICAgICA3Mi0xNi0zMS45M1cgICAgDQozOS0xOS0wNC43
+Nk4gICAgIDcyLTE2LTI1LjEwVyAgICANCjM5LTEyLTAyLjg4TiAgICAgNzItMDYtMzcuOTRXICAg
+IA0KMzktMDctNTguMDROICAgICA3Mi0wMS0wMi43OFcgICAgDQozOS0wNC01MC45NU4gICAgIDcx
+LTU3LTE0Ljk1VyAgICANCjM4LTU5LTM4LjExTiAgICAgNzEtNTEtMDQuNzhXICAgIA0KMzgtNTct
+MzcuOTBOICAgICA3MS00OC00My40NVcgICAgDQozOC01Mi01My43OE4gICAgIDcxLTQzLTE2Ljky
+VyAgICANCjM4LTQ4LTQxLjc4TiAgICAgNzEtMzgtMzIuNDhXICAgIA0KMzgtMjctNTEuNThOICAg
+ICA3MS0xNi0xOC4yMFcgICAgDQozOC0xOS00Ny40Mk4gICAgIDcxLTA3LTMxLjAzVyAgICANCjM4
+LTE1LTIwLjQ5TiAgICAgNzEtMDItNDAuMzdXICAgIA0KMzgtMDUtNDMuMzFOICAgICA3MC01Mi0x
+NC4xMVcgICAgDQozOC0wMy0wNC42M04gICAgIDcwLTQ5LTE2LjgwVyAgICANCjM3LTU5LTAwLjU5
+TiAgICAgNzAtNDQtNDEuNjNXICAgIA0KMzctNTUtMzcuOTdOICAgICA3MC00MC01OC41MlcgICAg
+DQozNy01MC0yMy44N04gICAgIDcwLTM1LTEzLjc0VyAgICANCg0KREUgLSBOSg0KDQozOC00OS01
+MS4xNE4gICAgIDc0LTU4LTAwLjk4VyAgDQozOC00OS0zNC4wOU4gICAgIDc0LTU3LTM2LjEzVyAg
+DQozOC00OS0yMC4yME4gICAgIDc0LTU3LTE5Ljc3VyAgDQozOC00OS0wNC41MU4gICAgIDc0LTU2
+LTU3LjkxVyAgDQozOC00OC0yOS41NU4gICAgIDc0LTU2LTA3LjA0VyAgDQozOC00OC0yMy43Nk4g
+ICAgIDc0LTU1LTU4LjI2VyAgDQozOC00OC0xNy40MU4gICAgIDc0LTU1LTQ3LjM0VyAgDQozOC00
+Ny01NC41ME4gICAgIDc0LTU1LTEwLjA4VyAgDQozOC00Ny0zNS44MU4gICAgIDc0LTU0LTM4LjUz
+VyAgDQozOC00Ni00Ny42Mk4gICAgIDc0LTUzLTE5LjI5VyAgDQozOC00Ni00NS4wNk4gICAgIDc0
+LTUzLTE1LjE3VyAgDQozOC00Ni0xMi42OU4gICAgIDc0LTUyLTI0LjQ3VyAgDQozOC00NS01MC45
+OU4gICAgIDc0LTUxLTUwLjEyVyAgDQozOC00NS00MS45M04gICAgIDc0LTUxLTM0LjkwVyAgDQoz
+OC00NS0yMy42MU4gICAgIDc0LTUwLTU5LjE5VyAgDQozOC00NS0yMi4zOE4gICAgIDc0LTUwLTU2
+LjgwVyAgDQozOC00NS0xMC43NE4gICAgIDc0LTUwLTM4LjU5VyAgDQozOC00NC01Ny4zOU4gICAg
+IDc0LTUwLTE3LjA1VyAgDQozOC00NC0zNS44M04gICAgIDc0LTQ5LTQwLjMwVyAgDQozOC00NC0y
+OC40OE4gICAgIDc0LTQ5LTI3Ljk1VyAgDQozOC00NC0xNC4yNE4gICAgIDc0LTQ5LTAzLjgzVyAg
+DQozOC00My0yMy4xOE4gICAgIDc0LTQ3LTM1Ljk4VyAgDQozOC00Mi0yNi43M04gICAgIDc0LTQ1
+LTQ0LjI4VyAgDQozOC00Mi0wNS43ME4gICAgIDc0LTQ0LTU5LjkyVyAgDQozOC00MS0xNS42Mk4g
+ICAgIDc0LTQzLTEyLjgwVyAgDQozOC00MC01Ni4wNU4gICAgIDc0LTQyLTMwLjMzVyAgDQozOC00
+MC00OC40Mk4gICAgIDc0LTQyLTEzLjY0VyAgDQozOC0zOS00OC40NE4gICAgIDc0LTM5LTU5LjU5
+VyAgDQozOC0zOC0zNy43OE4gICAgIDc0LTM2LTQ5LjYzVyAgDQozOC0zNi01NC4wM04gICAgIDc0
+LTMyLTExLjM0VyAgDQozOC0zNi0xNi44N04gICAgIDc0LTMwLTIxLjA2VyAgDQozOC0zNS0zNi42
+MU4gICAgIDc0LTI4LTIxLjMyVyAgDQozOC0zNC00MS4zMk4gICAgIDc0LTI1LTE4LjcxVyAgDQoz
+OC0zNC0zMy4xNk4gICAgIDc0LTI0LTUxLjYzVyAgDQozOC0zMi01NS4wN04gICAgIDc0LTE5LTI0
+LjgxVyAgDQozOC0zMi0zMC4yMk4gICAgIDc0LTE4LTE2LjcyVyAgDQozOC0zMS01OS4zNk4gICAg
+IDc0LTE2LTQ3LjI1VyAgDQozOC0zMC0wMi4zNU4gICAgIDc0LTEwLTQ1Ljg2VyAgDQozOC0yNy0x
+Mi45M04gICAgIDc0LTAxLTQ3LjA3VyAgDQozOC0yNi00Ny4yN04gICAgIDc0LTAwLTI0LjkyVyAg
+DQozOC0yNC00MC43OU4gICAgIDczLTUzLTM1LjAxVyAgDQoNCk1EIC0gREUNCg0KMzgtMjYtNDQu
+MDVOICAgICA3NC01OS0wOC43M1cgIA0KMzgtMjYtMzQuNTNOICAgICA3NC01MS00My43NVcgIA0K
+MzgtMjQtNDAuNzlOICAgICA3My01My0zNS4wMVcgIA0KDQpNRCAtIE5KDQoNCjM4LTI0LTQwLjc5
+TiAgICAgNzMtNTMtMzUuMDFXICANCjM4LTI0LTQwLjc3TiAgICAgNzMtNTMtMzQuOTVXICANCjM4
+LTE4LTM3LjQxTiAgICAgNzMtMzMtNDQuNjJXICANCjM4LTEyLTEwLjk1TiAgICAgNzMtMTItNTQu
+NTJXICANCjM4LTEwLTQ5LjcyTiAgICAgNzMtMDgtMjguNTVXICANCjM4LTA3LTE5LjU4TiAgICAg
+NzItNTctMDIuODZXICANCjM4LTA2LTQ3LjMwTiAgICAgNzItNTUtMTYuODZXICANCjM4LTA0LTMw
+Ljc2TiAgICAgNzItNTAtMDYuNzhXICANCjM3LTU1LTA5LjUyTiAgICAgNzItMjgtNTguNTFXICAN
+CjM3LTUzLTEyLjQwTiAgICAgNzItMjQtMzQuNDlXICANCjM3LTUwLTI0Ljc5TiAgICAgNzItMTgt
+MTUuNDhXICANCjM3LTQ0LTMyLjkzTiAgICAgNzItMDUtMDIuODBXICANCjM3LTM4LTI5LjEzTiAg
+ICAgNzEtNTEtMTkuMTFXICANCjM3LTI0LTUxLjU4TiAgICAgNzEtMjEtNTcuMzlXICANCjM3LTIx
+LTM0LjU3TiAgICAgNzEtMTQtNTUuMjlXICANCjM3LTE3LTAxLjMwTiAgICAgNzEtMDUtMTYuMDBX
+ICANCg0KVkEgLSBNRA0KDQozOC0wMC0wNC40OE4gICAgIDc1LTExLTE1LjgyVyAgDQozNy01MS00
+NC4xN04gICAgIDc0LTUzLTUwLjM0VyAgDQozNi01Mi0yOS4wMk4gICAgIDcyLTU1LTIxLjM2VyAg
+DQozNi00My0wOS43NE4gICAgIDcyLTM1LTU0LjI1VyAgDQozNi00Mi0wMy41N04gICAgIDcyLTMz
+LTM1Ljk5VyAgDQozNi0zNy00OS41M04gICAgIDcyLTI0LTQ3LjkwVyAgDQoNCk5DIC0gVkENCg0K
+MzYtMzMtMzcuNDBOICAgICA3NS00OC0yMy44OFcgIA0KMzYtMzMtNDguMDBOICAgICA3NS00Ny0x
+OC4wMVcgIA0KMzYtMzQtMjYuMzVOICAgICA3NS00Mi0zMy44NFcgIA0KMzYtMzUtMjcuODJOICAg
+ICA3NS0zNS0yNS42OFcgIA0KMzYtNDUtMzcuMzlOICAgICA3NC0xOS0zNy41MFcgIA0KMzYtNDQt
+NDkuODhOICAgICA3NC0xMy0zOS4yNVcgIA0KMzYtNDQtNDcuODdOICAgICA3NC0xMy0yNC4wM1cg
+IA0KMzYtNDQtMjUuNDdOICAgICA3NC0wOS00My4zMVcgIA0KMzYtNDQtMjIuODNOICAgICA3NC0w
+OS0xNy4wN1cgIA0KMzYtNDQtMTcuODBOICAgICA3NC0wOC0yMy44M1cgIA0KMzYtNDMtMzUuNjZO
+ICAgICA3NC0wMC01Ny4zOVcgIA0KMzYtNDMtMTcuNDFOICAgICA3My01Ny00NC4yOVcgIA0KMzYt
+NDMtMjEuMjhOICAgICA3My01Mi0zMi40MlcgIA0KMzYtNDMtMTkuNDZOICAgICA3My01MC0yOS40
+NVcgIA0KMzYtNDMtMTUuNDdOICAgICA3My00Ni0xMS4wM1cgIA0KMzYtNDMtMTQuNzBOICAgICA3
+My00NS0wNy45M1cgIA0KMzYtNDMtMTQuMTROICAgICA3My00NC0xMi4zNFcgIA0KMzYtNDMtMTEu
+MTBOICAgICA3My0zOC00NS40N1cgIA0KMzYtNDMtMTAuNzROICAgICA3My0zNC0wOC4yMlcgIA0K
+MzYtNDMtMTAuMzVOICAgICA3My0zMS0zOS44OVcgIA0KMzYtNDMtMDIuOTJOICAgICA3My0zMC0z
+MS45M1cgIA0KMzYtNDMtMDAuNzhOICAgICA3My0zMC0xMC45NlcgIA0KMzYtNDItMTAuNzZOICAg
+ICA3My0yMS01NS4yNVcgIA0KMzYtNDItMDMuMjBOICAgICA3My0yMC00MS45MFcgIA0KMzYtNDIt
+MDIuMDROICAgICA3My0yMC0zMC4xN1cgIA0KMzYtNDEtNDEuNDlOICAgICA3My0xNi00My4zMFcg
+IA0KMzYtNDEtMTMuNThOICAgICA3My0xMS0zNi43M1cgIA0KMzYtNDEtMDYuMjhOICAgICA3My0x
+MC0xNy4xNFcgIA0KMzYtNDAtNTkuODZOICAgICA3My0wOS0wNS4yMVcgIA0KMzYtNDAtNTMuMzNO
+ICAgICA3My0wNy01MS45MlcgIA0KMzYtNDAtMzYuODdOICAgICA3My0wNC00OC41NlcgIA0KMzYt
+NDAtMTUuOTNOICAgICA3Mi01OS0zMi45OFcgIA0KMzYtMzktNTAuMjVOICAgICA3Mi01My0xNy44
+M1cgIA0KMzYtMzktMTAuMjROICAgICA3Mi00My00NS4wOVcgIA0KMzYtMzctNDkuOTJOICAgICA3
+Mi0yNC01My4zMlcgIA0KMzYtMzctNDkuNTNOICAgICA3Mi0yNC00Ny45MFcgIA0KDQpOQyAtIE1E
+DQoNCjM2LTM3LTQ5LjUzTiAgICAgNzItMjQtNDcuOTBXICANCjM2LTM3LTMzLjg1TiAgICAgNzIt
+MjItMTAuMjRXICANCjM2LTM3LTE1LjUzTiAgICAgNzItMTktMDkuMjlXICANCjM2LTM3LTA2LjEy
+TiAgICAgNzItMTctMzUuNzVXICANCjM2LTM2LTI3Ljk4TiAgICAgNzItMTEtMjcuMjZXICANCjM2
+LTM1LTUxLjQyTiAgICAgNzItMDUtMzUuODBXICANCjM2LTM1LTUwLjU3TiAgICAgNzItMDUtMjcu
+ODlXICANCjM2LTM1LTI4LjIyTiAgICAgNzItMDItMDAuNDBXICANCjM2LTM0LTAwLjg5TiAgICAg
+NzEtNDgtMzQuNTVXICANCjM2LTMzLTIzLjI4TiAgICAgNzEtNDItNTEuMTlXICANCjM2LTMzLTA0
+LjAzTiAgICAgNzEtMzktNTguMTFXICANCjM2LTMyLTEwLjU5TiAgICAgNzEtMzEtNTMuMjlXICAN
+CjM2LTMxLTU4LjM2TiAgICAgNzEtMzAtMDIuMDFXICANCg0KU0MgLSBOQw0KDQozMy00OC01NC4z
+NU4gICAgIDc4LTI5LTM5LjcyVyANCjMzLTQ3LTQ1LjI2TiAgICAgNzgtMjgtMjUuMjNXIA0KMzMt
+NDctMTMuMjlOICAgICA3OC0yNy01Ny40MVcgDQozMy00Ny0xMS41NU4gICAgIDc4LTI3LTU1Ljk3
+VyANCjMzLTQ2LTMzLjY2TiAgICAgNzgtMjctMjYuNDFXIA0KMzMtNDYtMDAuMTBOICAgICA3OC0y
+Ny0wMC45MlcgDQozMy00NS00OC4xNE4gICAgIDc4LTI2LTUyLjkwVyANCjMzLTM5LTE2LjA5TiAg
+ICAgNzgtMjItMzAuMzVXIA0KMzMtMzctMzEuNjJOICAgICA3OC0yMS0yMC41N1cgDQozMy0zNC01
+NC4yNE4gICAgIDc4LTE5LTM5LjIyVyANCjMzLTM0LTI4LjM4TiAgICAgNzgtMTktMjQuNDRXIA0K
+MzMtMjctNTMuODFOICAgICA3OC0xNi0yNC43NVcgDQozMy0yMS0wMS4wME4gICAgIDc4LTE2LTQ4
+LjY3VyANCjMzLTExLTI1LjEyTiAgICAgNzgtMTctMjIuMDhXIA0KMzMtMDktNDkuMzJOICAgICA3
+OC0xNy0yNy42MFcgDQozMi00OS0xNS45OU4gICAgIDc4LTAyLTAyLjcwVyANCjMwLTU0LTU1LjAy
+TiAgICAgNzYtMzgtNDguNzZXIA0KMzAtNDMtMDYuNTROICAgICA3Ni0yOS00MC42OFcgDQoNCkdB
+IC0gU0MNCg0KMzItMDAtNDguNzdOICAgICA4MC00Ni01Mi4wMVcgDQozMi0wMC00OC4yN04gICAg
+IDgwLTQ2LTUxLjE1VyANCjMyLTAwLTM5LjU4TiAgICAgODAtNDYtMzYuMTBXIA0KMzItMDAtMjAu
+NjROICAgICA4MC00Ni0wMi41N1cgDQozMi0wMC0xMy42Mk4gICAgIDgwLTQ1LTUwLjA0VyANCjMy
+LTAwLTA5LjQzTiAgICAgODAtNDUtNDIuMDdXIA0KMzItMDAtMDcuMDdOICAgICA4MC00NS0zNy40
+NlcgDQozMS01OS01Ni43NU4gICAgIDgwLTQ1LTE3LjE2VyANCjMxLTU5LTQzLjI4TiAgICAgODAt
+NDQtNTAuNzZXIA0KMzEtNTktMjguNDFOICAgICA4MC00NC0yMS4zOFcgDQozMS01OC00Mi44Mk4g
+ICAgIDgwLTQyLTUwLjQwVyANCjMxLTU4LTM0LjYyTiAgICAgODAtNDItMzQuMDFXIA0KMzEtNTgt
+MjkuMjlOICAgICA4MC00Mi0yMy4yMFcgDQozMS01Ny0xMi4yN04gICAgIDgwLTM5LTQ2LjM1VyAN
+CjMxLTUzLTAwLjIxTiAgICAgODAtMzEtMTIuNDlXIA0KMzEtNDktNTcuNTBOICAgICA4MC0yNC00
+MC4yN1cgDQozMS00OC0yOS41ME4gICAgIDgwLTIxLTI5LjM0VyANCjMxLTQ3LTI0LjI0TiAgICAg
+ODAtMjAtMDYuNzFXIA0KMzEtNDQtMDYuMjFOICAgICA4MC0xNS01NS4xNVcgDQozMS0xOC01Ny43
+NU4gICAgIDc5LTQzLTI4LjA5VyANCjMwLTUyLTAwLjQ1TiAgICAgNzktMTMtNTEuMTNXIA0KMzAt
+NTAtMzguOTlOICAgICA3OS0xMi0yMi4yOFcgDQozMC00OC0yOC40NE4gICAgIDc5LTA5LTEyLjEy
+VyANCjMwLTMxLTIyLjI5TiAgICAgNzgtMzktNDYuMjBXIA0KDQpGTCAtIEdBDQoNCjMwLTQzLTMw
+LjAxTiAgICAgODEtMjAtNTQuOTZXIA0KMzAtNDUtMzYuNDBOICAgICA4MS0xMS0wNC44N1cgDQoz
+MC00Ny0yOC41NE4gICAgIDgxLTAyLTE3LjMxVyANCjMwLTQ3LTE3LjM2TiAgICAgODEtMDAtNTUu
+OThXIA0KMzAtNDEtNTQuOTlOICAgICA4MC0yMi00MS43OFcgDQozMC0zOC0xMi43NE4gICAgIDc5
+LTU3LTA2LjQxVyANCjMwLTM3LTIyLjIyTiAgICAgNzktMzUtMjYuNDVXIA0KMzAtMzQtMjMuNDNO
+ICAgICA3OS0wOS01NS42NFcgDQozMC0zMS0zMC41MU4gICAgIDc4LTQ1LTU3LjA1VyANCjMwLTMx
+LTIyLjI5TiAgICAgNzgtMzktNDYuMjBXIA0KDQpGTCAtIFNDDQoNCjMwLTMxLTIyLjI5TiAgICAg
+NzgtMzktNDYuMjBXIA0KMzAtMzAtMDUuMzBOICAgICA3OC0zNS0wNC42MFcgDQozMC0yNy0yNS45
+OU4gICAgIDc4LTI1LTI0LjI1VyANCjMwLTI2LTMyLjI0TiAgICAgNzgtMjItNTguMTdXIA0KMzAt
+MjUtMDIuNjNOICAgICA3OC0xOC01NS4wMVcgDQozMC0yNC01Ni4yNk4gICAgIDc4LTE4LTMyLjY3
+VyANCjMwLTI0LTI5Ljg4TiAgICAgNzgtMTctMDAuMDdXIA0KMzAtMjQtMjQuMDBOICAgICA3OC0x
+Ni0zOS4zMlcgDQozMC0yNC0xOC4xOE4gICAgIDc4LTE2LTE4LjY3VyANCjMwLTIzLTU3LjQ5TiAg
+ICAgNzgtMTUtMDUuMjdXIA0KMzAtMjMtMzMuNTJOICAgICA3OC0xMy0zOC42MVcgDQozMC0yMy0z
+My4xOU4gICAgIDc4LTEzLTM3LjM4VyANCjMwLTIwLTM4LjY2TiAgICAgNzctNTktNTMuOTVXIA0K
+MzAtMjAtMjcuNDROICAgICA3Ny01OS0wMS4yNVcgDQozMC0yMC0wMy4zNU4gICAgIDc3LTU3LTA4
+LjMyVyANCjMwLTE4LTMzLjcxTiAgICAgNzctNTEtMDIuNzBXIA0KMzAtMTgtMTguNzlOICAgICA3
+Ny00OS01MS42MlcgDQozMC0xOC0wMy43Nk4gICAgIDc3LTQ4LTI0Ljk4VyANCjMwLTE3LTAzLjM5
+TiAgICAgNzctNDItMDYuNDVXIA0KMzAtMTQtNDcuMTROICAgICA3Ny0yNy01OC45MFcgDQozMC0x
+NC00NS42OU4gICAgIDc3LTI3LTQ5LjkyVyANCjMwLTE0LTIwLjEyTiAgICAgNzctMjUtMTAuODZX
+IA0KMzAtMTItMzYuNDFOICAgICA3Ny0xNy0zOC4zNVcgDQozMC0xMS00NC43OE4gICAgIDc3LTEz
+LTUzLjU2VyANCg0K</Data></Enclosure></Binary><dataIdInfo><envirDesc Sync="TRUE">Microsoft Windows XP Version 5.1 (Build 2600) Service Pack 3; ESRI ArcCatalog 9.3.1.3000</envirDesc><dataLang><languageCode Sync="TRUE" value="en"></languageCode></dataLang><idCitation><resTitle Sync="TRUE">OCS_adminboundaries</resTitle><presForm><PresFormCd Sync="TRUE" value="005"></PresFormCd></presForm></idCitation><spatRpType><SpatRepTypCd Sync="TRUE" value="001"></SpatRepTypCd></spatRpType><dataExt><geoEle><GeoBndBox esriExtentType="native"><westBL Sync="TRUE">-81.348601</westBL><eastBL Sync="TRUE">-66.918856</eastBL><northBL Sync="TRUE">42.957579</northBL><southBL Sync="TRUE">30.195772</southBL><exTypeCode Sync="TRUE">1</exTypeCode></GeoBndBox></geoEle></dataExt><geoBox esriExtentType="decdegrees"><westBL Sync="TRUE">-81.348601</westBL><eastBL Sync="TRUE">-66.918856</eastBL><northBL Sync="TRUE">42.957579</northBL><southBL Sync="TRUE">30.195772</southBL><exTypeCode Sync="TRUE">1</exTypeCode></geoBox></dataIdInfo><mdLang><languageCode Sync="TRUE" value="en"></languageCode></mdLang><mdStanName Sync="TRUE">ISO 19115 Geographic Information - Metadata</mdStanName><mdStanVer Sync="TRUE">DIS_ESRI1.0</mdStanVer><mdChar><CharSetCd Sync="TRUE" value="004"></CharSetCd></mdChar><mdHrLv><ScopeCd Sync="TRUE" value="005"></ScopeCd></mdHrLv><mdHrLvName Sync="TRUE">dataset</mdHrLvName><distInfo><distributor><distorTran><onLineSrc><orDesc Sync="TRUE">002</orDesc><linkage Sync="TRUE">file://\\tornado\research3\CoastEnergy\GIS_COASTGA\GISData\MMS\OCS_adminboundaries.shp</linkage><protocol Sync="TRUE">Local Area Network</protocol></onLineSrc><transSize Sync="TRUE">0.035</transSize></distorTran><distorFormat><formatName Sync="TRUE">Shapefile</formatName></distorFormat></distributor></distInfo><refSysInfo><RefSystem><refSysID><identCode Sync="TRUE">GCS_North_American_1983</identCode></refSysID></RefSystem></refSysInfo><spatRepInfo><VectSpatRep><topLvl><TopoLevCd Sync="TRUE" value="001"></TopoLevCd></topLvl><geometObjs Name="OCS_adminboundaries"><geoObjTyp><GeoObjTypCd Sync="TRUE" value="001"></GeoObjTypCd></geoObjTyp><geoObjCnt Sync="TRUE">17</geoObjCnt></geometObjs></VectSpatRep></spatRepInfo></metadata>

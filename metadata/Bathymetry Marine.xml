@@ -1,0 +1,84 @@
+Identification_Information:
+  Citation:
+    Citation_Information:
+      Originator: REQUIRED: The name of an organization or individual that developed the data set.
+      Publication_Date: REQUIRED: The date when the data set is published or otherwise made available for release.
+      Title: CRelief.img
+      Geospatial_Data_Presentation_Form: remote-sensing image
+      Online_Linkage: \\tornado\research3\CoastEnergy\gisdata\orginals\NOAA_Topo\coastrelief\grid\CRelief.img
+  Description:
+    Abstract:
+      This data set was created on November 2, 2009 using elevation data from the NOAA National Ocean Service Hydrographic Data Base's (NOSHDB) GEOphysical DAta System (GEODAS) Grid Translator (Design-A-Grid). The downloaded data contains XY coordinates and heights in meters. The data extends past the OCS plan boundary.
+
+      For more information, please visit http://www.ngdc.noaa.gov/mgg/geodas/geodas.html.
+    Purpose: To be used for the Southeast Ocean Based Renewable Energy project as a resource to analyze and identify potential alternative energy facilities within Georgia waters and federal waters beyond state jurisdiction.
+  Time_Period_of_Content:
+    Time_Period_Information:
+      Single_Date/Time:
+        Calendar_Date: REQUIRED: The year (and optionally month, or month and day) for which the data set corresponds to the ground.
+    Currentness_Reference: REQUIRED: The basis on which the time period of content information is determined.
+  Status:
+    Progress: REQUIRED: The state of the data set.
+    Maintenance_and_Update_Frequency: REQUIRED: The frequency with which changes and additions are made to the data set after the initial data set is completed.
+  Spatial_Domain:
+    Bounding_Coordinates:
+      West_Bounding_Coordinate: -81.716583
+      East_Bounding_Coordinate: -77.111583
+      North_Bounding_Coordinate: 33.000750
+      South_Bounding_Coordinate: 29.999250
+  Keywords:
+    Theme:
+      Theme_Keyword_Thesaurus: REQUIRED: Reference to a formally registered thesaurus or a similar authoritative source of theme keywords.
+      Theme_Keyword: bathymetry, elevation, depth
+  Access_Constraints: REQUIRED: Restrictions and legal prerequisites for accessing the data set.
+  Use_Constraints: REQUIRED: Restrictions and legal prerequisites for using the data set after access is granted.
+  Native_Data_Set_Environment: Microsoft Windows XP Version 5.1 (Build 2600) Service Pack 3; ESRI ArcCatalog 9.3.1.3000
+Spatial_Data_Organization_Information:
+  Direct_Spatial_Reference_Method: Raster
+  Raster_Object_Information:
+    Raster_Object_Type: Pixel
+    Row_Count: 2001
+    Column_Count: 3070
+    Vertical_Count: 1
+Spatial_Reference_Information:
+  Horizontal_Coordinate_System_Definition:
+    Geographic:
+      Latitude_Resolution: 0.000000
+      Longitude_Resolution: 0.000000
+      Geographic_Coordinate_Units: Decimal degrees
+    Planar:
+      Planar_Coordinate_Information:
+        Planar_Coordinate_Encoding_Method: row and column
+        Coordinate_Representation:
+          Abscissa_Resolution: 0.001500
+          Ordinate_Resolution: 0.001500
+    Geodetic_Model:
+      Horizontal_Datum_Name: D_WGS_1984
+      Ellipsoid_Name: WGS_1984
+      Semi-major_Axis: 6378137.000000
+      Denominator_of_Flattening_Ratio: 298.257224
+Distribution_Information:
+  Resource_Description: Downloadable Data
+  Standard_Order_Process:
+    Digital_Form:
+      Digital_Transfer_Information:
+        Transfer_Size: 0.000
+Metadata_Reference_Information:
+  Metadata_Date: 20100105
+  Metadata_Contact:
+    Contact_Information:
+      Contact_Organization_Primary:
+        Contact_Organization: REQUIRED: The organization responsible for the metadata information.
+        Contact_Person: REQUIRED: The person responsible for the metadata information.
+      Contact_Address:
+        Address_Type: REQUIRED: The mailing and/or physical address for the organization or individual.
+        City: REQUIRED: The city of the address.
+        State_or_Province: REQUIRED: The state or province of the address.
+        Postal_Code: REQUIRED: The ZIP or other postal code of the address.
+      Contact_Voice_Telephone: REQUIRED: The telephone number by which individuals can speak to the organization or individual.
+  Metadata_Standard_Name: FGDC Content Standards for Digital Geospatial Metadata
+  Metadata_Standard_Version: FGDC-STD-001-1998
+  Metadata_Time_Convention: local time
+  Metadata_Extensions:
+    Online_Linkage: http://www.esri.com/metadata/esriprof80.html
+    Profile_Name: ESRI Metadata Profile

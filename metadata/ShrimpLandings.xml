@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+  <idinfo>
+    <citation>
+      <citeinfo>
+        <origin>SCDNR, Marine Resources Division, Office of Fisheries Management</origin>
+        <pubdate>2013</pubdate>
+      </citeinfo>
+    </citation>
+    <descript>
+      <abstract>The majority of commercially harvested shrimp in South Carolina is caught by off-shore trawling. Commercial harvests are reported to the South Carolina Department of Natural Resources (SCDNR) Office of Fisheries Management for 10 trawling areas within the general trawling zone of South Carolina (see the process steps in this document more more information about these areas).  The reported weights (lbs) of the commercial trawling harvest for whole (heads-on) brown (Farfantepenaeus aztecus) and white shrimp (Litopenaeus setiferus) have been averaged for each area from 2005-2009 and included in this dataset. The average value of the harvest for each area has also been included.  The brown shrimp season generally runs from June to August, and the white shrimp season generally runs from August to December.  For more information visit: http://www.dnr.sc.gov/marine/pub/seascience/shrimp.html</abstract>
+      <purpose>This GIS dataset was created for purpose of describing shrimp landings for the state of South Carolina so that these data can be considered with respect to toher data on coastal resources and activities.</purpose>
+    </descript>
+    <timeperd>
+      <timeinfo>
+        <rngdates>
+          <begdate>2005</begdate>
+          <enddate>2009</enddate>
+        </rngdates>
+      </timeinfo>
+      <current>publication date</current>
+    </timeperd>
+    <status>
+      <progress>Complete</progress>
+      <update>None planned</update>
+    </status>
+    <keywords>
+      <theme>
+        <themekey>shrimp</themekey>
+        <themekey>Farfantepenaeus aztecus</themekey>
+        <themekey>Litopenaeus setiferus</themekey>
+        <themekey>commercial harvest</themekey>
+        <themekey>trawl</themekey>
+      </theme>
+      <place>
+        <placekey>South Carolina</placekey>
+      </place>
+    </keywords>
+    <accconst>None</accconst>
+    <useconst>Neither the State of South Carolina, the Department of Natural Resources, nor any of its employees, is responsible for any improper or incorrect use of the information described and/or contained herein, and  assume no responsibility for the use of the information.  The South Carolina Department of Natural Resources should be acknowledged as the data source in products derived from these data.</useconst>
+    <ptcontac>
+      <cntinfo>
+        <cntperp>
+          <cntper>George Steele</cntper>
+          <cntorg>SCDNR, Marine Resources Division, Office of Fisheries Management</cntorg>
+        </cntperp>
+        <cntpos>Data Manager for Commercial Fisheries</cntpos>
+        <cntaddr>
+          <addrtype>mailing address</addrtype>
+          <address>P.O. Box 12559</address>
+          <city>Charleston</city>
+          <state>SC</state>
+          <postal>29422</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>843-953-9366</cntvoice>
+        <cntfax>843-953-9820</cntfax>
+        <cntemail>steeleg@dnr.sc.gov</cntemail>
+      </cntinfo>
+    </ptcontac>
+  </idinfo>
+  <dataqual>
+    <lineage>
+      <procstep>
+        <procdesc>Creation of shoreline boundary for General Trawling Zones: The boundary was created using information from SECTION 50-5-705 of the South Carolina Code of Laws 2010 ( http://www.scstatehouse.gov/code/t50c005.htm ). Coordinates listed in this document were available as a shapefile from SCDNR. The boundary was created by drawing a line connecting these points and following the shorelines as indicated in the law. The SC law references using National Ocean Service (NOS) charts as shoreline reference. For this dataset, however, more current editions of the NOS charts were used. Beginning at the Savannah River through Daufuskie Is, chart 11512, 62nd ed. Feb. 2010 was used. Chart 11516, 31st ed. Aug. 2006 was used for Hilton Head to a point midway on Pritchards Island. Chart 11513, 22nd ed. July 1997 was used for the remainder of Pritchards through Hunting Island. Chart 11521, 22nd ed. Dec 2010 was used for Otter Island through Bull Island. Chart 11531 22nd ed. Apr. 2006 was used for Sandy Point through Murphy Island. Chart 11532 21st ed. July 2006 was used for Cedar Is. through Debidue Island. Chart 11535 12th, Jan. 2002 was used for Pawley's Island to the South Carolina/North Carolina border. The shoreline was digitized at a scale of about 1:12000.</procdesc>
+        <procdate>May 2011</procdate>
+        <proccont>
+          <cntinfo>
+            <cntperp>
+              <cntper>Kristin Schulte</cntper>
+              <cntorg>SCDNR, Marine Resources Division, MRRI</cntorg>
+            </cntperp>
+            <cntpos>Wildlife Biologist II</cntpos>
+            <cntaddr>
+              <addrtype>mailing address</addrtype>
+              <address>P.O. Box 12559</address>
+              <city>Charleston</city>
+              <state>SC</state>
+              <postal>29422</postal>
+              <country>USA</country>
+            </cntaddr>
+            <cntvoice>843-953-5977</cntvoice>
+            <cntfax>843-953-9820</cntfax>
+            <cntemail>schultek@dnr.sc.gov</cntemail>
+          </cntinfo>
+        </proccont>
+      </procstep>
+      <procstep>
+        <procdesc>Creation of dividing lines between SC Trawling Waterbody Areas: There is no official list of coordinates for the lines that divide South Carolina's General Trawling Zone into the Trawling Waterbody Areas as reported by the Office of Fisheries Management, SCDNR. Dividing lines were placed approximately in the middle of a channel if a waterway was listed as the divide. If a locality was referenced, such as a jetty or a point, that was used as the divide.</procdesc>
+        <procdate>May 2011</procdate>
+        <proccont>
+          <cntinfo>
+            <cntperp>
+              <cntper>Kristin Schulte</cntper>
+              <cntorg>SCDNR, Marine Resources Division, MRRI</cntorg>
+            </cntperp>
+            <cntpos>Wildlife Biologist II</cntpos>
+          </cntinfo>
+        </proccont>
+      </procstep>
+      <procstep>
+        <procdesc>Creation of Trawling Zone Areas: By tracing a combination of the shoreline boundary from the SC General Trawling Zones Code, the approximate location of the trawling waterbody area dividing lines, and the state's 3 mi. offshore line (source: NOAA), polygons were created to indicate the areas used primarily by commercial fisherman for shrimp trawling.</procdesc>
+        <procdate>May 2011</procdate>
+        <proccont>
+          <cntinfo>
+            <cntperp>
+              <cntper>Kristin Schulte</cntper>
+              <cntorg>SCDNR, Marine Resources Division, MRRI</cntorg>
+            </cntperp>
+            <cntpos>Wildlife Biologist II</cntpos>
+          </cntinfo>
+        </proccont>
+      </procstep>
+      <procstep>
+        <procdesc>Dataset copied.</procdesc>
+        <srcused>\\Mrdnas\ShellMap\Work\Wind\Shrimp\ShrimpTrawling2005_2009</srcused>
+        <procdate>20110714</procdate>
+        <proctime>11285000</proctime>
+      </procstep>
+    </lineage>
+  </dataqual>
+  <eainfo>
+    <detailed Name="Shrimp_GA">
+      <enttyp>
+        <enttypl Sync="TRUE">Shrimp_GA</enttypl>
+        <enttypd>Commercial shrimp harvest values for each of the SC trawling waterbody areas.</enttypd>
+        <enttypds>SCDNR</enttypds>
+        <enttypt Sync="TRUE">Feature Class</enttypt>
+        <enttypc Sync="TRUE">14</enttypc>
+      </enttyp>
+      <attr>
+        <attrlabl>Shape</attrlabl>
+        <attrdef>Feature geometry.</attrdef>
+        <attrdefs>ESRI</attrdefs>
+        <attrdomv>
+          <udom>Coordinates defining the features.</udom>
+        </attrdomv>
+        <attalias Sync="TRUE">Shape</attalias>
+        <attrtype Sync="TRUE">Geometry</attrtype>
+        <attwidth Sync="TRUE">0</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>OBJECTID</attrlabl>
+        <attalias Sync="TRUE">OBJECTID</attalias>
+        <attrtype Sync="TRUE">OID</attrtype>
+        <attwidth Sync="TRUE">4</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+        <attrdef Sync="TRUE">Internal feature number.</attrdef>
+        <attrdefs Sync="TRUE">ESRI</attrdefs>
+        <attrdomv>
+          <udom Sync="TRUE">Sequential unique whole numbers that are automatically generated.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">Area</attrlabl>
+        <attalias Sync="TRUE">Area</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">Type</attrlabl>
+        <attalias Sync="TRUE">Type</attalias>
+        <attrtype Sync="TRUE">String</attrtype>
+        <attwidth Sync="TRUE">25</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">AvgLbs</attrlabl>
+        <attalias Sync="TRUE">AvgLbs</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl Sync="TRUE">CV_Lbs</attrlabl>
+        <attalias Sync="TRUE">CV_Lbs</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>Shape_Length</attrlabl>
+        <attrdef>Length of feature in internal units.</attrdef>
+        <attrdefs>ESRI</attrdefs>
+        <attrdomv>
+          <udom>Positive real numbers that are automatically generated.</udom>
+        </attrdomv>
+        <attalias Sync="TRUE">Shape_Length</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+      <attr>
+        <attrlabl>Shape_Area</attrlabl>
+        <attrdef>Area of feature in internal units squared.</attrdef>
+        <attrdefs>ESRI</attrdefs>
+        <attrdomv>
+          <udom>Positive real numbers that are automatically generated.</udom>
+        </attrdomv>
+        <attalias Sync="TRUE">Shape_Area</attalias>
+        <attrtype Sync="TRUE">Double</attrtype>
+        <attwidth Sync="TRUE">8</attwidth>
+        <atprecis Sync="TRUE">0</atprecis>
+        <attscale Sync="TRUE">0</attscale>
+      </attr>
+    </detailed>
+  </eainfo>
+  <distinfo>
+    <distrib>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>South Carolina Department of Natural Resources</cntorg>
+        </cntorgp>
+        <cntpos>Spatial Data Manager</cntpos>
+        <cntaddr>
+          <addrtype>physical address</addrtype>
+          <address>1000 Assembly St.</address>
+          <city>Columbia</city>
+          <state>SC</state>
+          <postal>29201</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntaddr>
+          <addrtype>mailing address</addrtype>
+          <address>Rembert C. Dennis Building P.O. Box 167</address>
+          <city>Columbia</city>
+          <state>SC</state>
+          <postal>29202</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>803-734-9100</cntvoice>
+        <cntfax>803-734-7001</cntfax>
+        <cntemail>gisman@dnr.sc.gov</cntemail>
+      </cntinfo>
+    </distrib>
+    <resdesc>Downloadable Data</resdesc>
+    <stdorder>
+      <digform>
+        <digtinfo>
+          <transize>0.088</transize>
+        </digtinfo>
+      </digform>
+    </stdorder>
+  </distinfo>
+  <metainfo>
+    <metc>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>SCDNR, Marine Resources Division, MRRI</cntorg>
+          <cntper>Jessica Boynton</cntper>
+        </cntorgp>
+        <cntpos>GIS Manager I</cntpos>
+        <cntaddr>
+          <addrtype>physical address</addrtype>
+          <address>217 Fort Johnson Rd.</address>
+          <city>Charleston</city>
+          <state>SC</state>
+          <postal>29412</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntaddr>
+          <addrtype>mailing address</addrtype>
+          <address>P.O. Box 12559</address>
+          <city>Charleston</city>
+          <state>SC</state>
+          <postal>29422</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>843-953-9163</cntvoice>
+        <cntvoice>843-953-9163</cntvoice>
+        <cntfax>843-953-9820</cntfax>
+        <cntemail>boyntonj@dnr.sc.gov</cntemail>
+      </cntinfo>
+    </metc>
+    <metextns>
+      <onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+      <metprof>ESRI Metadata Profile</metprof>
+    </metextns>
+  </metainfo>
+  <Esri>
+    <MetaID>{8700F4E7-4558-48B5-A620-DD82465A7A77}</MetaID>
+    <CreaDate>20130211</CreaDate>
+    <CreaTime>10002100</CreaTime>
+    <SyncOnce>FALSE</SyncOnce>
+    <SyncDate>20130211</SyncDate>
+    <SyncTime>10003500</SyncTime>
+    <ModDate>20130211</ModDate>
+    <ModTime>10003500</ModTime>
+  </Esri>
+</metadata>

@@ -525,10 +525,23 @@ function sliderChanged(value) {
 
 var handleIdentify = null;
 var tabs;
+var jpanes = null;
 
 function jQueryReady() {
 	$(function() {
-		$('.scroll-pane').jScrollPane();
+		jpanes = $('.scroll-pane').jScrollPane({
+			showArrows : true,
+			verticalArrowPositions: 'split',
+			horizontalArrowPositions: 'split',
+			maintainPosition : false,
+			verticalDragMinHeight: 20,
+			verticalDragMaxHeight: 20,
+			horizontalDragMinWidth: 20,
+			horizontalDragMaxWidth: 20,
+			scrollbarWidth: 250,
+			scrollbarHeight: 250,
+			autoReinitialise : true
+		});
 		
 		tabs = $('a[data-toggle="tab"]').on('shown', function (e) {
 			if( $(e.target).attr('href') == "#identifyPane") {

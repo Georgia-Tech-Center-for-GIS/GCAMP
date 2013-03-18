@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<metadata>
+<idinfo>
+<citation>
+<citeinfo>
+<origin>Department of Commerce (DOC), National Oceanic and Atmospheric Administration (NOAA), National Ocean Service (NOS), Office of Coast Survey (OCS)</origin>
+<pubdate>20120720</pubdate>
+<title>Maritime Limits and Boundaries of United States of America</title>
+<edition>3.1</edition>
+<geoform>vector digital data</geoform>
+<pubinfo>
+<pubplace>Silver Spring, Maryland</pubplace>
+<publish>NOAA's Ocean Service, Office of Coast Survey (OCS)</publish>
+</pubinfo>
+<onlink>http://www.nauticalcharts.noaa.gov/csdl/mbound.htm</onlink>
+<onlink>http://ocs-gis.ncd.noaa.gov/ArcGIS/rest/services/CMSP/US_Maritime_Limits_Boundaries/MapServer</onlink>
+</citeinfo>
+</citation>
+<descript>
+<abstract>NOAA is responsible for depicting on its nautical charts the limits of the 12 nautical mile Territorial Sea, 24 nautical mile Contiguous Zone, and 200 nautical mile Exclusive Economic Zone (EEZ). The outer limit of each of these zones is measured from the U.S. normal baseline, which coincides with the low water line depicted on NOAA charts and includes closing lines across the entrances of legal bays and rivers, consistent with international law. The U.S. baseline and associated maritime limits are reviewed and approved through the interagency U.S. Baseline Committee, which is chaired by the U.S. Department of State.  The Committee serves the function of gaining interagency consensus on the proper location of the baseline using the provisions of the 1958 Convention on the Territorial Sea and the Contiguous Zone, to ensure that the seaward extent of U.S. maritime zones do not exceed the breadth that is permitted by international law.  In 2002 and in response to mounting requests for digital maritime zones, NOAA launched a project to re-evaluate the U.S. baseline in partnership with other federal agencies via the U.S. Baseline Committee.  The focus of the baseline evaluation was NOAA's largest scale, most recent edition nautical charts as well as supplemental source materials for verification of certain charted features.  This dataset is a result of the 2002-present initiative and reflects a multi-year iterative project whereby the baseline and associated maritime limits were re-evaluated on a state or regional basis. In addition to the U.S. maritime limits, the U.S. maritime boundaries with opposite or adjacent countries as well as the US/Canada International Boundary (on land and through the Great Lakes) are also included in this dataset.</abstract>
+<purpose>The primary purpose of this dataset is to update the official depiction of these maritime zones and maritime boundaries on NOAA's nautical charts.  The limits of these zones are subject to modification, as represented on future charts.  The limits shown on the most recent chart edition take precedence.</purpose>
+<supplinf>For more detailed information about specific regional limits and boundaries, refer to the supplemental information documents.</supplinf>
+</descript>
+<timeperd>
+<timeinfo>
+<sngdate>
+<caldate>20120720</caldate>
+</sngdate>
+</timeinfo>
+<current>publication date</current>
+</timeperd>
+<status>
+<progress>Complete</progress>
+<update>Continually</update>
+</status>
+<spdom>
+<bounding>
+<westbc>140.0</westbc>
+<eastbc>-60.0</eastbc>
+<northbc>74.708840</northbc>
+<southbc>-17.555000</southbc>
+</bounding>
+</spdom>
+<keywords>
+<theme>
+<themekt>None</themekt>
+<themekey>GIS</themekey>
+<themekey>Polyline</themekey>
+<themekey>Maritime</themekey>
+<themekey>Boundary</themekey>
+<themekey>Limit</themekey>
+<themekey>Law of the Sea</themekey>
+<themekey>Territorial Sea</themekey>
+<themekey>Contiguous Zone</themekey>
+<themekey>Exclusive Economic Zone</themekey>
+<themekey>Presidential Proclamation No. 5928, December 1988</themekey>
+<themekey>Presidential Proclamation No. 7219, August 1999</themekey>
+<themekey>Presidential Proclamation No. 5030, March 1983</themekey>
+<themekey>US/Russia Maritime Boundary Agreement, 1990</themekey>
+<themekey>Federal Register, Vol 60, No. 163, August 23, 1995</themekey>
+<themekey>ICJ Judgment, Gulf of Maine, 1984</themekey>
+<themekey>International Boundary Commission</themekey>
+<themekey>US/Cook Islands Maritime Boundary Treaty, 1980</themekey>
+<themekey>US/Cuba Maritime Boundary Agreement, 1977</themekey>
+<themekey>US/Japan Exchange of Notes, 1994</themekey>
+<themekey>US/Mexico Maritime Boundary Treaty, 1970</themekey>
+<themekey>US/Mexico Maritime Boundary Treaty, 1978</themekey>
+<themekey>US/New Zealand (Tokelau) Maritime Boundary Treaty, 1980</themekey>
+<themekey>US/Niue Maritime Boundary Treaty, 1997</themekey>
+<themekey>US/UK (Anguilla) Maritime Boundary Treaty, 1993</themekey>
+<themekey>US/UK (British Virgin Islands) Maritime Boundary Treaty, 1993</themekey>
+<themekey>US/Venezuela Maritime Boundary Treaty, 1978</themekey>
+</theme>
+<theme>
+<themekt>ISO 19115 Topic Category</themekt>
+<themekey>boundaries</themekey>
+<themekey>planningCadastre</themekey>
+</theme>
+<theme>
+<themekt>NOS Data Explorer Topic Category</themekt>
+<themekey>Marine Boundaries</themekey>
+<themekey>Nautical Charting</themekey>
+</theme>
+<place>
+<placekt>Geographic Names Information System</placekt>
+<placekey>Alaska</placekey>
+<placekey>Hawaii</placekey>
+<placekey>Puerto Rico</placekey>
+<placekey>U.S. Virgin Islands</placekey>
+<placekey>Maine</placekey>
+<placekey>New Hampshire</placekey>
+<placekey>Massachusetts</placekey>
+<placekey>Rhode Island</placekey>
+<placekey>New York</placekey>
+<placekey>New Jersey</placekey>
+<placekey>Delaware</placekey>
+<placekey>Maryland</placekey>
+<placekey>Virginia</placekey>
+<placekey>North Carolina</placekey>
+<placekey>South Carolina</placekey>
+<placekey>Georgia</placekey>
+<placekey>Florida</placekey>
+<placekey>Alabama</placekey>
+<placekey>Mississippi</placekey>
+<placekey>Louisiana</placekey>
+<placekey>Texas</placekey>
+<placekey>California</placekey>
+<placekey>Oregon</placekey>
+<placekey>Washington</placekey>
+<placekey>Johnston Atoll</placekey>
+<placekey>Commonwealth of the Northern Mariana Islands</placekey>
+<placekey>Guam</placekey>
+<placekey>Wake Island</placekey>
+<placekey>American Samoa</placekey>
+<placekey>Howland Island</placekey>
+<placekey>Baker Island</placekey>
+<placekey>Jarvis Island</placekey>
+<placekey>Kingman Reef</placekey>
+<placekey>Palmyra Atoll</placekey>
+</place>
+</keywords>
+<accconst>None</accconst>
+<useconst>NOT FOR LEGAL USE. These limits and boundaries were created for internal purposes only to update the charted maritime limits and maritime boundaries on NOAA charts. These limits and boundaries do not represent the official depiction. For official depiction, please see NOAA's paper or raster nautical charts.</useconst>
+<ptcontac>
+<cntinfo>
+<cntorgp>
+<cntorg>National Oceanic and Atmospheric Administration (NOAA), National Ocean Service (NOS), Office of Coast Survey (OCS)</cntorg>
+</cntorgp>
+<cntpos>Chief Geographer</cntpos>
+<cntaddr>
+<addrtype>mailing and physical address</addrtype>
+<address>Office of Coast Survey, 1315 East West Highway</address>
+<city>Silver Spring</city>
+<state>MD</state>
+<postal>20910</postal>
+<country>USA</country>
+</cntaddr>
+<cntvoice>(301)713-2780 x 127</cntvoice>
+<cntfax>(301)713-4019</cntfax>
+<cntemail>meredith.westington@noaa.gov</cntemail>
+<hours>Monday - Friday, 0900 EST - 1700 EST</hours>
+</cntinfo>
+</ptcontac>
+<native>CARIS' Law of the Sea: Limits and Boundaries v.4.0 Service Pack 6; ESRI ArcGIS Desktop 9.3.1 and 10; Microsoft Windows XP Professional SP3</native>
+<progaff>
+<progname>National Ocean Service Data Explorer</progname>
+</progaff>
+</idinfo>
+<dataqual>
+<attracc>
+<attraccr>Due to software and process limitations, this dataset does not contain attributes that speak to the issue of accuracy. The accuracy of this dataset is dependent on the map resolution created in CARIS LOTS, the chart scale used to derive the baseline from which the maritime limits are measured, and coordinate precision of maritime boundary coordinates that are defined in treaties or in the 1995 Federal Register Notice.</attraccr>
+</attracc>
+<logic>The maritime limits reflect the baseline as depicted on relevant largest scale, most recent edition raster nautical charts of the area. They are believed to be logically consistent.</logic>
+<complete>This dataset is complete. Maritime limits are ambulatory; therefore, the limits may be updated at a later date if the charted depictions of the farthest seaward low-water mark changes.  In addition, the maritime boundaries portion of this dataset may be updated if a new maritime boundary agreement is established or revised.</complete>
+<posacc>
+<horizpa>
+<horizpar>No specific test was performed on the dataset. The maritime limits are a reflection of the largest scale raster nautical charts of the area. The number of decimal places used in the output format does not imply an accuracy level higher than the source chart documents.</horizpar>
+</horizpa>
+<vertacc>
+<vertaccr>The maritime limits are projected from salient points along a designated baseline, which is generally referred to as the farthest seaward low-water mark depicted on the largest scale, most recent edition raster nautical charts. When necessary, hydrographic surveys were referenced to ensure the depiction of certain rocks on NOAA's nautical charts dry at mean lower low water. Beyond utilizing the tidally-referenced shoreline depicted on NOAA's nautical charts, no specific test was used to determine the vertical accuracy of the points.</vertaccr>
+</vertacc>
+</posacc>
+<lineage>
+<srcinfo>
+<srccite>
+<citeinfo>
+<origin>National Oceanic and Atmospheric Administration (NOAA), National Ocean Service (NOS), Office of Coast Survey (OCS)</origin>
+<pubdate>20110501</pubdate>
+<title>Regional Digital Maritime Limits and Maritime Boundaries</title>
+<edition>Latest edition</edition>
+<geoform>vector digital data</geoform>
+<pubinfo>
+<pubplace>Silver Spring, Maryland</pubplace>
+<publish>NOAA's Ocean Service, Office of Coast Survey (OCS)</publish>
+</pubinfo>
+</citeinfo>
+</srccite>
+<typesrc>Vector digital data</typesrc>
+<srctime>
+<timeinfo>
+<rngdates>
+<begdate>2002</begdate>
+<enddate>2010</enddate>
+</rngdates>
+</timeinfo>
+<srccurr>publication date</srccurr>
+</srctime>
+<srccitea>REGION_LIMITS</srccitea>
+<srccontr>The limits of the 12 nautical mile Territorial Sea, 24 nautical mile Contiguous Zone, and 200 nautical mile Exclusive Economic Zone as well as the maritime boundaries were published in vector digital data format on a state or region basis between 2002 and 2010. These previously published regional data were used as source for this dataset. They were compiled together and further attributed.</srccontr>
+</srcinfo>
+<srcinfo>
+<srccite>
+<citeinfo>
+<origin>International Boundary Commission</origin>
+<pubdate>Unknown</pubdate>
+<title>Geographical Positions along the International Boundary (NAD83)</title>
+<edition>Latest edition</edition>
+<geoform>Text</geoform>
+<pubinfo>
+<pubplace>Washington, D.C.</pubplace>
+<publish>International Boundary Commission</publish>
+</pubinfo>
+<onlink>http://www.internationalboundarycommission.org/products.html</onlink>
+</citeinfo>
+</srccite>
+<typesrc>online</typesrc>
+<srctime>
+<timeinfo>
+<rngdates>
+<begdate>1915</begdate>
+<enddate>1986</enddate>
+</rngdates>
+</timeinfo>
+<srccurr>publication date</srccurr>
+</srctime>
+<srccitea>IBC</srccitea>
+<srccontr>US/Canada international boundary polyline was constructed using published coordinates from the US/Canada International Boundary Commission. The polyline was used as a source of this dataset. The boundary was merged with OCS' published maritime limits and maritime boundaries and further attributed</srccontr>
+</srcinfo>
+<srcinfo>
+<srccite>
+<citeinfo>
+<origin>National Oceanic and Atmospheric Administration (NOAA), National Ocean Service (NOS), Office of Coast Survey (OCS)</origin>
+<pubdate>Unpublished material</pubdate>
+<title>Merged Digital Maritime Limits and Maritime Boundaries</title>
+<edition>1</edition>
+<geoform>geodatabase feature class</geoform>
+</citeinfo>
+</srccite>
+<typesrc>online</typesrc>
+<srctime>
+<timeinfo>
+<sngdate>
+<caldate>2010</caldate>
+</sngdate>
+</timeinfo>
+<srccurr>publication date</srccurr>
+</srctime>
+<srccitea>MERGED</srccitea>
+<srccontr>Single dataset in WGS84 of digital state/regional maritime limits, created by merging published ESRI Shapefiles from NOAA's Office of Coast Survey website.  Dataset was merged with the US/Canada international boundary to create the approved US maritime limits and boundaries dataset.</srccontr>
+</srcinfo>
+<srcinfo>
+<srccite>
+<citeinfo>
+<origin>National Oceanic and Atmospheric Administration (NOAA), National Ocean Service (NOS), Office of Coast Survey (OCS)</origin>
+<pubdate>Unpublished material</pubdate>
+<title>US/Canada international Boundary</title>
+<geoform>vector digital data</geoform>
+</citeinfo>
+</srccite>
+<typesrc>online</typesrc>
+<srctime>
+<timeinfo>
+<sngdate>
+<caldate>2010</caldate>
+</sngdate>
+</timeinfo>
+<srccurr>publication date</srccurr>
+</srctime>
+<srccitea>USCANADABOUND</srccitea>
+<srccontr>Polylines of the US/Canada international boundary contructed from coordinates obtained from the IBC.  Polylines combined with maritime limits to created the approved US maritime limits and boundaries dataset.</srccontr>
+</srcinfo>
+<srcinfo>
+<srccite>
+<citeinfo>
+<origin>National Oceanic and Atmospheric Administration (NOAA), National Ocean Service (NOS), Office of Coast Survey (OCS)</origin>
+<pubdate>20110501</pubdate>
+<title>US Baseline Committee Approved Maritime Limits and Boundaries</title>
+<edition>latest edition</edition>
+<geoform>vector digital data</geoform>
+<pubinfo>
+<pubplace>Silver Spring, Maryland</pubplace>
+<publish>NOAA's Ocean Service, Office of Coast Survey (OCS)</publish>
+</pubinfo>
+</citeinfo>
+</srccite>
+<typesrc>vector digital data</typesrc>
+<srctime>
+<timeinfo>
+<rngdates>
+<begdate>2011</begdate>
+<enddate>Present</enddate>
+</rngdates>
+</timeinfo>
+<srccurr>publication date</srccurr>
+</srctime>
+<srccitea>APPRV_LIMITS</srccitea>
+<srccontr>Digital US maritime limits, maritime boundaries, and international boundaries were approved by the interagency US Baseline Committee.  Dataset is continually revised based on changes to nautical charts or by special request.</srccontr>
+</srcinfo>
+<srcinfo>
+<srccite>
+<citeinfo>
+<origin>National Oceanic and Atmospheric Administration (NOAA), National Ocean Service (NOS), Office of Coast Survey (OCS)</origin>
+<pubdate>Unknown</pubdate>
+<title>Nautical Charts</title>
+<edition>latest edition</edition>
+<geoform>raster digital data</geoform>
+<pubinfo>
+<pubplace>Silver Spring, Maryland</pubplace>
+<publish>NOAA's Ocean Service, Office of Coast Survey (OCS), Marine Chart Division (MCD)</publish>
+</pubinfo>
+<onlink>http://www.nauticalcharts.noaa.gov/</onlink>
+</citeinfo>
+</srccite>
+<typesrc>chart</typesrc>
+<srctime>
+<timeinfo>
+<rngdates>
+<begdate>2011</begdate>
+<enddate>Present</enddate>
+</rngdates>
+</timeinfo>
+<srccurr>publication date</srccurr>
+</srctime>
+<srccitea>NCHART</srccitea>
+<srccontr>NOAA's Nautical charts are used to derive the US baseline, which incorporates the charted low-water line and closing lines across entrances to legal bays, rivers, and harbors.  The most recent edition, largest scale nautical charts are used as a source of the baseline.</srccontr>
+</srcinfo>
+<procstep>
+<procdesc>From 2002 to 2010, the interagency U.S. Baseline Committee re-evaluated the U.S. baseline and associated maritime limits as depicted on NOAA charts on a state or regional basis. As a result of this multiple year, iterative project, digital state/regional maritime limits, including the 200nm EEZ, were produced and published in ESRI Shapefile format on NOAA&#146;s Office of Coast Survey website. To create a seamless, continuous maritime limits dataset, OCS did the following: 1) transformed the state/regional digital limits, in SHP format, from NAD83 to WGS84; 2) merged the WGS84 SHP files into a single dataset using ESRI ArcGIS and imported into a file geodatabase; 3) segmented the merged limits according to chart symbology groupings as well as feature type (e.g. maritime boundary, maritime limit, or land boundary) to more closely match NOAA charts; and 4) re-attributed the dataset</procdesc>
+<srcused>REGION_LIMITS</srcused>
+<procdate>201103</procdate>
+<srcprod>MERGED</srcprod>
+</procstep>
+<procstep>
+<procdesc>The coordinates of US/Canada international boundary were obtained from International Boundary Commission in NAD83 and saved into a text file. A point shapefile was created based on the text file in NAD83 and then transformed to WGS84. Polylines were constructed using the point shapefile. All polylines were constructed as rhumb lines, except the following three portions: 1) line segment from 43.631127N, 76.796687W to 43.631127N, 78.690388W; 2) line segment from 41.676561N, 82.397473W to 41.676561N, 82.679716W; 3) line segment in Gulf of Maine ruled by ICJ. These three portions were constructed as geodesic lines. The polylines were segmented according to the grouping of published coordinates on IBC website. New attributes were created and the polyline was attributed.</procdesc>
+<srcused>IBC</srcused>
+<procdate>201103</procdate>
+<srcprod>USCANADABOUND</srcprod>
+</procstep>
+<procstep>
+<procdesc>US/Canada international boundaries generated in the second process step were imported into file geodatabase and merged with maritime limits generated in the first process step. Topology rules were established in the file geodatabase to detect overlapping, self-intersecting, and dangling polyline features. Any topological errors flagged by topology check were investigated and corrected when necessary. When a polyline feature spans across -/+180 longitude, ESRI clips the feature at the longitude, resulting in dangling polyline. Topology errors as a result of clipping at 180 longitude were marked as exception. Other topology errors were corrected. The dataset was exported as a shapefile.</procdesc>
+<srcused>MERGED</srcused>
+<srcused>USCANADABOUND</srcused>
+<procdate>201103</procdate>
+<srcprod>APPRV_LIMITS</srcprod>
+</procstep>
+<procstep>
+<procdesc>Maritime limits and boundaries are updated using the most recent edition, largest scale nautical charts.  Updates are triggered by a new chart edition, or by a formal request to re-evaluate the baseline. Charts are used as a backdrop in the ESRI ArcMap environment to create vector shorelines and lines closing the entrances to legal bays, rivers, and harbors. These lines are imported to the Caris LOTS environment.  The "Enevelope of Arcs from normal baselines" tool is applied to vector shorelines, and the "Envelope of Arcs from straight baselines" tool is applied to closing lines. As input to the tools, OCS selects the limit distance in nautical miles and designates minimum attributes for the baseline points.  The tool generates the contributing baseline points and the boundary limit using a wagon-wheel filtering process of rolling a circle with a diameter specified by the limit distance and choosing the seaward-most points along the low water line. Previously approved limits are manually intersected and replaced with the revised limits to create seamless, revised limit lines.  Caris generated EOA control lines, which display how baseline points contribute to particular arc segments of the limit line, are used to inform the manual intersect and replace function.  The final dataset is exported from Caris to a shapefile in WGS84, and attributed in the ESRI ArcMap environment.</procdesc>
+<srcused>APPRV_LIMITS</srcused>
+<srcused>NCHART</srcused>
+<procdate>20120720</procdate>
+</procstep>
+</lineage>
+</dataqual>
+<spdoinfo>
+<direct>Vector</direct>
+<ptvctinf>
+<sdtsterm>
+<sdtstype>String</sdtstype>
+<ptvctcnt>367</ptvctcnt>
+</sdtsterm>
+</ptvctinf>
+</spdoinfo>
+<spref>
+<horizsys>
+<geograph>
+<latres>0.000000001</latres>
+<longres>0.000000001</longres>
+<geogunit>Decimal degrees</geogunit>
+</geograph>
+<geodetic>
+<horizdn>WGS84</horizdn>
+<ellips>WGS84</ellips>
+<semiaxis>6378137.000000000000000000</semiaxis>
+<denflat>298.257224</denflat>
+</geodetic>
+</horizsys>
+</spref>
+<eainfo>
+<detailed>
+<enttyp>
+<enttypl>Maritime Limits and Boundaries</enttypl>
+<enttypd>Shapefile Attribute Table</enttypd>
+<enttypds>Office of Coast Survey</enttypds>
+</enttyp>
+<attr>
+<attrlabl>FID</attrlabl>
+<attrdef>Internal feature number</attrdef>
+<attrdefs>ESRI</attrdefs>
+<attrdomv>
+<udom>Sequential unique whole numbers that are automatically generated</udom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl>Shape</attrlabl>
+<attrdef>Feature geometry</attrdef>
+<attrdefs>ESRI</attrdefs>
+<attrdomv>
+<udom>Coordinates defining the features</udom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl>BOUND_ID</attrlabl>
+<attrdef>Boundary ID</attrdef>
+<attrdefs>Office of Coast Survey</attrdefs>
+<attrdomv>
+<udom>Unique ID of this feature</udom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl>REGION</attrlabl>
+<attrdef>Identifier of the general area, state(s), or territory from which the limit is drawn</attrdef>
+<attrdefs>Office of Coast Survey</attrdefs>
+<attrdomv>
+<udom>Contains free text of the general area, state(s), or territory name</udom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl>FEAT_TYPE</attrlabl>
+<attrdef>Type of Feature</attrdef>
+<attrdefs>Office of Coast Survey</attrdefs>
+<attrdomv>
+<edom>
+<edomv>Maritime Limit</edomv>
+<edomvd>Limit of the U.S. maritime zone</edomvd>
+<edomvds>Office of Coast Survey</edomvds>
+</edom>
+</attrdomv>
+<attrdomv>
+<edom>
+<edomv>Maritime Boundary</edomv>
+<edomvd>International maritime boundary between the U.S. and a neighboring country</edomvd>
+<edomvds>Office of Coast Survey</edomvds>
+</edom>
+</attrdomv>
+<attrdomv>
+<edom>
+<edomv>Land Boundary</edomv>
+<edomvd>International land boundary between the U.S. and a neighboring country</edomvd>
+<edomvds>Office of Coast Survey</edomvds>
+</edom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl>TS</attrlabl>
+<attrdef>Territorial Sea</attrdef>
+<attrdefs>Office of Coast Survey</attrdefs>
+<attrdomv>
+<edom>
+<edomv>0</edomv>
+<edomvd>The feature is not the 12nm territorial sea limit or a segment of territorial sea from 0 to 12nm</edomvd>
+<edomvds>Office of Coast Survey</edomvds>
+</edom>
+</attrdomv>
+<attrdomv>
+<edom>
+<edomv>1</edomv>
+<edomvd>The feature is the 12nm territorial sea limit or a segment of territorial sea from 0 to 12nm</edomvd>
+<edomvds>Office of Coast Survey</edomvds>
+</edom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl>CZ</attrlabl>
+<attrdef>Contiguous Zone</attrdef>
+<attrdefs>Office of Coast Survey</attrdefs>
+<attrdomv>
+<edom>
+<edomv>0</edomv>
+<edomvd>The feature is not the 24nm contiguous zone limit or a segment of contiguous zone from 12nm to 24nm</edomvd>
+<edomvds>Office of Coast Survey</edomvds>
+</edom>
+</attrdomv>
+<attrdomv>
+<edom>
+<edomv>1</edomv>
+<edomvd>The feature is the 24nm contiguous zone limit or a segment of contiguous zone from 12nm to 24nm</edomvd>
+<edomvds>Office of Coast Survey</edomvds>
+</edom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl>EEZ</attrlabl>
+<attrdef>Exclusive Economic Zone</attrdef>
+<attrdefs>Office of Coast Survey</attrdefs>
+<attrdomv>
+<edom>
+<edomv>0</edomv>
+<edomvd>The feature is not the 200nm EEZ or a segment of the EEZ per customary international law from 12nm to 200nm</edomvd>
+<edomvds>Office of Coast Survey</edomvds>
+</edom>
+</attrdomv>
+<attrdomv>
+<edom>
+<edomv>1</edomv>
+<edomvd>The feature is the 200nm EEZ or a segment of the EEZ per customary international law from 12nm to 200nm</edomvd>
+<edomvds>Office of Coast Survey</edomvds>
+</edom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl>F_EEZ</attrlabl>
+<attrdef>U.S. Fishery EEZ</attrdef>
+<attrdefs>Office of Coast Survey</attrdefs>
+<attrdomv>
+<edom>
+<edomv>0</edomv>
+<edomvd>The feature is not the 200nm EEZ or a segment of U.S. fishery EEZ from the limit of the states&#146; jurisdiction to 200nm</edomvd>
+<edomvds>Office of Coast Survey</edomvds>
+</edom>
+</attrdomv>
+<attrdomv>
+<edom>
+<edomv>1</edomv>
+<edomvd>The feature is the 200nm EEZ or a segment of U.S. fishery EEZ from the limit of the states&#146; jurisdiction to 200nm</edomvd>
+<edomvds>Office of Coast Survey</edomvds>
+</edom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl>PUB_DATE</attrlabl>
+<attrdef>Publication Date</attrdef>
+<attrdefs>Office of Coast Survey</attrdefs>
+<attrdomv>
+<udom>Publication date of the limit/boundary line in MM/DD/YYYY format</udom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl>APPRV_DATE</attrlabl>
+<attrdef>Approval date of baseline points by the ad hoc Committee on the U.S. Baseline</attrdef>
+<attrdefs>Office of Coast Survey</attrdefs>
+<attrdomv>
+<udom>Date Field formatted as MM/DD/YYYY for the date on which the limits were approved by the U.S. Baseline Committee, chaired by the Department of State</udom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl>LEGAL_AUTH</attrlabl>
+<attrdef>Legal Authority</attrdef>
+<attrdefs>Office of Coast Survey</attrdefs>
+<attrdomv>
+<udom>Free text referencing the legal source of the limit/boundary</udom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl>AOR</attrlabl>
+<attrdef>Agency of Responsibility</attrdef>
+<attrdefs>Office of Coast Survey</attrdefs>
+<attrdomv>
+<udom>The government agency that is responsible for publishing and managing the limit/boundary on NOAA charts</udom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl>NOTE</attrlabl>
+<attrdef>Note</attrdef>
+<attrdefs>Office of Coast Survey</attrdefs>
+<attrdomv>
+<udom>Free text containing special notes about the limit/boundary</udom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl>UNILATERAL</attrlabl>
+<attrdef>Unilateral</attrdef>
+<attrdefs>Office of Coast Survey</attrdefs>
+<attrdomv>
+<edom>
+<edomv>0</edomv>
+<edomvd>The feature is not a segment of a U.S. unilateral maritime boundary claim</edomvd>
+<edomvds>Office of Coast Survey</edomvds>
+</edom>
+</attrdomv>
+<attrdomv>
+<edom>
+<edomv>1</edomv>
+<edomvd>The feature is a segment of a U.S. unilateral maritime boundary claim</edomvd>
+<edomvds>Office of Coast Survey</edomvds>
+</edom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl>SYMBOL</attrlabl>
+<attrdef>Symbology</attrdef>
+<attrdefs>Office of Coast Survey</attrdefs>
+<attrdomv>
+<edom>
+<edomv>1</edomv>
+<edomvd>A black line of alternating crosses, generally conveying a land boundary per Chart No.1 symbol N40</edomvd>
+<edomvds>Office of Coast Survey</edomvds>
+</edom>
+</attrdomv>
+<attrdomv>
+<edom>
+<edomv>2</edomv>
+<edomvd>A solid grey line interspersed with fish symbols at regular intervals, generally conveying the U.S. Fishery EEZ limit, per a combination of Chart No.1 symbols N42 and N45</edomvd>
+<edomvds>Office of Coast Survey</edomvds>
+</edom>
+</attrdomv>
+<attrdomv>
+<edom>
+<edomv>3</edomv>
+<edomvd>A solid grey line, generally conveying U.S. maritime limits and U.S. unilateral maritime boundaries, per Chart No.1 symbol N42</edomvd>
+<edomvds>Office of Coast Survey</edomvds>
+</edom>
+</attrdomv>
+<attrdomv>
+<edom>
+<edomv>4</edomv>
+<edomvd>A magenta line of alternating crosses and dashes with interspersed fish symbols at regular intervals, generally conveying a maritime boundary alongside the U.S. Fishery EEZ, per a combination of Chart No.1 symbols N41 and N45</edomvd>
+<edomvds>Office of Coast Survey</edomvds>
+</edom>
+</attrdomv>
+<attrdomv>
+<edom>
+<edomv>5</edomv>
+<edomvd>A magenta line of alternating crosses and dashes, generally conveying a maritime boundary outside the U.S. Fishery EEZ, per Chart No.1 symbol N41</edomvd>
+<edomvds>Office of Coast Survey</edomvds>
+</edom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl>SUPP_INFO</attrlabl>
+<attrdef>Supplemental Information</attrdef>
+<attrdefs>Office of Coast Survey</attrdefs>
+<attrdomv>
+<udom>Link to supplemental information in text format about this feature</udom>
+</attrdomv>
+</attr>
+</detailed>
+</eainfo>
+<distinfo>
+<distrib>
+<cntinfo>
+<cntorgp>
+<cntorg>National Oceanic and Atmospheric Administration (NOAA), National Ocean Service (NOS), Office of Coast Survey (OCS)</cntorg>
+</cntorgp>
+<cntpos>Chief Geographer</cntpos>
+<cntaddr>
+<addrtype>mailing and physical address</addrtype>
+<address>Office of Coast Survey, 1315 East West Highway</address>
+<city>Silver Spring</city>
+<state>Maryland</state>
+<postal>20910</postal>
+<country>USA</country>
+</cntaddr>
+<cntvoice>(301)713-2780 x 127</cntvoice>
+<cntfax>(301)713-4019</cntfax>
+<cntemail>meredith.westington@noaa.gov</cntemail>
+<hours>Monday - Friday, 0900 EST - 1700 EST</hours>
+</cntinfo>
+</distrib>
+<resdesc>Downloadable Data</resdesc>
+<distliab>Users must assume responsibility to determine the appropriate use of this data set. The digital maritime limits are not to be used for a legal definition. The legal definition still remains the depiction on NOAA's nautical charts.</distliab>
+<stdorder>
+<digform>
+<digtinfo>
+<formname>ESRI ArcGIS Map Service, WMS, KML, SHP (ESRI Shapefile)</formname>
+</digtinfo>
+<digtopt>
+<onlinopt>
+<computer>
+<networka>
+<networkr>http://www.nauticalcharts.noaa.gov/csdl/mbound.htm</networkr>
+<networkr>http://ocs-gis.ncd.noaa.gov/ArcGIS/rest/services/CMSP/US_Maritime_Limits_Boundaries/MapServer</networkr>
+</networka>
+</computer>
+</onlinopt>
+</digtopt>
+</digform>
+<fees>None</fees>
+</stdorder>
+</distinfo>
+<metainfo>
+<metd>20120720</metd>
+<metc>
+<cntinfo>
+<cntorgp>
+<cntorg>National Oceanic and Atmospheric Administration (NOAA), National Ocean Service (NOS), Office of Coast Survey (OCS)</cntorg>
+</cntorgp>
+<cntpos>Chief Geographer</cntpos>
+<cntaddr>
+<addrtype>mailing and physical address</addrtype>
+<address>Office of Coast Survey, 1315 East West Highway</address>
+<city>Silver Spring</city>
+<state>Maryland</state>
+<postal>20910</postal>
+<country>USA</country>
+</cntaddr>
+<cntvoice>(301)713-2780 x 127</cntvoice>
+<cntfax>(301)713-4019</cntfax>
+<cntemail>meredith.westington@noaa.gov</cntemail>
+<hours>Monday - Friday, 0900 EST - 1700 EST</hours>
+</cntinfo>
+</metc>
+<metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+<metstdv>FGDC-STD-001-1998</metstdv>
+<mettc>local time</mettc>
+</metainfo>
+</metadata>

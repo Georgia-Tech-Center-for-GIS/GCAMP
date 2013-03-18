@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+	<idinfo>
+		<citation>
+			<citeinfo>
+				<origin>Minerals Management Service, Mapping and Boundary Branch</origin>
+				<pubdate>20030313</pubdate>
+				<title Sync="TRUE">COAST</title>
+				<geoform Sync="TRUE">vector digital data</geoform>
+				<serinfo>
+					<sername>Digital Offshore Cadastre</sername>
+					<issue>current</issue>
+				</serinfo>
+				<pubinfo>
+					<pubplace>Lakewood, Colorado</pubplace>
+					<publish>Minerals Management Service, Mapping and Boundary Branch</publish>
+				</pubinfo>
+				<onlink>http://www.mms.gov/ld/Maps.htm</onlink>
+				<lworkcit>
+					<citeinfo>
+						<origin>Minerals Management Service, Mapping and Boundary Branch</origin>
+						<pubdate>200303</pubdate>
+						<title>
+Technical Information Management System (TIMS), Mapping
+System, Block and Boundary Component
+</title>
+						<geoform>Map</geoform>
+						<pubinfo>
+							<pubplace>Lakewood, Colorado</pubplace>
+							<publish>
+Minerals Management Service, Mapping and Boundary
+Branch
+</publish>
+						</pubinfo>
+					</citeinfo>
+				</lworkcit>
+				<ftname Sync="TRUE">COAST</ftname></citeinfo>
+		</citation>
+		<descript>
+			<abstract>
+This data set contains coastline data in ESRI Arc/Info export and
+Arc/View shape file formats for the MMS Atlantic Region and into the
+Gulf of Mexico westward to Mississippi.  Coordinates of points on NOAA's
+'Medium-Resolution Vector Shoreline for the Conterminous United States
+of America' CD-ROM were used.  Coordinates for points along the coast-
+lines of Puerto Rico and the U. S. Virgin Islands were taken from NOAA's
+'Vectorized Shoreline ...' digital files.  Coordinates for Canadian
+coastline and for other islands within the Caribbean were taken from the
+World Vector Shoreline.  Coordinates for the Saint Lawrence River and
+State onshore boundaries were taken from the World Databank II.
+</abstract>
+			<purpose>This data is provided for general orientation purposes.</purpose>
+			<supplinf>
+The MMS is making its existing cadastre data
+available at http://www.mms.gov/ld/Maps.htm and on CD-ROM.  These data
+will include digital images of MMS data at the regional, planning area,
+Official Protraction Diagram (OPD), and Supplemental Official OCS Block
+Diagram (SOBD) levels and digital spatial data in Arc/Info export or
+Arc/View shape format at the regional or planning area levels.
+</supplinf>
+			<langdata Sync="TRUE">en</langdata></descript>
+		<timeperd>
+			<timeinfo>
+				<sngdate>
+					<caldate>200303</caldate>
+				</sngdate>
+			</timeinfo>
+			<current>Publication date</current>
+		</timeperd>
+		<status>
+			<progress>Complete</progress>
+			<update>As needed</update>
+		</status>
+		<spdom>
+			<bounding>
+				<westbc>-90.27</westbc>
+				<eastbc>-59.42</eastbc>
+				<northbc>49.26</northbc>
+				<southbc>11.98</southbc>
+			</bounding>
+			<lboundng><leftbc Sync="TRUE">-90.264709</leftbc><rightbc Sync="TRUE">-59.420692</rightbc><bottombc Sync="TRUE">11.982940</bottombc><topbc Sync="TRUE">49.258016</topbc></lboundng></spdom>
+		<keywords>
+			<theme>
+				<themekt>None</themekt>
+				<themekey>Offshore</themekey>
+				<themekey>Cadastre</themekey>
+				<themekey>Coastline</themekey>
+				<themekey>Shoreline</themekey>
+				<themekey>Outer Continental Shelf, OCS</themekey>
+				<themekey>Minerals Management Service, MMS</themekey>
+				<themekey>Oil and gas</themekey>
+			</theme>
+			<place>
+				<placekt>None</placekt>
+				<placekey>USA</placekey>
+				<placekey>Atlantic Ocean</placekey>
+				<placekey>Caribbean Sea</placekey>
+				<placekey>Gulf of Mexico</placekey>
+				<placekey>Exclusive Economic Zone, EEZ</placekey>
+				<placekey>Maine, ME</placekey>
+				<placekey>New Hampshire, NH</placekey>
+				<placekey>Massachusetts, MA</placekey>
+				<placekey>Rhode Island, RI</placekey>
+				<placekey>Connecticut, CT</placekey>
+				<placekey>New York, NY</placekey>
+				<placekey>New Jersey, NJ</placekey>
+				<placekey>Delaware, DE</placekey>
+				<placekey>Maryland, MD</placekey>
+				<placekey>Virginia, VA</placekey>
+				<placekey>North Carolina, NC</placekey>
+				<placekey>South Carolina, SC</placekey>
+				<placekey>Georgia, GA</placekey>
+				<placekey>Florida, FL</placekey>
+				<placekey>Alabama, AL</placekey>
+				<placekey>Puerto Rico, PR</placekey>
+				<placekey>U. S. Virgin Islands, VI</placekey>
+				<placekey>Nova Scotia</placekey>
+				<placekey>New Brunswick</placekey>
+				<placekey>Greater Antilles</placekey>
+			</place>
+		</keywords>
+		<accconst>
+None. The Block and Boundary data is in the public
+domain.
+</accconst>
+		<useconst>
+The data was developed within the U.S. Government; no
+proprietary rights may be attached to them nor may they be sold to the
+U.S. Government as part of any procurement of ADP products or services.
+</useconst>
+		<ptcontac>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>
+Minerals Management Service, Mapping &amp; Boundary
+Branch
+</cntorg>
+					<cntper>Richard Naito</cntper>
+				</cntorgp>
+				<cntpos>Cartographer</cntpos>
+				<cntaddr>
+					<addrtype>Mailing address</addrtype>
+					<address>P.O. Box 25165, Mail Stop 4011</address>
+					<address>Denver Federal Center</address>
+					<city>Lakewood</city>
+					<state>Colorado</state>
+					<postal>80225</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>(303) 275-7187</cntvoice>
+				<cntfax>(303) 275-7106</cntfax>
+				<cntemail>richard.naito@mms.gov</cntemail>
+				<cntemail>mapping.boundary.branch@mms.gov</cntemail>
+				<hours>6:00am-2:00pm MT</hours>
+			</cntinfo>
+		</ptcontac>
+		<browse>
+			<browsen>atl_coast.gif</browsen>
+			<browsed>
+An image of the MMS Atlantic Region
+Coastline GIS data file.
+</browsed>
+			<browset>GIF</browset>
+		</browse>
+		<native Sync="TRUE">Microsoft Windows XP Version 5.1 (Build 2600) Service Pack 3; ESRI ArcCatalog 9.3.1.3000</native>
+		<crossref>
+			<citeinfo>
+				<origin>Minerals Management Service, Mapping and Boundary Branch</origin>
+				<pubdate>1995-2003</pubdate>
+				<title>Supplemental Official OCS Block Diagrams (SOBD's)</title>
+				<edition>current version</edition>
+				<geoform>Diagram</geoform>
+				<pubinfo>
+					<pubplace>Lakewood, Colorado</pubplace>
+					<publish>Minerals Management Service, Mapping and Boundary Branch</publish>
+				</pubinfo>
+				<othercit>
+SOBD's contain additional coordinate and area
+calculations for individual blocks.
+</othercit>
+				<onlink>http://www.mms.gov/ld/Maps.htm</onlink>
+				<lworkcit>
+					<citeinfo>
+						<origin>Minerals Management Service, Mapping and Boundary Branch</origin>
+						<pubdate>2003</pubdate>
+						<title>
+Technical Information Management System (TIMS), Mapping
+System, Block and Boundary Component
+</title>
+					</citeinfo>
+				</lworkcit>
+			</citeinfo>
+		</crossref>
+		<crossref>
+			<citeinfo>
+				<origin>
+Minerals Management Service, Gulf of Mexico Region, Leasing
+Activities Section
+</origin>
+				<pubdate>Unpublished material</pubdate>
+				<title>Leases</title>
+				<pubinfo>
+					<pubplace>New Orleans, Louisiana</pubplace>
+					<publish>
+Minerals Management Service, Gulf of Mexico Region, Leasing
+Activities Section
+</publish>
+				</pubinfo>
+				<othercit>
+This Oracle database contains current
+information on the status of Federal leases (however, currently there
+are no active leases in the MMS Atlantic Region).
+</othercit>
+				<lworkcit>
+					<citeinfo>
+						<origin>Minerals Management Service</origin>
+						<pubdate>2003</pubdate>
+						<title>
+Technical Information Management System (TIMS), Lease
+Administration Component
+</title>
+					</citeinfo>
+				</lworkcit>
+			</citeinfo>
+		</crossref>
+		<natvform Sync="TRUE">Shapefile</natvform></idinfo>
+	<dataqual>
+		<logic>
+The coastline coverage was built using Arc/Info
+double precision.  This polygon coastline coverage was topologically
+cleaned with Arc/Info's 'CLEAN' command using a fuzzy tolerance of
+0.000000000004 applied to the coverage in longitude/latitude coordinates.
+</logic>
+		<complete>
+The entire NAD83 coastline is shown for the MMS Atlantic
+Region.  Note however that some of the small rocks and low water features
+chosen for the baseline may not be included in this coverage.  Puerto
+Rico, the U. S. Virgin Islands, and adjacent areas of Canada, the Gulf of
+Mexico and the Caribbean are also included.
+</complete>
+		<posacc>
+			<horizpa>
+				<horizpar>
+Coordinates are used as obtained
+from the NOAA source.
+</horizpar>
+			</horizpa>
+		</posacc>
+		<lineage>
+			<srcinfo>
+				<srccite>
+					<citeinfo>
+						<origin>National Ocean Service</origin>
+						<pubdate>199409</pubdate>
+						<title>
+Medium-Resolution Vector Shoreline for the Conterminous
+United States of America
+</title>
+						<geoform>Map</geoform>
+						<pubinfo>
+							<pubplace>Silver Spring, Maryland</pubplace>
+							<publish>National Oceanic and Atmospheric Administration</publish>
+						</pubinfo>
+					</citeinfo>
+				</srccite>
+				<typesrc>CD-ROM</typesrc>
+				<srctime>
+					<timeinfo>
+						<sngdate>
+							<caldate>1994</caldate>
+						</sngdate>
+					</timeinfo>
+					<srccurr>Publication date</srccurr>
+				</srctime>
+				<srccitea>NOAA</srccitea>
+				<srccontr>
+Coordinates of the coastline from Maine through
+Alabama.
+</srccontr>
+			</srcinfo>
+			<srcinfo>
+				<srccite>
+					<citeinfo>
+						<origin>National Ocean Service</origin>
+						<pubdate>20000808</pubdate>
+						<title>
+Vectorized Shoreline of Puerto Rico and the U. S. Virgin
+Islands derived from NOAA-NOS Coastal Survey Maps and Aerial
+Photos Developed from 1901-1995 Source Data
+</title>
+						<geoform>Map</geoform>
+						<pubinfo>
+							<pubplace>Charleston, South Carolina</pubplace>
+							<publish>NOAA Coastal Services Center</publish>
+						</pubinfo>
+					</citeinfo>
+				</srccite>
+				<typesrc>Online</typesrc>
+				<srctime>
+					<timeinfo>
+						<rngdates>
+							<begdate>1901</begdate>
+							<enddate>19950314</enddate>
+						</rngdates>
+					</timeinfo>
+					<srccurr>Ground condition</srccurr>
+				</srctime>
+				<srccitea>NOS-CSC</srccitea>
+				<srccontr>
+Coordinates of the coastlines of Puerto Rico and the
+U. S. Virgin Islands.
+</srccontr>
+			</srcinfo>
+			<srcinfo>
+				<srccite>
+					<citeinfo>
+						<origin>Defense Mapping Agency</origin>
+						<pubdate>1988</pubdate>
+						<title>World Vector Shoreline</title>
+						<geoform>Map</geoform>
+						<pubinfo>
+							<pubplace>Washington, D.C.</pubplace>
+							<publish>National Imagery and Mapping Agency</publish>
+						</pubinfo>
+					</citeinfo>
+				</srccite>
+				<srcscale>250000</srcscale>
+				<typesrc>Online</typesrc>
+				<srctime>
+					<timeinfo>
+						<sngdate>
+							<caldate>pre-1988</caldate>
+						</sngdate>
+					</timeinfo>
+					<srccurr>Publication date</srccurr>
+				</srctime>
+				<srccitea>NIMA</srccitea>
+				<srccontr>
+Coordinates of the coastlines of Canada and
+the coastlines of other islands within the Caribbean region
+</srccontr>
+			</srcinfo>
+			<srcinfo>
+				<srccite>
+					<citeinfo>
+						<origin>Central Intelligence Agency</origin>
+						<pubdate>1972</pubdate>
+						<title>World Databank II</title>
+						<geoform>Map</geoform>
+						<pubinfo>
+							<pubplace>Washington, D.C.</pubplace>
+							<publish>Central Intelligence Agency</publish>
+						</pubinfo>
+					</citeinfo>
+				</srccite>
+				<srcscale>2000000</srcscale>
+				<typesrc>Online</typesrc>
+				<srctime>
+					<timeinfo>
+						<sngdate>
+							<caldate>pre-1972</caldate>
+						</sngdate>
+					</timeinfo>
+					<srccurr>Publication date</srccurr>
+				</srctime>
+				<srccitea>CIA</srccitea>
+				<srccontr>
+Coordinates of the Saint Lawrence River and
+State onshore boundaries
+</srccontr>
+			</srcinfo>
+			<procstep>
+				<procdesc>
+The east coast and portions of the Gulf of Mexico
+coast were pulled from NOAA's 'Medium-Resolution Vector Shoreline for
+the Conterminous United States of America' CD-ROM.  The coastlines for
+Puerto Rico and the U. S. Virgin Islands were pulled from NOAA's
+'Vectorized Shoreline ...' digital files.  Portions of the Caribbean
+and Canada (from Maine to the Saint Lawrence River) were clipped from
+the World Vector Shoreline.  The Saint Lawrence River and the
+northwest boundaries for Maine, New Hampshire, Vermont, New York,
+Pennsylvania, West Virginia, Kentucky, Tennessee and Alabama were
+clipped from the World Databank II.  These pieces were then appended,
+hand edited to close any gaps in the resulting polygons, and then
+cleaned to create topology.
+</procdesc>
+				<srcused>MMS, TIMS</srcused>
+				<procdate>20030304</procdate>
+				<proccont>
+					<cntinfo>
+						<cntorgp>
+							<cntorg>
+Minerals Management Service, Mapping and
+Boundary Branch
+</cntorg>
+							<cntper>Leland Thormahlen</cntper>
+						</cntorgp>
+						<cntpos>Branch Chief</cntpos>
+						<cntaddr>
+							<addrtype>Mailing address</addrtype>
+							<address>P.O. Box 25165, Mail Stop 4011</address>
+							<address>Denver Federal Center</address>
+							<city>Lakewood</city>
+							<state>Colorado</state>
+							<postal>80225</postal>
+							<country>USA</country>
+						</cntaddr>
+						<cntvoice>(303) 275-7121</cntvoice>
+						<cntfax>(303) 275-7106</cntfax>
+						<cntemail>leland.thormahlen@mms.gov</cntemail>
+						<cntemail>mapping.boundary.branch@mms.gov</cntemail>
+						<hours>6:00am-3:00pm MT</hours>
+					</cntinfo>
+				</proccont>
+			</procstep>
+			<procstep><procdesc Sync="TRUE">Metadata imported.</procdesc><srcused Sync="TRUE">X:\CoastEnergy\gisdata\metadata_092509\MMS\coast.xml</srcused><procdate Sync="TRUE">20090926</procdate><proctime Sync="TRUE">21161300</proctime></procstep><procstep><procdesc Sync="TRUE">Dataset copied.</procdesc><srcused Sync="TRUE">X:\CoastEnergy\gisdata\orginals\MMS\COAST</srcused><procdate Sync="TRUE">20100104</procdate><proctime Sync="TRUE">23040200</proctime></procstep></lineage>
+	</dataqual>
+	<spdoinfo>
+		<indspref>U.S. Atlantic Outer Continental Shelf (OCS)</indspref>
+		<direct Sync="TRUE">Vector</direct>
+		<ptvctinf><esriterm Name="COAST"><efeatyp Sync="TRUE">Simple</efeatyp><efeageom Sync="TRUE">Polygon</efeageom><esritopo Sync="TRUE">FALSE</esritopo><efeacnt Sync="TRUE">34313</efeacnt><spindex Sync="TRUE">FALSE</spindex><linrefer Sync="TRUE">FALSE</linrefer></esriterm><sdtsterm Name="COAST"><sdtstype Sync="TRUE">G-polygon</sdtstype><ptvctcnt Sync="TRUE">34313</ptvctcnt></sdtsterm></ptvctinf></spdoinfo>
+	<spref>
+		<horizsys>
+			<geograph>
+				<latres>0.000000000004</latres>
+				<longres>0.000000000004</longres>
+				<geogunit>Decimal degrees</geogunit>
+			</geograph>
+			<geodetic>
+				<horizdn>North American Datum 1983</horizdn>
+				<ellips>Geodetic Reference System 80</ellips>
+				<semiaxis>6378137 m</semiaxis>
+				<denflat>298.25722210088</denflat>
+			</geodetic>
+			<cordsysn><geogcsn Sync="TRUE">GCS_North_American_1983</geogcsn></cordsysn></horizsys>
+	</spref>
+	<eainfo>
+		<overview>
+			<eaover>
+The shape files contain the following
+entities:  Shape:       Polygon
+Area:        Size of polygon in ESRI coverage units
+Perimeter:   Perimeter of polygon in ESRI coverage units
+Coast_:      Internal ESRI number
+Coast_id:    Internal ESRI number
+</eaover>
+			<eadetcit>Minerals Management Service</eadetcit>
+		</overview>
+		<detailed Name="COAST"><enttyp><enttypl Sync="TRUE">COAST</enttypl><enttypt Sync="TRUE">Feature Class</enttypt><enttypc Sync="TRUE">34313</enttypc></enttyp><attr><attrlabl Sync="TRUE">FID</attrlabl><attalias Sync="TRUE">FID</attalias><attrtype Sync="TRUE">OID</attrtype><attwidth Sync="TRUE">4</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef Sync="TRUE">Internal feature number.</attrdef><attrdefs Sync="TRUE">ESRI</attrdefs><attrdomv><udom Sync="TRUE">Sequential unique whole numbers that are automatically generated.</udom></attrdomv></attr><attr><attrlabl Sync="TRUE">Shape</attrlabl><attalias Sync="TRUE">Shape</attalias><attrtype Sync="TRUE">Geometry</attrtype><attwidth Sync="TRUE">0</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef Sync="TRUE">Feature geometry.</attrdef><attrdefs Sync="TRUE">ESRI</attrdefs><attrdomv><udom Sync="TRUE">Coordinates defining the features.</udom></attrdomv></attr><attr><attrlabl Sync="TRUE">AREA</attrlabl><attalias Sync="TRUE">AREA</attalias><attrtype Sync="TRUE">Number</attrtype><attwidth Sync="TRUE">18</attwidth><atnumdec Sync="TRUE">5</atnumdec></attr><attr><attrlabl Sync="TRUE">PERIMETER</attrlabl><attalias Sync="TRUE">PERIMETER</attalias><attrtype Sync="TRUE">Number</attrtype><attwidth Sync="TRUE">18</attwidth><atnumdec Sync="TRUE">5</atnumdec></attr><attr><attrlabl Sync="TRUE">COAST_</attrlabl><attalias Sync="TRUE">COAST_</attalias><attrtype Sync="TRUE">Number</attrtype><attwidth Sync="TRUE">11</attwidth></attr><attr><attrlabl Sync="TRUE">COAST_ID</attrlabl><attalias Sync="TRUE">COAST_ID</attalias><attrtype Sync="TRUE">Number</attrtype><attwidth Sync="TRUE">11</attwidth></attr></detailed></eainfo>
+	<distinfo>
+		<distrib>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>
+Minerals Management Service, Mapping and
+Boundary Branch
+</cntorg>
+				</cntorgp>
+				<cntaddr>
+					<addrtype>Mailing address</addrtype>
+					<address>P.O. Box 25165, Mail Stop 4011</address>
+					<address>Denver Federal Center</address>
+					<city>Lakewood</city>
+					<state>Colorado</state>
+					<postal>80225</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>(303) 275-7121</cntvoice>
+				<cntfax>(303) 275-7106</cntfax>
+				<cntemail>mapping.boundary.branch@mms.gov</cntemail>
+				<hours>6:00am-3:00pm MT</hours>
+			</cntinfo>
+		</distrib>
+		<resdesc>Digital Offshore Cadastre</resdesc>
+		<distliab>
+As is.  No responsibility is assumed for the
+correctness of this data.
+</distliab>
+		<stdorder>
+			<digform>
+				<digtinfo>
+					<formname>ARCE</formname>
+					<formvern>7.0.4</formvern>
+					<transize>27.5 Mbytes</transize>
+					<dssize Sync="TRUE">28.654</dssize></digtinfo>
+				<digtopt>
+					<onlinopt>
+						<computer>
+							<networka>
+								<networkr>http://www.mms.gov/ld/Maps.htm</networkr>
+							</networka>
+						</computer>
+						<accinstr>
+From the GIS Coverages section of the website
+html page, click on the Arc/Info .e00 Export file you wish to
+download.  The downloaded file will need to be uncompressed.  In a
+UNIX environment use 'uncompress filename'.  In a DOS environment
+use 'gzip -d filename'.  The resulting file will be an Arc/Info
+export data file (filename.e00).
+</accinstr>
+						<oncomp>
+Dell Pentium server running
+Windows NT 4.0
+</oncomp>
+					</onlinopt>
+				</digtopt>
+			</digform>
+			<digform>
+				<digtinfo>
+					<formname>ASHP</formname>
+					<formvern>3</formvern>
+					<transize>12.2 Mbytes</transize>
+					<dssize Sync="TRUE">28.654</dssize></digtinfo>
+				<digtopt>
+					<onlinopt>
+						<computer>
+							<networka>
+								<networkr>http://www.mms.gov/ld/Maps.htm</networkr>
+							</networka>
+						</computer>
+						<accinstr>
+From the GIS Coverages section of the website
+html page, click on the Arc/View shapefile  file you wish to
+download.  The downloaded file will need to be unzipped.  The
+result will be the necessary Arc/View shapefiles and .dbf file.
+</accinstr>
+						<oncomp>
+Dell Pentium server running
+Windows NT 4.0
+</oncomp>
+					</onlinopt>
+				</digtopt>
+			</digform>
+			<fees>None</fees>
+		</stdorder>
+	</distinfo>
+	<metainfo>
+		<metd Sync="TRUE">20100202</metd>
+		<metrd>20031119</metrd>
+		<metc>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>
+Minerals Management Service, Mapping and
+Boundary Branch
+</cntorg>
+					<cntper>Mark Fleury</cntper>
+				</cntorgp>
+				<cntpos>Cartographer</cntpos>
+				<cntaddr>
+					<addrtype>Mailing address</addrtype>
+					<address>P.O. Box 25165, Mail Stop 4011</address>
+					<address>Denver Federal Center</address>
+					<city>Lakewood</city>
+					<state>Colorado</state>
+					<postal>80225</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>(303) 275-7110</cntvoice>
+				<cntfax>(303) 275-7106</cntfax>
+				<cntemail>mark.fleury@mms.gov</cntemail>
+				<cntemail>mapping.boundary.branch@mms.gov</cntemail>
+				<hours>6:00am - 2:30pm MT</hours>
+			</cntinfo>
+		</metc>
+		<metstdn Sync="TRUE">FGDC Content Standards for Digital Geospatial Metadata</metstdn>
+		<metstdv Sync="TRUE">FGDC-STD-001-1998</metstdv>
+		<mettc Sync="TRUE">local time</mettc>
+		<langmeta Sync="TRUE">en</langmeta><metextns><onlink Sync="TRUE">http://www.esri.com/metadata/esriprof80.html</onlink><metprof Sync="TRUE">ESRI Metadata Profile</metprof></metextns></metainfo>
+	<Esri><CreaDate>20130124</CreaDate><CreaTime>13543700</CreaTime><SyncOnce>FALSE</SyncOnce><SyncDate>20100202</SyncDate><SyncTime>14461700</SyncTime><ModDate>20100202</ModDate><ModTime>14461700</ModTime><DataProperties><lineage><Process ToolSource="C:\Program Files\ArcGIS\ArcToolbox\Toolboxes\Data Management Tools.tbx\DefineProjection" Date="20091018" Time="075358">DefineProjection X:\CoastEnergy\gisdata\orginals\MMS\COAST.shp GEOGCS['GCS_North_American_1983',DATUM['D_North_American_1983',SPHEROID['GRS_1980',6378137.0,298.257222101]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]] X:\CoastEnergy\gisdata\orginals\MMS\COAST.shp</Process><Process ToolSource="c:\program files (x86)\arcgis\desktop10.0\ArcToolbox\Toolboxes\Data Management Tools.tbx\Project" Date="20130122" Time="151249">Project "Physical \Coastline" C:\GISDATA\GACMSP\GCAMP\WGS84\NOAA\Coastline.shp PROJCS['World_Mercator',GEOGCS['GCS_WGS_1984',DATUM['D_WGS_1984',SPHEROID['WGS_1984',6378137.0,298.257223563]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Mercator'],PARAMETER['False_Easting',0.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',0.0],PARAMETER['Standard_Parallel_1',0.0],UNIT['Meter',1.0]] NAD_1983_To_WGS_1984_1 PROJCS['NAD_1983_UTM_Zone_17N',GEOGCS['GCS_North_American_1983',DATUM['D_North_American_1983',SPHEROID['GRS_1980',6378137.0,298.257222101]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Transverse_Mercator'],PARAMETER['False_Easting',500000.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',-81.0],PARAMETER['Scale_Factor',0.9996],PARAMETER['Latitude_Of_Origin',0.0],UNIT['Meter',1.0]]</Process><Process ToolSource="c:\program files (x86)\arcgis\desktop10.0\ArcToolbox\Toolboxes\Data Management Tools.tbx\Project" Date="20130124" Time="135440">Project "Physical \Coastline" C:\GISDATA\GACMSP\GCAMP\WM84\NOAA\Coastline.shp PROJCS['WGS_1984_Web_Mercator_Auxiliary_Sphere',GEOGCS['GCS_WGS_1984',DATUM['D_WGS_1984',SPHEROID['WGS_1984',6378137.0,298.257223563]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Mercator_Auxiliary_Sphere'],PARAMETER['False_Easting',0.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',0.0],PARAMETER['Standard_Parallel_1',0.0],PARAMETER['Auxiliary_Sphere_Type',0.0],UNIT['Meter',1.0]] # PROJCS['World_Mercator',GEOGCS['GCS_WGS_1984',DATUM['D_WGS_1984',SPHEROID['WGS_1984',6378137.0,298.257223563]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Mercator'],PARAMETER['False_Easting',0.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',0.0],PARAMETER['Standard_Parallel_1',0.0],UNIT['Meter',1.0]]</Process></lineage><itemProps><itemLocation><linkage Sync="TRUE">file://\\GISP390A\C\Documents and Settings\mna6\Desktop\GRA_2011Fall\Week15\Coastal.gdb</linkage><protocol Sync="TRUE">Local Area Network</protocol></itemLocation></itemProps></DataProperties><ArcGISFormat>1.0</ArcGISFormat></Esri><dataIdInfo><envirDesc Sync="TRUE">Microsoft Windows XP Version 5.1 (Build 2600) Service Pack 3; ESRI ArcCatalog 9.3.1.3000</envirDesc><dataLang><languageCode Sync="TRUE" value="en"></languageCode></dataLang><idCitation><resTitle Sync="TRUE">COAST</resTitle><presForm><PresFormCd Sync="TRUE" value="005"></PresFormCd></presForm></idCitation><spatRpType><SpatRepTypCd Sync="TRUE" value="001"></SpatRepTypCd></spatRpType><dataExt><geoEle><GeoBndBox esriExtentType="native"><westBL Sync="TRUE">-90.264709</westBL><eastBL Sync="TRUE">-59.420692</eastBL><northBL Sync="TRUE">49.258016</northBL><southBL Sync="TRUE">11.98294</southBL><exTypeCode Sync="TRUE">1</exTypeCode></GeoBndBox></geoEle></dataExt><geoBox esriExtentType="decdegrees"><westBL Sync="TRUE">-90.264709</westBL><eastBL Sync="TRUE">-59.420692</eastBL><northBL Sync="TRUE">49.258016</northBL><southBL Sync="TRUE">11.98294</southBL><exTypeCode Sync="TRUE">1</exTypeCode></geoBox></dataIdInfo><mdLang><languageCode Sync="TRUE" value="en"></languageCode></mdLang><mdStanName Sync="TRUE">ISO 19115 Geographic Information - Metadata</mdStanName><mdStanVer Sync="TRUE">DIS_ESRI1.0</mdStanVer><mdChar><CharSetCd Sync="TRUE" value="004"></CharSetCd></mdChar><mdHrLv><ScopeCd Sync="TRUE" value="005"></ScopeCd></mdHrLv><mdHrLvName Sync="TRUE">dataset</mdHrLvName><distInfo><distributor><distorTran><onLineSrc><orDesc Sync="TRUE">002</orDesc><linkage Sync="TRUE">file://\\tornado\research3\CoastEnergy\GIS_COASTGA\GISData\MMS\COAST.shp</linkage><protocol Sync="TRUE">Local Area Network</protocol></onLineSrc><transSize Sync="TRUE">28.654</transSize></distorTran><distorFormat><formatName Sync="TRUE">Shapefile</formatName></distorFormat></distributor></distInfo><spatRepInfo><VectSpatRep><topLvl><TopoLevCd Sync="TRUE" value="001"></TopoLevCd></topLvl><geometObjs Name="COAST"><geoObjTyp><GeoObjTypCd Sync="TRUE" value="001"></GeoObjTypCd></geoObjTyp><geoObjCnt Sync="TRUE">34313</geoObjCnt></geometObjs></VectSpatRep></spatRepInfo><mdDateSt Sync="TRUE">20100202</mdDateSt><refSysInfo><RefSystem><refSysID><identCode Sync="TRUE">GCS_North_American_1983</identCode></refSysID></RefSystem></refSysInfo></metadata>
