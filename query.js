@@ -223,7 +223,7 @@ function getResultsFields(ftre) {
 		console.debug(attribs);
 		
 		for (var k in attribs) {
-			if(k == "FID") continue;
+			if(k == "FID" || k == "Shape" || k == "SHAPE") continue;
 			
 			arrayResult.push( {"Name" : k , "Value" : attribs[k] } );
 		}

@@ -237,7 +237,7 @@ function prepare_map_when_extents_finished(a) {
 		
 		MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
 		MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/CDEM/MapServer", ServiceType_Dynamic, map, null));
-		MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/coastal213/MapServer", ServiceType_Dynamic, map, null));
+		MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/coastal22013_alternate/MapServer", ServiceType_Dynamic, map, null));
 
 		MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function () {
 			loaded(true);

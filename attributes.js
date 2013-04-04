@@ -32,6 +32,7 @@ var store = null;
 
 var lastAttribFields = ko.observableArray();
 var lastAttribFeatures = ko.observableArray();
+var lastAttribURL = ko.observable();
 
 function initAttributesLayerList() {
 	var lyrList = [];
@@ -71,6 +72,8 @@ function initAttributesLayerList() {
 }
 
 function getAttributesLayer (url) {
+	lastAttribURL(url);
+	
 	lastAttribFeatures.removeAll();
 	lastAttribFields.removeAll();
 	
@@ -78,14 +81,17 @@ function getAttributesLayer (url) {
 	var query = new esri.tasks.Query();
 	
 	query.where = "1=1";
-	query.returnGeometry = false;
+	query.returnGeometry = true;
+	query.outSpatialReference = map.spatialReference;
 	query.outFields= ["*"];
 	
 	qt.execute(query, function(results) {
-		//console.debug(results);
+		console.debug(results);
 			
 		var fields = dojo.map(results.fields, function(field) {
-			lastAttribFields.push(field.alias);
+			if(field.alias != "FID")
+				lastAttribFields.push(field.alias);
+
 			return [];
 			
 			//var item = [];
@@ -94,13 +100,24 @@ function getAttributesLayer (url) {
 			//return dojo.clone(item);
 		});
 		
-		var items = dojo.map(results.features, function(feature) {	
-			lastAttribFeatures.push(dojo.clone(feature.attributes));
+		var items = dojo.map(results.features, function(feature) {
+			var a = dojo.clone(feature.attributes);
+			a["SHAPE"] = feature.geometry;
+			lastAttribFeatures.push(a);
+			//map.graphics.add(feature);
 			
 			return dojo.clone(feature.attributes);
 		});
-			
+		
 		$('#attribPopoutPanel').dialog({height : 500, width: 650, title:"Attribute Table"});
+		$('.attribRow').hover(
+			function() {
+				$(this).addClass("highlight");
+			},
+			function() {
+				$(this).removeClass("highlight");
+			}
+		);
 			
 		/*
 		
@@ -133,4 +150,23 @@ function getAttributesLayer (url) {
 
 function dispAttribTable(a) {
 	getAttributesLayer(a.url);
+}
+
+var lastShape = null;
+var c = null;
+
+function doAttribZoom(a) {
+	lastShape = a;
+	
+	console.debug(a);
+	
+	var b = a["SHAPE"];
+	if(b.type == "point") {
+		c =  new esri.geometry.Extent(b.x-65000,b.y-65000,b.x+65000,b.y+65000, map.spatialReference);
+	}
+	else {
+		c = b.getExtent().expand(1.75);
+	}
+	
+	map.setExtent(c);
 }
