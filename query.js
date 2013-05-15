@@ -234,6 +234,13 @@ function getResultsFields(ftre) {
 
 //var newResults =  null; //ko.observableArray();
 
+function addToMap3(idResults, evt) {
+	var geometryService = new esri.tasks.GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
+	for (var i = 0; i < idResults.length; i++) {
+		console.debug(idResults[i]);
+	}
+}
+
 function addToMap(idResults, evt) {
 	//var tempIdResults = idResults;
 	var factoredResults = [];
@@ -293,4 +300,154 @@ function addToMap(idResults, evt) {
 
 function aaah(e){
 	console.debug(e);
+}
+
+var selectedLayersSummary = ko.observableArray();
+var availableLayersSummary= ko.observableArray();
+var lastStatsFieldsSummaryAll = ko.observableArray();
+var summQry = null;
+var labelsUrls = [];
+
+var lastGeom = null;
+
+function doSummaryQuery(geom) {
+	//if(geom[0].type != "POLYGON") return;
+	
+	lastGeom = geom;
+
+	if(summQry == null) summQry = new esri.tasks.Query();
+	
+	summQry.where = "1=1";
+	summQry.returnGeometry = true;
+	summQry.spatialRelationship = esri.tasks.Query.SPATIAL_REL_INTERSECTS;
+	summQry.geometry = geom[0];
+	summQry.outSpatialReference = map.spatialReference;
+	summQry.outFields= ["*"];
+	//map.graphics.add(geom[0]);
+	
+	lastStatsFieldsSummaryAll.removeAll();
+
+	var layersToQuery = selectedLayersSummary();
+	
+	for(var layerIndex = 0; layerIndex < layersToQuery.length; layerIndex++) {
+		console.debug(layersToQuery[layerIndex]);
+		
+		var currUrl = layersToQuery[layerIndex].url;
+		labelsUrls[currUrl] = layersToQuery[layerIndex].label;
+		console.debug(currUrl);
+		
+		var qt = new esri.tasks.QueryTask( currUrl );
+			
+		qt.execute(summQry, function(results) {
+			var lastAttribFieldsSummary = ko.observableArray();
+			var lastAttribFeaturesSummary = ko.observableArray();
+			var lastStatsFieldsSummary = ko.observableArray();
+			
+			var fields = dojo.map(results.fields, function(field) {
+				if(field.alias != "FID")
+					lastAttribFieldsSummary.push(field.alias);
+					
+				if( field.type == "esriFieldTypeSingle" ||
+					field.type == "esriFieldTypeDouble" ||
+					field.type == "esriFieldTypeInteger" ||
+					field.type == "esriFieldTypeSmallInteger" ) {
+					lastStatsFieldsSummary.push( {"fld_obj": field,
+						min: ko.observable(Number.NaN),
+						max: ko.observable(Number.NaN),
+						avg: ko.observable(Number.NaN),
+						total: ko.observable(Number.NaN),
+						count: ko.observable(0) } );
+				}
+
+				return [];
+			});
+					
+			var sfields = lastStatsFieldsSummary.peek();
+			
+			var geomProjected = null;
+			var pparams = new esri.tasks.ProjectParameters();
+			
+			var items = dojo.map(results.features, function(feature) {
+				var a = dojo.clone(feature.attributes);
+				a["SHAPE"] = feature.geometry;
+				lastAttribFeaturesSummary.push(a);
+				//map.graphics.add(feature);
+							
+				var geometryService = new esri.tasks.GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
+				/*console.debug(feature.geometry); */
+				
+				if(true) {
+					pparams.geometries = lastGeom;
+					pparams.outSR = feature.geometry.spatialReference;
+					
+					geometryService.project  ( pparams, function(r) {
+						console.debug(r);
+						geomProjected = r[0];
+						
+						geometryService.intersect( [geomProjected], feature.geometry, function(g) {
+							var areasAndLengthsParams = new esri.tasks.AreasAndLengthsParameters();
+							areasAndLengthsParams.lengthUnit = esri.tasks.GeometryService.UNIT_FOOT;
+							areasAndLengthsParams.areaUnit   = esri.tasks.GeometryService.UNIT_ACRES;
+							areasAndLengthsParams.polygons   = [ g[0], feature.geometry ];
+							geometryService.areasAndLengths( areasAndLengthsParams, function(r2) {
+								var pcntAdj = min (r2.areas[0]/r2.areas[1], 1.00);
+								
+								for(var i = 0; i < sfields.length; i++) {
+									var value = feature.attributes[ sfields[i]["fld_obj"].name ];
+									
+									value *= pcntAdj;
+									
+									if( isNaN( sfields[i].max() ) || value > sfields[i].max())
+										lastStatsFieldsSummary()[i].max(value);
+									
+									if( isNaN( sfields[i].min() ) || value < sfields[i].min())
+										lastStatsFieldsSummary()[i].min(value);
+										
+									if( isNaN( sfields[i].total() ) )
+										lastStatsFieldsSummary()[i].total(value);
+									else
+										lastStatsFieldsSummary()[i].total(value + lastStatsFieldsSummary()[i].total());
+									
+									var lastCount = lastStatsFieldsSummary()[i].count();
+									lastStatsFieldsSummary()[i].count(lastStatsFieldsSummary()[i].count()+1);
+										
+									if( isNaN( sfields[i].avg() ) )
+										lastStatsFieldsSummary()[i].avg(value);
+									else {
+										lastStatsFieldsSummary()[i].avg((value + (lastStatsFieldsSummary()[i].avg() * lastCount)) / (lastCount+1) );
+									}
+								}
+							});
+						}, function(e) {
+						});
+					});
+				}
+																
+				return dojo.clone(feature.attributes);
+			});
+			
+			//console.debug(results.features.length);
+			
+			for(var i = 0; i < lastStatsFieldsSummary().length; i++) {
+				lastStatsFieldsSummary()[i].min(lastStatsFieldsSummary()[i].min().toFixed(3));
+				lastStatsFieldsSummary()[i].avg(lastStatsFieldsSummary()[i].avg().toFixed(3));
+				lastStatsFieldsSummary()[i].max(lastStatsFieldsSummary()[i].max().toFixed(3));
+				lastStatsFieldsSummary()[i].total(lastStatsFieldsSummary()[i].total().toFixed(3));
+			}
+			
+			if (lastStatsFieldsSummary().length == 0) {
+				lastStatsFieldsSummary.push( {
+					"fld_obj": {name: "Count", type: "esriFieldTypeSingle", alias: "Count"},
+					min: ko.observable(Number.NaN),
+					max: ko.observable(Number.NaN),
+					avg: ko.observable(Number.NaN),
+					total: ko.observable(Number.NaN),
+					count: ko.observable(results.features.length) } );
+			}
+
+			lastStatsFieldsSummaryAll.push({"label": labelsUrls[currUrl], stats: lastStatsFieldsSummary});
+		}, function(error) {
+			console.debug(error /*error.message*/);
+		});
+	}
 }

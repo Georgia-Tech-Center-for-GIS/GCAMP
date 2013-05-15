@@ -237,7 +237,7 @@ function prepare_map_when_extents_finished(a) {
 		
 		MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
 		MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/CDEM/MapServer", ServiceType_Dynamic, map, null));
-		MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/coastal22013_alternate/MapServer", ServiceType_Dynamic, map, null));
+		MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/coastal2213/MapServer", ServiceType_Dynamic, map, null));
 
 		MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function () {
 			loaded(true);
@@ -250,21 +250,6 @@ function prepare_map_when_extents_finished(a) {
 			
 			navToolbar = new esri.toolbars.Navigation(map);
 			drwToolbar = new esri.toolbars.Draw(map);
-
-			dojo.connect(drwToolbar, "onDrawEnd", function(geometry) {
-				map.graphics.clear();
-			  
-				var graphic = map.graphics.add(new esri.Graphic(geometry, new esri.symbol.SimpleLineSymbol()));
-				console.debug(graphic);
-				//doMeasure([graphic]);
-
-				var geometryService = new esri.tasks.GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
-				var PrjParams = new esri.tasks.ProjectParameters();
-				PrjParams.geometries = [geometry];
-				PrjParams.outSR = new esri.SpatialReference(32618);
-
-				geometryService.project(PrjParams, doMeasure );
-			});
 			
 			dojo.connect('onExtentHistoryChange', extentHistoryChangeHandler);
 			//dojo.connect('onDrawEnd', measureEnd);
@@ -280,22 +265,14 @@ function prepare_map_when_extents_finished(a) {
 			$('#zoomFullExtBtn').on('click', function(e) {
 				fullExtent();
 			});
-			
-			$('#measLine').on('click', function(e) {
-				drwToolbar.activate(esri.toolbars.Draw.POLYLINE);
-			});
-
-			$('#measPoly').on('click', function(e) {
-				drwToolbar.activate(esri.toolbars.Draw.POLYGON);
-			});
-			
+						
 			$('#allLayersLink').on('click', function(e) {
 				map.removeAllLayers();
 				MapSvcAllLayers = new CreateCollection("MapSvcList");
 				
 				MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
 				MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/CDEM/MapServer", ServiceType_Dynamic, map, null));
-				MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/coastal213/MapServer", ServiceType_Dynamic, map, null));				
+				MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/coastal2213/MapServer", ServiceType_Dynamic, map, null));				
 				MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function() {
 					map.getLayer( map.layerIds[1] ).visibleLayers = [];
 					map.getLayer( map.layerIds[1] ).setVisibility(false);
@@ -493,8 +470,6 @@ function init_id_funct(map) {
 	map.infoWindow.resize(415, 200);
 	map.infoWindow.setContent("_");
 	map.infoWindow.setTitle("Identify Results");
-	
-	//getAttributesLayer("http://carto.gis.gatech.edu/ArcGIS/rest/services/coastal1112/MapServer/14");
 }
 
 function return_to_LayerList() {
@@ -524,8 +499,12 @@ function sliderChanged(value) {
 }
 
 var handleIdentify = null;
+var handleIdentifySummary = null;
+
 var tabs;
 var jpanes = null;
+
+var lastGraphic = null;
 
 function jQueryReady() {
 	$(function() {
@@ -553,6 +532,33 @@ function jQueryReady() {
 					dojo.disconnect(handleIdentify);
 					handleIdentify = null;
 				}
+			}
+			
+			if( $(e.target).attr('href') == "#identifyPaneSumm" ) {
+				drwToolbar.activate(esri.toolbars.Draw.POLYGON);
+
+				dojo.connect(drwToolbar, "onDrawEnd", function(geometry) {
+						map.graphics.clear();
+					  
+						var graphic = map.graphics.add(new esri.Graphic(geometry, new esri.symbol.SimpleLineSymbol()));
+						lastGraphic = graphic;
+						//doMeasure([graphic]);
+
+						var geometryService = new esri.tasks.GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
+						var PrjParams = new esri.tasks.ProjectParameters();
+						PrjParams.geometries = [geometry];
+						PrjParams.outSR = new esri.SpatialReference(32618);
+						
+						//console.debug(geometry);
+					
+						geometryService.project(PrjParams, doSummaryQuery );
+						//console.debug(geometry);
+						
+						//doSummaryQuery([geometry]);
+				});
+			}
+			else {
+				drwToolbar.deactivate();
 			}
 			
 			//alert($(e.target).attr('href')) //e.target // activated tab

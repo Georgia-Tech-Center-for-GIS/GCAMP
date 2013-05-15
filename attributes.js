@@ -33,10 +33,12 @@ var store = null;
 var lastAttribFields = ko.observableArray();
 var lastAttribFeatures = ko.observableArray();
 var lastAttribURL = ko.observable();
+var lastStatsFields = ko.observableArray();
+var lastStatsAvg = ko.observableArray();
 
 function initAttributesLayerList() {
 	var lyrList = [];
-		
+	
 	for(var j = 0 ; j < map.layerIds.length; j++ ) {
 		var lyr = map.getLayer(map.layerIds[j]);
 		var infos = lyr.layerInfos, info;
@@ -71,14 +73,19 @@ function initAttributesLayerList() {
 	lyrSelect2.startup();
 }
 
+var koNaN = ko.observable(Number.NaN);
+
 function getAttributesLayer (url) {
 	lastAttribURL(url);
 	
 	lastAttribFeatures.removeAll();
 	lastAttribFields.removeAll();
+	lastStatsFields.removeAll();
 	
 	var qt = new esri.tasks.QueryTask( url );
 	var query = new esri.tasks.Query();
+	
+	qt.DisableClientCaching = true;
 	
 	query.where = "1=1";
 	query.returnGeometry = true;
@@ -87,10 +94,22 @@ function getAttributesLayer (url) {
 	
 	qt.execute(query, function(results) {
 		console.debug(results);
-			
+		
 		var fields = dojo.map(results.fields, function(field) {
 			if(field.alias != "FID")
 				lastAttribFields.push(field.alias);
+				
+			if( field.type == "esriFieldTypeSingle" ||
+				field.type == "esriFieldTypeDouble" ||
+				field.type == "esriFieldTypeInteger" ||
+				field.type == "esriFieldTypeSmallInteger" ) {
+				lastStatsFields.push( {"fld_obj": field,
+					min: ko.observable(Number.NaN),
+					max: ko.observable(Number.NaN),
+					avg: ko.observable(Number.NaN),
+					total: ko.observable(Number.NaN),
+					count: ko.observable(0) } );
+			}
 
 			return [];
 			
@@ -100,16 +119,57 @@ function getAttributesLayer (url) {
 			//return dojo.clone(item);
 		});
 		
+		var sfields = lastStatsFields.peek();
+		
 		var items = dojo.map(results.features, function(feature) {
+			console.debug(feature);
 			var a = dojo.clone(feature.attributes);
 			a["SHAPE"] = feature.geometry;
 			lastAttribFeatures.push(a);
 			//map.graphics.add(feature);
 			
+			for(var i = 0; i < sfields.length; i++) {
+				var value = feature.attributes[ sfields[i]["fld_obj"].name ];
+				
+				if( isNaN( sfields[i].max() ) || value > sfields[i].max())
+					lastStatsFields()[i].max(value);
+				
+				if( isNaN( sfields[i].min() ) || value < sfields[i].min())
+					lastStatsFields()[i].min(value);
+					
+				if( isNaN( sfields[i].total() ) )
+					lastStatsFields()[i].total(value);
+				else
+					lastStatsFields()[i].total(value + lastStatsFields()[i].total());
+				
+				var lastCount = lastStatsFields()[i].count();
+				lastStatsFields()[i].count(lastStatsFields()[i].count()+1);
+					
+				if( isNaN( sfields[i].avg() ) )
+					lastStatsFields()[i].avg(value);
+				else {
+					lastStatsFields()[i].avg((value + (lastStatsFields()[i].avg() * lastCount)) / (lastCount+1) );
+				}
+			}
 			return dojo.clone(feature.attributes);
 		});
 		
+		for(var i = 0; i < sfields.length; i++) {
+			lastStatsFields()[i].min(lastStatsFields()[i].min().toFixed(3));
+			lastStatsFields()[i].avg(lastStatsFields()[i].avg().toFixed(3));
+			lastStatsFields()[i].max(lastStatsFields()[i].max().toFixed(3));
+			lastStatsFields()[i].total(lastStatsFields()[i].total().toFixed(3));
+		}
+		
 		$('#attribPopoutPanel').dialog({height : 500, width: 650, title:"Attribute Table"});
+		
+		/*if( lastStatsFields().length > 0 ) {
+			$('#sumStatsPopoutPanel').dialog({height : 300, width: 400, title:"Statistics Table"});
+		}
+		else {
+			$('#sumStatsPopoutPanel').dialog('close')
+		}*/
+		
 		$('.attribRow').hover(
 			function() {
 				$(this).addClass("highlight");
@@ -169,4 +229,8 @@ function doAttribZoom(a) {
 	}
 	
 	map.setExtent(c);
+}
+
+function showStatsDlg() {
+	$("#sumStatsPopoutPanel").dialog({height : 300, width: 400, title:"Statistics Table"});
 }

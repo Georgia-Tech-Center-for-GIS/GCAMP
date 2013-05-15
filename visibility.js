@@ -30,6 +30,8 @@ var layerTitlePane = null;
 
 var allMapLayers = ko.observableArray();
 
+var demLayer = null;
+
 function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 	var list = [];
 	var lastIndex = 0;
@@ -51,7 +53,11 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 			var retval = return_child_layers(mapLyr, mapLyrId, li);
 			
 			dispLyr.children = dojo.clone(retval.childLayers);
+			
 			lastIndex = retval.lastIndex;
+		}
+		else {
+			availableLayersSummary.push( { label: li.name, url: dispLyr.url} );
 		}
 		
 		list.push(dispLyr);
@@ -88,7 +94,6 @@ function return_map_layers() {
 			var d = {
 					"name": "DEM",
 			};
-			
 			dispLyrOuter.push(d);
 		}
 		else {
@@ -122,7 +127,8 @@ function return_map_layers() {
 					}
 				});
 				
-				allMapLayers.push(dispLyrOuter);
+				demLayer = dispLyrOuter;
+				//allMapLayers.push(dispLyrOuter);
 				break;
 				
 				case 2:
@@ -146,6 +152,13 @@ function return_map_layers() {
 							dispLyr.children = dojo.clone(retval.childLayers);
 							lastIndex = retval.lastIndex;
 						}
+											
+						if(li.name == "Physical ") {
+							if(demLayer != null) {
+								dispLyr.children.push(demLayer);
+								demLayer = null;
+							}
+						}
 						
 						allMapLayers.push(dispLyr);
 					}
@@ -167,6 +180,8 @@ function return_map_layers() {
 							"esriLayer": li,
 							"children" : []
 						};
+						
+						console.debug(dispLyr);
 
 						if(li.subLayerIds) {				
 							var retval = return_child_layers(lyr, map.layerIds[j], li);
@@ -307,9 +322,7 @@ function init_layer_controls(map) {
 			
 			var lyr = map.getLayer(map.layerIds[i]);
 			
-			for(var j = 0; j < lyr.visibleLayers.length; j++) {
-				console.debug(j);
-				
+			for(var j = 0; j < lyr.visibleLayers.length; j++) {			
 				if( lyr.layerInfos[ lyr.visibleLayers[j] ].subLayerIds == null) {
 					reallyVisibleLayers.push(lyr.visibleLayers[j]);
 				}

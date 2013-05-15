@@ -111,6 +111,8 @@
 							<i class='icon map-legend-icon'></i></a></li>
 						<li><a title='Identify Feature' href='#identifyPane' data-toggle='tab'>
 							<i class='icon Identify-results'></i></a></li>
+						<li><a title='Identify Summary Stats' href='#identifyPaneSumm' data-toggle='tab'>
+							<i class='icon Identify-results'></i></a></li>
 						<li><a title='' href='#metadataPane' id='mdtaLink' data-toggle='tab'>
 							<i class='icon metadataTabIcon'></i></a></li>
 					</ul>
@@ -204,6 +206,32 @@
 						</div>
 						<div class='tab-pane' id='resultsPane' style='padding-left:1em;'>
 						</div>
+						<div class='tab-pane' id='identifyPaneSumm' style='padding-left: 1em; padding-right: 1em; height: 90%;'>
+							<h2>Identify with Summary</h2>
+							<select data-bind="options: availableLayersSummary, selectedOptions: selectedLayersSummary, optionsText: 'label'" size="10" multiple="false"></select>
+							
+							<ul data-bind="foreach: lastStatsFieldsSummaryAll">
+								<h3><span data-bind='text: label'> </span></h3>
+								<table>
+									<thead>
+									</thead>
+									<tbody>
+										<tr><th>Field</th><th>COUNT</th><th>MIN</th><th>AVG</th><th>MAX</th><th>TOTAL</th></tr>
+										<!-- ko foreach: stats -->
+										<tr class=''>
+											<td data-bind='text: fld_obj.alias '></td>
+											<td style='padding: 5px; text-align: right;' data-bind='text: count '></td>
+											<td style='padding: 5px; text-align: right;' data-bind='text: min '></td>
+											<td style='padding: 5px; text-align: right;' data-bind='text: avg '></td>
+											<td style='padding: 5px; text-align: right;' data-bind='text: max '></td>
+											<td style='padding: 5px; text-align: right;' data-bind='text: total '></td>
+										</tr>
+										<!-- /ko -->
+									</tbody>
+								</table>
+							</ul>
+							
+						</div>
 						<div class='tab-pane' id='identifyPane'style='padding-left: 1em; padding-right: 1em; height: 90%;'>
 							<h2>Identify</h2>
 							<div style='padding-bottom: 2em;'><i class='btn' data-bind='click: return_to_LayerList'> Return to Layer list </i></div>
@@ -216,7 +244,6 @@
 									<div style='font-weight: bold;' data-bind="text: dispIDTolerance"></div>
 								</p-->
 							</div>
-							
 							<div id='' class='scroll-pane' style='height: 85%; width: 75%; overflow: auto;'>
 									<!-- div id='idResultsList' -->
 									<div id='idResultsList' data-bind="foreach: lastIdResults">
@@ -333,6 +360,7 @@
 		<div id='timeSliderDiv'></div>
 	</div>
 	<div class='' style='height: 10em;' id='attribPopoutPanel'>
+		<div class='btn' data-bind='visible: lastStatsFields().length > 0, click: showStatsDlg'>Show Field Statistics...</div>
 		<table>
 			<thead>
 			</thead>
@@ -350,6 +378,25 @@
 							<td data-bind='text: $parent[$data] '></td>
 						<!-- /ko -->
 					</tr>
+				<!-- /ko -->
+			</tbody>
+		</table>
+	</div>
+	<div class='' style='height: 10em;' id='sumStatsPopoutPanel'>
+		<table>
+			<thead>
+			</thead>
+			<tbody>
+				<tr><th>Field</th><th>COUNT</th><th>MIN</th><th>AVG</th><th>MAX</th><th>TOTAL</th></tr>
+				<!-- ko foreach: lastStatsFields -->
+				<tr class=''>
+					<td data-bind='text: fld_obj.alias '></td>
+					<td style='padding: 5px; text-align: right;' data-bind='text: count '></td>
+					<td style='padding: 5px; text-align: right;' data-bind='text: min '></td>
+					<td style='padding: 5px; text-align: right;' data-bind='text: avg '></td>
+					<td style='padding: 5px; text-align: right;' data-bind='text: max '></td>
+					<td style='padding: 5px; text-align: right;' data-bind='text: total '></td>
+				</tr>
 				<!-- /ko -->
 			</tbody>
 		</table>
