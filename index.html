@@ -212,10 +212,11 @@
 							
 							<ul data-bind="foreach: lastStatsFieldsSummaryAll">
 								<h3><span data-bind='text: label'> </span></h3>
-								<table>
+								<div data-bind='if: stats == null'> Not Found </div>
+								<table data-bind='if: stats != null'>
 									<thead>
 									</thead>
-									<tbody>
+									<tbody data-bind='if: (stats()[0].fld_obj.name != "Count")'>
 										<tr><th>Field</th><th>COUNT</th><th>MIN</th><th>AVG</th><th>MAX</th><th>TOTAL</th></tr>
 										<!-- ko foreach: stats -->
 										<tr class=''>
@@ -227,6 +228,9 @@
 											<td style='padding: 5px; text-align: right;' data-bind='text: total '></td>
 										</tr>
 										<!-- /ko -->
+									</tbody>
+									<tbody data-bind='if: (stats()[0].fld_obj.name == "Count")'>
+										<tr><th>Count</th><td style='padding-left: 5px; padding-right: 5px;' data-bind='text: stats()[0].count'> </td> </tr>
 									</tbody>
 								</table>
 							</ul>
