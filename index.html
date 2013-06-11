@@ -13,13 +13,18 @@
 
     <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3/js/dojo/dijit/themes/tundra/tundra.css" /> 
 	<link href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3/js/dojo/dijit/themes/tundra/form/Button.css" rel="stylesheet"/>
+
+	<link rel="stylesheet" type="text/css" href="/kendo/styles/kendo.common.min.css"> </link>
+	<link rel="stylesheet" type="text/css" href="/kendo/styles/kendo.default.min.css"> </link>
 	
 	<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3/js/dojo/dojox/layout/resources/ExpandoPane.css"/>
     <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3/js/esri/dijit/css/Popup.css" />
 	<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3/js/esri/css/esri.css" >  </link>
 
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" > </link>
-	<link type="text/css" href="css/jquery.jscrollpane.css" rel="stylesheet" media="all" />
+	<link type="text/css" href="css/jquery.jscrollpane.css" rel="stylesheet" media="all" > </link>
+	<link rel="stylesheet" href="css/multiple-select.css" > </link>
+	
 	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"> </link>
 	<link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"> </link>
 	
@@ -43,13 +48,17 @@
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 
-	
 		<!-- the jScrollPane script -->
 	<script type="text/javascript" src="script/jquery.mousewheel.js"></script>
 	<script type="text/javascript" src="script/jquery.jscrollpane.js"></script>
 	
-		<script src='script/knockout-2.2.1.js'></script>
+	<script type="text/javascript" src="script/jquery.multiple.select.js"></script>
+	
 	<script src="/bootstrap/js/bootstrap.min.js"></script>
+	<!-- script src="/kendo/js/kendo.web.min.js"></script -->
+	<script src='script/knockout-2.2.1.js'></script>
+	<!-- script src="/kendo/js/knockout-kendo.min.js"></script>
+	<script src="/kendo/js/kendo.multiselectbox.js"></script -->
 	
     <script src="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3compact"></script>
 	<script src="script/MapClasses.js" type="text/javascript"></script>
@@ -70,14 +79,18 @@
 				<span id='GABranding'>Georgia Coastal Atlas</span>
 			</div>
 			
-			<div class='sidebar-nav' style='height: 3em;'>
+			<div class='sidebar-nav'>
 				<ul class='nav nav-tabs'>
 					<li> <a id='allLayersLink'>All Layers</a> </li>
 					<li> <a id='energyLink' >Energy</a> </li>
 					<li> <a id='fisheriesLink'>Fisheries</a> </li>
 					<li> <a id='habitatLink'>Habitat</a> </li>
+					<div id='timeSliderDiv'></div>
 					<!-- <li> <a>Regulatory</a> </li> -->
 				</ul>
+				
+				<!-- div class='' id='timePopoutPanel' -->
+				<!-- /div -->
 			</div>
 		</div>
 
@@ -112,7 +125,7 @@
 						<li><a title='Identify Feature' href='#identifyPane' data-toggle='tab'>
 							<i class='icon Identify-results'></i></a></li>
 						<li><a title='Identify Summary Stats' href='#identifyPaneSumm' data-toggle='tab'>
-							<i class='icon Identify-results'></i></a></li>
+							<i class='icon summaryIcon'></i></a></li>
 						<li><a title='' href='#metadataPane' id='mdtaLink' data-toggle='tab'>
 							<i class='icon metadataTabIcon'></i></a></li>
 					</ul>
@@ -208,15 +221,27 @@
 						</div>
 						<div class='tab-pane' id='identifyPaneSumm' style='padding-left: 1em; padding-right: 1em; height: 90%;'>
 							<h2>Identify with Summary</h2>
-							<select data-bind="options: availableLayersSummary, selectedOptions: selectedLayersSummary, optionsText: 'label'" size="10" multiple="false"></select>
+						
+							<div style='margin-bottom: 1em;'> <strong> Click inside the box below to choose layers for query or press the &quot;Select Visible Layers&quot; button to
+							select layers visible on the map.</strong></div>
 							
+							<button class='btn' id='' data-bind='click: doActivateVisibleLayers' style='margin-bottom: 2em;'>Select visible layers</button>							
+							
+							<select id='summarySelectList' data-bind="options: availableLayersSummary, selectedOptions: selectedLayersSummary, optionsValue: 'data', optionsText: 'label' " size="10" style='width: 250px;' multiple="multiple">
+							</select >
+							
+							<!-- input id='kms' data-bind="kendoMultiSelect: { data: availableLayersSummary, value: selectedLayersSummary, dataTextField: 'label' }" ></input -->
+							
+							<div style='margin-bottom: 1em;'> <input type="checkbox" data-bind="checked: useDEMSummary" /> <b>Include DEM in query.</b> </div>					
+							
+							<div id="resultsContainer" class='scroll-pane' >
 							<ul data-bind="foreach: lastStatsFieldsSummaryAll">
 								<h3><span data-bind='text: label'> </span></h3>
 								<div data-bind='if: stats == null'> Not Found </div>
 								<table data-bind='if: stats != null'>
 									<thead>
 									</thead>
-									<tbody data-bind='if: (stats()[0].fld_obj.name != "Count")'>
+									<tbody data-bind='if: (stats[0].fld_obj.name != "Count")'>
 										<tr><th>Field</th><th>COUNT</th><th>MIN</th><th>AVG</th><th>MAX</th><th>TOTAL</th></tr>
 										<!-- ko foreach: stats -->
 										<tr class=''>
@@ -229,12 +254,34 @@
 										</tr>
 										<!-- /ko -->
 									</tbody>
-									<tbody data-bind='if: (stats()[0].fld_obj.name == "Count")'>
-										<tr><th>Count</th><td style='padding-left: 5px; padding-right: 5px;' data-bind='text: stats()[0].count'> </td> </tr>
+									<tbody data-bind='if: (stats[0].fld_obj.name == "Count")'>
+										<tr><th>Count</th><td style='padding-left: 5px; padding-right: 5px;' data-bind='text: stats[0].count'> </td> </tr>
 									</tbody>
 								</table>
 							</ul>
-							
+						
+							<ul data-bind="foreach: lastStatsFieldsSummaryAllRaster">
+								<h3><span data-bind='text: label'> </span></h3>
+								<div data-bind='if: stats == null'> Not Found </div>
+								<table data-bind='if: stats != null'>
+									<thead>
+									</thead>
+									<tbody>
+										<tr><th>Field</th><th>AREA</th><th>MIN</th><th>AVG</th><th>MAX</th><th>TOTAL</th></tr>
+										<!-- ko foreach: stats -->
+										<tr class=''>
+											<td data-bind='text: fld_obj.alias '></td>
+											<td style='padding: 5px; text-align: right;' data-bind='text: count '></td>
+											<td style='padding: 5px; text-align: right;' data-bind='text: min '></td>
+											<td style='padding: 5px; text-align: right;' data-bind='text: avg '></td>
+											<td style='padding: 5px; text-align: right;' data-bind='text: max '></td>
+											<td style='padding: 5px; text-align: right;' data-bind='text: total '></td>
+										</tr>
+										<!-- /ko -->
+									</tbody>
+								</table>
+							</ul>
+							</div>
 						</div>
 						<div class='tab-pane' id='identifyPane'style='padding-left: 1em; padding-right: 1em; height: 90%;'>
 							<h2>Identify</h2>
@@ -296,7 +343,7 @@
 							<div style='padding-bottom: 2em;'><i class='btn' data-bind='click: return_to_LayerList'> Return to Layer list </i></div>
 						
 							<h3 data-bind='text: lastMetadataLayerTitle'> </h3>
-															
+
 							<div class='tab-pane' id='metadataPane' style='padding-left:1em; height: 90%;'>
 								
 								<div class='accordion' id='infoAcc'>									
@@ -359,9 +406,6 @@
 	</div>
 	<div class='' id='measurePopoutPanel'>
 		<div id='measurementDiv'></div>
-	</div>
-	<div class='' id='timePopoutPanel'>
-		<div id='timeSliderDiv'></div>
 	</div>
 	<div class='' style='height: 10em;' id='attribPopoutPanel'>
 		<div class='btn' data-bind='visible: lastStatsFields().length > 0, click: showStatsDlg'>Show Field Statistics...</div>

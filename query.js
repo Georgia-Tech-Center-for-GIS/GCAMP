@@ -38,46 +38,17 @@ dojo.require("dojo/promise/all");
 var ptIDTolerance = ko.observable(15);
 var lastIdResults = ko.observableArray();
 
-var mean_curr = ko.computed(function() {
-		var stats = [{min: -999, max: -999, avg: -999}];
-		var total = 0;
-		var min = -999;
-		var max = -999;
-		var avg = -999;
-		
-		return stats;
-		
-		if(lastIdResults().length > 0) {
-			var curr_results = lastIdResults.peek()[0];
-			var count = 0;
-			
-			for(var i = 0; i < curr_results.length; i++) {
-				var val = parseFloat(curr_results[i].value);
-				
-				if(isNaN(val)) continue;
-				
-				total = total + val;
-				
-				if(min == -999 || val < min) {
-					min = val;
-				}
-				
-				if(max == -999 || val > max) {
-					max = val;
-				}
-				
-				count++;
-			}
-			
-			avg = total / count;
-		}
+var decPrecision = 2;
 
-		stats["min"] = min.toPrecision(3);
-		stats["max"] = max.toPrecision(3);
-		stats["avg"] = avg.toPrecision(3);
-		return stats;
-	}, null);
-	
+function doTrimNumber(num) {
+	try {
+		return num.toFixed(decPrecision);
+	}
+	catch(e) {
+		return num;
+	}
+}
+
 var gp = null;
 var params = null;
 
@@ -96,35 +67,6 @@ function doIdentify(evt) {
 	identifyParams.mapExtent = map.extent;
 	identifyParams.layerIds = /*[0]; / */ viewModel.currentVisibleLayers.peek()[2].vlayers;
 	
-	//for (var j = 0; j < ly1.visibleLayers.length; j++) {
-		//identifyParams.layerIds.push(ly1.visibleLayers[j]);
-	//}
-	
-	{
-		/*var features = [];
-		features.push(queryExtent.centerAt(centerPoint));
-		var featureSet = new esri.tasks.FeatureSet();
-		featureSet.features = features;
-		
-		gp = new esri.tasks.Geoprocessor("http://carto.gis.gatech.edu/ArcGIS/services/CoastToolbox/GPServer/SummarizeMean");
-		//params = {"Polygon": featureSet };
-		
-		gp.execute (params, function(r, m) {
-			console.debug(r);
-			console.debug(m);
-		});*/
-	}
-	/*{
-		var isit = new esri.tasks.ImageServiceIdentifyTask("http://servicesbeta.esri.com/ArcGIS/rest/services/Portland/PortlandAerial/ImageServer");
-		var isip = new esri.tasks.ImageServiceIdentifyParameters();
-		
-		isip.geometry = queryExtent.centerAt(centerPoint);
-		//isip.mosaicRule = esri.layers.MosaicRule.METHOD_MAX;
-		isit.execute(isip, function (e) {
-			console.debug(e);
-		});
-	}*/
-	
 	identifyParams.layerIds = identifyParams.layerIds.sort();
 	
 	identifyTask.execute(identifyParams,
@@ -137,22 +79,6 @@ function doIdentify(evt) {
 		}
 	});
 }
-
-var dispIDTolerance = ko.computed(function() {
-		var currIDtol = ptIDTolerance();
-		
-		if(typeof map != 'undefined') {
-		
-			var mapWidth = map.extent.getWidth();
-			var pixelWidth = mapWidth / map.width;
-			var tolerance = currIDtol * pixelWidth;
-
-			return ((tolerance/5240).toPrecision(2) + " miles");
-		}
-		else
-			return "-999 miles";
-			
-	}, null);
 
 //lastIdResults.subscribe( function() { console.debug("CHANGED"); } );
 
@@ -304,72 +230,148 @@ function aaah(e){
 	console.debug(e);
 }
 
+var rasterLayerLocations = [
+	{ layerName : "DEM",								rasterLoc : "\"D:\\GISData\\CoastalGa\\Coastal_DEM_Mosaic\\coastdemwebm\"" },
+	{ layerName : "NWI Plus Wetlands 2011" ,			rasterLoc : "\"D:\\GISData\\CoastalGa\\WM84\\DNR\\wetcoast\"" },
+	{ layerName : "Habitat AVG G Rank (Coastal Extent)",rasterLoc : "\"D:\\GISData\\CoastalGa\\WM84\\DNR\\HabGRAvg\"" },
+	{ layerName : "Bathymetry Estuarine",				rasterLoc : "\"D:\\GISData\\CoastalGa\\WM84\\DNR\\\\bathdetes\"" },
+	{ layerName : "Bathymetry Marine",					rasterLoc : "\"D:\\GISData\\CoastalGa\\WM84\\DNR\\\\bathdetmar\"" },
+	{ layerName : "Ocean Current - Mean Speed",			rasterLoc : "\"D:\\GISData\\CoastalGa\\WM84\\Energy\\OffSyrmeanWM\"" },
+	{ layerName : "Ocean Current - Mean Power",			rasterLoc : "\"D:\\GISData\\CoastalGa\\WM84\\Energy\\OffPowerWM\"" },
+	{ layerName : "Tidal Stream - Mean Power",			rasterLoc : "\"D:\\GISData\\CoastalGa\\WM84\\Energy\\meanpowerWM\"" },
+	{ layerName : "Tidal Stream - Mean Speed",			rasterLoc : "\"D:\\GISData\\CoastalGa\\WM84\\Energy\\meancurrentWM\"" },
+	{ layerName : "Tidal Stream - Max Power",			rasterLoc : "\"D:\\GISData\\CoastalGa\\WM84\\Energy\\maxpowerWM\"" },
+	{ layerName : "Tidal Stream - Max Speed",			rasterLoc : "\"D:\\GISData\\CoastalGa\\WM84\\Energy\\maxcurrentWM\"" },
+	{ layerName : "Offshore Wind Speed 90m",			rasterLoc : "\"D:\\GISData\\CoastalGa\\WM84\\Energy\\gaoffspd90WM\"" },
+	{ layerName : "Offshore Wind Power 90m",			rasterLoc : "\"D:\\GISData\\CoastalGa\\WM84\\Energy\\gaoffpwr90WM\"" }
+];
+	
 var selectedLayersSummary = ko.observableArray();
 var availableLayersSummary= ko.observableArray();
+
 var lastStatsFieldsSummaryAll = ko.observableArray();
+var lastStatsFieldsSummaryAllRaster = ko.observableArray();
+
 var summQry = null;
 var labelsUrls = [];
 
 var lastGeom = null;
 var qobjs = [];
+
 var lnames = [];
 var lnames_checklist = [];
+
 var promises;
 
-var results_done_processed = false;
+var useDEMSummary = true;
+
+function doActivateVisibleLayers() {
+	//selectedLayersSummary.removeAll();
+	
+	var mapLayer = map.getLayer( map.layerIds[2] );
+	var vLayers = mapLayer.visibleLayers;
+	
+	var newSelectedLayers = [];
+	
+	for(i = 0; i < vLayers.length; i++) {
+		var index = vLayers[i];
+		
+		if(mapLayer.layerInfos[index].subLayerIds == null) {
+			var layerUrl = mapLayer.url + "/" + index.toString();
+			
+			newSelectedLayers.push( mapLayer.layerInfos[index].name + "|" +layerUrl );
+			//selectedLayersSummary.push( {label: mapLayer.layerInfos[index].name, url: layerUrl} );
+		}
+	}
+
+	multipleSelectSummary.multipleSelect.setSelects(newSelectedLayers);
+	console.debug(newSelectedLayers);
+}
 
 function doSummaryQuery(geom) {
+	var layersToQuery = []; //selectedLayersSummary();
+	
+	var selectsFromList = multipleSelectSummary.multipleSelect.getSelects();
+	
+	if(selectsFromList.length == 0) return;
+	
+	for( jkl = 0; jkl < selectsFromList.length; jkl ++) {
+		var splits = selectsFromList[jkl].split("|");
+		layersToQuery.push( { label: splits[0], url: splits[1] } );
+	}
+
+	lastStatsFieldsSummaryAllRaster([]);
+	lastStatsFieldsSummaryAll([]);
+	
+	qobjs = [];	
+	
 	//if(geom[0].type != "POLYGON") return;
 	
 	lastGeom = geom;
 	results_done_processed = false;
-	
-	var tempArray = new Array();
-	
-	lastStatsFieldsSummaryAll.removeAll();
-	lastAttribFeaturesSummary.removeAll();
-	lastStatsFieldsSummary.removeAll();
 
-	/*labelsUrls = [];
+	try {
+		labelsUrls = [];
 
-	if(summQry == null) summQry = new esri.tasks.Query();
-	
-	summQry.where = "1=1";
-	summQry.returnGeometry = true;
-	summQry.spatialRelationship = esri.tasks.Query.SPATIAL_REL_CONTAINS;
-	summQry.geometry = geom[0];
-	summQry.outSpatialReference = map.spatialReference;
-	summQry.outFields= ["*"];
-	//map.graphics.add(geom[0]);
-	
-	var layersToQuery = selectedLayersSummary();
-	qobjs = [];
-			  
-	for(var layerIndex = 0; layerIndex < layersToQuery.length; layerIndex++) {
-		//console.debug(layersToQuery[layerIndex]);
+		if(summQry == null) {
+			summQry = new esri.tasks.Query();
+		}
 		
-		var currUrl = layersToQuery[layerIndex].url;
-		labelsUrls[currUrl] = layersToQuery[layerIndex].label;
-		lnames.push (layersToQuery[layerIndex].label);
-		console.debug(currUrl);
+		summQry.where = "1=1";
+		summQry.returnGeometry = true;
+		summQry.spatialRelationship = esri.tasks.Query.SPATIAL_REL_INTERSECTS;
+		summQry.geometry = geom[0];
+		summQry.outSpatialReference = map.spatialReference;
+		summQry.outFields= ["*"];
 		
-		try {
+		if(useDEMSummary) {
+			queryRaster(geom, rasterLayerLocations[0].layerName, rasterLayerLocations[0].rasterLoc);
+		}
+		
+		for(var layerIndex = 0; layerIndex < layersToQuery.length; layerIndex++) {
+			
+			var isRaster = false;
+			
+			/* DEM location is in index 0 */
+			for(var ii = 1; ii < rasterLayerLocations.length; ii++) {			
+				if(layersToQuery[layerIndex].label.trim() == rasterLayerLocations[ii].layerName.trim()) {
+					isRaster = true;
+					queryRaster(geom,layersToQuery[layerIndex].label, rasterLayerLocations[ii].rasterLoc);
+				}
+			}
+			
+			if(isRaster) continue;
+			
+			var currUrl = layersToQuery[layerIndex].url;
+			labelsUrls[currUrl] = layersToQuery[layerIndex].label;
+			lnames.push (layersToQuery[layerIndex].label);
+			console.debug(currUrl);
+			
 			var qt = new esri.tasks.QueryTask( currUrl );
-//			qobjs.push(qt.execute(summQry , processSummaryResults));
+			qobjs.push(qt.execute(summQry)); /* , processSummaryResults)); */
 		}
-		catch(e) {
-			console.debug(e);
-		}
-	}*/
+
+		require(["dojo/promise/all"], function(all){
+			lnames_checklist = lnames.slice(0);
+			all(qobjs).then(processSummaryResults);
+		  });		  
+	}
+	catch(e) {
+		console.debug(e);
+	}
+	
+	inProcess = false;
+}
+
+
+function queryRaster(geom,label,location) {
+	var tempArray = new Array();
 	
 	//submit to bathymetry testing
 	/** */
 	try {
-//		var gp_bathy = new esri.tasks.Geoprocessor("http://carto.gis.gatech.edu/ArcGIS/rest/services/CoastToolbox/GPServer/SummImagery");
 		var gp_bathy = new esri.tasks.Geoprocessor("http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/SummImagery/GPServer/SummImagery");
-		//dojo.connect(gp_bathy, "onExecuteComplete", );
 
-		//map.showZoomSlider();
         map.graphics.clear();
         
         var symbol = new esri.symbol.SimpleFillSymbol("none", new esri.symbol.SimpleLineSymbol("dashdot", new dojo.Color([255,0,0]), 2), new dojo.Color([255,255,0,0.25]));
@@ -384,34 +386,27 @@ function doSummaryQuery(geom) {
         var featureSet = new esri.tasks.FeatureSet();
         featureSet.features = features;
 		
-        var params = { "Input value raster" : "\"D:\\GISData\\CoastalGa\\WM84\\Energy\\ga_off_pwr90\"", "Offshore Wind Speed 90m" : "D:\\GISData\\CoastalGa\\WM84\\Energy\\ga_off_pwr90" }; // "InputFeatures" : featureSet };
+        var params = {}; //{ "Input value raster" : "\"D:\\GISData\\CoastalGa\\WM84\\Energy\\ga_off_pwr90\"", "Offshore Wind Speed 90m" : "D:\\GISData\\CoastalGa\\WM84\\Energy\\ga_off_pwr90" }; // "InputFeatures" : featureSet };
 		params.InputFeatures = featureSet;
-		//params.InputFeatures.features[0].attributes = {"Id" : 1};
-		//params.InputRaster = "D:\\GISData\\CoastalGa\\WM84\\Energy\\offsyrmeanwm";
-		//params.ETOPO2_Bathy_SE_IMG = "\\\\carto\\GISDATA\\GACMSP\\GISDATA\\GCAMP\\sediment\\seabedxtr.img";
-		//params.InputRaster = "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/coastal2213/MapServer/82";
-		//params.Input = "D:\\GISData\\CoastalGa\\WM84\\Energy\\ga_off_pwr90";
-		params.InputRasterPath  = "\"D:\\GISData\\CoastalGa\\WM84\\Energy\\ga_off_pwr90\"";
+		params.InputRasterPath = location;
 		
 		console.debug(params);
 		
-        gp_bathy.execute(params, function(r, m) {		
-			console.debug(r);
-			
-			//lastStatsFieldsSummary.push(  );
-					
-			tempArray.push({"label": "Bathymetry", stats: new ko.observableArray( [
+        gp_bathy.execute(params, function(r, m) {
+			tempArray = lastStatsFieldsSummaryAllRaster();
+			tempArray.push({"label": label, stats: new ko.observableArray( [
 			{
-				"fld_obj": {name: "Area Stats", type: "esriFieldTypeSingle", alias: "Z Area Stats"},
-					min: ko.observable(r[0].value.features[0].attributes.MIN),
-					max: ko.observable(r[0].value.features[0].attributes.MAX),
-					avg: ko.observable(r[0].value.features[0].attributes.MEAN),
-					total: ko.observable(r[0].value.features[0].attributes.SUM),
-					count: ko.observable(r[0].value.features[0].attributes.AREA) }])
+				"fld_obj": {name: "Stats", type: "esriFieldTypeSingle", alias: "Raster Stats"},
+					min: ko.observable  (doTrimNumber( r[0].value.features[0].attributes.MIN)),
+					max: ko.observable  (doTrimNumber( r[0].value.features[0].attributes.MAX)),
+					avg: ko.observable  (doTrimNumber( r[0].value.features[0].attributes.MEAN)),
+					total: ko.observable(doTrimNumber( r[0].value.features[0].attributes.SUM) ),
+					count: ko.observable(doTrimNumber( r[0].value.features[0].attributes.AREA ) ) }])
 			});
 			
-			lastStatsFieldsSummaryAll(tempArray);
+			lastStatsFieldsSummaryAllRaster(tempArray);
 		}, function(e) {
+			console.log(e.stack);
 		});
 	}
 	catch( e) {
@@ -420,86 +415,91 @@ function doSummaryQuery(geom) {
 	/** */
 }
 
-var lastAttribFieldsSummary = ko.observableArray();
-var lastAttribFeaturesSummary = ko.observableArray();
-var lastStatsFieldsSummary = ko.observableArray();
-
 function processFields(curr_count, feature, sfields, pcntAdj) {
 	for(var i = 0; i < sfields.length; i++) {
+		console.debug(sfields[i]);
+		
 		var value = parseFloat( feature.attributes[ sfields[i]["fld_obj"].name ] );
 		
 		value *= pcntAdj;
 		
 		if( isNaN( sfields[i].max() ) || value > sfields[i].max())
-			sfields[i].max(value);
+			sfields[i].max(doTrimNumber(value));
 		
 		if( isNaN( sfields[i].min() ) || value < sfields[i].min())
-			sfields[i].min(value);
+			sfields[i].min(doTrimNumber(value));
 			
 		if( isNaN( sfields[i].total() ) )
-			sfields[i].total(value);
+			sfields[i].total(doTrimNumber(value));
 		else
-			sfields[i].total(value + sfields[i].total());
+			sfields[i].total(doTrimNumber(value + sfields[i].total()));
 		
 		sfields[i].count( curr_count );
 			
 		if( isNaN( sfields[i].avg() ) )
-			sfields[i].avg(value);
+			sfields[i].avg(doTrimNumber(value));
 		else {
-			sfields[i].avg((value + (sfields[i].avg() * (curr_count-1))) / (curr_count) );
+			sfields[i].avg(doTrimNumber((value + (sfields[i].avg() * (curr_count-1))) / (curr_count)) );
 		}
 	}
+	
+	return sfields;
 }
 
 function processSummaryResults(all_results) {
 	if(results_done_processed) return;
 	
-	lastStatsFieldsSummaryAll.removeAll();
-	lnames_checklist = lnames.slice(0);
-	
 	for(var kk = 0; kk < all_results.length; kk++) {
-		lastStatsFieldsSummary = ko.observableArray();
-		
+		var FieldsSummary = [];
+			
 		var results = all_results[kk];
 		labelsUrls.reverse();
 			
-		//, function(results) {
-			var fields = dojo.map(results.fields, function(field) {
-				if(field.alias != "FID")
-					lastAttribFieldsSummary.push(field.alias);
+		var fields = dojo.map(results.fields, function(field) {
+//			if(field.alias != "FID")
+//				FieldsSummary.push(field.alias);
+				
+			if( field.type == "esriFieldTypeSingle" ||
+				field.type == "esriFieldTypeDouble" ||
+				field.type == "esriFieldTypeInteger" ||
+				field.type == "esriFieldTypeSmallInteger" ) {
+				
+				FieldsSummary.push( {"fld_obj": field,
+					min: ko.observable(Number.NaN),
+					max: ko.observable(Number.NaN),
+					avg: ko.observable(Number.NaN),
+					total: ko.observable(Number.NaN),
+					count: ko.observable(0) } );
+			}
+
+			return [];
+		});
 					
-				if( field.type == "esriFieldTypeSingle" ||
-					field.type == "esriFieldTypeDouble" ||
-					field.type == "esriFieldTypeInteger" ||
-					field.type == "esriFieldTypeSmallInteger" ) {
-					lastStatsFieldsSummary.push( {"fld_obj": field,
+		var geomProjected = null;
+		var pparams = new esri.tasks.ProjectParameters();
+		
+		for( var curr_count = 1; curr_count <= results.features.length ; curr_count ++) {
+			try {
+				var feature = results.features[curr_count - 1];
+				var a = dojo.clone(feature.attributes);
+				a["SHAPE"] = feature.geometry;
+				
+				//lastAttribFeaturesSummary.push(a);
+							
+				var geometryService = new esri.tasks.GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
+				
+				console.debug(feature.geometry.type);
+				
+				if (FieldsSummary.length == 0) {
+					FieldsSummary.push( {
+						"fld_obj": {name: "Count", type: "esriFieldTypeSingle", alias: "Count"},
 						min: ko.observable(Number.NaN),
 						max: ko.observable(Number.NaN),
 						avg: ko.observable(Number.NaN),
 						total: ko.observable(Number.NaN),
-						count: ko.observable(0) } );
+						count: ko.observable(results.features.length) } );
 				}
-
-				return [];
-			});
-					
-			var sfields = lastStatsFieldsSummary.peek();
-			
-			var geomProjected = null;
-			var pparams = new esri.tasks.ProjectParameters();
-			
-			for( var curr_count = 1; curr_count <= results.features.length ; curr_count ++) { //= dojo.map(results.features, function(feature) {
-				try {
-					var feature = results.features[curr_count - 1];
-					var a = dojo.clone(feature.attributes);
-					a["SHAPE"] = feature.geometry;
-					lastAttribFeaturesSummary.push(a);
-					//map.graphics.add(feature);
-								
-					var geometryService = new esri.tasks.GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
-					
-					console.debug(feature.geometry.type);
-					
+				else {
 					if(feature.geometry.type == "polygon") {
 						pparams.geometries = lastGeom;
 						pparams.outSR = feature.geometry.spatialReference;
@@ -517,49 +517,33 @@ function processSummaryResults(all_results) {
 								
 								geometryService.areasAndLengths( areasAndLengthsParams, function(r2) {
 									var pcntAdj = /*min ( */r2.areas[0]/r2.areas[1] //, 1.00);
-									processFields(curr_count, feature, sfields, pcntAdj);
+									processFields(curr_count, feature, FieldsSummary, pcntAdj);
 								});
 							});
 						});
 					}
 					else {
-						processFields(curr_count, feature, sfields, 1);
+						processFields(curr_count, feature, FieldsSummary, 1);
 					}
+				}
+				
+				var isAlreadyThere = false;
 
-					for(var i = 0; i < lastStatsFieldsSummary().length; i++) {
-						lastStatsFieldsSummary()[i].min(lastStatsFieldsSummary()[i].min().toFixed(3));
-						lastStatsFieldsSummary()[i].avg(lastStatsFieldsSummary()[i].avg().toFixed(3));
-						lastStatsFieldsSummary()[i].max(lastStatsFieldsSummary()[i].max().toFixed(3));
-						lastStatsFieldsSummary()[i].total(lastStatsFieldsSummary()[i].total().toFixed(3));
-					}
+				for(var l = 0; l < lastStatsFieldsSummaryAll().length; l++) {
+					isAlreadyThere = ( lnames[kk] == lastStatsFieldsSummaryAll()[l].label );
 					
-					if (lastStatsFieldsSummary().length == 0) {
-						lastStatsFieldsSummary.push( {
-							"fld_obj": {name: "Count", type: "esriFieldTypeSingle", alias: "Count"},
-							min: ko.observable(Number.NaN),
-							max: ko.observable(Number.NaN),
-							avg: ko.observable(Number.NaN),
-							total: ko.observable(Number.NaN),
-							count: ko.observable(results.features.length) } );
-					}
-					
-					var isAlreadyThere = false;
-					
-					for(var l = 0; l < lastStatsFieldsSummaryAll().length; l++) {
-						isAlreadyThere = ( lnames[kk] == lastStatsFieldsSummaryAll()[l].label );
-						
-						if(isAlreadyThere) break;
-					}
-					
-					if(!isAlreadyThere) {
-						lastStatsFieldsSummaryAll.push({"label": lnames[kk], stats: lastStatsFieldsSummary});
-						lnames_checklist.splice( lnames_checklist.indexOf(lastStatsFieldsSummaryAll()[0].label), 1 );
-					}
+					if(isAlreadyThere) break;
 				}
-				catch(e) {
+
+				if(!isAlreadyThere) {
+					lastStatsFieldsSummaryAll.push({"label": lnames[kk], stats: FieldsSummary});
+					lnames_checklist.splice( lnames_checklist.indexOf(lnames[kk]), 1 );
 				}
-				//dojo.clone(feature.attributes);
-			}//);
+			}
+			catch(e) {
+				console.log(e.stack);
+			}
+		}
 	}
 	
 	console.debug(lnames_checklist);
@@ -567,7 +551,7 @@ function processSummaryResults(all_results) {
 	for(var no_query_item in lnames_checklist) {
 		lastStatsFieldsSummaryAll.push({"label" : lnames_checklist[no_query_item], stats: null});
 	}
-	
+		
 	lnames_checklist = [];
 	lnames = [];
 	

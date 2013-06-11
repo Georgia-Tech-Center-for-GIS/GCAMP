@@ -238,7 +238,7 @@ function prepare_map_when_extents_finished(a) {
 		MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
 		MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/CDEM/MapServer", ServiceType_Dynamic, map, null));
 		MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/coastal2213/MapServer", ServiceType_Dynamic, map, null));
-		MapSvcAllLayers.add(new MapSvcDef("Test", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/MyMapService/MapServer", ServiceType_Dynamic, map, null));
+		//MapSvcAllLayers.add(new MapSvcDef("Test", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/MyMapService/MapServer", ServiceType_Dynamic, map, null));
 
 		MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function () {
 			loaded(true);
@@ -350,7 +350,7 @@ function prepare_map_when_extents_finished(a) {
 					timeSlider.setLabels(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]);
 					timeSlider.startup();
 
-					$('#timePopoutPanel').dialog({title:"Time", width: 860 });
+					//$('#timePopoutPanel').dialog({title:"Time", width: 860 });
 				});			
 			});
 
@@ -506,6 +506,7 @@ var tabs;
 var jpanes = null;
 
 var lastGraphic = null;
+var multipleSelectSummary = null;
 
 function jQueryReady() {
 	$(function() {
@@ -536,6 +537,12 @@ function jQueryReady() {
 			}
 			
 			if( $(e.target).attr('href') == "#identifyPaneSumm" ) {
+				if( multipleSelectSummary == null) {
+					multipleSelectSummary = $('#summarySelectList').multipleSelect().data();
+				}
+				
+				multipleSelectSummary.multipleSelect.refresh();
+				
 				drwToolbar.activate(esri.toolbars.Draw.POLYGON);
 
 				dojo.connect(drwToolbar, "onDrawEnd", function(geometry) {
@@ -552,11 +559,11 @@ function jQueryReady() {
 						
 						//console.debug(geometry);
 					
-						//geometryService.project(PrjParams, doSummaryQuery );
+						geometryService.project(PrjParams, doSummaryQuery );
 						//doSummaryQuery( [geometry] );
 						//console.debug(geometry);
 						
-						doSummaryQuery([geometry]);
+						//doSummaryQuery([geometry]);
 				});
 			}
 			else {
@@ -574,7 +581,6 @@ function jQueryReady() {
 		$('#meas').on('click', function(e) {
 			$('#measurePopoutPanel').dialog({width:250, title:"Measurement"});
 		});
-		
 	});
 }
 

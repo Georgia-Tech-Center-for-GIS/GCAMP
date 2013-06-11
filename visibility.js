@@ -57,7 +57,7 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 			lastIndex = retval.lastIndex;
 		}
 		else {
-			availableLayersSummary.push( { label: li.name, url: dispLyr.url} );
+			availableLayersSummary.push( {data: li.name + "|" + dispLyr.url, label: li.name } );
 		}
 		
 		list.push(dispLyr);
@@ -200,8 +200,6 @@ function return_map_layers() {
 		
 		lastIndex = -1;
 	}
-	
-	//
 }
 
 var xmlMeta;

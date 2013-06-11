@@ -158,6 +158,13 @@ h3 {
 	height:25px;
 }
 
+.summaryIcon {
+	background-image: url("images/sigma.png");
+	background-repeat: no-repeat;
+	width: 25px;
+	height:25px;
+}
+
 div {
 
 }
@@ -343,6 +350,11 @@ h3 {
 	color: 0x0066FF;
 }
 
+ul {
+	margin: 0;
+	padding: 0;
+}
+
 #idResultsList ul {
 	list-style: none;
 }
@@ -379,5 +391,24 @@ h3 {
 
 .highlight
 {
-       background-color:#cccccc;
+	background-color:#cccccc;
+}
+
+#summarySelectList {
+	width: 95%;
+}
+
+#timeSliderDiv {
+	top: 2em;
+	position: absolute;
+	width: 600px !important;
+	display: inline;
+}
+
+#resultsContainer {
+	height: 60%;
+}
+
+.sidebarNav {
+	height: 3em;
 }
