@@ -389,6 +389,18 @@ ul {
 .attribRow {
 }
 
+#attribPopoutPanel tr {
+	margin-top: 10px;
+	background-color: #DDDDDD;
+}
+
+.attribRow td {
+	border: solid 1px black;
+	padding: 6px;
+	margin-top: 0px;
+	background-color: #FFFFFF;
+}
+
 .highlight
 {
 	background-color:#cccccc;
@@ -398,17 +410,56 @@ ul {
 	width: 95%;
 }
 
-#timeSliderDiv {
-	top: 2em;
+#timeSliderContainer {
+	top: 1em;
 	position: absolute;
-	width: 600px !important;
 	display: inline;
+}
+#timeSliderDiv {
+	width: 600px !important;
+}
+
+#timeSliderChoices {
+	top: 1.5em;
+	position: absolute;
+	right: 0.5em;
+	width: 575px;
 }
 
 #resultsContainer {
 	height: 60%;
 }
 
-.sidebarNav {
+.sidebar-nav {
 	height: 3em;
+}
+
+.dijitMenuPopup {
+	z-index: 3000 !important;
+}
+
+#MapPanel {
+}
+
+#coordContainer {
+	position: absolute; z-index: 255; 
+}
+
+#coordinates {
+	position: absolute;
+	right: -42em;
+	bottom: 2.5em;
+	width: 30em;
+}
+
+#measurementDiv {
+}
+
+#measurementDiv .resultLabel {
+	display: none;
+}
+
+#measurementDiv .result {
+	display: inline;
+	margin-left: 10em;
 }

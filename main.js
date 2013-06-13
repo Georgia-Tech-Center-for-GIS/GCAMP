@@ -237,7 +237,7 @@ function prepare_map_when_extents_finished(a) {
 		
 		MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
 		MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/CDEM/MapServer", ServiceType_Dynamic, map, null));
-		MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/coastal2213/MapServer", ServiceType_Dynamic, map, null));
+		MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/coastal613/MapServer", ServiceType_Dynamic, map, null));
 		//MapSvcAllLayers.add(new MapSvcDef("Test", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/MyMapService/MapServer", ServiceType_Dynamic, map, null));
 
 		MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function () {
@@ -252,7 +252,9 @@ function prepare_map_when_extents_finished(a) {
 			navToolbar = new esri.toolbars.Navigation(map);
 			drwToolbar = new esri.toolbars.Draw(map);
 			
-			dojo.connect('onExtentHistoryChange', extentHistoryChangeHandler);
+			dojo.connect(map, 'onExtentHistoryChange', extentHistoryChangeHandler);
+			dojo.connect(map, 'onExtentChange', onMapExtentChange);
+			getMapScaleToVariable();
 			//dojo.connect('onDrawEnd', measureEnd);
 			
 			$('#zoomInBtn').on('click', function(e) {
@@ -273,7 +275,7 @@ function prepare_map_when_extents_finished(a) {
 				
 				MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
 				MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/CDEM/MapServer", ServiceType_Dynamic, map, null));
-				MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/coastal2213/MapServer", ServiceType_Dynamic, map, null));				
+				MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/coastal613/MapServer", ServiceType_Dynamic, map, null));				
 				MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function() {
 					map.getLayer( map.layerIds[1] ).visibleLayers = [];
 					map.getLayer( map.layerIds[1] ).setVisibility(false);
@@ -281,6 +283,7 @@ function prepare_map_when_extents_finished(a) {
 					init_layer_controls(map);
 					init_id_funct(map);
 				});
+				$('#timeSliderContainer').hide();
 			});
 			
 			$('#energyLink').on('click', function(e) {
@@ -296,7 +299,8 @@ function prepare_map_when_extents_finished(a) {
 
 					init_layer_controls(map);
 					init_id_funct(map);
-				});			
+				});
+				$('#timeSliderContainer').hide();
 			});
 			
 			$('#habitatLink').on('click', function(e) {
@@ -312,7 +316,8 @@ function prepare_map_when_extents_finished(a) {
 
 					init_layer_controls(map);
 					init_id_funct(map);
-				});			
+				});	
+				$('#timeSliderContainer').hide();
 			});
 			
 			$('#fisheriesLink').on('click', function(e) {
@@ -350,7 +355,8 @@ function prepare_map_when_extents_finished(a) {
 					timeSlider.setLabels(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]);
 					timeSlider.startup();
 
-					//$('#timePopoutPanel').dialog({title:"Time", width: 860 });
+					$('#timeSliderContainer').css('display', 'inline');
+					$('#timeSliderChoices').css('display', 'inline');
 				});			
 			});
 
@@ -427,7 +433,17 @@ function init() {
 var map_x_coord = ko.observable("-00.00");
 var map_y_coord = ko.observable("00.00");
 
+var abs_map_scale = ko.observable("0");
+
 var lastMapEv = null;
+
+function getMapScaleToVariable() {
+	abs_map_scale( "1: " + (Math.round(map.getScale()/100)*100));
+}
+
+function onMapExtentChange(extent,delta,levelChange,lod) {
+	getMapScaleToVariable();
+}
 
 function showMouseCoordinates(e) {
 	lastMapEv = e;

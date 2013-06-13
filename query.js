@@ -223,7 +223,7 @@ function addToMap(idResults, evt) {
 		lastIdResults.push( factoredResults[j] );
 	}
 	
-	$('.scroll-pane').jScrollPane({verticalGutter: 0});	
+	$('#resultsContainer').jScrollPane({verticalGutter: 0});
 }
 
 function aaah(e){
@@ -408,6 +408,8 @@ function queryRaster(geom,label,location) {
 		}, function(e) {
 			console.log(e.stack);
 		});
+		
+		$('#resultsContainer').jScrollPane({verticalGutter: 0});
 	}
 	catch( e) {
 		console.debug(e);
@@ -416,6 +418,8 @@ function queryRaster(geom,label,location) {
 }
 
 function processFields(curr_count, feature, sfields, pcntAdj) {
+	console.debug( curr_count );
+	console.debug( pcntAdj );
 	for(var i = 0; i < sfields.length; i++) {
 		console.debug(sfields[i]);
 		
@@ -428,18 +432,19 @@ function processFields(curr_count, feature, sfields, pcntAdj) {
 		
 		if( isNaN( sfields[i].min() ) || value < sfields[i].min())
 			sfields[i].min(doTrimNumber(value));
-			
+		
 		if( isNaN( sfields[i].total() ) )
 			sfields[i].total(doTrimNumber(value));
 		else
-			sfields[i].total(doTrimNumber(value + sfields[i].total()));
+			sfields[i].total(doTrimNumber(parseFloat(value) + parseFloat(sfields[i].total())));
 		
 		sfields[i].count( curr_count );
 			
 		if( isNaN( sfields[i].avg() ) )
 			sfields[i].avg(doTrimNumber(value));
 		else {
-			sfields[i].avg(doTrimNumber((value + (sfields[i].avg() * (curr_count-1))) / (curr_count)) );
+			//sfields[i].avg(doTrimNumber((value + (parseFloat(sfields[i].avg()) * (curr_count-1))) / (curr_count)) );
+			sfields[i].avg( doTrimNumber( sfields[i].total() / sfields[i].count() ) );
 		}
 	}
 	
@@ -556,4 +561,6 @@ function processSummaryResults(all_results) {
 	lnames = [];
 	
 	results_done_processed = true;
+	
+	$('#resultsContainer').jScrollPane({verticalGutter: 0});
 }

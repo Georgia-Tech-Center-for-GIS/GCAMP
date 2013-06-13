@@ -44,7 +44,10 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 			"name": li.name,
 			"url" : mapLyr.url + "/" + id,
 			"esriLayer": li,
-			"children" : []
+			"children" : [],
+			"minScale" : li.minScale,
+			"maxScale" : li.maxScale,
+			"isRaster" : false
 		};
 		
 		lastIndex = id;
@@ -58,6 +61,24 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 		}
 		else {
 			availableLayersSummary.push( {data: li.name + "|" + dispLyr.url, label: li.name } );
+		}
+		
+		try {
+			//console.debug(mapLyr);
+			console.debug(id);
+			console.debug(mapLyr);
+			console.debug(mapLyr.legendResponse);
+			
+			var legendResp = mapLyr.legendResponse.layers[id];
+
+			console.debug(legendResp);
+			
+			if(legendResp.layerType.search("Feature") == -1) {
+				dispLyr.isRaster = true;
+			}
+		}
+		catch(e) {
+			console.debug(e);
 		}
 		
 		list.push(dispLyr);
@@ -114,13 +135,27 @@ function return_map_layers() {
 							"name": li.name,
 							"url" : lyr.url + "/" + i,
 							"esriLayer": li,
-							"children" : []
+							"children" : [],
+							"minScale" : li.minScale,
+							"maxScale" : li.maxScale,
+							"isRaster" : false
 						};
 
 						if(li.subLayerIds) {				
 							var retval = return_child_layers(lyr, map.layerIds[j], li);
 							dispLyr.children = dojo.clone(retval.childLayers);
 							lastIndex = retval.lastIndex;
+						}
+						
+						try {
+							var legendResp = mapLyr.legendResponse.layers[i];
+							console.debug(legendResp);
+							
+							if(legendResp.search("Feature") == -1) {
+								dispLyr.isRaster = true;
+							}
+						}
+						catch(e) {
 						}
 						
 						dispLyrOuter.children.push(dispLyr);
