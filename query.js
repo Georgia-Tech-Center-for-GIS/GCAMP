@@ -420,6 +420,7 @@ function queryRaster(geom,label,location) {
 function processFields(curr_count, feature, sfields, pcntAdj) {
 	console.debug( curr_count );
 	console.debug( pcntAdj );
+	
 	for(var i = 0; i < sfields.length; i++) {
 		console.debug(sfields[i]);
 		

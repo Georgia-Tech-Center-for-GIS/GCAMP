@@ -113,7 +113,7 @@ function return_map_layers() {
 			continue;
 			
 			var d = {
-					"name": "DEM",
+					"name": "DEM"
 			};
 			dispLyrOuter.push(d);
 		}
