@@ -175,6 +175,8 @@ function outputDistance(result) {
 	console.debug(result);
 }
 
+var isMapGraphicsEmpty = ko.observable(true);
+
 function prepare_map_when_extents_finished(a) {
 		initialExtent = a[0];
 		
@@ -182,8 +184,9 @@ function prepare_map_when_extents_finished(a) {
 				extent : initialExtent
 		});
 		
-		dojo.connect(dijit.byId('map'), "onLoad", function() { });
-		
+		dojo.connect(dijit.byId('map'), "onLoad", function() {
+		});
+	
 		printer = new esri.dijit.Print({
 			map: map,
 			url: //"http://servicesbeta4.esri.com/arcgis/rest/services/Utilities/ExportWebMap/GPServer/Export Web Map Task"
@@ -242,6 +245,11 @@ function prepare_map_when_extents_finished(a) {
 
 		MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function () {
 			loaded(true);
+			
+			map.graphics.onGraphicAdd = map.graphics.onGraphicsClear = function () {
+				isMapGraphicsEmpty(map.graphics.graphics.length);
+			};
+			
 			$('#SplashCloseBtn').button('reset');
 			
 			map.getLayer( map.layerIds[1] ).visibleLayers = [];
@@ -598,6 +606,10 @@ function jQueryReady() {
 			$('#measurePopoutPanel').dialog({width:250, title:"Measurement"});
 		});
 	});
+}
+
+function doClearMapGraphics() {
+	map.graphics.clear();
 }
 
 $(document).ready(jQueryReady);

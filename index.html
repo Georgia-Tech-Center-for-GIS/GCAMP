@@ -225,13 +225,16 @@
 						</div>
 						<div class='tab-pane' id='resultsPane' style='padding-left:1em;'>
 						</div>
-						<div class='tab-pane' id='identifyPaneSumm' style='padding-left: 1em; padding-right: 1em; height: 90%;'>
+						<div class='tab-pane' id='identifyPaneSumm' style='padding-left: 1em; padding-right: 1em; height: 85%;'>
 							<h2>Summary by Area</h2>
 						
 							<div style='margin-bottom: 1em;'> <strong> Click inside the box below to choose layers for query or press the &quot;Select Visible Layers&quot; button to
 							select layers visible on the map.</strong></div>
 							
-							<button class='btn' id='' data-bind='click: doActivateVisibleLayers' style='margin-bottom: 2em;'>Select visible layers</button>							
+							<div style='margin-bottom: 2em;'>
+								<i class='btn' data-bind='click: doActivateVisibleLayers'>Select visible layers</i>
+								<i class='btn' data-bind='click: doClearMapGraphics, visible: isMapGraphicsEmpty'> Clear Graphics </i>
+							</div>
 							
 							<select id='summarySelectList' data-bind="options: availableLayersSummary, selectedOptions: selectedLayersSummary, optionsValue: 'data', optionsText: 'label' " size="10" style='width: 250px;' multiple="multiple">
 							</select >
@@ -239,6 +242,11 @@
 							<!-- input id='kms' data-bind="kendoMultiSelect: { data: availableLayersSummary, value: selectedLayersSummary, dataTextField: 'label' }" ></input -->
 							
 							<div style='margin-bottom: 1em;'> <input type="checkbox" data-bind="checked: useDEMSummary" /> <b>Include DEM in query.</b> </div>					
+							
+							<div > <b>Vector Layers In-Progress: </b><span data-bind='text: vectorsToQuery'> </span> </div>
+							<div > <b>Raster Layers In-Progress: </b><span data-bind='text: rastersToQuery'> </span>	</div>
+							
+							<hr/>
 							
 							<div id="resultsContainer" class='scroll-pane' >
 							<ul data-bind="foreach: lastStatsFieldsSummaryAll">
@@ -291,10 +299,15 @@
 						</div>
 						<div class='tab-pane' id='identifyPane'style='padding-left: 1em; padding-right: 1em; height: 90%;'>
 							<h2>Identify</h2>
-							<div style='padding-bottom: 2em;'><i class='btn' data-bind='click: return_to_LayerList'> Return to Layer list </i></div>
+							<div style='padding-bottom: 2em;'>
+								<i class='btn' data-bind='click: return_to_LayerList'> Return to Layer list </i>
+								<i class='btn' data-bind='click: doClearMapGraphics, visible: isMapGraphicsEmpty'> Clear Graphics </i>
+							</div>
 							
 							<div style='height: 10%;'>
 								<p>Click on the map to identify map attributes for particular features.</p>
+								<div data-bind="visible: idInProgress" ><b>ID operation in progress... </b></div>
+								<div data-bind="visible: noIdResults" ><b>No Results to Show</b></div>
 								
 								<!--p>
 									<div>Identify Tolerance: </div>

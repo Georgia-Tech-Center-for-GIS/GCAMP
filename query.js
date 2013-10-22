@@ -52,8 +52,11 @@ function doTrimNumber(num) {
 var gp = null;
 var params = null;
 
+var idInProgress = ko.observable(false);
+var noIdResults = ko.observable(true);
+
 function doIdentify(evt) {
-	map.graphics.clear();
+	//map.graphics.clear();
 	lastIdResults.removeAll();
 	idViewModel.idOpenLayers = ko.observableArray();
 	
@@ -69,15 +72,25 @@ function doIdentify(evt) {
 	
 	identifyParams.layerIds = identifyParams.layerIds.sort();
 	
+	idInProgress(true);
+	
 	identifyTask.execute(identifyParams,
 		function (idResults) {
-		
-		if (idResults != null) {
-			console.debug(idResults);
+			idInProgress(false);
 			
-			addToMap(idResults, evt);
-		}
-	});
+			if (idResults != null && idResults.length > 0) {
+				noIdResults(false);
+
+				addToMap(idResults, evt);
+			}
+			else {
+				noIdResults(true);
+			}
+		},
+		function (err) {
+			idInProgress(false);
+			console.debug(err);
+		});
 }
 
 //lastIdResults.subscribe( function() { console.debug("CHANGED"); } );
@@ -288,6 +301,9 @@ function doActivateVisibleLayers() {
 	console.debug(newSelectedLayers);
 }
 
+var rastersToQuery = ko.observable(0);
+var vectorsToQuery = ko.observable(0);
+
 function doSummaryQuery(geom) {
 	var layersToQuery = []; //selectedLayersSummary();
 	
@@ -309,6 +325,16 @@ function doSummaryQuery(geom) {
 	
 	lastGeom = geom;
 	results_done_processed = false;
+	
+	//map.graphics.clear();
+	
+	var symbol = new esri.symbol.SimpleFillSymbol(
+		esri.symbol.SimpleFillSymbol.STYLE_SOLID,
+		new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([255, 255, 0]), 3),
+		new dojo.Color([255, 255, 0, 0.25]));
+
+	//map.setExtent(geom);
+	map.graphics.add(new esri.Graphic(geom, symbol));
 
 	try {
 		labelsUrls = [];
@@ -325,6 +351,7 @@ function doSummaryQuery(geom) {
 		summQry.outFields= ["*"];
 		
 		if(useDEMSummary) {
+			rastersToQuery( rastersToQuery() + 1);
 			queryRaster(geom, rasterLayerLocations[0].layerName, rasterLayerLocations[0].rasterLoc);
 		}
 		
@@ -336,6 +363,8 @@ function doSummaryQuery(geom) {
 			for(var ii = 1; ii < rasterLayerLocations.length; ii++) {			
 				if(layersToQuery[layerIndex].label.trim() == rasterLayerLocations[ii].layerName.trim()) {
 					isRaster = true;
+					
+					rastersToQuery( rastersToQuery() + 1);
 					queryRaster(geom,layersToQuery[layerIndex].label, rasterLayerLocations[ii].rasterLoc);
 				}
 			}
@@ -347,8 +376,15 @@ function doSummaryQuery(geom) {
 			lnames.push (layersToQuery[layerIndex].label);
 			console.debug(currUrl);
 			
+			vectorsToQuery( vectorsToQuery() + 1);
+			
 			var qt = new esri.tasks.QueryTask( currUrl );
-			qobjs.push(qt.execute(summQry)); /* , processSummaryResults)); */
+			qobjs.push(qt.execute(summQry, function(a) {
+				vectorsToQuery( vectorsToQuery() - 1);
+			}, function(e) {
+				alert("An error occurred querying "  + layersToQuery[layerIndex].label );
+				vectorsToQuery( vectorsToQuery() - 1);
+			})); /* , processSummaryResults)); */
 		}
 
 		require(["dojo/promise/all"], function(all){
@@ -372,13 +408,13 @@ function queryRaster(geom,label,location) {
 	try {
 		var gp_bathy = new esri.tasks.Geoprocessor("http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/SummImagery/GPServer/SummImagery");
 
-        map.graphics.clear();
+//        map.graphics.clear();
         
         var symbol = new esri.symbol.SimpleFillSymbol("none", new esri.symbol.SimpleLineSymbol("dashdot", new dojo.Color([255,0,0]), 2), new dojo.Color([255,255,0,0.25]));
         var graphic = new esri.Graphic(geom[0],symbol);
 
         map.graphics.add(graphic);
-		console.debug(graphic);
+//		console.debug(graphic);
 		
 		var features= [];
         features.push(graphic);
@@ -390,7 +426,7 @@ function queryRaster(geom,label,location) {
 		params.InputFeatures = featureSet;
 		params.InputRasterPath = location;
 		
-		console.debug(params);
+		//console.debug(params);
 		
         gp_bathy.execute(params, function(r, m) {
 			tempArray = lastStatsFieldsSummaryAllRaster();
@@ -404,12 +440,16 @@ function queryRaster(geom,label,location) {
 					count: ko.observable(doTrimNumber( r[0].value.features[0].attributes.AREA ) ) }])
 			});
 			
+			rastersToQuery( rastersToQuery() - 1);
+			
 			lastStatsFieldsSummaryAllRaster(tempArray);
+			
+			$('#resultsContainer').jScrollPane({verticalGutter: 0});
 		}, function(e) {
+			alert("An error occurred querying " + label);
 			console.log(e.stack);
+			rastersToQuery( rastersToQuery() - 1);
 		});
-		
-		$('#resultsContainer').jScrollPane({verticalGutter: 0});
 	}
 	catch( e) {
 		console.debug(e);
