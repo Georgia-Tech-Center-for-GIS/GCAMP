@@ -534,7 +534,7 @@ function processSummaryResults(all_results) {
 							
 				var geometryService = new esri.tasks.GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
 				
-				console.debug(feature.geometry.type);
+				//console.debug(feature.geometry.type);
 				
 				if (FieldsSummary.length == 0) {
 					FieldsSummary.push( {
@@ -546,7 +546,7 @@ function processSummaryResults(all_results) {
 						count: ko.observable(results.features.length) } );
 				}
 				else {
-					if(feature.geometry.type == "polygon") {
+					if(feature.geometry != null && feature.geometry.type == "polygon") {
 						pparams.geometries = lastGeom;
 						pparams.outSR = feature.geometry.spatialReference;
 						

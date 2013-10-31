@@ -176,6 +176,7 @@ function outputDistance(result) {
 }
 
 var isMapGraphicsEmpty = ko.observable(true);
+var timeLayerIds = ko.observableArray([]);
 
 function prepare_map_when_extents_finished(a) {
 		initialExtent = a[0];
@@ -186,6 +187,8 @@ function prepare_map_when_extents_finished(a) {
 		
 		dojo.connect(dijit.byId('map'), "onLoad", function() {
 		});
+		
+		map.setMapCursor("pointer");
 	
 		printer = new esri.dijit.Print({
 			map: map,
@@ -266,6 +269,7 @@ function prepare_map_when_extents_finished(a) {
 			//dojo.connect('onDrawEnd', measureEnd);
 			
 			$('#zoomInBtn').on('click', function(e) {
+				map.setMapCursor("url(images/zoom_in.cur),auto");
 				navToolbar.activate(esri.toolbars.Navigation.ZOOM_IN);
 			});
 
@@ -279,6 +283,8 @@ function prepare_map_when_extents_finished(a) {
 						
 			$('#allLayersLink').on('click', function(e) {
 				map.removeAllLayers();
+				viewModel.currentVisibleLayers.removeAll();
+				
 				MapSvcAllLayers = new CreateCollection("MapSvcList");
 				
 				MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
@@ -296,6 +302,8 @@ function prepare_map_when_extents_finished(a) {
 			
 			$('#energyLink').on('click', function(e) {
 				map.removeAllLayers();
+				viewModel.currentVisibleLayers.removeAll();
+				
 				MapSvcAllLayers = new CreateCollection("MapSvcList");
 				
 				MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
@@ -313,6 +321,8 @@ function prepare_map_when_extents_finished(a) {
 			
 			$('#habitatLink').on('click', function(e) {
 				map.removeAllLayers();
+				viewModel.currentVisibleLayers.removeAll();
+				
 				MapSvcAllLayers = new CreateCollection("MapSvcList");
 				
 				MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
@@ -330,6 +340,8 @@ function prepare_map_when_extents_finished(a) {
 			
 			$('#fisheriesLink').on('click', function(e) {
 				map.removeAllLayers();
+				viewModel.currentVisibleLayers.removeAll();
+				
 				MapSvcAllLayers = new CreateCollection("MapSvcList");
 								
 				MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
@@ -341,6 +353,21 @@ function prepare_map_when_extents_finished(a) {
 
 					init_layer_controls(map);
 					init_id_funct(map);
+					
+					timeLayerIds.removeAll();
+					
+					var l = map.getLayer( map.layerIds[2] );
+					for(var jjj = 0; jjj < l.layerInfos.length; jjj++) {
+						
+						if(l.layerInfos[jjj].subLayerIds != null) continue;
+
+						var fl = new esri.layers.ArcGISDynamicMapServiceLayer(l.url + "/" + jjj );//"http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/Fisheries/MapServer/11" );
+						//console.debug(fl);
+						
+						//if(fl.timeInfo != null) {
+							timeLayerIds.push({"id": jjj, "label": fl["name"]});
+						//}
+					}
 					
 					var timeExtent = new esri.TimeExtent();
 					timeExtent.startTime = new Date("1/1/2011 EST");
@@ -369,6 +396,7 @@ function prepare_map_when_extents_finished(a) {
 			});
 
 			$('#panBtn').on('click', function(e) {
+				map.setMapCursor("pointer");
 				navToolbar.activate(esri.toolbars.Navigation.PAN);
 			});
 			
@@ -550,7 +578,9 @@ function jQueryReady() {
 		
 		tabs = $('a[data-toggle="tab"]').on('shown', function (e) {
 			if( $(e.target).attr('href') == "#identifyPane") {
+				map.setMapCursor("url(images/id_cursor.cur),auto");
 				handleIdentify = dojo.connect(map, "onClick", doIdentify);
+				
 			}
 			else {
 
@@ -561,12 +591,7 @@ function jQueryReady() {
 			}
 			
 			if( $(e.target).attr('href') == "#identifyPaneSumm" ) {
-				if( multipleSelectSummary == null) {
-					multipleSelectSummary = $('#summarySelectList').multipleSelect().data();
-				}
-				
-				multipleSelectSummary.multipleSelect.refresh();
-				
+				resetSummaryPane();
 				drwToolbar.activate(esri.toolbars.Draw.POLYGON);
 
 				dojo.connect(drwToolbar, "onDrawEnd", function(geometry) {
@@ -606,6 +631,14 @@ function jQueryReady() {
 			$('#measurePopoutPanel').dialog({width:250, title:"Measurement"});
 		});
 	});
+}
+
+function resetSummaryPane() {
+	if( multipleSelectSummary == null) {
+		multipleSelectSummary = $('#summarySelectList').multipleSelect().data();
+	}
+	
+	multipleSelectSummary.multipleSelect.refresh();
 }
 
 function doClearMapGraphics() {

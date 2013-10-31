@@ -50,6 +50,8 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 			"isRaster" : false
 		};
 		
+		console.debug(mapLyr.url);
+		
 		lastIndex = id;
 
 		if(li.subLayerIds) {
@@ -97,6 +99,7 @@ function return_map_layers() {
 	//var mapLyrs = ko.observableArray();
 	
 	allMapLayers.removeAll();
+	availableLayersSummary.removeAll();
 	
 	for(var j = 0 ; j < map.layerIds.length; j++ ) {
 		var lyr = map.getLayer(map.layerIds[j]);
@@ -167,6 +170,8 @@ function return_map_layers() {
 				break;
 				
 				case 2:
+				console.debug(lyr.url);
+				
 				dojo.forEach( lyr.layerInfos, function (li, i) {
 					//console.debug( lyr.layerInfos);
 					
@@ -182,7 +187,9 @@ function return_map_layers() {
 							"children" : []
 						};
 
-						if(li.subLayerIds) {				
+						if(li.subLayerIds) {
+							console.debug (lyr.url);
+							
 							var retval = return_child_layers(lyr, map.layerIds[j], li);
 							dispLyr.children = dojo.clone(retval.childLayers);
 							lastIndex = retval.lastIndex;
@@ -369,8 +376,9 @@ function init_layer_controls(map) {
 			viewModel.currentVisibleLayers.push(newVal);
 		}
 	}
-			
+	
 	return_map_layers();
+	resetSummaryPane();
 }
 
 var qry = null;
