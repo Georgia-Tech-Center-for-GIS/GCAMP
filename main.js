@@ -57,6 +57,8 @@ var selectedNewMapSvc = ko.observable();
 
 var loaded = ko.observable();
 
+var timeSelValue = ko.observable();
+
 var mapSvrChoices = ko.observable(
 [
 	{id:1, mapLabel:"Raster Nautical Charts (RNC)",url:"http://egisws02.nos.noaa.gov/ArcGIS/rest/services/RNC/NOAA_RNC/MapServer"},
@@ -356,6 +358,47 @@ function prepare_map_when_extents_finished(a) {
 					
 					timeLayerIds.removeAll();
 					
+					require(["dojo/_base/xhr"],
+						function(xhr) {
+							xhr.get({
+								url: "TimeLayers.xml",
+								handleAs : "json",
+								load: function(result) {
+									console.debug(result);
+									
+									var l = map.getLayer( map.layerIds[2] );
+									console.debug(l);
+									
+									rr = result;
+									
+									for(var jjj = 0; jjj < result.length; jjj++ ){
+										timeLayerIds.push ( { "id" : result[jjj].id, "label" : l.layerInfos[ result[jjj].id ].name } );
+									}
+									
+									$('#timeSliderChoicesSelect').change( function() {
+										//$('#timeSliderChoicesSelect option:selected').each( function() {
+											var valToShow = timeSelValue();
+											var tLayerIds = timeLayerIds();
+											
+											console.debug(valToShow);
+											
+											for(var lll = 0; lll < tLayerIds.length; lll++) {											
+												if( viewModel.isVisibleLayer( map.layerIds[2], parseInt(tLayerIds[lll].id) ) ) {
+														viewModel.toggleVisibleLayer( { "mapLayerId" : map.layerIds[2], "esriLayer" : { id: parseInt(tLayerIds[lll].id) } } )
+													}
+											}
+											
+											viewModel.toggleVisibleLayer( { "mapLayerId" : map.layerIds[2], "esriLayer" : { id: parseInt(valToShow) } } )
+											l.refresh();
+											
+										//});
+									});
+								}
+							}
+						)}
+					);
+					
+					if(false) {
 					var l = map.getLayer( map.layerIds[2] );
 					for(var jjj = 0; jjj < l.layerInfos.length; jjj++) {
 						
@@ -367,6 +410,7 @@ function prepare_map_when_extents_finished(a) {
 						//if(fl.timeInfo != null) {
 							timeLayerIds.push({"id": jjj, "label": fl["name"]});
 						//}
+					}
 					}
 					
 					var timeExtent = new esri.TimeExtent();
@@ -392,7 +436,7 @@ function prepare_map_when_extents_finished(a) {
 
 					$('#timeSliderContainer').css('display', 'inline');
 					$('#timeSliderChoices').css('display', 'inline');
-				});			
+				});
 			});
 
 			$('#panBtn').on('click', function(e) {
@@ -440,6 +484,8 @@ function prepare_map_when_extents_finished(a) {
 					
 		esri.request(args);
 }
+
+var rr = null;
 
 function init() {
 	esriConfig.defaults.io.proxyUrl = "http://carto.gis.gatech.edu/proxypage_net/proxy.ashx";

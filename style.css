@@ -431,6 +431,13 @@ ul {
 	width: 575px;
 }
 
+#timeSliderChoicesSelect {
+	margin-top: 1em;
+	margin-left:1.5em;
+	position: relative;
+	width: 565px;
+}
+
 #resultsContainer {
 	height: 60%;
 }
@@ -468,3 +475,4 @@ ul {
 	display: inline;
 	margin-left: 10em;
 }
+

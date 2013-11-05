@@ -90,7 +90,7 @@
 					<div id='timeSliderContainer'>
 						<div id='timeSliderDiv' style='display:none;'></div>
 						<div id='timeSliderChoices' style='display:none;'>
-							<select id='timeSliderChoices' data-bind="options: timeLayerIds, optionsText: 'label', value: 'id'"> </select>
+							<select id='timeSliderChoicesSelect' data-bind="options: timeLayerIds, optionsText: 'label', optionsValue: 'id', value: timeSelValue"> </select>
 						</div>
 					</div>
 					<!-- <li> <a>Regulatory</a> </li> -->
@@ -407,10 +407,15 @@
 			<h3>Georgia Coastal Atlas</h3>
 		</div>
 		<div class="modal-body">
-			<p>Prepared by the Center of GIS at Georgia Tech for the Georgia Department of Natural Resources Coastal Resources Division</p>
+			<p>The Georgia Coastal and Marine Planner was created by the
+			Georgia Tech Center for GIS for the Georgia Department of Natural Resources
+			Coastal Management Program with funding provided by the National Oceanic and
+			Atmospheric Administration (NOAA). The Planner’s intended use is solely for planning
+			purposes and the GA Tech Center for GIS, DNR, and NOAA make no warranty,
+			representation, or guarantee to the accuracy or completeness of the content.</p>
 		</div>
 		<div class="modal-footer">
-			<a id='SplashCloseBtn' href="#" class="btn disabled" data-dismiss="modal" data-loading-text='Loading...'>Close</a>
+			<a id='SplashCloseBtn' href="#" class="btn disabled" data-dismiss="modal" data-loading-text='Loading...'>I Understand</a>
 		</div>
 	</div>
 	<div class="modal hide fade" id='metaError'>
