@@ -14,8 +14,8 @@ html, body {
 	overflow: hidden;
 }
 
-#wrap { height: 100%; min-height: 90%;}
-#main { height: 80%;  padding-bottom: 12%; }
+#wrap { }
+#main { padding-bottom: 12%; }
 
 #footer {
 	position: relative;
@@ -246,7 +246,7 @@ div {
 	padding-left: 0.5em;
 	
 	font-weight: bold;
-	font-size: 22pt;
+	font-size: 16pt;
 	font-family: "Trebuchet MS" sans-serif;
 }
 
@@ -326,10 +326,6 @@ a.attributeLink {
 	z-index: 5;
 }
 
-#map {
-	width: 100%;
-}
-
 .span6 {
 	margin-left: 0;
 	width: 34.5%;
@@ -383,7 +379,7 @@ ul {
 {
 	width: 100%;
 	height: 200px;
-	overflow: auto;
+	/*overflow: auto;*/
 }
 
 .attribRow {
@@ -415,7 +411,7 @@ ul {
 	position: absolute;
 	display: inline;
 	border: 1px solid gray;
-	border-radius: 10px;
+	/*border-radius: 10px;*/
 	
 	background-color: #EEEEEE;
 	padding: 0.3em;
@@ -454,14 +450,19 @@ ul {
 }
 
 #coordContainer {
-	position: absolute; z-index: 255; 
+	/*position: absolute; */
+	z-index: 255; 
+	/*left: 40%;
+	padding-left: 26.5%; */
 }
 
 #coordinates {
-	position: absolute;
-	right: -42em;
-	bottom: 2.5em;
-	width: 30em;
+	/*position: absolute;
+	right: -5em;
+	bottom: 3em;
+	width: 30em; */
+	float: right;
+	padding-top: 2%;
 }
 
 #measurementDiv {
@@ -473,6 +474,89 @@ ul {
 
 #measurementDiv .result {
 	display: inline;
-	margin-left: 10em;
+	margin-left: 7.5em;
 }
 
+#layersVisibList, .btn {
+	font-size: 10pt;
+}
+
+.accordion-inner {
+	margin:  2px;
+	padding: 2px;
+}
+
+.accordion-heading {
+	line-height: 2em;
+	font-size: 12pt;
+	padding-left: 1em;
+	white-space: nowrap;
+}
+
+.legendSwatch {
+	height: 14px;
+	width: 14px;
+}
+
+.legendSwatch img {
+	padding-top: 5px;
+}
+
+.noSidebar {
+	margin: 0px;
+	display: none;
+	width: 0px;
+}
+
+.yesSidebar {
+	float: left;
+	margin: 0px;
+	width: 30%;
+}
+
+.noSidebarMap {
+	margin: 0px;
+}
+
+.yesSidebarMap {
+	margin: 0px;
+	padding-left: 26.5%;
+}
+
+.onMapBtn {
+	width: 25px;
+}
+
+.onMapBtn span {
+	display: none;
+}
+
+.onMapBtn:hover {
+	width: 150px;
+}
+
+.onMapBtn:hover span {
+	display: block;
+}
+
+.tab-pane {
+	height: 100%;
+}
+
+.enlargedMapTool {
+	/*position: absolute;
+	margin-top: -15px;
+	
+	z-index: 500;
+	*/
+	padding-left: 3%;
+}
+
+.activeLayerTabStyle {
+	border-bottom: 5px solid gold;
+}
+
+#esriPrint a, .esriPrintout {
+	font-size: 14pt;
+	font-weight: bold;
+}

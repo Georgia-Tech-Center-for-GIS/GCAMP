@@ -38,6 +38,8 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 	
 	dojo.forEach( layerInfo.subLayerIds, function(id, k) {
 		var li = mapLyr.layerInfos[id];
+		var legendItems = viewModel.legendElements()[id];
+		
 		var dispLyr = {
 			"mapLayerId" : mapLyrId,
 			"seq" : id,
@@ -47,7 +49,8 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 			"children" : [],
 			"minScale" : li.minScale,
 			"maxScale" : li.maxScale,
-			"isRaster" : false
+			"isRaster" : false,
+			"legend" : legendItems
 		};
 		
 		console.debug(mapLyr.url);
@@ -171,40 +174,66 @@ function return_map_layers() {
 				
 				case 2:
 				console.debug(lyr.url);
+				soapURL = lyr.url.replace("rest/", "");
 				
-				dojo.forEach( lyr.layerInfos, function (li, i) {
-					//console.debug( lyr.layerInfos);
-					
-					if(i-1 < lastIndex) {
-					}
-					else {
-						var dispLyr = {
-							"mapLayerId" : map.layerIds[j],
-							"seq" : i,
-							"name": li.name,
-							"url" : lyr.url + "/" + i,
-							"esriLayer": li,
-							"children" : []
-						};
-
-						if(li.subLayerIds) {
-							console.debug (lyr.url);
-							
-							var retval = return_child_layers(lyr, map.layerIds[j], li);
-							dispLyr.children = dojo.clone(retval.childLayers);
-							lastIndex = retval.lastIndex;
-						}
-											
-						if(li.name == "Physical ") {
-							if(demLayer != null) {
-								dispLyr.children.push(demLayer);
-								demLayer = null;
-							}
+				esri.request({
+					url: "http://carto.gis.gatech.edu/ArcGISLegend/ArcGISLegend.Web/Legend.ashx",
+					handleAs : "json",
+					content : {
+						"soapURL": soapURL,
+						f: "json"
+					},
+					load : function(result) {		
+						var newResults = [];
+						
+						console.debug(result);
+						
+						for(var jjj = 0; jjj < result.layers.length; jjj++) {
+							newResults[ result.layers[jjj].layerId ] = result.layers[jjj].legend;
 						}
 						
-						allMapLayers.push(dispLyr);
+						console.debug(newResults);
+						
+						viewModel.legendElements(newResults);
+
+						dojo.forEach( lyr.layerInfos, function (li, i) {
+							//console.debug( lyr.layerInfos);
+							
+							if(i-1 < lastIndex) {
+							}
+							else {
+								console.debug(map.layerIds);
+								
+								var dispLyr = {
+									"mapLayerId" : map.layerIds[2],
+									"seq" : i,
+									"name": li.name,
+									"url" : lyr.url + "/" + i,
+									"esriLayer": li,
+									"children" : []
+								};
+
+								if(li.subLayerIds) {
+									console.debug (lyr.url);
+									
+									var retval = return_child_layers(lyr, map.layerIds[2], li);
+									dispLyr.children = dojo.clone(retval.childLayers);
+									lastIndex = retval.lastIndex;
+								}
+													
+								if(li.name == "Physical ") {
+									if(demLayer != null) {
+										dispLyr.children.push(demLayer);
+										demLayer = null;
+									}
+								}
+								
+								allMapLayers.push(dispLyr);
+							}
+					});
 					}
 				});
+				
 				break;
 				
 				default:
@@ -251,6 +280,7 @@ var lastMetadataLayerTitle = ko.observable();
 var viewModel = {
 	themes : ko.observableArray(),
 	currentVisibleLayers: ko.observableArray(),
+	legendElements: ko.observableArray(),
 	
 	isOpenTheme : function (a) {
 		var themeName = a;
@@ -271,7 +301,7 @@ var viewModel = {
 			viewModel.themes.push(themeName);
 		}
 		
-		var element = $('.scroll-pane').jScrollPane({verticalGutter: 0});
+		//var element = $('.scroll-pane').jScrollPane({verticalGutter: 0});
 		//var api = element.data('jsp');
 
 	},

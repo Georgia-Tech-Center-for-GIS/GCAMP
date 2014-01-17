@@ -74,6 +74,10 @@ var extents = [];
 	
 var initialExtent;
 
+var isSidebarVisible = ko.observable(true);
+var currTab = ko.observable("All Layers");
+var map_width = ko.observable("100%");
+
 var identifyTask, identifyParams, symbol;
 var geometryService = null;
 
@@ -245,11 +249,12 @@ function prepare_map_when_extents_finished(a) {
 		
 		MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
 		MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/CDEM/MapServer", ServiceType_Dynamic, map, null));
-		MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/coastal613/MapServer", ServiceType_Dynamic, map, null));
+		MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/GCAMP1213/MapServer", ServiceType_Dynamic, map, null));
 		//MapSvcAllLayers.add(new MapSvcDef("Test", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/MyMapService/MapServer", ServiceType_Dynamic, map, null));
 
 		MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function () {
 			loaded(true);
+			$("#button-close-intro").button("enabled");
 			
 			map.graphics.onGraphicAdd = map.graphics.onGraphicsClear = function () {
 				isMapGraphicsEmpty(map.graphics.graphics.length);
@@ -291,13 +296,14 @@ function prepare_map_when_extents_finished(a) {
 				
 				MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
 				MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/CDEM/MapServer", ServiceType_Dynamic, map, null));
-				MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/coastal613/MapServer", ServiceType_Dynamic, map, null));				
+				MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/GCAMP1213/MapServer", ServiceType_Dynamic, map, null));				
 				MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function() {
 					map.getLayer( map.layerIds[1] ).visibleLayers = [];
 					map.getLayer( map.layerIds[1] ).setVisibility(false);
 
 					init_layer_controls(map);
 					init_id_funct(map);
+					currTab("All Layers");
 				});
 				$('#timeSliderContainer').hide();
 			});
@@ -317,6 +323,7 @@ function prepare_map_when_extents_finished(a) {
 
 					init_layer_controls(map);
 					init_id_funct(map);
+					currTab("Energy");
 				});
 				$('#timeSliderContainer').hide();
 			});
@@ -336,6 +343,7 @@ function prepare_map_when_extents_finished(a) {
 
 					init_layer_controls(map);
 					init_id_funct(map);
+					currTab("Habitat");
 				});	
 				$('#timeSliderContainer').hide();
 			});
@@ -357,6 +365,8 @@ function prepare_map_when_extents_finished(a) {
 					init_id_funct(map);
 					
 					timeLayerIds.removeAll();
+					
+					currTab("Fisheries");
 					
 					require(["dojo/_base/xhr"],
 						function(xhr) {
@@ -455,11 +465,13 @@ function prepare_map_when_extents_finished(a) {
 			
 			createBasemapGallery();
 
-		var measurement = new esri.dijit.Measurement({
-			map: map
-		}, dojo.byId('measurementDiv'));
+			var measurement = new esri.dijit.Measurement({
+				map: map
+			}, dojo.byId('measurementDiv'));
 
-		measurement.startup();
+			measurement.startup();
+			
+			measurement.hideTool('location');
 			
 			legend.startup();
 			init_layer_controls(map);
@@ -608,7 +620,7 @@ var multipleSelectSummary = null;
 
 function jQueryReady() {
 	$(function() {
-		jpanes = $('.scroll-pane').jScrollPane({
+		/*jpanes = $('.scroll-pane').jScrollPane({
 			showArrows : true,
 			verticalArrowPositions: 'split',
 			horizontalArrowPositions: 'split',
@@ -620,7 +632,7 @@ function jQueryReady() {
 			scrollbarWidth: 250,
 			scrollbarHeight: 250,
 			autoReinitialise : true
-		});
+		});*/
 		
 		tabs = $('a[data-toggle="tab"]').on('shown', function (e) {
 			if( $(e.target).attr('href') == "#identifyPane") {
@@ -629,7 +641,7 @@ function jQueryReady() {
 				
 			}
 			else {
-
+				map.setMapCursor("default");
 				if(handleIdentify != null) {
 					dojo.disconnect(handleIdentify);
 					handleIdentify = null;
@@ -667,12 +679,31 @@ function jQueryReady() {
 			
 			//alert($(e.target).attr('href')) //e.target // activated tab
 			//e.relatedTarget // previous tab
-			$('.scroll-pane').jScrollPane();
+			//$('.scroll-pane').jScrollPane();
 		})
 	
-		$('#intro').modal();
-		$('#SplashCloseBtn').button('loading');
+		$('#intro').dialog({
+			modal: true,
+			buttons: [{
+				text: "I Understand",
+				id: "button-close-intro",
+				disabled: true,
+				click:
+					function () { 
+						$(this).dialog("close");
+				}
+				}],
+			close: function() {
+				map.resize();
+			},
+			title: "Georgia Coastal and Marine Planner",
+			resizable: false,
+			draggable: false,
+			closeOnEscape: false
+		});
 		
+		$('#SplashCloseBtn').button('loading');
+			
 		$('#meas').on('click', function(e) {
 			$('#measurePopoutPanel').dialog({width:250, title:"Measurement"});
 		});
@@ -689,6 +720,14 @@ function resetSummaryPane() {
 
 function doClearMapGraphics() {
 	map.graphics.clear();
+}
+
+function doLoadLegendElements(mapSvc) {
+}
+
+function doToggleSidebar() {
+	isSidebarVisible(!isSidebarVisible());
+	map.resize();
 }
 
 $(document).ready(jQueryReady);

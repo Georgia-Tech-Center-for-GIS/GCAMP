@@ -115,7 +115,7 @@ var idViewModel = {
 			idViewModel.idOpenLayers.push(themeName);
 		}
 		
-		$('.scroll-pane').jScrollPane({verticalGutter: 0});
+		//$('.scroll-pane').jScrollPane({verticalGutter: 0});
 	},
 	
 	zoomToFeature : function (a) {
@@ -236,7 +236,7 @@ function addToMap(idResults, evt) {
 		lastIdResults.push( factoredResults[j] );
 	}
 	
-	$('#resultsContainer').jScrollPane({verticalGutter: 0});
+	//$('#resultsContainer').jScrollPane({verticalGutter: 0});
 }
 
 function aaah(e){
@@ -444,7 +444,7 @@ function queryRaster(geom,label,location) {
 			
 			lastStatsFieldsSummaryAllRaster(tempArray);
 			
-			$('#resultsContainer').jScrollPane({verticalGutter: 0});
+			//$('#resultsContainer').jScrollPane({verticalGutter: 0});
 		}, function(e) {
 			alert("An error occurred querying " + label);
 			console.log(e.stack);
@@ -603,5 +603,5 @@ function processSummaryResults(all_results) {
 	
 	results_done_processed = true;
 	
-	$('#resultsContainer').jScrollPane({verticalGutter: 0});
+	//$('#resultsContainer').jScrollPane({verticalGutter: 0});
 }

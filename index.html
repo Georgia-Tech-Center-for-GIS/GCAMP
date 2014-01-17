@@ -17,8 +17,8 @@
 	<link rel="stylesheet" type="text/css" href="/kendo/styles/kendo.common.min.css"> </link>
 	<link rel="stylesheet" type="text/css" href="/kendo/styles/kendo.default.min.css"> </link>
 	
-	<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.7/js/dojo/dojox/layout/resources/ExpandoPane.css"/>
-    <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.7/js/esri/dijit/css/Popup.css" />
+	<!--link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.7/js/dojo/dojox/layout/resources/ExpandoPane.css"/>
+    <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.7/js/esri/dijit/css/Popup.css" /-->
 
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" > </link>
 	<link type="text/css" href="css/jquery.jscrollpane.css" rel="stylesheet" media="all" > </link>
@@ -26,6 +26,8 @@
 	
 	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"> </link>
 	<link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"> </link>
+	<link href="/bootstrap/css/bootstrap-combined.min.css" rel="stylesheet"> </link>
+
 	
 	<link rel="stylesheet" type="text/css" href="./css/marco_style.css"> </link>
     <link rel="stylesheet" type="text/css" href="style.css">  </link>
@@ -49,7 +51,7 @@
 
 		<!-- the jScrollPane script -->
 	<script type="text/javascript" src="script/jquery.mousewheel.js"></script>
-	<script type="text/javascript" src="script/jquery.jscrollpane.js"></script>
+	<!--script type="text/javascript" src="script/jquery.jscrollpane.js"></script-->
 	
 	<script type="text/javascript" src="script/jquery.multiple.select.js"></script>
 	
@@ -73,89 +75,74 @@
   </head> 
  
 <body class="tundra" style='margin-top: 0px;'>
-	<div id='wrap'>
-		<div id='header' style='padding-top: 20px;'>
-			<div id='BrandingPanel'>
-				<!--img src='http://georgia.gov/profiles/georgiagov/themes/gagov/logo.png' alt='Georgia.gov Logo'/-->
-				<span id='GABranding'>Georgia Coastal and Marine Planner</span>
-			</div>
-			
-			<div class='sidebar-nav'>
-				<ul class='nav nav-tabs'>
-					<li> <a id='allLayersLink'>All Layers</a> </li>
-					<li> <a id='energyLink' >Energy</a> </li>
-					<li> <a id='fisheriesLink'>Fisheries</a> </li>
-					<li> <a id='habitatLink'>Habitat</a> </li>
+	<div class='container-fluid'>
+		<div class='row-fluid' style='height: 3em;'>
+			<div class='span12'>
+				<div id='BrandingPanel'>
+					<!--img src='http://georgia.gov/profiles/georgiagov/themes/gagov/logo.png' alt='Georgia.gov LogoUntitled event'/-->
+					<span id='GABranding'>Georgia Coastal and Marine Planner</span>
+				</div>
 					
-					<div id='timeSliderContainer'>
-						<div id='timeSliderDiv' style='display:none;'></div>
-						<div id='timeSliderChoices' style='display:none;'>
-							<select id='timeSliderChoicesSelect' data-bind="options: timeLayerIds, optionsText: 'label', optionsValue: 'id', value: timeSelValue"> </select>
+				<div class='sidebar-nav'>
+					<ul class='nav nav-tabs'>
+						<li data-bind='css: { activeLayerTabStyle: (currTab()=="All Layers")}'>	<a id='allLayersLink'>All Layers</a> </li>
+						<li data-bind='css: { activeLayerTabStyle: (currTab()=="Energy")}'>		<a id='energyLink'>Energy</a> </li>
+						<li data-bind='css: { activeLayerTabStyle: (currTab()=="Fisheries")}'>	<a id='fisheriesLink'>Fisheries</a> </li>
+						<li data-bind='css: { activeLayerTabStyle: (currTab()=="Habitat")}'>	<a id='habitatLink'>Habitat</a> </li>
+						
+						<div id='timeSliderContainer'>
+							<div id='timeSliderDiv' style='display:none;'></div>
+							<div id='timeSliderChoices' style='display:none;'>
+								<select id='timeSliderChoicesSelect' data-bind="options: timeLayerIds, optionsText: 'label', optionsValue: 'id', value: timeSelValue"> </select>
+							</div>
 						</div>
-					</div>
-					<!-- <li> <a>Regulatory</a> </li> -->
-				</ul>
+						<!-- <li> <a>Regulatory</a> </li> -->
+					</ul>
+				</div>
 			</div>
 		</div>
-
-		<div id='main' class='container-fluid'>
-		<!--div class='row-fluid'-->
-			<div class='span6' id='LeftPanel' style='height: 100%;'>
-				<div style='height: 100%'>
-					<div>
-					<ul class='nav nav-tabs' id='myTab' style=''>
-						<li><a title='Pan Map' id='panBtn' href='#' class='btn'
-							data-bind='css: { currTool: true }'>
-							<i class='icon zoompan'></i></a></li>
-						<li><a title='Zoom In' id='zoomInBtn' href='#' class='btn'>
-							<i class='icon zoomInIcon'></i></a></li>
-						<li><a title='Zoom to Previous Extent' id='zoomPrevBtn' href='#'class='btn'>
-							<i class='icon zoomprevIcon'></i></a></li>
-						<li><a title='Zoom to Initial Extent' id='zoomFullExtBtn' href='#'class='btn'>
-							<i class='icon zoomfullextIcon'></i></a></li>
-						<li><div id='printButton'></div> </li>
-					</ul>
-					<ul class='nav nav-tabs nav-stacked' id='myTab' style='width: 48px; float: right;'>
-						<li class='active'><a title='Map Layers' href="#layersTab" data-toggle="tab" id='layerTabLink'>
-							<i class='icon Layers-icon'></i></a></li>
-						<li><a title='Basemaps' href="#basemapsTab" data-toggle="tab">
-							<i class='icon base-layer-icon'></i></a></li>
-						<li><a title='Add Map Services' href="#otherDataTab" data-toggle="tab">
-							<i class='icon open-maplayer-icon'></i></a></li>
-						<li><a title='Map Legend' href='#legendPane' data-toggle='tab'>
-							<i class='icon map-legend-icon'></i></a></li>
-						<li><a title='Identify Feature' href='#identifyPane' data-toggle='tab'>
-							<i class='icon Identify-results'></i></a></li>
-						<li><a title='Summary by Area' href='#identifyPaneSumm' data-toggle='tab'>
-							<i class='icon summaryIcon'></i></a></li>
-						<li><a title='' href='#metadataPane' id='mdtaLink' data-toggle='tab'>
-							<i class='icon metadataTabIcon'></i></a></li>
-					</ul>
-					</div>
-
-					<div class='tab-content' style='height: 100%;'>
-						<div class='tab-pane active' id="layersTab" style='padding-left:1em; height: 95%;'>
+		<div class='row-fluid' style='height: 50px;'>
+			<ul class='nav nav-tabs' id='myTab' data-bind='css :{ enlargedMapTool : !isSidebarVisible() } '>
+				<li><a title='Pan Map' id='panBtn' href='#' class='btn'
+					data-bind='css: { currTool: true }'>
+					<i class='icon zoompan'></i></a></li>
+				<li><a title='Zoom In' id='zoomInBtn' href='#' class='btn'>
+					<i class='icon zoomInIcon'></i></a></li>
+				<li><a title='Zoom to Previous Extent' id='zoomPrevBtn' href='#'class='btn'>
+					<i class='icon zoomprevIcon'></i></a></li>
+				<li><a title='Zoom to Initial Extent' id='zoomFullExtBtn' href='#'class='btn'>
+					<i class='icon zoomfullextIcon'></i></a></li>
+				<li><div id='printButton'></div> </li>
+			</ul>
+		</div>
+	</div>
+	<div class='container-fluid' style='height: 90%;' >
+		<div class='row-fluid' style='height: 90%;'>
+			<div class='span3' style='height: 100%;' data-bind='visible: isSidebarVisible()'>
+					<div class='tab-content' style='height:100%; overflow: hidden;'>
+						<div class='tab-pane active' id="layersTab" style='height: 100%;'>
 							<h2>Data Layers</h2>
 							<!--div data-bind="text: ly1.visibleLayers.length"></div-->
-							<div class='scroll-pane metadataPane' style='overflow: auto; height: 95%; width: 100%;'>
+							<div class='' style='height: 80%; overflow: auto;'>
 								<!--div class=' style='padding-right: 1em; height:100%; width: 100%;'-->
-									<div class='accordion' id='layersVisibList' data-bind="template: {name: 'layers_template', foreach: allMapLayers }">
-									</div>
+									<ul id='layersVisibList' data-bind="template: {name: 'layers_template', foreach: allMapLayers }"' style='width: 100%; list-style-type: none;'>
+									</ul>
 									
 									<script type="text/html" id="layers_template">
 										<!-- ko if: (children.length > 0) -->
+											<li>
 											<div class='accordion-heading' data-bind="click : viewModel.setOpenTheme , css:{'active': true}">
-												<div> <a class='accordion-toggle'>  <span data-bind='text: name'></span> </a> </div>
+												<div> <a >  <span data-bind='text: name'></span> </a> </div>
 											</div>
-											<div class='accordion-body collapse' data-bind="css: {'in': viewModel.isOpenTheme(name) }"
-													style='margin-left: 20px; overflow: auto;'>
-												<div class='scroll-pane' data-bind="template: {name: 'layers_template', foreach: children }" style='margin-right: 5px; width: 95%;'>
+											<div data-bind="style: {'display': (viewModel.isOpenTheme(name))? 'block' : 'none' }" style='padding-bottom: 10px; padding-left: 20px; padding-top: 10px;'>
+												<div class='' data-bind="template: {name: 'layers_template', foreach: children }" style=''>
 												</div>
 											</div>
+											</li>
 										<!-- /ko -->
 										<!-- ko if: (children.length == 0) -->
-											<div class='accordion-inner' style='width: 100%; scroll: auto;'>
-												<div class='btn-group btn-group-layer'>
+											<div>
+												<div class='btn-group btn-group-layer' style='width: 20em;'>
 													<span class='btn btn-layer' style='padding-top: 0px; margin: 0px;' data-bind='click: viewModel.toggleVisibleLayer'>
 														<i class='check icon-large icon-check'
 														data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq) "
@@ -166,13 +153,32 @@
 														style='padding: 4px; margin: 0px; width: 15px; background-image: url("images/glyphicons_153_unchecked.png"); background-position: 0 0;'>
 														</i>
 													</span>
+													<!-- ko if: legend != null && legend.length == 1 && viewModel.isVisibleLayer(mapLayerId,seq) -->
+														<span class='icon icon-large'
+															  data-bind="style : { backgroundImage: 'url(\'' + $data.legend[0].url + '\')' }"
+															  style='background-repeat: none; margin-top: -25px; margin-bottom: 0px; margin-left: -12px; margin-right: 10px;' >
+															  <!--span data-bind='text: $data.legend[0].url'>
+															  </span-->
+																<!--span class='icon-large' data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq), foreach: legend" style='font-size: 10pt; width: 15px;'>
+																	<span class='legendSwatch'><img data-bind="attr: { src: url } " style='width: 100%; height: 100%;'> </img> </span>
+																</span-->
+														</span>
+													<!-- /ko -->
 													<!--a class='btn btn-info-sign'><i class='icon-info-sign icon-large'></i> </a-->
 													<span class='btn btn-layer' data-bind='click:  dispMetadata' style='text-align: left;'><i class='icon Information-Icon'></i></span>
 													<span class='btn btn-layer' data-bind='visible: isRaster || minScale || maxScale' style='text-align:left;'>
 														<i data-bind='visible: isRaster' class='icon' style='padding: 0px; margin: 0px; height: 15px; width: 15px; background-position: 0 0; background-image: url("images/glyphicons_138_picture.png")'></i>
 														<i data-bind='visible: minScale || maxScale' class='icon' style='padding: 0px; margin: 0px; height: 15px; width: 15px; background-position: 0 0; background-image: url("images/glyphicons_137_cogwheels.png")'></i></span>
-													<span class='btn btn-layer' data-bind='text: name, click: dispAttribTable' style='text-align:left; min-width: 12em;'></span>
+													<div class='btn btn-layer' data-bind='text: name, click: dispAttribTable' style='text-align:left;'></div>
 												</div>
+												<!-- ko if: legend != null && legend.length > 1 -->
+												<div data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq), foreach: legend" style='font-size: 10pt;'>
+													<div>
+														<img data-bind="attr: { src: url } "/> 
+														<span data-bind="text: label"></span>
+													</div>
+												</div>
+												<!-- /ko -->
 											</div>
 										<!-- /ko -->
 									</script>
@@ -224,7 +230,7 @@
 						</div>
 						<div class='tab-pane' id='resultsPane' style='padding-left:1em;'>
 						</div>
-						<div class='tab-pane' id='identifyPaneSumm' style='padding-left: 1em; padding-right: 1em; height: 85%;'>
+						<div class='tab-pane' id='identifyPaneSumm' style='padding-left: 1em; padding-right: 1em; overflow: auto;'>
 							<h2>Summary by Area</h2>
 						
 							<div style='margin-bottom: 1em;'> <strong> Click inside the box below to choose layers for query or press the &quot;Select Visible Layers&quot; button to
@@ -247,7 +253,7 @@
 							
 							<hr/>
 							
-							<div id="resultsContainer" class='scroll-pane' >
+							<div id="resultsContainer" class='' style='width: 100%;' >
 							<ul data-bind="foreach: lastStatsFieldsSummaryAll">
 								<h3><span data-bind='text: label'> </span></h3>
 								<div data-bind='if: stats == null'> Not Found </div>
@@ -313,7 +319,7 @@
 									<div style='font-weight: bold;' data-bind="text: dispIDTolerance"></div>
 								</p-->
 							</div>
-							<div id='' class='scroll-pane' style='height: 85%; width: 75%; overflow: auto;'>
+							<div id='' class='scroll-pane' style='height: 85%; width: 95%; overflow: auto;'>
 									<!-- div id='idResultsList' -->
 									<div id='idResultsList' data-bind="foreach: lastIdResults">
 										<!-- h3 data-bind="text: $data[0].layerName"> </h3 -->
@@ -376,16 +382,34 @@
 							</div>
 						</div>
 					</div>
-				</div>
 			</div>
-			<div class='span9' id='MapPanel' style='height: 100%;'>
+			<div id='Menu' class='span1' data-bind='visible: isSidebarVisible()' style='margin-left: 5px; width: 48px'>
+				<ul class='nav nav-tabs nav-stacked' id='myTab'>
+					<li class='active'><a title='Map Layers' href="#layersTab" data-toggle="tab" id='layerTabLink'>
+						<i class='icon Layers-icon'></i></a></li>
+					<li><a title='Basemaps' href="#basemapsTab" data-toggle="tab">
+						<i class='icon base-layer-icon'></i></a></li>
+					<li><a title='Add Map Services' href="#otherDataTab" data-toggle="tab">
+						<i class='icon open-maplayer-icon'></i></a></li>
+					<!-- li><a title='Map Legend' href='#legendPane' data-toggle='tab'>
+						<i class='icon map-legend-icon'></i></a></li -->
+					<li><a title='Identify Feature' href='#identifyPane' data-toggle='tab'>
+						<i class='icon Identify-results'></i></a></li>
+					<li><a title='Summary by Area' href='#identifyPaneSumm' data-toggle='tab'>
+						<i class='icon summaryIcon'></i></a></li>
+					<li><a title='' href='#metadataPane' id='mdtaLink' data-toggle='tab'>
+						<i class='icon metadataTabIcon'></i></a></li>
+				</ul>
+			</div>
+			<div id='MapPanel' data-bind='css: { span8: isSidebarVisible(), span12: !isSidebarVisible()}, style: { width: (!isSidebarVisible())? "95%" : "69%" }' style='height: 100%;'>
+			<!-- data-bind='css: { noSidebarMap: (!isSidebarVisible()), yesSidebarMap: isSidebarVisible() } ' -->
 				<div style='position: absolute; top: 24px;'>
 					<!--a id='panBtn' href='#' class='btn'
 						data-bind='css: { currTool: true }'> Pan </a>
 					<a id='zoomInBtn' href='#' class='btn'> Zoom In </a> 
 					<a id='zoomPrevBtn' href='#'class='btn'> Zoom to Previous Extent</a-->
 				</div>
-				<div id="map" style='height:100%;'> </div>
+				<div id="map" style='height: 87.5%;'> </div>
 				<div style='position: absolute; top: 5px; z-index: 255; right: 2.5em;'>
 					<img src='http://carto.gis.gatech.edu/ga-logo_dnr_09.jpg' alt='Georgia DNR Logo' style='height: 75px; margin-left: 4em;' />
 					<img src='http://carto.gis.gatech.edu/CGIS_Logo_5.png' alt='Center for GIS Logo' style='height: 75px; margin-left: 4em;' />
@@ -395,28 +419,32 @@
 						Scale: <span data-bind='text: abs_map_scale'></span>
 						Lat: <span data-bind='text: map_y_coord'></span> Long: <span data-bind='text: map_x_coord'></span>
 					</div>
-					
 					<div id='measurementDiv'></div>
 				</div>
 			</div>
+			<div style='position: absolute; right: 5%; top: 15%;'>
+				<i class='btn onMapBtn' id='toggleSidebarBtn' data-bind='click: doToggleSidebar' > <i class='icon-layers icon-large icon-indent-right' style='float: left'></i> <span> Hide Left Sidebar </span> </i>
+			</div>
 		</div>
 	</div>
-	<div class="modal hide fade" id='intro'>
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			<h3>Georgia Coastal Atlas</h3>
-		</div>
-		<div class="modal-body">
-			<p>The Georgia Coastal and Marine Planner was created by the
+		<div class="dialog-confirm" id='intro'>
+			<div>The Georgia Coastal and Marine Planner was created by the
 			Georgia Tech Center for GIS for the Georgia Department of Natural Resources
 			Coastal Management Program with funding provided by the National Oceanic and
 			Atmospheric Administration (NOAA). The Planner’s intended use is solely for planning
 			purposes and the GA Tech Center for GIS, DNR, and NOAA make no warranty,
-			representation, or guarantee to the accuracy or completeness of the content.</p>
+			representation, or guarantee to the accuracy or completeness of the content.
+			</div>
+		<!--<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h3>Georgia Coastal Atlas</h3>
+		</div>
+		<div class="modal-body">
+			<p></p>
 		</div>
 		<div class="modal-footer">
 			<a id='SplashCloseBtn' href="#" class="btn disabled" data-dismiss="modal" data-loading-text='Loading...'>I Understand</a>
-		</div>
+		</div> -->
 	</div>
 	<div class="modal hide fade" id='metaError'>
 		<div class="modal-header">
