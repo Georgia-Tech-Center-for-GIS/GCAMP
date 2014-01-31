@@ -76,6 +76,10 @@ h3 {
 	display: inline-block;
 }
 
+.legendIcon {
+	width: 41px;
+}
+
 .Layers-icon {
 	background-image: url("images/Layers-icon.png");
 }
@@ -407,9 +411,10 @@ ul {
 }
 
 #timeSliderContainer {
-	top: 0.35em;
+	top: 1.5em;
+	right: 6em;
 	position: absolute;
-	display: inline;
+	
 	border: 1px solid gray;
 	/*border-radius: 10px;*/
 	
@@ -523,22 +528,6 @@ ul {
 	padding-left: 26.5%;
 }
 
-.onMapBtn {
-	width: 25px;
-}
-
-.onMapBtn span {
-	display: none;
-}
-
-.onMapBtn:hover {
-	width: 150px;
-}
-
-.onMapBtn:hover span {
-	display: block;
-}
-
 .tab-pane {
 	height: 100%;
 }
@@ -550,13 +539,49 @@ ul {
 	z-index: 500;
 	*/
 	padding-left: 3%;
+	display: none;
 }
 
 .activeLayerTabStyle {
 	border-bottom: 5px solid gold;
 }
 
+.activeLayerTabStyle a  {
+	background-color: #EEEEEE;
+}
+
 #esriPrint a, .esriPrintout {
 	font-size: 14pt;
 	font-weight: bold;
+}
+
+.esriPrint {
+	padding-top: 0px;
+}
+
+.nav-tabs {
+	border: 0;
+}
+
+.nav-tabs > li > a {
+	margin: 0px;
+	padding: 0px;
+	padding-left: 2px;
+	padding-right:2px;
+}
+
+.sidebar-nav .nav-tabs > li > a {
+	padding: 10px;
+}
+
+#logos {
+	position: absolute;
+	left: 30em;
+	top: 0em;
+	
+	margin-top: 22.5px;
+}
+
+.nav-tabs>.active>a, .nav-tabs>.active>a:hover, .nav-tabs>.active>a:focus {
+	background-color: #EEEEEE;
 }

@@ -57,7 +57,8 @@
 	
 	<script src="/bootstrap/js/bootstrap.min.js"></script>
 	<!-- script src="/kendo/js/kendo.web.min.js"></script -->
-	<script src='script/knockout-2.2.1.js'></script>
+	<script src='script/knockout-3.0.0.js'></script>
+	<script src='script/knockout-bindings.js'></script>
 	<!-- script src="/kendo/js/knockout-kendo.min.js"></script>
 	<script src="/kendo/js/kendo.multiselectbox.js"></script -->
 	
@@ -71,6 +72,7 @@
 	<script src='visibility.js'> </script>
 	<script src='query.js'> </script>
 	<script src='map.js'> </script>
+	<script src='print.js'> </script>
     <script src='main.js'> </script>
   </head> 
  
@@ -101,8 +103,28 @@
 				</div>
 			</div>
 		</div>
-		<div class='row-fluid' style='height: 50px;'>
-			<ul class='nav nav-tabs' id='myTab' data-bind='css :{ enlargedMapTool : !isSidebarVisible() } '>
+		<div class='row-fluid' style='height: 50px; margin-top: 2em;'>
+			<ul class='nav nav-tabs' id='myTab' data-bind='css :{ enlargedMapTool : !isSidebarVisible() } '
+				style='float: left; margin-right: 3em;'>
+				<li class='active'><a title='Map Layers' href="#layersTab" data-toggle="tab" id='layerTabLink'>
+					<i class='icon Layers-icon'></i></a></li>
+				<li><a title='Basemaps' href="#basemapsTab" data-toggle="tab">
+					<i class='icon base-layer-icon'></i></a></li>
+				<li><a title='Add Map Services' href="#otherDataTab" data-toggle="tab">
+					<i class='icon open-maplayer-icon'></i></a></li>
+				<!-- li><a title='Map Legend' href='#legendPane' data-toggle='tab'>
+					<i class='icon map-legend-icon'></i></a></li -->
+				<li><a title='Identify Feature' href='#identifyPane' data-toggle='tab'>
+					<i class='icon Identify-results'></i></a></li>
+				<li><a title='Summary by Area' href='#identifyPaneSumm' data-toggle='tab'>
+					<i class='icon summaryIcon'></i></a></li>
+				<li style='margin-right: 10px;'><a title='' href='#metadataPane' id='mdtaLink' data-toggle='tab'>
+					<i class='icon metadataTabIcon'></i></a></li>
+				<li>
+					<i class='btn' id='printDlgBtn' data-bind='click: doShowPrintDlg'><span>Print</span></i>
+				</li>
+			</ul>
+			<ul class='nav nav-tabs' data-bind='style: { marginLeft: (isSidebarVisible())? "0" : "2.5em" }'>
 				<li><a title='Pan Map' id='panBtn' href='#' class='btn'
 					data-bind='css: { currTool: true }'>
 					<i class='icon zoompan'></i></a></li>
@@ -112,8 +134,12 @@
 					<i class='icon zoomprevIcon'></i></a></li>
 				<li><a title='Zoom to Initial Extent' id='zoomFullExtBtn' href='#'class='btn'>
 					<i class='icon zoomfullextIcon'></i></a></li>
-				<li><div id='printButton'></div> </li>
+				<li>
+					<i class='btn onMapBtn' id='toggleSidebarBtn' data-bind='click: doToggleSidebar' style='padding-left: 5px; padding-right: 5px;' ><span> Hide Left Sidebar </span></i>
+				</li>
 			</ul>
+		</div>
+		<div id='Menu' class='row-fluid' data-bind='visible: isSidebarVisible()' style='margin-left: 5px;'>
 		</div>
 	</div>
 	<div class='container-fluid' style='height: 90%;' >
@@ -156,7 +182,7 @@
 													<!-- ko if: legend != null && legend.length == 1 && viewModel.isVisibleLayer(mapLayerId,seq) -->
 														<span class='icon icon-large'
 															  data-bind="style : { backgroundImage: 'url(\'' + $data.legend[0].url + '\')' }"
-															  style='background-repeat: none; margin-top: -25px; margin-bottom: 0px; margin-left: -12px; margin-right: 10px;' >
+															  style='background-repeat: none; margin-top: -25px; margin-bottom: 0px; margin-left: -12px; margin-right: 10px; width: 41px;' >
 															  <!--span data-bind='text: $data.legend[0].url'>
 															  </span-->
 																<!--span class='icon-large' data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq), foreach: legend" style='font-size: 10pt; width: 15px;'>
@@ -383,24 +409,6 @@
 						</div>
 					</div>
 			</div>
-			<div id='Menu' class='span1' data-bind='visible: isSidebarVisible()' style='margin-left: 5px; width: 48px'>
-				<ul class='nav nav-tabs nav-stacked' id='myTab'>
-					<li class='active'><a title='Map Layers' href="#layersTab" data-toggle="tab" id='layerTabLink'>
-						<i class='icon Layers-icon'></i></a></li>
-					<li><a title='Basemaps' href="#basemapsTab" data-toggle="tab">
-						<i class='icon base-layer-icon'></i></a></li>
-					<li><a title='Add Map Services' href="#otherDataTab" data-toggle="tab">
-						<i class='icon open-maplayer-icon'></i></a></li>
-					<!-- li><a title='Map Legend' href='#legendPane' data-toggle='tab'>
-						<i class='icon map-legend-icon'></i></a></li -->
-					<li><a title='Identify Feature' href='#identifyPane' data-toggle='tab'>
-						<i class='icon Identify-results'></i></a></li>
-					<li><a title='Summary by Area' href='#identifyPaneSumm' data-toggle='tab'>
-						<i class='icon summaryIcon'></i></a></li>
-					<li><a title='' href='#metadataPane' id='mdtaLink' data-toggle='tab'>
-						<i class='icon metadataTabIcon'></i></a></li>
-				</ul>
-			</div>
 			<div id='MapPanel' data-bind='css: { span8: isSidebarVisible(), span12: !isSidebarVisible()}, style: { width: (!isSidebarVisible())? "95%" : "69%" }' style='height: 100%;'>
 			<!-- data-bind='css: { noSidebarMap: (!isSidebarVisible()), yesSidebarMap: isSidebarVisible() } ' -->
 				<div style='position: absolute; top: 24px;'>
@@ -410,9 +418,9 @@
 					<a id='zoomPrevBtn' href='#'class='btn'> Zoom to Previous Extent</a-->
 				</div>
 				<div id="map" style='height: 87.5%;'> </div>
-				<div style='position: absolute; top: 5px; z-index: 255; right: 2.5em;'>
-					<img src='http://carto.gis.gatech.edu/ga-logo_dnr_09.jpg' alt='Georgia DNR Logo' style='height: 75px; margin-left: 4em;' />
-					<img src='http://carto.gis.gatech.edu/CGIS_Logo_5.png' alt='Center for GIS Logo' style='height: 75px; margin-left: 4em;' />
+				<div id='logos'>
+					<img src='http://carto.gis.gatech.edu/ga-logo_dnr_09.jpg' alt='Georgia DNR Logo' style='height: 55px; margin-left: 0em;' />
+					<img src='http://carto.gis.gatech.edu/CGIS_Logo_5.png' alt='Center for GIS Logo' style='height: 55px; margin-left: 0em;' />
 				</div>
 				<div id='coordContainer' style=''>
 					<div id='coordinates' class='button button-group'>
@@ -423,7 +431,6 @@
 				</div>
 			</div>
 			<div style='position: absolute; right: 5%; top: 15%;'>
-				<i class='btn onMapBtn' id='toggleSidebarBtn' data-bind='click: doToggleSidebar' > <i class='icon-layers icon-large icon-indent-right' style='float: left'></i> <span> Hide Left Sidebar </span> </i>
 			</div>
 		</div>
 	</div>
@@ -501,6 +508,90 @@
 				<!-- /ko -->
 			</tbody>
 		</table>
+	</div>
+	<div style="display: none; top: 200px; left: 644px;" id="printing-popover" class="popover fade left in ui-draggable">
+		<div class="arrow">
+		</div>
+		<div class="popover-inner" data-bind="">
+			<h3 class="popover-title">
+				Print/Export
+			</h3>
+			<div class="popover-content">
+				<div data-bind="">
+					<div class="row-fluid">
+						<div class="span6">
+							<strong>Format</strong>
+							<div class="control-group">
+								<label class="radio control-label">
+									<input type="radio" value="PDF" name="format" data-bind="checked: format">PDF
+								</label>
+								<label class="radio control-label">
+									<input type="radio" name="format" value="PNG32" checked="" data-bind="checked: format">PNG (32-bit)
+								</label>
+								<label class="radio control-label">
+									<input type="radio" name="format" value="JPG" data-bind="checked: format">JPG
+								</label>
+							   <!-- <label class="radio control-label">
+									<input type="radio" value=".tiff" name="format" data-bind="checked: format">Georeferenced TIFF
+								</label> -->
+
+							</div>
+							<strong>Options</strong>
+							<label class="checkbox">
+								<input type="checkbox" data-bind="checked: borderLess">Borderless Map
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" data-bind="checked: isSidebarVisible, disable: borderLess">Show Legend
+							</label>
+						</div>
+						<div class="span6">
+							<div class="well">
+								<fieldset data-bind="visible: format() !== 'PDF'" style="display: none;">
+									<strong>Image Size</strong>
+									<label>Width (<span data-bind="text: units">inches</span>)</label>
+									<span class="ui-spinner ui-widget ui-widget-content ui-corner-all">
+										<input type="text" class="spinner ui-spinner-input" data-bind="spinner: shotWidthDisplay, spinnerOptions: { step: 10 }" autocomplete="off" role="spinbutton" aria-valuenow="8.3"><a class="ui-spinner-button ui-spinner-up ui-corner-tr ui-button ui-widget ui-state-default ui-button-text-only" tabindex="-1" role="button" aria-disabled="false"><span class="ui-button-text"><span class="ui-icon ui-icon-triangle-1-n">▲</span></span></a><a class="ui-spinner-button ui-spinner-down ui-corner-br ui-button ui-widget ui-state-default ui-button-text-only" tabindex="-1" role="button" aria-disabled="false"><span class="ui-button-text">
+										<span class="ui-icon ui-icon-triangle-1-s">▼</span></span></a></span>
+									<label>Height (<span data-bind="text: units">inches</span>)</label>
+									<span class="ui-spinner ui-widget ui-widget-content ui-corner-all">
+										<input type="text" class="spinner ui-spinner-input" data-bind="spinner: shotHeightDisplay, spinnerOptions: { step: 10 }" autocomplete="off" role="spinbutton" aria-valuenow="8.5"><a class="ui-spinner-button ui-spinner-up ui-corner-tr ui-button ui-widget ui-state-default ui-button-text-only" tabindex="-1" role="button" aria-disabled="false"><span class="ui-button-text"><span class="ui-icon ui-icon-triangle-1-n">▲</span></span></a><a class="ui-spinner-button ui-spinner-down ui-corner-br ui-button ui-widget ui-state-default ui-button-text-only" tabindex="-1" role="button" aria-disabled="false"><span class="ui-button-text"><span class="ui-icon ui-icon-triangle-1-s">▼</span></span></a></span>
+									<label>Units</label>
+									<select class="span7" data-bind="value: units">
+										<option value="inches">inches</option>
+										<option value="pixels">pixels</option>
+									</select>
+								</fieldset>
+								<fieldset data-bind="visible: format() === 'PDF'">
+									<strong>Paper Size</strong>
+										<label class="radio control-label">
+											<input type="radio" name="paperSize" value="letter" data-bind="checked: paperSize">Letter (8.5" x 11")
+										</label>
+										<label class="radio control-label">
+											<input type="radio" name="paperSize" value="ledger" data-bind="checked: paperSize">Ledger (11" x 17")
+										</label>
+										<label class="radio control-label">
+											<input type="radio" name="paperSize" value="A4" data-bind="checked: paperSize">A4 (297mm x 210mm)
+										</label>
+										<label class="radio control-label">
+											<input type="radio" name="paperSize" value="A3" data-bind="checked: paperSize">A3 (420mm x 297mm)
+										</label>
+								</fieldset>
+							</div>
+						</div>
+					</div>
+					<fieldset>
+						<label><strong data-bind="css: { disabled: borderLess }" class="">Title</strong></label>
+						<input class="print-title" type="text" data-bind="value: mapPrintTitle, valueUpdate: 'afterkeydown', disable: borderLess" placeholder="Optional title for map...">
+					</fieldset>
+				</div>
+
+				<p class="pull-right">
+					<a class="btn" data-bind="click: printDlgCancel">cancel</a>
+					<button class="btn" data-bind="click: sendPrintJob">export</button>
+					</p><div class="clearfix"></div>
+				<p></p>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

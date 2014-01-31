@@ -195,7 +195,8 @@ function prepare_map_when_extents_finished(a) {
 		});
 		
 		map.setMapCursor("pointer");
-	
+
+		/*
 		printer = new esri.dijit.Print({
 			map: map,
 			url: //"http://servicesbeta4.esri.com/arcgis/rest/services/Utilities/ExportWebMap/GPServer/Export Web Map Task"
@@ -233,6 +234,7 @@ function prepare_map_when_extents_finished(a) {
 		}, dojo.byId("printButton"));
 		
 		printer.startup();
+		*/
 		
 		dojo.connect(map, "onMouseMove", showMouseCoordinates);
 		dojo.connect(map, "onMouseDrag", showMouseCoordinates);
@@ -728,6 +730,10 @@ function doLoadLegendElements(mapSvc) {
 function doToggleSidebar() {
 	isSidebarVisible(!isSidebarVisible());
 	map.resize();
+}
+
+function doShowPrintDlg() {
+	$("#printing-popover").show();
 }
 
 $(document).ready(jQueryReady);
