@@ -46,10 +46,25 @@
 		]};*/
 	</script> 
 
+		<script type="text/javascript" src="/jsPDF/jspdf.js"></script>
+		<script type="text/javascript" src="/jsPDF/libs/FileSaver.js/FileSaver.js"></script>
+		<script type="text/javascript" src="/jsPDF/libs/Blob.js/Blob.js"></script>
+		<script type="text/javascript" src="/jsPDF/libs/Blob.js/BlobBuilder.js"></script>
+
+		<script type="text/javascript" src="/jsPDF/libs/Deflate/deflate.js"></script>
+		<script type="text/javascript" src="/jsPDF/libs/Deflate/adler32cs.js"></script>
+
+		<script type="text/javascript" src="/jsPDF/jspdf.plugin.addimage.js"></script>
+		<script type="text/javascript" src="/jsPDF/jspdf.plugin.from_html.js"></script>
+		<script type="text/javascript" src="/jsPDF/jspdf.plugin.ie_below_9_shim.js"></script>
+		<script type="text/javascript" src="/jsPDF/jspdf.plugin.sillysvgrenderer.js"></script>
+		<script type="text/javascript" src="/jsPDF/jspdf.plugin.split_text_to_size.js"></script>
+		<script type="text/javascript" src="/jsPDF/jspdf.plugin.standard_fonts_metrics.js"></script>
+	
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 
-		<!-- the jScrollPane script -->
+	<!-- the jScrollPane script -->
 	<script type="text/javascript" src="script/jquery.mousewheel.js"></script>
 	<!--script type="text/javascript" src="script/jquery.jscrollpane.js"></script-->
 	
@@ -476,14 +491,14 @@
 					<tr>
 					<!-- ko foreach: lastAttribFields -->
 						<th>
-							<span data-bind='text: $data' ></span>
+							<span data-bind='text: $data.alias' ></span>
 						</th>
 					<!-- /ko -->
 					</tr>
 				<!-- ko foreach: lastAttribFeatures -->
 					<tr class='attribRow' data-bind='click: doAttribZoom'>
 						<!-- ko foreach: lastAttribFields -->
-							<td data-bind='text: $parent[$data] '></td>
+							<td data-bind='text: $parent[$data.name] '></td>
 						<!-- /ko -->
 					</tr>
 				<!-- /ko -->

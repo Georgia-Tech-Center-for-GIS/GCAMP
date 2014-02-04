@@ -76,6 +76,7 @@ function initAttributesLayerList() {
 var koNaN = ko.observable(Number.NaN);
 
 function getAttributesLayer (url) {
+	try {
 	lastAttribURL(url);
 	
 	lastAttribFeatures.removeAll();
@@ -97,7 +98,7 @@ function getAttributesLayer (url) {
 		
 		var fields = dojo.map(results.fields, function(field) {
 			if(field.alias != "FID")
-				lastAttribFields.push(field.alias);
+				lastAttribFields.push({"name" : field.name, "alias" : field.alias});
 				
 			if( field.type == "esriFieldTypeSingle" ||
 				field.type == "esriFieldTypeDouble" ||
@@ -122,7 +123,7 @@ function getAttributesLayer (url) {
 		var sfields = lastStatsFields.peek();
 		
 		var items = dojo.map(results.features, function(feature) {
-			console.debug(feature);
+			//console.debug(feature);
 			var a = dojo.clone(feature.attributes);
 			a["SHAPE"] = feature.geometry;
 			lastAttribFeatures.push(a);
@@ -205,7 +206,10 @@ function getAttributesLayer (url) {
 		grid.startup();
 		*/
 	});
-	
+	}
+	catch(eeeee) {
+		console.debug(eeeee);
+	}
 }
 
 function dispAttribTable(a) {

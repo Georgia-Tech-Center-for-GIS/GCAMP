@@ -70,6 +70,8 @@ function sendPrintJob() {
 	printInfo.then(function(r) {
 		var ptemplate = new esri.tasks.PrintTemplate();
 		
+		ptemplate.layout = "MAP_ONLY";
+		
 		if(format() == "PDF") {
 			switch(paperSize()) {
 				case "letter":	shotWidthDisplay(11 * dpi); shotHeightDisplay(8.5 * dpi);break;
