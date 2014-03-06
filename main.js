@@ -58,6 +58,7 @@ var selectedNewMapSvc = ko.observable();
 var loaded = ko.observable();
 
 var timeSelValue = ko.observable();
+var timeSliderVisible = ko.observable(false);
 
 var mapSvrChoices = ko.observable(
 [
@@ -250,8 +251,9 @@ function prepare_map_when_extents_finished(a) {
         //});
 		
 		MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
-		MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/CDEM/MapServer", ServiceType_Dynamic, map, null));
-		MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/GCAMP1213/MapServer", ServiceType_Dynamic, map, null));
+		MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/LidarCZM/MapServer", ServiceType_Dynamic, map, null));
+		MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/GCAMP314/MapServer", ServiceType_Dynamic, map, null));
+
 		//MapSvcAllLayers.add(new MapSvcDef("Test", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/MyMapService/MapServer", ServiceType_Dynamic, map, null));
 
 		MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function () {
@@ -297,7 +299,7 @@ function prepare_map_when_extents_finished(a) {
 				MapSvcAllLayers = new CreateCollection("MapSvcList");
 				
 				MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
-				MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/CDEM/MapServer", ServiceType_Dynamic, map, null));
+				MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/LidarCZM/MapServer", ServiceType_Dynamic, map, null));
 				MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/GCAMP1213/MapServer", ServiceType_Dynamic, map, null));				
 				MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function() {
 					map.getLayer( map.layerIds[1] ).visibleLayers = [];
@@ -307,7 +309,9 @@ function prepare_map_when_extents_finished(a) {
 					init_id_funct(map);
 					currTab("All Layers");
 				});
-				$('#timeSliderContainer').hide();
+				
+				//$('#timeSliderContainer').hide();
+				timeSliderVisible ( false );
 			});
 			
 			$('#energyLink').on('click', function(e) {
@@ -317,7 +321,7 @@ function prepare_map_when_extents_finished(a) {
 				MapSvcAllLayers = new CreateCollection("MapSvcList");
 				
 				MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
-				MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/CDEM/MapServer", ServiceType_Dynamic, map, null));
+				MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/LidarCZM/MapServer", ServiceType_Dynamic, map, null));
 				MapSvcAllLayers.add(new MapSvcDef("Energy", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/Energy/MapServer", ServiceType_Dynamic, map, null));				
 				MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function() {
 					map.getLayer( map.layerIds[1] ).visibleLayers = [];
@@ -327,7 +331,9 @@ function prepare_map_when_extents_finished(a) {
 					init_id_funct(map);
 					currTab("Energy");
 				});
-				$('#timeSliderContainer').hide();
+				
+				//$('#timeSliderContainer').hide();
+				timeSliderVisible ( false );
 			});
 			
 			$('#habitatLink').on('click', function(e) {
@@ -335,9 +341,9 @@ function prepare_map_when_extents_finished(a) {
 				viewModel.currentVisibleLayers.removeAll();
 				
 				MapSvcAllLayers = new CreateCollection("MapSvcList");
-				
+						
 				MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
-				MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/CDEM/MapServer", ServiceType_Dynamic, map, null));
+				MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/LidarCZM/MapServer", ServiceType_Dynamic, map, null));
 				MapSvcAllLayers.add(new MapSvcDef("Habitat", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/habitat/MapServer", ServiceType_Dynamic, map, null));				
 				MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function() {
 					map.getLayer( map.layerIds[1] ).visibleLayers = [];
@@ -347,7 +353,9 @@ function prepare_map_when_extents_finished(a) {
 					init_id_funct(map);
 					currTab("Habitat");
 				});	
-				$('#timeSliderContainer').hide();
+				
+				//$('#timeSliderContainer').hide();
+				timeSliderVisible ( false )
 			});
 			
 			$('#fisheriesLink').on('click', function(e) {
@@ -357,7 +365,7 @@ function prepare_map_when_extents_finished(a) {
 				MapSvcAllLayers = new CreateCollection("MapSvcList");
 								
 				MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
-				MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/CDEM/MapServer", ServiceType_Dynamic, map, null));
+				MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/LidarCZM/MapServer", ServiceType_Dynamic, map, null));
 				MapSvcAllLayers.add(new MapSvcDef("Fisheries", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/Fisheries/MapServer", ServiceType_Dynamic, map, null));				
 				MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function() {
 					map.getLayer( map.layerIds[1] ).visibleLayers = [];
@@ -394,7 +402,7 @@ function prepare_map_when_extents_finished(a) {
 											
 											console.debug(valToShow);
 											
-											for(var lll = 0; lll < tLayerIds.length; lll++) {											
+											for(var lll = 0; lll < tLayerIds.length; lll++) {
 												if( viewModel.isVisibleLayer( map.layerIds[2], parseInt(tLayerIds[lll].id) ) ) {
 														viewModel.toggleVisibleLayer( { "mapLayerId" : map.layerIds[2], "esriLayer" : { id: parseInt(tLayerIds[lll].id) } } )
 													}
@@ -437,7 +445,7 @@ function prepare_map_when_extents_finished(a) {
 					
 					map.setTimeSlider(timeSlider);
 					timeSlider.setThumbCount(2);
-										
+					
 					var layerTimeExtent = map.getLayer( map.layerIds[2] ).timeInfo.timeExtent;
 					layerTimeExtent.startTime = timeExtent.startTime;
 					timeSlider.createTimeStopsByTimeInterval(layerTimeExtent, 1, 'esriTimeUnitsMonths');
@@ -446,8 +454,9 @@ function prepare_map_when_extents_finished(a) {
 					timeSlider.setLabels(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]);
 					timeSlider.startup();
 
-					$('#timeSliderContainer').css('display', 'inline');
-					$('#timeSliderChoices').css('display', 'inline');
+					// $('#timeSliderContainer').css('display', 'inline');
+					// $('#timeSliderChoices').css('display', 'inline');
+					timeSliderVisible( true );
 				});
 			});
 

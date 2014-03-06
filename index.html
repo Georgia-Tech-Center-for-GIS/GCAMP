@@ -99,17 +99,12 @@
 					<!--img src='http://georgia.gov/profiles/georgiagov/themes/gagov/logo.png' alt='Georgia.gov LogoUntitled event'/-->
 					<span id='GABranding'>Georgia Coastal and Marine Planner</span>
 				</div>
-					
-				<div class='sidebar-nav'>
-					<ul class='nav nav-tabs'>
-						<li data-bind='css: { activeLayerTabStyle: (currTab()=="All Layers")}'>	<a id='allLayersLink'>All Layers</a> </li>
-						<li data-bind='css: { activeLayerTabStyle: (currTab()=="Energy")}'>		<a id='energyLink'>Energy</a> </li>
-						<li data-bind='css: { activeLayerTabStyle: (currTab()=="Fisheries")}'>	<a id='fisheriesLink'>Fisheries</a> </li>
-						<li data-bind='css: { activeLayerTabStyle: (currTab()=="Habitat")}'>	<a id='habitatLink'>Habitat</a> </li>
-						
-						<div id='timeSliderContainer'>
-							<div id='timeSliderDiv' style='display:none;'></div>
-							<div id='timeSliderChoices' style='display:none;'>
+
+				<div class='sidebar-nav' data-bind='css { spacerTimeVisible: timeSliderVisible(), spacerTimeInvisible: !timeSliderVisible() }'>
+					<ul>
+						<div id='timeSliderContainer' data-bind='visible: timeSliderVisible()'>
+							<div id='timeSliderDiv'></div>
+							<div id='timeSliderChoices' >
 								<select id='timeSliderChoicesSelect' data-bind="options: timeLayerIds, optionsText: 'label', optionsValue: 'id', value: timeSelValue"> </select>
 							</div>
 						</div>
@@ -118,17 +113,29 @@
 				</div>
 			</div>
 		</div>
-		<div class='row-fluid' style='height: 50px; margin-top: 2em;'>
+		
+	</div>
+	<hr/>
+	<div class='container-fluid'>
+		<div class='row-fluid'>
+			<ul class='nav nav-tabs'
+				style='margin-bottom: 0px; float: left; margin-right: 2.7em;'>
+				<li data-bind='css: { activeLayerTabStyle: (currTab()=="All Layers")}'>	<a id='allLayersLink' style='font-size: 16px;'>All Layers</a> </li>
+				<li data-bind='css: { activeLayerTabStyle: (currTab()=="Energy")}'>		<a id='energyLink'    style='font-size: 16px;'>Energy</a> </li>
+				<li data-bind='css: { activeLayerTabStyle: (currTab()=="Fisheries")}'>	<a id='fisheriesLink' style='font-size: 16px;'>Fisheries</a> </li>
+				<li data-bind='css: { activeLayerTabStyle: (currTab()=="Habitat")}'>	<a id='habitatLink'   style='font-size: 16px;'>Habitat</a> </li>
+			</ul>
+
 			<ul class='nav nav-tabs' id='myTab' data-bind='css :{ enlargedMapTool : !isSidebarVisible() } '
-				style='float: left; margin-right: 3em;'>
+				style='float: left; margin-bottom: 0px;'>
 				<li class='active'><a title='Map Layers' href="#layersTab" data-toggle="tab" id='layerTabLink'>
 					<i class='icon Layers-icon'></i></a></li>
 				<li><a title='Basemaps' href="#basemapsTab" data-toggle="tab">
 					<i class='icon base-layer-icon'></i></a></li>
 				<li><a title='Add Map Services' href="#otherDataTab" data-toggle="tab">
 					<i class='icon open-maplayer-icon'></i></a></li>
-				<!-- li><a title='Map Legend' href='#legendPane' data-toggle='tab'>
-					<i class='icon map-legend-icon'></i></a></li -->
+				<li><a title='Map Legend' href='#legendPane' data-toggle='tab'>
+					<i class='icon map-legend-icon'></i></a></li>
 				<li><a title='Identify Feature' href='#identifyPane' data-toggle='tab'>
 					<i class='icon Identify-results'></i></a></li>
 				<li><a title='Summary by Area' href='#identifyPaneSumm' data-toggle='tab'>
@@ -136,10 +143,11 @@
 				<li style='margin-right: 10px;'><a title='' href='#metadataPane' id='mdtaLink' data-toggle='tab'>
 					<i class='icon metadataTabIcon'></i></a></li>
 				<li>
-					<i class='btn' id='printDlgBtn' data-bind='click: doShowPrintDlg'><span>Print</span></i>
+					<a style='cursor: pointer;'><i class='icon printIcon' id='printDlgBtn' data-bind='click: doShowPrintDlg'></i></a>
 				</li>
 			</ul>
-			<ul class='nav nav-tabs' data-bind='style: { marginLeft: (isSidebarVisible())? "0" : "2.5em" }'>
+			<ul class='nav nav-tabs' data-bind='style: { marginLeft: (isSidebarVisible())? "0" : "2.5em" }'
+				style='margin-bottom: 0px;'>
 				<li><a title='Pan Map' id='panBtn' href='#' class='btn'
 					data-bind='css: { currTool: true }'>
 					<i class='icon zoompan'></i></a></li>
@@ -150,13 +158,14 @@
 				<li><a title='Zoom to Initial Extent' id='zoomFullExtBtn' href='#'class='btn'>
 					<i class='icon zoomfullextIcon'></i></a></li>
 				<li>
-					<i class='btn onMapBtn' id='toggleSidebarBtn' data-bind='click: doToggleSidebar' style='padding-left: 5px; padding-right: 5px;' ><span> Hide Left Sidebar </span></i>
+					<a title='Make Map Full-screen' style='cursor: pointer;'><i class='icon hideSidebarIcon' data-bind='click: doToggleSidebar'  ></i></a>
 				</li>
 			</ul>
 		</div>
 		<div id='Menu' class='row-fluid' data-bind='visible: isSidebarVisible()' style='margin-left: 5px;'>
 		</div>
 	</div>
+	<hr/>
 	<div class='container-fluid' style='height: 90%;' >
 		<div class='row-fluid' style='height: 90%;'>
 			<div class='span3' style='height: 100%;' data-bind='visible: isSidebarVisible()'>
@@ -194,7 +203,7 @@
 														style='padding: 4px; margin: 0px; width: 15px; background-image: url("images/glyphicons_153_unchecked.png"); background-position: 0 0;'>
 														</i>
 													</span>
-													<!-- ko if: legend != null && legend.length == 1 && viewModel.isVisibleLayer(mapLayerId,seq) -->
+													<!-- ko if: false --> <!-- legend != null && legend.length == 1 && viewModel.isVisibleLayer(mapLayerId,seq) -->
 														<span class='icon icon-large'
 															  data-bind="style : { backgroundImage: 'url(\'' + $data.legend[0].url + '\')' }"
 															  style='background-repeat: none; margin-top: -25px; margin-bottom: 0px; margin-left: -12px; margin-right: 10px; width: 41px;' >
@@ -208,12 +217,21 @@
 													<!--a class='btn btn-info-sign'><i class='icon-info-sign icon-large'></i> </a-->
 													<span class='btn btn-layer' data-bind='click:  dispMetadata' style='text-align: left;'><i class='icon Information-Icon'></i></span>
 													<span class='btn btn-layer' data-bind='visible: isRaster || minScale || maxScale' style='text-align:left;'>
-														<i data-bind='visible: isRaster' class='icon' style='padding: 0px; margin: 0px; height: 15px; width: 15px; background-position: 0 0; background-image: url("images/glyphicons_138_picture.png")'></i>
-														<i data-bind='visible: minScale || maxScale' class='icon' style='padding: 0px; margin: 0px; height: 15px; width: 15px; background-position: 0 0; background-image: url("images/glyphicons_137_cogwheels.png")'></i></span>
-													<div class='btn btn-layer' data-bind='text: name, click: dispAttribTable' style='text-align:left;'></div>
+														<!-- i data-bind='visible: isRaster' class='icon' style='padding: 0px; margin: 0 1px 0 1px; height: 15px; width: 15px; background-position: 0 0; background-image: url("images/glyphicons_138_picture.png"); background-size: 15px 15px;'></i-->
+														<i data-bind='visible: minScale || maxScale' class='icon' style='padding: 0px; margin: 0 1px 0 1px; height: 15px; width: 15px; background-position: 0 0; background-image: url("images/glyphicons_137_cogwheels.png"); background-size: 15px 15px;'></i>
+													</span>
+													<!-- ko if: !isRaster && !minScale && !maxScale -->
+														<div class='btn btn-layer' data-bind='text: name, click: dispAttribTable' style='text-align:left; min-width: 300px;'></div>
+													<!-- /ko -->
+													<!-- ko if: (isRaster || minScale || maxScale ) && !( isRaster &&  (minScale || maxScale)) -->
+														<div class='btn btn-layer' data-bind='text: name, click: dispAttribTable' style='text-align:left; min-width: 259px;'></div>
+													<!-- /ko -->
+													<!-- ko if: isRaster && (minScale || maxScale) -->
+														<div class='btn btn-layer' data-bind='text: name, click: dispAttribTable' style='text-align:left; min-width: 238px;'></div>
+													<!-- /ko -->
 												</div>
-												<!-- ko if: legend != null && legend.length > 1 -->
-												<div data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq), foreach: legend" style='font-size: 10pt;'>
+												<!-- ko if: legend != null -->
+												<div data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq), foreach: legend" style='font-size: 10pt; padding: .5em;'>
 													<div>
 														<img data-bind="attr: { src: url } "/> 
 														<span data-bind="text: label"></span>
@@ -267,7 +285,7 @@
 							<h2>Map Legend</h2>
 							<div style='padding-bottom: 2em;'><i class='btn' data-bind='click: return_to_LayerList'> Return to Layer list </i></div>
 
-							<div id='legendSection'></div>
+							<div id='legendSection' style='overflow: auto; height: 80%;'></div>
 						</div>
 						<div class='tab-pane' id='resultsPane' style='padding-left:1em;'>
 						</div>
@@ -433,9 +451,10 @@
 					<a id='zoomPrevBtn' href='#'class='btn'> Zoom to Previous Extent</a-->
 				</div>
 				<div id="map" style='height: 87.5%;'> </div>
-				<div id='logos'>
-					<img src='http://carto.gis.gatech.edu/ga-logo_dnr_09.jpg' alt='Georgia DNR Logo' style='height: 55px; margin-left: 0em;' />
-					<img src='http://carto.gis.gatech.edu/CGIS_Logo_5.png' alt='Center for GIS Logo' style='height: 55px; margin-left: 0em;' />
+				<div id='logos' data-bind='css{ logosTimeInvisible: !timeSliderVisible(), logosTimeVisible: timeSliderVisible() }'>
+					<img src='images/GDNRLogo_small.png' alt='Georgia DNR Logo' style='height: 55px; margin-right: .5em;' />
+					<img src='images/CGISLogo_small.png' alt='Center for GIS Logo' style='height: 40px; margin-right: .5em;' />
+					<img src='images/NOAA_small.png' alt='NOAA Logo' style='height: 55px; margin-right: .5em;' />
 				</div>
 				<div id='coordContainer' style=''>
 					<div id='coordinates' class='button button-group'>
@@ -450,12 +469,19 @@
 		</div>
 	</div>
 		<div class="dialog-confirm" id='intro'>
-			<div>The Georgia Coastal and Marine Planner was created by the
+				<div>
+					<img src='images/GDNRLogo_small.png' alt='Georgia DNR Logo' style='height: 40px; margin-right: .5em; float: left;' />
+					<img src='images/NOAA_small.png' alt='NOAA Logo' style='height: 40px; margin-right: .5em; float: left;' />
+					<img src='images/CGISLogo_small.png' alt='Center for GIS Logo' style='height: 35px; margin-right: .5em; float: clear;' />
+				</div>
+				<hr/>
+				<div>
+			<p>The Georgia Coastal and Marine Planner was created by the
 			Georgia Tech Center for GIS for the Georgia Department of Natural Resources
 			Coastal Management Program with funding provided by the National Oceanic and
 			Atmospheric Administration (NOAA). The Planner’s intended use is solely for planning
 			purposes and the GA Tech Center for GIS, DNR, and NOAA make no warranty,
-			representation, or guarantee to the accuracy or completeness of the content.
+			representation, or guarantee to the accuracy or completeness of the content.</p>
 			</div>
 		<!--<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -541,7 +567,7 @@
 									<input type="radio" value="PDF" name="format" data-bind="checked: format">PDF
 								</label>
 								<label class="radio control-label">
-									<input type="radio" name="format" value="PNG32" checked="" data-bind="checked: format">PNG (32-bit)
+									<input type="radio" name="format" value="PNG" checked="" data-bind="checked: format">PNG (32-bit)
 								</label>
 								<label class="radio control-label">
 									<input type="radio" name="format" value="JPG" data-bind="checked: format">JPG
@@ -555,8 +581,11 @@
 							<label class="checkbox">
 								<input type="checkbox" data-bind="checked: borderLess">Borderless Map
 							</label>
-							<label class="checkbox">
+							<!--label class="checkbox">
 								<input type="checkbox" data-bind="checked: isSidebarVisible, disable: borderLess">Show Legend
+							</label-->
+							<label class="checkbox">
+								<input type="checkbox" data-bind="checked: landscape">Landscape
 							</label>
 						</div>
 						<div class="span6">
@@ -582,7 +611,7 @@
 											<input type="radio" name="paperSize" value="letter" data-bind="checked: paperSize">Letter (8.5" x 11")
 										</label>
 										<label class="radio control-label">
-											<input type="radio" name="paperSize" value="ledger" data-bind="checked: paperSize">Ledger (11" x 17")
+											<input type="radio" name="paperSize" value="tabloid" data-bind="checked: paperSize">Tabloid (11" x 17")
 										</label>
 										<label class="radio control-label">
 											<input type="radio" name="paperSize" value="A4" data-bind="checked: paperSize">A4 (297mm x 210mm)

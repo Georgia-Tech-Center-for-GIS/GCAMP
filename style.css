@@ -14,6 +14,14 @@ html, body {
 	overflow: hidden;
 }
 
+hr {
+	margin: .5em;
+}
+
+h2 {
+	font-size: 22px;
+}
+
 #wrap { }
 #main { padding-bottom: 12%; }
 
@@ -70,10 +78,12 @@ h3 {
 }
 
 .icon {
-	width: 32px;
-	height:32px;
+	width: 20px;
+	height:20px;
 	font-size: 12pt;
 	display: inline-block;
+	
+	background-size: 20px 20px;
 }
 
 .legendIcon {
@@ -86,8 +96,6 @@ h3 {
 
 .Identify-results {
 	background-image: url("images/identify.gif");
-	height: 30px;
-	width : 30px;
 }
 
 .Information-Icon {
@@ -108,65 +116,50 @@ h3 {
 
 .map-legend-icon {
 	background-image: url("images/map-legend-icon.png");
-	width: 32px;
-	height:32px;
-	font-size: 12pt;
 }
 
 .zoomInIcon {
 	background-image: url("images/glyphicons_236_zoom_in.png");
-	width: 25px;
-	height:25px;
 }
 
 .zoomfullextIcon {
 	background-image: url("images/ga-icon.png");
-	width: 25px;
-	height:25px;
 }
 
 .metadataTabIcon {
 	background-image: url("images/glyphicons_039_notes.png");
-	width: 25px;
-	height:25px;
 }
 
 .zoomnextIcon {
 	background-image: url("images/forward.png");
-	width: 25px;
-	height:25px;
 }
 
 .zoomprevIcon {
 	background-image: url("images/glyphicons_216_circle_arrow_left.png");
-	width: 25px;
-	height:25px;
 }
 
 .zoompan {
 	background-image: url("images/glyphicons_186_move.png");
-	width: 25px;
-	height:25px;
 }
 
 .identify {
 	background-image: url("images/identify.png");
-	width: 25px;
-	height:25px;
 }
 
 .measureLine {
 	background-image: url("images/glyphicons_068_ruller.png");
-	background-repeat: no-repeat;
-	width: 25px;
-	height:25px;
 }
 
 .summaryIcon {
 	background-image: url("images/sigma.png");
-	background-repeat: no-repeat;
-	width: 25px;
-	height:25px;
+}
+
+.printIcon {
+	background-image: url("images/glyphicons_015_print.png");
+}
+
+.hideSidebarIcon {
+	background-image: url("images/glyphicons_370_globe_af.png");
 }
 
 div {
@@ -247,15 +240,14 @@ div {
 #GABranding {
 	color: #78ABB1;
 	
-	padding-left: 0.5em;
-	
 	font-weight: bold;
-	font-size: 16pt;
-	font-family: "Trebuchet MS" sans-serif;
+	font-size: 24pt;
 }
 
 #BrandingPanel {
-	height: 3em;
+	margin-top: 1em;
+	margin-bottom: 2em;
+	margin-left: .1em;
 }
 
 #MapSrvInfo .dijitButtonText, #MapSrvRemove .dijitButtonText, #MapSrvAdd .dijitButtonText {
@@ -411,7 +403,7 @@ ul {
 }
 
 #timeSliderContainer {
-	top: 1.5em;
+	top: 1em;
 	right: 6em;
 	position: absolute;
 	
@@ -420,6 +412,8 @@ ul {
 	
 	background-color: #EEEEEE;
 	padding: 0.3em;
+	
+	/*display: none;*/
 }
 
 #timeSliderDiv {
@@ -564,22 +558,36 @@ ul {
 }
 
 .nav-tabs > li > a {
-	margin: 0px;
+	margin: 0px 4px 0px 4px;
 	padding: 0px;
-	padding-left: 2px;
-	padding-right:2px;
 }
 
-.sidebar-nav .nav-tabs > li > a {
-	padding: 10px;
+.logosTimeVisible {
+	position: absolute;
+	left: 0em;
+	top: 50px;
+}
+
+.logosTimeInvisible {
+	position: absolute;
+	left: 0em;
+	top: 0em;
+	
+	margin-left: 600px;
 }
 
 #logos {
-	position: absolute;
-	left: 30em;
-	top: 0em;
-	
-	margin-top: 22.5px;
+	/*border: 1px solid black;*/
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.spacerTimeVisible {
+	height: 4em;
+}
+
+.spacerTimeInvisible {
+	height: 0;
 }
 
 .nav-tabs>.active>a, .nav-tabs>.active>a:hover, .nav-tabs>.active>a:focus {

@@ -73,12 +73,14 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 			console.debug(id);
 			console.debug(mapLyr);
 			console.debug(mapLyr.legendResponse);
-			
+					
 			var legendResp = mapLyr.legendResponse.layers[id];
 
-			console.debug(legendResp);
+			//console.debug(legendResp);
 			
-			if(legendResp.layerType.search("Feature") == -1) {
+			if(legendResp.layerType == "Raster Layer") {
+				console.debug(legendResp);
+				console.debug(legendResp.layerType);
 				dispLyr.isRaster = true;
 			}
 		}
