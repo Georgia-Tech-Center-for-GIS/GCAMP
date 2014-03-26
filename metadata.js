@@ -8,9 +8,16 @@ function dispMetadata(a) {
 			url: "http://carto.gis.gatech.edu/ViewerJSNew/metadata/" + a.name + ".xml",
 			handleAs: "xml",
 			load: function(data) {
-				var text = data.querySelector("abstract").textContent;
+			
+				var abstractText = data.querySelector("abstract").textContent;
+				var purposeText = data.querySelector("purpose").textContent;
+				var supplinf = data.querySelector("supplinf").textContent;
 				
-				lastMetadata (data.querySelector("abstract").textContent);
+				var links = data.querySelector("onlink").textContent;
+				
+				lastMetadataAbstract (abstractText);
+				lastMetadataPurpose (purposeText);
+				lastMetadataLinks ( links );
 				lastMetadataLayerTitle (a.name);
 				
 				$('#mdtaLink').tab('show');
