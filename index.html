@@ -426,13 +426,31 @@
 
 							<div class='tab-pane' id='metadataPane' style='padding-left:1em; height: 90%;'>
 								
-								<div class='accordion' id='infoAcc'>									
+								<div class='accordion' id='abstrAcc'>
 									<div class='accordion-heading'>
-										<a class='accordion-toggle' data-toggle='collapse' data-parent='#infoAcc' href='#infoAccCollapse2'>Metadata</a>
+										<a class='accordion-toggle' data-toggle='collapse' data-parent='#abstrAcc' href='#infoAccCollapse1'>Abstract</a>
+									</div>
+									<div class='collapse in' id='infoAccCollapse1' style='padding: 1em;'>
+										<div style='overflow: auto; height: 80%; width: 90%;' class='' data-bind='text: lastMetadataAbstract' id='metaAbstract'>
+										</div>
+									</div>
+								</div>
+								<div class='accordion' id='purposeAcc'>
+									<div class='accordion-heading'>
+										<a class='accordion-toggle' data-toggle='collapse' data-parent='#purposeAcc' href='#infoAccCollapse2'>Purpose</a>
 									</div>
 									<div class='collapse in' id='infoAccCollapse2' style='padding: 1em;'>
-										<div style='overflow: auto; height: 80%; width: 90%;' class='' data-bind='text: lastMetadata' id='metaArea'>
+										<div style='overflow: auto; height: 80%; width: 90%;' class='' data-bind='text: lastMetadataPurpose' id='metaPurpose'>
 										</div>
+									</div>
+								</div>
+								<div class='accordion' id='linkAcc'>
+									<div class='accordion-heading'>
+										<a class='accordion-toggle' data-toggle='collapse' data-parent='#linkAcc' href='#infoAccCollapse3'>Links</a>
+									</div>
+									<div class='collapse in' id='infoAccCollapse3' style='padding: 1em;'>
+										<a style='overflow: auto; height: 80%; width: 90%;' class='' data-bind='attr: {href: lastMetadataLinks }, text: lastMetadataLinks' id='metaLinks'>
+										</a>
 									</div>
 								</div>
 							</div>
