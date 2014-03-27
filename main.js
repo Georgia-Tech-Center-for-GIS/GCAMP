@@ -185,15 +185,24 @@ function outputDistance(result) {
 var isMapGraphicsEmpty = ko.observable(true);
 var timeLayerIds = ko.observableArray([]);
 
+require(["esri/map", "http://esri.github.io/bootstrap-map-js/src/js/bootstrapmap.js" ,"dojo/domReady!"],
+function(Map, BootstrapMap) {
+	map = BootstrapMap.create("map",{
+	  basemap:"oceans",
+	});
+});
+
 function prepare_map_when_extents_finished(a) {
 		initialExtent = a[0];
 		
-		map = new esri.Map("map", {
+		map.setExtent(initialExtent);
+		
+		/*map = new esri.Map("map", {
 				extent : initialExtent
 		});
 		
 		dojo.connect(dijit.byId('map'), "onLoad", function() {
-		});
+		});*/
 		
 		map.setMapCursor("pointer");
 
@@ -250,7 +259,7 @@ function prepare_map_when_extents_finished(a) {
 //		  geometryService.lengths(graphics);
         //});
 		
-		MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
+		//MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
 		MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/LidarCZM/MapServer", ServiceType_Dynamic, map, null));
 		MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/GCAMP314/MapServer", ServiceType_Dynamic, map, null));
 
