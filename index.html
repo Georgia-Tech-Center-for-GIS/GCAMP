@@ -457,20 +457,8 @@
 						</div>
 					</div>
 			</div>
-			<div id='MapPanel' data-bind='css: { span8: isSidebarVisible(), span12: !isSidebarVisible()}, style: { width: (!isSidebarVisible())? "95%" : "69%" }' style='height: 100%;'>
-			<!-- data-bind='css: { noSidebarMap: (!isSidebarVisible()), yesSidebarMap: isSidebarVisible() } ' -->
-				<div style='position: absolute; top: 24px;'>
-					<!--a id='panBtn' href='#' class='btn'
-						data-bind='css: { currTool: true }'> Pan </a>
-					<a id='zoomInBtn' href='#' class='btn'> Zoom In </a> 
-					<a id='zoomPrevBtn' href='#'class='btn'> Zoom to Previous Extent</a-->
-				</div>
-				<div id="map" style='height: 87.5%;'> </div>
-				<div id='logos' data-bind='css{ logosTimeInvisible: !timeSliderVisible(), logosTimeVisible: timeSliderVisible() }'>
-					<img src='images/GDNRLogo_small.png' alt='Georgia DNR Logo' style='height: 55px; margin-right: .5em;' />
-					<img src='images/CGISLogo_small.png' alt='Center for GIS Logo' style='height: 40px; margin-right: .5em;' />
-					<img src='images/NOAA_small.png' alt='NOAA Logo' style='height: 55px; margin-right: .5em;' />
-				</div>
+			<div class='container' data-bind='css: { span9: isSidebarVisible(), span12: !isSidebarVisible() }' style='height: 90%;'>
+				<div id="map" style='height: 100%;'> </div>
 				<div id='coordContainer' style=''>
 					<div id='coordinates' class='button button-group'>
 						Scale: <span data-bind='text: abs_map_scale'></span>
@@ -479,9 +467,16 @@
 					<div id='measurementDiv'></div>
 				</div>
 			</div>
-			<div style='position: absolute; right: 5%; top: 15%;'>
-			</div>
+			<!--div id='MapPanel' style='height: 100%;'>
+			<!-- data-bind='css: { noSidebarMap: (!isSidebarVisible()), yesSidebarMap: isSidebarVisible() } '>
+			</div -->
 		</div>
+		
+			<div id='logos' data-bind='css{ logosTimeInvisible: !timeSliderVisible(), logosTimeVisible: timeSliderVisible() }'>
+				<img src='images/GDNRLogo_small.png' alt='Georgia DNR Logo' style='height: 55px; margin-right: .5em;' />
+				<img src='images/CGISLogo_small.png' alt='Center for GIS Logo' style='height: 40px; margin-right: .5em;' />
+				<img src='images/NOAA_small.png' alt='NOAA Logo' style='height: 55px; margin-right: .5em;' />
+			</div>
 	</div>
 		<div class="dialog-confirm" id='intro'>
 				<div>
