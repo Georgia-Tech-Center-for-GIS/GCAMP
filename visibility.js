@@ -298,7 +298,9 @@ function return_map_layers() {
 }
 
 var xmlMeta;
-var lastMetadata = ko.observable();
+var lastMetadataAbstract = ko.observable();
+var lastMetadataPurpose  = ko.observable();
+var lastMetadataLinks    = ko.observable();
 var lastMetadataLayerTitle = ko.observable();
 
 var viewModel = {

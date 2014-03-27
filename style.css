@@ -445,9 +445,6 @@ ul {
 	z-index: 3000 !important;
 }
 
-#MapPanel {
-}
-
 #coordContainer {
 	/*position: absolute; */
 	z-index: 255; 
@@ -513,17 +510,12 @@ ul {
 	width: 30%;
 }
 
-.noSidebarMap {
-	margin: 0px;
-}
-
-.yesSidebarMap {
-	margin: 0px;
-	padding-left: 26.5%;
-}
-
 .tab-pane {
 	height: 100%;
+}
+
+#map {
+	height: 95% !important;
 }
 
 .enlargedMapTool {
