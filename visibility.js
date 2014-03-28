@@ -68,21 +68,14 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 			availableLayersSummary.push( {data: li.name + "|" + dispLyr.url, label: li.name } );
 		}
 		
-		try {
-			//console.debug(mapLyr);
-			console.debug(id);
-			console.debug(mapLyr);
-			console.debug(mapLyr.legendResponse);
-					
-			var legendResp = mapLyr.legendResponse.layers[id];
+		try {					
+			/*var legendResp = mapLyr.legendResponse.layers[id];
 
-			//console.debug(legendResp);
-			
 			if(legendResp.layerType == "Raster Layer") {
 				console.debug(legendResp);
 				console.debug(legendResp.layerType);
 				dispLyr.isRaster = true;
-			}
+			}*/
 		}
 		catch(e) {
 			console.debug(e);
@@ -105,6 +98,7 @@ function return_map_layers() {
 	
 	allMapLayers.removeAll();
 	availableLayersSummary.removeAll();
+	demLayer = null;
 	
 	for(var j = 0 ; j < map.layerIds.length; j++ ) {
 		var lyr = map.getLayer(map.layerIds[j]);
@@ -117,7 +111,7 @@ function return_map_layers() {
 		
 		//if(!lyr.isInstanceOf(esri.layers.ArcGISDynamicMapServiceLayer)) continue;
 		
-		if(lyr.isInstanceOf(esri.layers.ArcGISImageServiceLayer) == true) {
+/*		if(lyr.isInstanceOf(esri.layers.ArcGISImageServiceLayer) == true) {
 			continue;
 			
 			var d = {
@@ -125,7 +119,7 @@ function return_map_layers() {
 			};
 			dispLyrOuter.push(d);
 		}
-		else {
+		else */{
 			
 			switch(j) {
 				case 0:
@@ -134,8 +128,7 @@ function return_map_layers() {
 				case 1:
 				dispLyrOuter.name = "DEM";
 				console.debug(lyr.url);
-				soapURL = lyr.url.replace("rest/", "");
-				demLayer = null;
+				//soapURL = lyr.url.replace("rest/", "");
 				
 				esri.request({
 					url: lyr.url + "/legend",
@@ -151,51 +144,21 @@ function return_map_layers() {
 						}
 						
 						console.debug(newResults);
-						
 						viewModel.legendElements(newResults);
 			
-						dojo.forEach( lyr.layerInfos, function (li, i) {
-							if(i-1 < lastIndex) {
-							}
-							else {
-								var dispLyr = {
-									"mapLayerId" : map.layerIds[j],
-									"seq" : i,
-									"name": li.name,
-									"url" : lyr.url + "/" + i,
-									"esriLayer": li,
-									"children" : [],
-									"minScale" : li.minScale,
-									"maxScale" : li.maxScale,
-									"isRaster" : false,
-									"legend"   : viewModel.legendElements()[i]
-								};
-
-								if(li.subLayerIds) {				
-									var retval = return_child_layers(lyr, map.layerIds[j], li);
-									dispLyr.children = dojo.clone(retval.childLayers);
-									lastIndex = retval.lastIndex;
-								}
+						var dispLyr = {
+							"mapLayerId" : 0,
+							"seq" : i,
+							"name": "DEM",
+							"url" : lyr.url,
+							"esriLayer": 0,
+							"children" : [],
+							"isRaster" : true,
+							"legend"   : viewModel.legendElements[0]
+						};
 								
-								try {
-									var legendResp = mapLyr.legendResponse.layers[i];
-									console.debug(legendResp);
-									
-									if(legendResp.search("Feature") == -1) {
-										dispLyr.isRaster = true;
-									}
-								}
-								catch(e) {
-								}
-								
-								dispLyrOuter.children.push(dispLyr);
-								demLayer = dispLyr;
-							}
-						});
-						//demLayer.children[0].legend = viweModel.legendElements();
-						
-						//allMapLayers.push(dispLyrOuter);
-						//demLayer = dispLyrOuter;
+						dispLyrOuter.children.push(dispLyr);
+						demLayer = dispLyrOuter;
 					}
 				});
 				break;
@@ -204,11 +167,11 @@ function return_map_layers() {
 				console.debug(lyr.url);
 				soapURL = lyr.url.replace("rest/", "");
 				
-				/*esri.request({
-					url: "http://carto.gis.gatech.edu/ArcGISLegend/ArcGISLegend.Web/Legend.ashx",
+				esri.request({
+					url: lyr.url + "/legend",
 					handleAs : "json",
 					content : {
-						"soapURL": soapURL,
+						"soapUrl": lyr.url,
 						f: "json"
 					},
 					load : function(result) {
@@ -220,7 +183,7 @@ function return_map_layers() {
 							newResults[ result.layers[jjj].layerId ] = result.layers[jjj].legend;
 						}
 						
-						viewModel.legendElements(newResults);*/
+						viewModel.legendElements(newResults);
 
 						dojo.forEach( lyr.layerInfos, function (li, i) {
 							//console.debug( lyr.layerInfos);
@@ -243,18 +206,18 @@ function return_map_layers() {
 									lastIndex = retval.lastIndex;
 								}
 													
-								if(li.name == "Physical ") {
+								if(li.name.trim() == "Physical") {
 									if(demLayer != null) {
 										dispLyr.children.push(demLayer);
-										demLayer = null;
+										//demLayer = null;
 									}
 								}
 								
 								allMapLayers.push(dispLyr);
 							}
 					});
-					/*}
-				});*/
+					}
+				});
 				
 				break;
 				
