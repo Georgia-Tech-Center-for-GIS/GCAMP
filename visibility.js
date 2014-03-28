@@ -138,14 +138,11 @@ function return_map_layers() {
 				demLayer = null;
 				
 				esri.request({
-					url: "http://carto.gis.gatech.edu/ArcGISLegend/ArcGISLegend.Web/Legend.ashx",
-					handleAs : "json",
+					url: lyr.url + "/legend",
 					content : {
-						"soapURL": soapURL,
-						f: "json"
+						f: "JSON"
 					},
-					
-					load : function(result) {
+					load : function(result) {					
 						var newResults = [];
 						console.debug(result);
 						
@@ -192,12 +189,13 @@ function return_map_layers() {
 								}
 								
 								dispLyrOuter.children.push(dispLyr);
+								demLayer = dispLyr;
 							}
 						});
 						//demLayer.children[0].legend = viweModel.legendElements();
 						
-						allMapLayers.push(dispLyrOuter);
-						demLayer = dispLyrOuter;
+						//allMapLayers.push(dispLyrOuter);
+						//demLayer = dispLyrOuter;
 					}
 				});
 				break;
