@@ -143,7 +143,6 @@ function return_map_layers() {
 							newResults[ result.layers[jjj].layerId ] = result.layers[jjj].legend;
 						}
 						
-						console.debug(newResults);
 						viewModel.legendElements(newResults);
 			
 						var dispLyr = {
