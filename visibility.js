@@ -282,9 +282,6 @@ var viewModel = {
 	toggleVisibleLayer : function (a) {
 		var lyr = map.getLayer(a.mapLayerId);
 		
-		console.debug(a);
-		console.debug(lyr);
-		
 		if(lyr != null) {
 			var vl = lyr.visibleLayers;
 			var nl = [];
