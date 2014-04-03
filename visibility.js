@@ -192,7 +192,7 @@ function return_map_layers() {
 								}
 								
 								if(li.name.trim() == "Physical" && demLayer != null) {
-									dispLyr.children.unshift(demLayer);
+									dispLyr.children.push(demLayer);
 								}
 
 								

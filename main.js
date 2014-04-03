@@ -71,6 +71,8 @@ var mapSvrChoices = ko.observable(
 	{id:6, mapLabel:"Carto/Coast", url: "http://carto.gis.gatech.edu/ArcGIS/rest/services/coastal113/MapServer"}
 ]);
 
+var NOAA_NautChartURL = "http://egisws02.nos.noaa.gov/ArcGIS/rest/services/RNC/NOAA_RNC/MapServer";
+
 var extents = [];
 	
 var initialExtent;
@@ -178,6 +180,11 @@ function doMeasure(graphics) {
 	}
 }
 
+function hideDEMLayer() {
+	map.getLayer( map.layerIds[1] ).visibleLayers = [];
+	map.getLayer( map.layerIds[1] ).setVisibility(false);
+}
+
 function outputDistance(result) {
 	console.debug(result);
 }
@@ -261,6 +268,7 @@ function prepare_map_when_extents_finished(a) {
 		
 		//MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
 		MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/LidarCZM/MapServer", ServiceType_Dynamic, map, null));
+		//MapSvcAllLayers.add(new MapSvcDef("NauticalCharts", NOAA_NautChartURL, ServiceType_Tiled, map, null));
 		MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/GCAMP314/MapServer", ServiceType_Dynamic, map, null));
 
 		//MapSvcAllLayers.add(new MapSvcDef("Test", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/MyMapService/MapServer", ServiceType_Dynamic, map, null));
@@ -275,8 +283,7 @@ function prepare_map_when_extents_finished(a) {
 			
 			$('#SplashCloseBtn').button('reset');
 			
-			map.getLayer( map.layerIds[1] ).visibleLayers = [];
-			map.getLayer( map.layerIds[1] ).setVisibility(false);
+			hideDEMLayer();
 
 			ko.applyBindings();
 			
