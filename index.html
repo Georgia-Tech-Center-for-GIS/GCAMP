@@ -205,7 +205,7 @@
 													</span>
 													<!-- ko if: false --> <!-- legend != null && legend.length == 1 && viewModel.isVisibleLayer(mapLayerId,seq) -->
 														<span class='icon icon-large'
-															  data-bind="style : { backgroundImage: 'url(\'' + $data.legend[0].url + '\')' }"
+															  data-bind="style : { backgroundImage: 'url(data: legend.contentType,legend.imageData)' }"
 															  style='background-repeat: none; margin-top: -25px; margin-bottom: 0px; margin-left: -12px; width: 41px;' >
 															  <!--span data-bind='text: $data.legend[0].url'>
 															  </span-->
@@ -230,7 +230,7 @@
 												<!-- ko if: legend != null -->
 												<div data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq), foreach: legend" style='font-size: 10pt; padding: .5em;'>
 													<div>
-														<img data-bind="attr: { src: url } "/> 
+														<img data-bind="attr: { src: 'data:'+contentType+';base64,'+imageData } "/> 
 														<span data-bind="text: label"></span>
 													</div>
 												</div>
