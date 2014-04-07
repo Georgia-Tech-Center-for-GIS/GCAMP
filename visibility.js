@@ -112,6 +112,7 @@ function return_map_layers() {
 		
 		switch(j) {
 			case 1:
+			//case 2:
 			dispLyrOuter.name = "DEM";
 			DEMURL = lyr.url;
 			DEM_ESRI = lyr;
