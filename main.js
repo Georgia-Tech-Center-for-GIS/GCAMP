@@ -32,6 +32,7 @@ dojo.require("esri.toolbars.navigation");
 dojo.require("dojo.number");
 
 dojo.require("dijit.form.Select");
+dojo.require("dijit.form.HorizontalSlider");
 
 dojo.require("dojox.layout.ContentPane");
 
@@ -199,6 +200,31 @@ function(Map, BootstrapMap) {
 	});
 });
 
+var opacityControl = null;
+
+function addOpacityControl() {
+    var targetElem = dojo.byId("RNC_opacity_control");
+    var sliderElem = dojo.create("div", {id: "RNC_opacity_control_slider"}, targetElem, "first");
+	
+	var dynamicLayer = map.getLayer("NauticalCharts");
+	
+    opacityControl = new dijit.form.HorizontalSlider({
+        name: "slider",
+        value: 1,
+        minimum: 0,
+        maximum: 1,
+        showButtons: true,
+        intermediateChanges: true,
+        style: "width: 250px; margin-right: auto; margin-left: auto;",
+        onChange: function(value) {
+            dynamicLayer.setOpacity(value);
+            // Refresh seems to be required for IE:
+            dynamicLayer.refresh();
+        }
+    }, "opacity_slider");
+    opacityControl.startup();
+}
+
 function prepare_map_when_extents_finished(a) {
 		initialExtent = a[0];
 		
@@ -268,13 +294,14 @@ function prepare_map_when_extents_finished(a) {
 		
 		//MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
 		MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/LidarCZM/MapServer", ServiceType_Dynamic, map, null));
-		//MapSvcAllLayers.add(new MapSvcDef("NauticalCharts", NOAA_NautChartURL, ServiceType_Tiled, map, null));
+		MapSvcAllLayers.add(new MapSvcDef("NauticalCharts", NOAA_NautChartURL, ServiceType_Dynamic, map, null));
 		MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/GCAMP314/MapServer", ServiceType_Dynamic, map, null));
 
 		//MapSvcAllLayers.add(new MapSvcDef("Test", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/MyMapService/MapServer", ServiceType_Dynamic, map, null));
 
 		MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function () {
 			loaded(true);
+			
 			$("#button-close-intro").button("enabled");
 			
 			map.graphics.onGraphicAdd = map.graphics.onGraphicsClear = function () {
@@ -307,6 +334,8 @@ function prepare_map_when_extents_finished(a) {
 			$('#zoomFullExtBtn').on('click', function(e) {
 				fullExtent();
 			});
+			
+			addOpacityControl();
 						
 			$('#allLayersLink').on('click', function(e) {
 				map.removeAllLayers();
@@ -498,13 +527,14 @@ function prepare_map_when_extents_finished(a) {
 				map: map
 			}, dojo.byId('measurementDiv'));
 
-			measurement.startup();
-			
+			measurement.startup();			
 			measurement.hideTool('location');
 			
 			legend.startup();
 			init_layer_controls(map);
 			init_id_funct(map);
+			
+//			addLayerToMap(NOAA_NautChartURL, "NOAA Nautical Charts");
 		});
 			
 		var args = {

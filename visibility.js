@@ -111,8 +111,11 @@ function return_map_layers() {
 		};
 		
 		switch(j) {
+			case 0:
+			break;
+			
 			case 1:
-			//case 2:
+			case 2:
 			dispLyrOuter.name = "DEM";
 			DEMURL = lyr.url;
 			DEM_ESRI = lyr;
@@ -148,7 +151,7 @@ function return_map_layers() {
 			
 			break;
 			
-			case 2:
+			case 3:
 			console.debug(lyr.url);
 			soapURL = lyr.url.replace("rest/", "");
 			
@@ -176,7 +179,7 @@ function return_map_layers() {
 							if(i-1 >= lastIndex) {
 						
 							var dispLyr = {
-								"mapLayerId" : map.layerIds[2],
+								"mapLayerId" : map.layerIds[j],
 								"seq" : i,
 								"name": li.name,
 								"url" : lyr.url + "/" + i,
@@ -187,7 +190,7 @@ function return_map_layers() {
 							if(li.subLayerIds) {
 								dispLyr.children = [];
 								
-								var retval = return_child_layers(lyr, map.layerIds[2], li);
+								var retval = return_child_layers(lyr, map.layerIds[3], li);
 									dispLyr.children = dojo.clone(retval.childLayers);
 									lastIndex = retval.lastIndex;
 								}
@@ -223,8 +226,6 @@ function return_map_layers() {
 						"esriLayer": li,
 						"children" : []
 					};
-					
-					console.debug(dispLyr);
 
 					if(li.subLayerIds) {				
 						var retval = return_child_layers(lyr, map.layerIds[j], li);
@@ -335,9 +336,6 @@ var viewModel = {
 	
 	isVisibleLayer : function(a,b) {
 		try {			
-			console.debug(a);
-			console.debug(b);
-			
 			var visibleArray = viewModel.currentVisibleLayers();
 			var vl = visibleArray.filter( function( i) {
 				if(i.mapLyr == a) return true;

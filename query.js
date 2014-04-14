@@ -68,7 +68,7 @@ function doIdentify(evt) {
 	
     identifyParams.geometry = queryExtent.centerAt(centerPoint);
 	identifyParams.mapExtent = map.extent;
-	identifyParams.layerIds = /*[0]; / */ viewModel.currentVisibleLayers.peek()[2].vlayers;
+	identifyParams.layerIds = /*[0]; / */ viewModel.currentVisibleLayers.peek()[3].vlayers;
 	
 	identifyParams.layerIds = identifyParams.layerIds.sort();
 	
@@ -197,7 +197,7 @@ function addToMap(idResults, evt) {
 		
 		try {
 		if( layerName == "") {
-			var ly1 = map.getLayer( map.layerIds[2] );
+			var ly1 = map.getLayer( map.layerIds[3] );
 			layerName = ly1.layerInfos[ idResults[i].layerId ].name + " (Raster)";
 			idResults[i].layerName = layerName;
 		}
@@ -281,7 +281,7 @@ var useDEMSummary = true;
 function doActivateVisibleLayers() {
 	//selectedLayersSummary.removeAll();
 	
-	var mapLayer = map.getLayer( map.layerIds[2] );
+	var mapLayer = map.getLayer( map.layerIds[3] );
 	var vLayers = mapLayer.visibleLayers;
 	
 	var newSelectedLayers = [];
