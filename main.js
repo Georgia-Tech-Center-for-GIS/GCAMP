@@ -204,25 +204,20 @@ var opacityControl = null;
 
 function addOpacityControl() {
     var targetElem = dojo.byId("RNC_opacity_control");
-    var sliderElem = dojo.create("div", {id: "RNC_opacity_control_slider"}, targetElem, "first");
+    //var sliderElem = dojo.create("div", {id: "RNC_opacity_control_slider"}, targetElem, "first");
 	
 	var dynamicLayer = map.getLayer("NauticalCharts");
+	dynamicLayer.setOpacity( 0 );
 	
-    opacityControl = new dijit.form.HorizontalSlider({
-        name: "slider",
-        value: 1,
-        minimum: 0,
-        maximum: 1,
-        showButtons: true,
-        intermediateChanges: true,
-        style: "width: 250px; margin-right: auto; margin-left: auto;",
-        onChange: function(value) {
-            dynamicLayer.setOpacity(value);
-            // Refresh seems to be required for IE:
-            dynamicLayer.refresh();
-        }
-    }, "opacity_slider");
-    opacityControl.startup();
+	$("#RNC_opacity_control").slider({
+		value: 0,
+		min: 0,
+		max: 1,
+		step: 0.05,
+		slide: function(ev, ui) {
+			dynamicLayer.setOpacity( ui.value );
+		}
+	});
 }
 
 function prepare_map_when_extents_finished(a) {
