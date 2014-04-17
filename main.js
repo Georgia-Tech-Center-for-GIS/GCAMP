@@ -384,7 +384,7 @@ function prepare_map_when_extents_finished(a) {
 								url: "TimeLayers.xml",
 								handleAs : "json",
 								load: function(result) {							
-									var l = map.getLayer( map.layerIds[2] );
+									var l = map.getLayer( map.layerIds[3] );
 									console.debug(l);
 									
 									rr = result;
@@ -401,12 +401,12 @@ function prepare_map_when_extents_finished(a) {
 											console.debug(valToShow);
 											
 											for(var lll = 0; lll < tLayerIds.length; lll++) {
-												if( viewModel.isVisibleLayer( map.layerIds[2], parseInt(tLayerIds[lll].id) ) ) {
-														viewModel.toggleVisibleLayer( { "mapLayerId" : map.layerIds[2], "esriLayer" : { id: parseInt(tLayerIds[lll].id) } } )
+												if( viewModel.isVisibleLayer( map.layerIds[3], parseInt(tLayerIds[lll].id) ) ) {
+														viewModel.toggleVisibleLayer( { "mapLayerId" : map.layerIds[3], "esriLayer" : { id: parseInt(tLayerIds[lll].id) } } )
 													}
 											}
 											
-											viewModel.toggleVisibleLayer( { "mapLayerId" : map.layerIds[2], "esriLayer" : { id: parseInt(valToShow) } } )
+											viewModel.toggleVisibleLayer( { "mapLayerId" : map.layerIds[3], "esriLayer" : { id: parseInt(valToShow) } } )
 											l.refresh();
 											
 										//});
@@ -415,21 +415,6 @@ function prepare_map_when_extents_finished(a) {
 							}
 						)}
 					);
-					
-					if(false) {
-					var l = map.getLayer( map.layerIds[2] );
-					for(var jjj = 0; jjj < l.layerInfos.length; jjj++) {
-						
-						if(l.layerInfos[jjj].subLayerIds != null) continue;
-
-						var fl = new esri.layers.ArcGISDynamicMapServiceLayer(l.url + "/" + jjj );//"http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/Fisheries/MapServer/11" );
-						//console.debug(fl);
-						
-						//if(fl.timeInfo != null) {
-							timeLayerIds.push({"id": jjj, "label": fl["name"]});
-						//}
-					}
-					}
 					
 					var timeExtent = new esri.TimeExtent();
 					timeExtent.startTime = new Date("1/1/2011 EST");
@@ -444,7 +429,7 @@ function prepare_map_when_extents_finished(a) {
 					map.setTimeSlider(timeSlider);
 					timeSlider.setThumbCount(2);
 					
-					var layerTimeExtent = map.getLayer( map.layerIds[2] ).timeInfo.timeExtent;
+					var layerTimeExtent = map.getLayer( map.layerIds[3] ).timeInfo.timeExtent;
 					layerTimeExtent.startTime = timeExtent.startTime;
 					timeSlider.createTimeStopsByTimeInterval(layerTimeExtent, 1, 'esriTimeUnitsMonths');
 					timeSlider.setThumbMovingRate(1500);			
@@ -455,9 +440,8 @@ function prepare_map_when_extents_finished(a) {
 					// $('#timeSliderContainer').css('display', 'inline');
 					// $('#timeSliderChoices').css('display', 'inline');
 					timeSliderVisible( true );
+					addOpacityControl();
 				});
-				
-				addOpacityControl();
 			});
 
 			$('#panBtn').on('click', function(e) {
