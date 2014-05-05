@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>visibility.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="attributes.html">
+                attributes.js
+              </a>
+            
+              
+              <a class="source" href="main.html">
+                main.js
+              </a>
+            
+              
+              <a class="source" href="map.html">
+                map.js
+              </a>
+            
+              
+              <a class="source" href="visibility.html">
+                visibility.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>visibility.js</h1>
+				  
+				<div> This is a file whose functions intends to deal with map layers and their visibility or non-
+					visibility
+				</div>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>dojo.require(<span class="hljs-string">"dijit.form.DateTextBox"</span>);
+dojo.require(<span class="hljs-string">"dijit.Toolbar"</span>);
+
+dojo.require(<span class="hljs-string">"dojo.store.Memory"</span>);
+
+dojo.require(<span class="hljs-string">"dojo.dnd.Source"</span>);
+dojo.require(<span class="hljs-string">"dijit.TitlePane"</span>);
+
+dojo.require(<span class="hljs-string">"dijit.layout.BorderContainer"</span>); 
+dojo.require(<span class="hljs-string">"dijit.layout.ContentPane"</span>); 
+dojo.require(<span class="hljs-string">"dijit.layout.TabContainer"</span>);
+dojo.require(<span class="hljs-string">"dijit.form.CheckBox"</span>);
+
+dojo.require(<span class="hljs-string">"dojox.layout.ExpandoPane"</span>);
+
+dojo.require(<span class="hljs-string">"dojox.xml.DomParser"</span>);
+
+dojo.require(<span class="hljs-string">"esri.utils"</span>);
+dojo.require(<span class="hljs-string">"esri.IdentityManager"</span>);
+
+dojo.require(<span class="hljs-string">"esri.map"</span>); 
+dojo.require(<span class="hljs-string">"esri.layers.FeatureLayer"</span>);
+dojo.require(<span class="hljs-string">"esri.layers.agsdynamic"</span>);
+dojo.require(<span class="hljs-string">"esri.tasks.gp"</span>); 
+dojo.require(<span class="hljs-string">"esri.dijit.Legend"</span>); 
+dojo.require(<span class="hljs-string">"esri.dijit.Popup"</span>); 
+
+<span class="hljs-keyword">var</span> layerTabContainer = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">var</span> layerTitlePane = <span class="hljs-literal">null</span>;
+
+<span class="hljs-keyword">var</span> allMapLayers = ko.observableArray();
+
+<span class="hljs-keyword">var</span> demLayer = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">var</span> DEMURL   = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">var</span> DEM_ESRI = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">var</span> phyLayer = <span class="hljs-literal">null</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Returns a list of child layers of the passed layer.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">return_child_layers</span><span class="hljs-params">(mapLyr, mapLyrId, layerInfo)</span> {</span>
+	<span class="hljs-keyword">var</span> list = [];
+	<span class="hljs-keyword">var</span> lastIndex = <span class="hljs-number">0</span>;
+	
+	dojo.forEach( layerInfo.subLayerIds, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(id, k)</span> {</span>
+	<span class="hljs-keyword">try</span> {					
+		<span class="hljs-keyword">var</span> li = mapLyr.layerInfos[id];
+		<span class="hljs-keyword">var</span> legendItems = viewModel.legendElements()[id];
+		
+		<span class="hljs-keyword">var</span> dispLyr = {
+			<span class="hljs-string">"mapLayerId"</span> : mapLyrId,
+			<span class="hljs-string">"seq"</span> : id,
+			<span class="hljs-string">"name"</span>: li.name,
+			<span class="hljs-string">"url"</span> : mapLyr.url + <span class="hljs-string">"/"</span> + id,
+			<span class="hljs-string">"esriLayer"</span>: li,
+			<span class="hljs-string">"children"</span> : [],
+			<span class="hljs-string">"minScale"</span> : li.minScale,
+			<span class="hljs-string">"maxScale"</span> : li.maxScale,
+			<span class="hljs-string">"isRaster"</span> : <span class="hljs-literal">false</span>,
+			<span class="hljs-string">"legend"</span> : legendItems
+		};
+			
+		lastIndex = id;
+
+		<span class="hljs-keyword">if</span>(li.subLayerIds) {
+			<span class="hljs-keyword">var</span> retval = return_child_layers(mapLyr, mapLyrId, li);
+			
+			dispLyr.children = dojo.clone(retval.childLayers);
+			
+			lastIndex = retval.lastIndex;
+		}
+		<span class="hljs-keyword">else</span> {
+			availableLayersSummary.push( {data: li.name + <span class="hljs-string">"|"</span> + dispLyr.url, label: li.name } );
+		}
+		
+			<span class="hljs-comment">/*var legendResp = mapLyr.legendResponse.layers[id];
+
+			if(legendResp.layerType == "Raster Layer") {
+				console.debug(legendResp);
+				console.debug(legendResp.layerType);
+				dispLyr.isRaster = true;
+			}*/</span>
+		}
+		<span class="hljs-keyword">catch</span>(e) {
+			console.debug(e);
+		}
+		
+		list.push(dispLyr);
+	});
+	
+	<span class="hljs-keyword">var</span> returnValue = { <span class="hljs-string">"childLayers"</span>: list, <span class="hljs-string">"lastIndex"</span>: lastIndex };
+	
+	<span class="hljs-keyword">return</span> returnValue;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">return_map_layers</span><span class="hljs-params">()</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>var mapItems = [];</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	<span class="hljs-keyword">var</span> lastIndex = -<span class="hljs-number">1</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>var mapLyrs = ko.observableArray();</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	
+	allMapLayers.removeAll();
+	availableLayersSummary.removeAll();
+	demLayer = <span class="hljs-literal">null</span>;
+	
+	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j = <span class="hljs-number">1</span> ; j &lt; map.layerIds.length; j++ ) {
+		<span class="hljs-keyword">var</span> lyr = map.getLayer(map.layerIds[j]);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>var allLyrs = [];</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		
+		<span class="hljs-keyword">var</span> dispLyrOuter = {
+			<span class="hljs-string">"children"</span>: []
+		};
+		
+		<span class="hljs-keyword">switch</span>(j) {
+			<span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:
+			<span class="hljs-keyword">break</span>;
+			
+			<span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+			dispLyrOuter.name = <span class="hljs-string">"DEM"</span>;
+			DEMURL = lyr.url;
+			DEM_ESRI = lyr;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>soapURL = lyr.url.replace(“rest/“, “”);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			
+			esri.request({
+				url: lyr.url + <span class="hljs-string">"/legend"</span>,
+				content : {
+					f: <span class="hljs-string">"JSON"</span>
+				},
+				load : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(result)</span> {</span>					
+					<span class="hljs-keyword">var</span> dispLyr = {
+						<span class="hljs-string">"mapLayerId"</span> : DEM_ESRI.id,
+						<span class="hljs-string">"seq"</span> : <span class="hljs-number">0</span>,
+						<span class="hljs-string">"name"</span>: <span class="hljs-string">"Digital Elevation Model (DEM)"</span>,
+						<span class="hljs-string">"url"</span> : DEMURL + <span class="hljs-string">"/0"</span>,
+						<span class="hljs-string">"esriLayer"</span>: DEM_ESRI.layerInfos[<span class="hljs-number">0</span>],
+						<span class="hljs-string">"children"</span> : [],
+						<span class="hljs-string">"isRaster"</span> : <span class="hljs-literal">true</span>,
+						<span class="hljs-string">"legend"</span>   : result.layers[<span class="hljs-number">0</span>].legend,
+						<span class="hljs-string">"minScale"</span>: <span class="hljs-number">0</span>,
+						<span class="hljs-string">"maxScale"</span>: <span class="hljs-number">0</span>,
+						<span class="hljs-string">"visible"</span>: <span class="hljs-literal">false</span>
+					};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>dispLyrOuter.children.push(dispLyr);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>					demLayer = dispLyr;
+					
+					console.debug(demLayer);
+				}
+			});
+			
+			<span class="hljs-keyword">break</span>;
+			
+			<span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+			<span class="hljs-keyword">break</span>;
+			
+			<span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:
+			console.debug(lyr.url);
+			soapURL = lyr.url.replace(<span class="hljs-string">"rest/"</span>, <span class="hljs-string">""</span>);
+			
+			esri.request({
+				url: lyr.url + <span class="hljs-string">"/legend"</span>,
+				handleAs : <span class="hljs-string">"json"</span>,
+				content : {
+					<span class="hljs-string">"soapUrl"</span>: lyr.url,
+					f: <span class="hljs-string">"json"</span>
+				},
+				load : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(result)</span> {</span>
+					<span class="hljs-keyword">var</span> newResults = [];
+					<span class="hljs-keyword">try</span> {
+						console.debug(result);
+					
+						<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> jjj = <span class="hljs-number">0</span>; jjj &lt; result.layers.length; jjj++) {
+							newResults[ result.layers[jjj].layerId ] = result.layers[jjj].legend;
+						}
+					
+						viewModel.legendElements(newResults);
+
+						dojo.forEach( lyr.layerInfos, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(li, i)</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>console.debug( lyr.layerInfos);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+							<span class="hljs-keyword">if</span>(i-<span class="hljs-number">1</span> &gt;= lastIndex) {
+						
+							<span class="hljs-keyword">var</span> dispLyr = {
+								<span class="hljs-string">"mapLayerId"</span> : map.layerIds[j],
+								<span class="hljs-string">"seq"</span> : i,
+								<span class="hljs-string">"name"</span>: li.name,
+								<span class="hljs-string">"url"</span> : lyr.url + <span class="hljs-string">"/"</span> + i,
+								<span class="hljs-string">"esriLayer"</span>: li,
+								<span class="hljs-string">"children"</span> : [],
+							};
+
+							<span class="hljs-keyword">if</span>(li.subLayerIds) {
+								dispLyr.children = [];
+								
+								<span class="hljs-keyword">var</span> retval = return_child_layers(lyr, map.layerIds[<span class="hljs-number">3</span>], li);
+									dispLyr.children = dojo.clone(retval.childLayers);
+									lastIndex = retval.lastIndex;
+								}
+								
+								<span class="hljs-keyword">if</span>(li.name.trim() == <span class="hljs-string">"Physical"</span> &amp;&amp; demLayer != <span class="hljs-literal">null</span>) {
+									dispLyr.children.push(demLayer);
+								}
+
+								
+								allMapLayers.push(dispLyr);
+							}
+						});
+					}
+					<span class="hljs-keyword">catch</span>(eeee) {
+						console.debug(eeee);
+					}
+				}
+			});
+			<span class="hljs-keyword">break</span>;
+			
+			<span class="hljs-keyword">default</span>:
+			dispLyrOuter.name = mapLyrs()[ j-<span class="hljs-number">3</span> ].mapLabel;
+			
+			dojo.forEach( lyr.layerInfos, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(li, i)</span> {</span>
+				<span class="hljs-keyword">if</span>(i-<span class="hljs-number">1</span> &lt; lastIndex) {
+				}
+				<span class="hljs-keyword">else</span> {
+					<span class="hljs-keyword">var</span> dispLyr = {
+						<span class="hljs-string">"mapLayerId"</span> : map.layerIds[j],
+						<span class="hljs-string">"seq"</span> : i,
+						<span class="hljs-string">"name"</span>: li.name,
+						<span class="hljs-string">"url"</span> : lyr.url + <span class="hljs-string">"/"</span> + i,
+						<span class="hljs-string">"esriLayer"</span>: li,
+						<span class="hljs-string">"children"</span> : []
+					};
+
+					<span class="hljs-keyword">if</span>(li.subLayerIds) {				
+						<span class="hljs-keyword">var</span> retval = return_child_layers(lyr, map.layerIds[j], li);
+						dispLyr.children = dojo.clone(retval.childLayers);
+						lastIndex = retval.lastIndex;
+					}
+					
+					dispLyrOuter.children.push(dispLyr);
+				}
+			});
+			
+			allMapLayers.push(dispLyrOuter);
+			<span class="hljs-keyword">break</span>;
+		};
+	}
+	
+	lastIndex = -<span class="hljs-number">1</span>;
+}
+
+<span class="hljs-keyword">var</span> xmlMeta;
+<span class="hljs-keyword">var</span> lastMetadataAbstract = ko.observable();
+<span class="hljs-keyword">var</span> lastMetadataPurpose  = ko.observable();
+<span class="hljs-keyword">var</span> lastMetadataLinks    = ko.observable();
+<span class="hljs-keyword">var</span> lastMetadataLayerTitle = ko.observable();
+
+<span class="hljs-keyword">var</span> viewModel = {
+	themes : ko.observableArray(),
+	currentVisibleLayers: ko.observableArray(),
+	legendElements: ko.observableArray(),
+	
+	isOpenTheme : <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(a)</span> {</span>
+		<span class="hljs-keyword">var</span> themeName = a;
+	
+		<span class="hljs-keyword">if</span>( viewModel.themes.indexOf(themeName) !== -<span class="hljs-number">1</span>) {
+			<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+		}
+		<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+	}, 
+
+	setOpenTheme: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(a)</span> {</span>
+		<span class="hljs-keyword">var</span> themeName = a.name;
+	
+		<span class="hljs-keyword">if</span>( viewModel.isOpenTheme(themeName) ) {
+			viewModel.themes.remove(themeName);
+		}
+		<span class="hljs-keyword">else</span> {
+			viewModel.themes.push(themeName);
+		}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>var element = $(‘.scroll-pane’).jScrollPane({verticalGutter: 0});
+var api = element.data(‘jsp’);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+	},
+	
+	
+	toggleVisibleLayer : <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(a)</span> {</span>
+		<span class="hljs-keyword">var</span> lyr = map.getLayer(a.mapLayerId);
+		
+		<span class="hljs-keyword">if</span>(lyr != <span class="hljs-literal">null</span>) {
+			<span class="hljs-keyword">var</span> vl = lyr.visibleLayers;
+			<span class="hljs-keyword">var</span> nl = [];</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>console.debug(a);
+console.debug(vl);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			
+			nl = vl.filter(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(c)</span> {</span>
+				<span class="hljs-keyword">var</span> a = [];
+				<span class="hljs-keyword">var</span> b = <span class="hljs-literal">false</span>;
+							
+				<span class="hljs-keyword">if</span>(lyr.layerInfos[c].subLayerIds == <span class="hljs-literal">null</span>) {
+					<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+				}
+				<span class="hljs-keyword">else</span> {
+					<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+				}
+			});
+			
+			<span class="hljs-keyword">if</span>(vl.lastIndexOf(a.esriLayer.id) !== -<span class="hljs-number">1</span> ) {
+				nl = nl.filter(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(b)</span> {</span> <span class="hljs-keyword">if</span>(b == a.esriLayer.id) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>; } );
+			}
+			<span class="hljs-keyword">else</span> {
+				nl.push(a.esriLayer.id);
+			}
+			
+			<span class="hljs-keyword">var</span> newVal = {
+				<span class="hljs-string">"mapLyr"</span> : a.mapLayerId,
+				<span class="hljs-string">"vlayers"</span>: nl
+			};
+			
+			viewModel.currentVisibleLayers.remove( <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(i)</span> {</span>
+				<span class="hljs-keyword">if</span>(i.mapLyr == a.mapLayerId) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+				<span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+			});
+			
+			viewModel.currentVisibleLayers.push(newVal);
+			
+			<span class="hljs-keyword">if</span>(nl.length == <span class="hljs-number">0</span>) {
+				lyr.setVisibility(<span class="hljs-literal">false</span>);
+			}
+			<span class="hljs-keyword">else</span> {
+				lyr.setVisibility(<span class="hljs-literal">true</span>);
+			}
+			
+			lyr.setVisibleLayers(nl);
+			legend.refresh();
+		}
+	},
+	
+	isVisibleLayer : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(a,b)</span> {</span>
+		<span class="hljs-keyword">try</span> {			
+			<span class="hljs-keyword">var</span> visibleArray = viewModel.currentVisibleLayers();
+			<span class="hljs-keyword">var</span> vl = visibleArray.filter( <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">( i)</span> {</span>
+				<span class="hljs-keyword">if</span>(i.mapLyr == a) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+				<span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+			})[<span class="hljs-number">0</span>].vlayers;
+			
+			<span class="hljs-keyword">if</span>(vl.lastIndexOf(b) !== -<span class="hljs-number">1</span> ) {
+				<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+			}
+			<span class="hljs-keyword">else</span> {
+				<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+			}
+		}
+		<span class="hljs-keyword">catch</span>(e) {
+			<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+		}
+	}
+};
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">init_layer_controls</span><span class="hljs-params">(map)</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>if(!ly1.loaded  /<em>|| !ly2.loaded</em>/) return;</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	<span class="hljs-comment">/*if(viewModel.currentVisibleLayers.peek().length == 0) */</span>{
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i&lt; map.layerIds.length; i++) {
+			<span class="hljs-keyword">var</span> reallyVisibleLayers = [];
+			
+			<span class="hljs-keyword">var</span> lyr = map.getLayer(map.layerIds[i]);
+			
+			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j = <span class="hljs-number">0</span>; j &lt; lyr.visibleLayers.length; j++) {			
+				<span class="hljs-keyword">if</span>( lyr.layerInfos[ lyr.visibleLayers[j] ].subLayerIds == <span class="hljs-literal">null</span>) {
+					reallyVisibleLayers.push(lyr.visibleLayers[j]);
+				}
+			}
+			
+			<span class="hljs-keyword">var</span> newVal = {
+				<span class="hljs-string">"mapLyr"</span> : map.layerIds[i],
+				<span class="hljs-string">"vlayers"</span>: reallyVisibleLayers
+			};
+			
+			viewModel.currentVisibleLayers.push(newVal);
+		}
+	}
+	
+	return_map_layers();
+	resetSummaryPane();
+}
+
+<span class="hljs-keyword">var</span> qry = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">var</span> a = [];
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateLayerVisibility</span> <span class="hljs-params">(changeValue)</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>console.debug(changeValue);
+console.debug(this);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	
+	qry = dojo.query(<span class="hljs-string">".dijitChecked"</span>, dojo.byId(<span class="hljs-string">'layersSection'</span>));
+	
+	a = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>();
+	
+	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> k = <span class="hljs-number">0</span>; k &lt; qry.length; k++) {
+		<span class="hljs-keyword">var</span> item = dijit.registry.getEnclosingWidget(qry[k]);
+		console.debug(item);
+		
+		<span class="hljs-keyword">if</span> ( a[ item.mapLyrId ] == <span class="hljs-literal">null</span> ) {
+			a[ item.mapLyrId ] = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>();
+		}
+		
+		a[ item.mapLyrId ].push(item.lyrId);
+	}
+	
+	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> l <span class="hljs-keyword">in</span> a) {
+		console.debug( a[l] );
+		
+		map.getLayer(l).setVisibleLayers(a[l]);
+	}
+	
+	legend.refresh();
+}
+
+<span class="hljs-keyword">var</span> xmldata = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">var</span> jsonObj = <span class="hljs-literal">null</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">xmlToJson</span><span class="hljs-params">(xml)</span> {</span>
+<span class="hljs-keyword">var</span> obj = {};
+<span class="hljs-keyword">try</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Create the return object</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+  <span class="hljs-keyword">if</span> (xml.nodeType == <span class="hljs-number">1</span>) { <span class="hljs-comment">// element</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>do attributes</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> (xml.attributes != <span class="hljs-literal">null</span> &amp;&amp; xml.attributes.length &gt; <span class="hljs-number">0</span>) {
+    obj[<span class="hljs-string">"@attributes"</span>] = {};
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> j = <span class="hljs-number">0</span>; j &lt; xml.attributes.length; j++) {
+        <span class="hljs-keyword">var</span> attribute = xml.attributes.item[j];
+        obj[<span class="hljs-string">"@attributes"</span>][attribute.nodeName] = attribute.nodeValue;
+      }
+    }
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (xml.nodeType == <span class="hljs-number">3</span>) { <span class="hljs-comment">// text</span>
+    obj = xml.nodeValue;
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>do children</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">if</span> (xml.childNodes != <span class="hljs-literal">null</span> &amp;&amp; xml.childNodes.length &gt; <span class="hljs-number">0</span>) {
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; xml.childNodes.length; i++) {
+      <span class="hljs-keyword">var</span> item = xml.childNodes[i];
+	  
+      <span class="hljs-keyword">var</span> nodeName = item.nodeName;
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span>(obj[nodeName]) == <span class="hljs-string">"undefined"</span>) {
+        obj[nodeName] = xmlToJson(item);
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span>(obj[nodeName].length) == <span class="hljs-string">"undefined"</span>) {
+          <span class="hljs-keyword">var</span> old = obj[nodeName];
+          obj[nodeName] = [];
+          obj[nodeName].push(old);
+        }
+        obj[nodeName].push(xmlToJson(item));
+      }
+    }
+  }
+  }
+  <span class="hljs-keyword">catch</span>( exception ) {}
+  
+  <span class="hljs-keyword">return</span> obj;
+  
+};
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dispLayerInfo</span><span class="hljs-params">(name, id, wurl)</span> {</span>
+	<span class="hljs-keyword">var</span> lyrInfoPane = dijit.byId(<span class="hljs-string">'layerInfoPane'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>var jsdom = dojox.xml.DomParser.parse(xml);</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>console.debug(xmlToJson(jsdom));</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	
+	esri.request(</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>{ url : wurl + “/“ + id.toString() + “?f=json”,</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		{ url: <span class="hljs-string">"http://carto.gis.gatech.edu/coast/metadata/"</span> + name + <span class="hljs-string">".xml"</span>,
+		  handleAs : <span class="hljs-string">"text"</span>}).
+		then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(data)</span> {</span>
+			<span class="hljs-comment">/*var dstring = "&lt;ul&gt;";
+
+			for(item in data) {
+				dstring += "&lt;li&gt;&lt;b&gt;" + item + "&lt;/b&gt;: " + data[item];
+			}
+			
+			dstring += "&lt;/ul&gt;";*/</span>
+			<span class="hljs-keyword">var</span> jsdom = dojox.xml.DomParser.parse(data);
+			xmldata = jsdom;
+			
+			jsonObj = xmlToJson(jsdom);
+			
+			<span class="hljs-keyword">var</span> dstring = <span class="hljs-string">""</span>;
+			lyrInfoPane.setContent(<span class="hljs-string">"&lt;h3&gt;"</span>+name+<span class="hljs-string">"&lt;/h3&gt;"</span>);
+			
+			dijit.byId(<span class="hljs-string">'LeftTabs'</span>).selectChild(dijit.byId(<span class="hljs-string">'layerInfoPane'</span>));
+			toggleIdentifyOn(dijit.byId(<span class="hljs-string">'LeftExPanel'</span>));
+		});
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dispLayerAttribs</span><span class="hljs-params">(url,id)</span> {</span>
+	console.debug(<span class="hljs-string">'"+lyr.url+"'</span>);
+	dijit.byId(<span class="hljs-string">'attributesPanelSelector'</span>).setValue(url +<span class="hljs-string">"/"</span> +id );</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>dijit.byId(‘LeftTabs’).selectChild(dijit.byId(‘attributesPanel’));</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	toggleIdentifyOn(dijit.byId(<span class="hljs-string">'RightExPanel'</span>));
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

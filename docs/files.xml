@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type="text/xsl" href="file_descriptions.xsl"?>
+<folder>
+	<folder>css </folder>
+	<folder>docs </folder>
+	<folder>images </folder>
+	<folder>metadata </folder>
+
+	<file function="Main HTML file"> index.html </file>
+	<file function="Initialization functions, declarations"> main.js </file>
+	<file function="Controls Map functionality; adding/deleting layers"> map.js </file>
+	<file function="Processes feature attributes; creates attribute table"> attributes.js </file>
+	<file function="Retrieves and displays layer metadata"> metadata.js </file>
+	<file function="Provides map export/printing functionality"> print.js </file>
+	<file function=""> query.js </file>
+	<file function=""> script </file>
+	<file function=""> style.css </file>
+	<file function=""> TimeLayers.xml </file>
+	<file function=""> visibility.js </file>
+</folder>

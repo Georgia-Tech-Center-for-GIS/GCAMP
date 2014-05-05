@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: visibility.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: visibility.js</h1>
+
+    
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+@file Deals with layer visibility
+*/
+dojo.require("dijit.form.DateTextBox");
+dojo.require("dijit.Toolbar");
+
+dojo.require("dojo.store.Memory");
+
+dojo.require("dojo.dnd.Source");
+dojo.require("dijit.TitlePane");
+
+dojo.require("dijit.layout.BorderContainer"); 
+dojo.require("dijit.layout.ContentPane"); 
+dojo.require("dijit.layout.TabContainer");
+dojo.require("dijit.form.CheckBox");
+
+dojo.require("dojox.layout.ExpandoPane");
+
+dojo.require("dojox.xml.DomParser");
+
+dojo.require("esri.utils");
+dojo.require("esri.IdentityManager");
+
+dojo.require("esri.map"); 
+dojo.require("esri.layers.FeatureLayer");
+dojo.require("esri.layers.agsdynamic");
+dojo.require("esri.tasks.gp"); 
+dojo.require("esri.dijit.Legend"); 
+dojo.require("esri.dijit.Popup"); 
+
+var layerTabContainer = null;
+var layerTitlePane = null;
+
+var allMapLayers = ko.observableArray();
+
+var demLayer = null;
+var DEMURL   = null;
+var DEM_ESRI = null;
+var phyLayer = null;
+
+/**
+Returns a list of child layers of the passed layer.
+*/
+function return_child_layers(mapLyr, mapLyrId, layerInfo) {
+	var list = [];
+	var lastIndex = 0;
+	
+	dojo.forEach( layerInfo.subLayerIds, function(id, k) {
+	try {					
+		var li = mapLyr.layerInfos[id];
+		var legendItems = viewModel.legendElements()[id];
+		
+		var dispLyr = {
+			"mapLayerId" : mapLyrId,
+			"seq" : id,
+			"name": li.name,
+			"url" : mapLyr.url + "/" + id,
+			"esriLayer": li,
+			"children" : [],
+			"minScale" : li.minScale,
+			"maxScale" : li.maxScale,
+			"isRaster" : false,
+			"legend" : legendItems
+		};
+			
+		lastIndex = id;
+
+		if(li.subLayerIds) {
+			var retval = return_child_layers(mapLyr, mapLyrId, li);
+			
+			dispLyr.children = dojo.clone(retval.childLayers);
+			
+			lastIndex = retval.lastIndex;
+		}
+		else {
+			availableLayersSummary.push( {data: li.name + "|" + dispLyr.url, label: li.name } );
+		}
+		
+			/*var legendResp = mapLyr.legendResponse.layers[id];
+
+			if(legendResp.layerType == "Raster Layer") {
+				console.debug(legendResp);
+				console.debug(legendResp.layerType);
+				dispLyr.isRaster = true;
+			}*/
+		}
+		catch(e) {
+			console.debug(e);
+		}
+		
+		list.push(dispLyr);
+	});
+	
+	var returnValue = { "childLayers": list, "lastIndex": lastIndex };
+	
+	return returnValue;
+}
+
+function return_map_layers() {
+	//var mapItems = [];
+	var lastIndex = -1;
+	
+	//var mapLyrs = ko.observableArray();
+	
+	allMapLayers.removeAll();
+	availableLayersSummary.removeAll();
+	demLayer = null;
+	
+	for(var j = 1 ; j &lt; map.layerIds.length; j++ ) {
+		var lyr = map.getLayer(map.layerIds[j]);
+
+		//var allLyrs = [];
+		
+		var dispLyrOuter = {
+			"children": []
+		};
+		
+		switch(j) {
+			case 0:
+			break;
+			
+			case 1:
+			dispLyrOuter.name = "DEM";
+			DEMURL = lyr.url;
+			DEM_ESRI = lyr;
+			//soapURL = lyr.url.replace("rest/", "");
+			
+			esri.request({
+				url: lyr.url + "/legend",
+				content : {
+					f: "JSON"
+				},
+				load : function(result) {					
+					var dispLyr = {
+						"mapLayerId" : DEM_ESRI.id,
+						"seq" : 0,
+						"name": "Digital Elevation Model (DEM)",
+						"url" : DEMURL + "/0",
+						"esriLayer": DEM_ESRI.layerInfos[0],
+						"children" : [],
+						"isRaster" : true,
+						"legend"   : result.layers[0].legend,
+						"minScale": 0,
+						"maxScale": 0,
+						"visible": false
+					};
+
+					//dispLyrOuter.children.push(dispLyr);
+					demLayer = dispLyr;
+					
+					console.debug(demLayer);
+				}
+			});
+			
+			break;
+			
+			case 2:
+			break;
+			
+			case 3:
+			console.debug(lyr.url);
+			soapURL = lyr.url.replace("rest/", "");
+			
+			esri.request({
+				url: lyr.url + "/legend",
+				handleAs : "json",
+				content : {
+					"soapUrl": lyr.url,
+					f: "json"
+				},
+				load : function(result) {
+					var newResults = [];
+					try {
+						console.debug(result);
+					
+						for(var jjj = 0; jjj &lt; result.layers.length; jjj++) {
+							newResults[ result.layers[jjj].layerId ] = result.layers[jjj].legend;
+						}
+					
+						viewModel.legendElements(newResults);
+
+						dojo.forEach( lyr.layerInfos, function (li, i) {
+						//console.debug( lyr.layerInfos);
+
+							if(i-1 >= lastIndex) {
+						
+							var dispLyr = {
+								"mapLayerId" : map.layerIds[j],
+								"seq" : i,
+								"name": li.name,
+								"url" : lyr.url + "/" + i,
+								"esriLayer": li,
+								"children" : [],
+							};
+
+							if(li.subLayerIds) {
+								dispLyr.children = [];
+								
+								var retval = return_child_layers(lyr, map.layerIds[3], li);
+									dispLyr.children = dojo.clone(retval.childLayers);
+									lastIndex = retval.lastIndex;
+								}
+								
+								if(li.name.trim() == "Physical" &amp;&amp; demLayer != null) {
+									dispLyr.children.push(demLayer);
+								}
+
+								
+								allMapLayers.push(dispLyr);
+							}
+						});
+					}
+					catch(eeee) {
+						console.debug(eeee);
+					}
+				}
+			});
+			break;
+			
+			default:
+			dispLyrOuter.name = mapLyrs()[ j-3 ].mapLabel;
+			
+			dojo.forEach( lyr.layerInfos, function (li, i) {
+				if(i-1 &lt; lastIndex) {
+				}
+				else {
+					var dispLyr = {
+						"mapLayerId" : map.layerIds[j],
+						"seq" : i,
+						"name": li.name,
+						"url" : lyr.url + "/" + i,
+						"esriLayer": li,
+						"children" : []
+					};
+
+					if(li.subLayerIds) {				
+						var retval = return_child_layers(lyr, map.layerIds[j], li);
+						dispLyr.children = dojo.clone(retval.childLayers);
+						lastIndex = retval.lastIndex;
+					}
+					
+					dispLyrOuter.children.push(dispLyr);
+				}
+			});
+			
+			allMapLayers.push(dispLyrOuter);
+			break;
+		};
+	}
+	
+	lastIndex = -1;
+}
+
+var xmlMeta;
+var lastMetadataAbstract = ko.observable();
+var lastMetadataPurpose  = ko.observable();
+var lastMetadataLinks    = ko.observable();
+var lastMetadataLayerTitle = ko.observable();
+
+var viewModel = {
+	themes : ko.observableArray(),
+	currentVisibleLayers: ko.observableArray(),
+	legendElements: ko.observableArray(),
+	
+	isOpenTheme : function (a) {
+		var themeName = a;
+	
+		if( viewModel.themes.indexOf(themeName) !== -1) {
+			return true;
+		}
+		return false;
+	}, 
+
+	setOpenTheme: function(a) {
+		var themeName = a.name;
+	
+		if( viewModel.isOpenTheme(themeName) ) {
+			viewModel.themes.remove(themeName);
+		}
+		else {
+			viewModel.themes.push(themeName);
+		}
+		
+		//var element = $('.scroll-pane').jScrollPane({verticalGutter: 0});
+		//var api = element.data('jsp');
+
+	},
+	
+	
+	toggleVisibleLayer : function (a) {
+		var lyr = map.getLayer(a.mapLayerId);
+		
+		if(lyr != null) {
+			var vl = lyr.visibleLayers;
+			var nl = [];
+			
+			//console.debug(a);
+			//console.debug(vl);
+			
+			nl = vl.filter(function(c) {
+				var a = [];
+				var b = false;
+							
+				if(lyr.layerInfos[c].subLayerIds == null) {
+					return true;
+				}
+				else {
+					return false;
+				}
+			});
+			
+			if(vl.lastIndexOf(a.esriLayer.id) !== -1 ) {
+				nl = nl.filter(function(b) { if(b == a.esriLayer.id) return false; else return true; } );
+			}
+			else {
+				nl.push(a.esriLayer.id);
+			}
+			
+			var newVal = {
+				"mapLyr" : a.mapLayerId,
+				"vlayers": nl
+			};
+			
+			viewModel.currentVisibleLayers.remove( function(i) {
+				if(i.mapLyr == a.mapLayerId) return true;
+				else return false;
+			});
+			
+			viewModel.currentVisibleLayers.push(newVal);
+			
+			if(nl.length == 0) {
+				lyr.setVisibility(false);
+			}
+			else {
+				lyr.setVisibility(true);
+			}
+			
+			lyr.setVisibleLayers(nl);
+			legend.refresh();
+		}
+	},
+	
+	isVisibleLayer : function(a,b) {
+		try {			
+			var visibleArray = viewModel.currentVisibleLayers();
+			var vl = visibleArray.filter( function( i) {
+				if(i.mapLyr == a) return true;
+				else return false;
+			})[0].vlayers;
+			
+			if(vl.lastIndexOf(b) !== -1 ) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		catch(e) {
+			return false;
+		}
+	}
+};
+
+function init_layer_controls(map) {
+	//if(!ly1.loaded  /*|| !ly2.loaded*/) return;
+	/*if(viewModel.currentVisibleLayers.peek().length == 0) */{
+		for(var i = 0; i&lt; map.layerIds.length; i++) {
+			var reallyVisibleLayers = [];
+			
+			var lyr = map.getLayer(map.layerIds[i]);
+			
+			for(var j = 0; j &lt; lyr.visibleLayers.length; j++) {			
+				if( lyr.layerInfos[ lyr.visibleLayers[j] ].subLayerIds == null) {
+					reallyVisibleLayers.push(lyr.visibleLayers[j]);
+				}
+			}
+			
+			var newVal = {
+				"mapLyr" : map.layerIds[i],
+				"vlayers": reallyVisibleLayers
+			};
+			
+			viewModel.currentVisibleLayers.push(newVal);
+		}
+	}
+	
+	return_map_layers();
+	resetSummaryPane();
+}
+
+var qry = null;
+var a = [];
+
+function updateLayerVisibility (changeValue) {
+	//console.debug(changeValue);
+	//console.debug(this);
+	
+	qry = dojo.query(".dijitChecked", dojo.byId('layersSection'));
+	
+	a = new Array();
+	
+	for(var k = 0; k &lt; qry.length; k++) {
+		var item = dijit.registry.getEnclosingWidget(qry[k]);
+		console.debug(item);
+		
+		if ( a[ item.mapLyrId ] == null ) {
+			a[ item.mapLyrId ] = new Array();
+		}
+		
+		a[ item.mapLyrId ].push(item.lyrId);
+	}
+	
+	for(var l in a) {
+		console.debug( a[l] );
+		
+		map.getLayer(l).setVisibleLayers(a[l]);
+	}
+	
+	legend.refresh();
+}
+
+var xmldata = null;
+var jsonObj = null;
+
+function xmlToJson(xml) {
+var obj = {};
+try {
+  // Create the return object
+
+  if (xml.nodeType == 1) { // element
+    // do attributes
+    if (xml.attributes != null &amp;&amp; xml.attributes.length > 0) {
+    obj["@attributes"] = {};
+      for (var j = 0; j &lt; xml.attributes.length; j++) {
+        var attribute = xml.attributes.item[j];
+        obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
+      }
+    }
+  } else if (xml.nodeType == 3) { // text
+    obj = xml.nodeValue;
+  }
+
+  // do children
+  if (xml.childNodes != null &amp;&amp; xml.childNodes.length > 0) {
+    for(var i = 0; i &lt; xml.childNodes.length; i++) {
+      var item = xml.childNodes[i];
+	  
+      var nodeName = item.nodeName;
+      if (typeof(obj[nodeName]) == "undefined") {
+        obj[nodeName] = xmlToJson(item);
+      } else {
+        if (typeof(obj[nodeName].length) == "undefined") {
+          var old = obj[nodeName];
+          obj[nodeName] = [];
+          obj[nodeName].push(old);
+        }
+        obj[nodeName].push(xmlToJson(item));
+      }
+    }
+  }
+  }
+  catch( exception ) {}
+  
+  return obj;
+  
+};
+
+function dispLayerInfo(name, id, wurl) {
+	var lyrInfoPane = dijit.byId('layerInfoPane');
+	//var jsdom = dojox.xml.DomParser.parse(xml);
+
+    //console.debug(xmlToJson(jsdom));
+	
+	esri.request(
+		//{ url : wurl + "/" + id.toString() + "?f=json",
+		{ url: "http://carto.gis.gatech.edu/coast/metadata/" + name + ".xml",
+		  handleAs : "text"}).
+		then(function(data) {
+			/*var dstring = "&lt;ul>";
+
+			for(item in data) {
+				dstring += "&lt;li>&lt;b>" + item + "&lt;/b>: " + data[item];
+			}
+			
+			dstring += "&lt;/ul>";*/
+			var jsdom = dojox.xml.DomParser.parse(data);
+			xmldata = jsdom;
+			
+			jsonObj = xmlToJson(jsdom);
+			
+			var dstring = "";
+			lyrInfoPane.setContent("&lt;h3>"+name+"&lt;/h3>");
+			
+			dijit.byId('LeftTabs').selectChild(dijit.byId('layerInfoPane'));
+			toggleIdentifyOn(dijit.byId('LeftExPanel'));
+		});
+}
+
+function dispLayerAttribs(url,id) {
+	console.debug('"+lyr.url+"');
+	dijit.byId('attributesPanelSelector').setValue(url +"/" +id );
+	//dijit.byId('LeftTabs').selectChild(dijit.byId('attributesPanel'));
+	toggleIdentifyOn(dijit.byId('RightExPanel'));
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Global</h3><ul><li><a href="global.html#addLayerToMap">addLayerToMap</a></li><li><a href="global.html#addOpacityControl">addOpacityControl</a></li><li><a href="global.html#addToMap">addToMap</a></li><li><a href="global.html#addToMap3">addToMap3</a></li><li><a href="global.html#createBasemapGallery">createBasemapGallery</a></li><li><a href="global.html#cvtLatLongExtent_2_WebMercator">cvtLatLongExtent_2_WebMercator</a></li><li><a href="global.html#decPrecision">decPrecision</a></li><li><a href="global.html#dispMetadata">dispMetadata</a></li><li><a href="global.html#do_add_mapsvc">do_add_mapsvc</a></li><li><a href="global.html#do_remove_mapsvc">do_remove_mapsvc</a></li><li><a href="global.html#doClearMapGraphics">doClearMapGraphics</a></li><li><a href="global.html#doIdentify">doIdentify</a></li><li><a href="global.html#doLoadLegendElements">doLoadLegendElements</a></li><li><a href="global.html#doMeasure">doMeasure</a></li><li><a href="global.html#doShowPrintDlg">doShowPrintDlg</a></li><li><a href="global.html#doToggleSidebar">doToggleSidebar</a></li><li><a href="global.html#doTrimNumber">doTrimNumber</a></li><li><a href="global.html#extentHistoryChangeHandler">extentHistoryChangeHandler</a></li><li><a href="global.html#fullExtent">fullExtent</a></li><li><a href="global.html#getMapScaleToVariable">getMapScaleToVariable</a></li><li><a href="global.html#getResultsFields">getResultsFields</a></li><li><a href="global.html#hideDEMLayer">hideDEMLayer</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#init_id_funct">init_id_funct</a></li><li><a href="global.html#jQueryReady">jQueryReady</a></li><li><a href="global.html#onMapExtentChange">onMapExtentChange</a></li><li><a href="global.html#outputDistance">outputDistance</a></li><li><a href="global.html#prepare_map_when_extents_finished">prepare_map_when_extents_finished</a></li><li><a href="global.html#processFields">processFields</a></li><li><a href="global.html#processSummaryResults">processSummaryResults</a></li><li><a href="global.html#queryRaster">queryRaster</a></li><li><a href="global.html#removeLayerFromMap">removeLayerFromMap</a></li><li><a href="global.html#resetSummaryPane">resetSummaryPane</a></li><li><a href="global.html#return_child_layers">return_child_layers</a></li><li><a href="global.html#return_to_LayerList">return_to_LayerList</a></li><li><a href="global.html#showMouseCoordinates">showMouseCoordinates</a></li><li><a href="global.html#sliderChanged">sliderChanged</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Mon May 05 2014 12:22:42 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
