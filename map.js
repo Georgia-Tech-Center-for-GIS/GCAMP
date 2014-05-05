@@ -1,3 +1,7 @@
+/**
+	@file Controls Map functionality: adding/deleting layers
+*/
+
 dojo.require("esri.layers.FeatureLayer");
 dojo.require("esri.layers.WebTiledLayer");
 dojo.require("esri.layers.agsdynamic");
@@ -7,6 +11,11 @@ var mapLyrs = ko.observableArray();
 var mapLyrToRemove = ko.observable();
 var map;
 
+/**
+	Adds a map service as either a WMSLayer or ArcGISDynamicMapServiceLayer
+	@param url url to map service
+	@param label label for map service in the list of added map layers
+*/
 function addLayerToMap(url,label) {
 	var lbl = dojox.xmpp.util.stripHtml(label);
 	var layer = null;
@@ -44,6 +53,11 @@ function addLayerToMap(url,label) {
 	}
 }
 
+/**
+	Removes an (additional) map service from the map, specified by mapLayerToRemove (observable connected to the
+	list of map layers)
+	@param val
+*/
 function removeLayerFromMap(val) {
 	console.debug(val);
 	
@@ -54,7 +68,12 @@ function removeLayerFromMap(val) {
 	init_layer_controls(map);
 }
 
-function do_add_mapsvc(e) {
+/**
+	Actually add the map service to the map
+	@param
+	@param
+*/
+function do_add_mapsvc(ev) {
 	var l = selectedNewMapSvc.peek().mapLabel ; //dijit.byId('AddMapSvcLabel').value;
 	var u = selectedNewMapSvc.peek().url ; //dijit.byId('AddMapSvcURL').value; if( l == "" || u == "") { }
 	{
@@ -67,7 +86,10 @@ function do_add_mapsvc(e) {
 	}
 }
 
-function do_remove_mapsvc(e) {
+/**
+	@param
+*/
+function do_remove_mapsvc(ev) {
 	if( mapLyrToRemove != null) {
 		removeLayerFromMap(mapLyrToRemove.mapLabel);
 	}
