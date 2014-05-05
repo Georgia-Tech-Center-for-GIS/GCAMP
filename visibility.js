@@ -120,6 +120,7 @@ function return_map_layers() {
 			break;
 			
 			case 1:
+			case 2:
 			dispLyrOuter.name = "DEM";
 			DEMURL = lyr.url;
 			DEM_ESRI = lyr;
@@ -154,7 +155,7 @@ function return_map_layers() {
 			
 			break;
 			
-			case 2:
+			case 3:
 			break;
 			
 			case 3:

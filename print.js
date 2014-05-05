@@ -104,8 +104,8 @@ function sendPrintJob() {
 		}
 				
 		var llayers = new esri.tasks.LegendLayer();
-		llayers.legendId = map.layerIds[2];
-		llayers.subLayerIds = map.getLayer(map.layerIds[2] ).visibleLayers;
+		llayers.legendId = map.layerIds[3];
+		llayers.subLayerIds = map.getLayer(map.layerIds[3] ).visibleLayers;
 			
 		ptemplate.layoutOptions = { "legendLayers" : null, titleText: mapPrintTitle() };
 		
