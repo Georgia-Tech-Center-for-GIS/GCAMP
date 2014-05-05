@@ -1,3 +1,7 @@
+/**
+@file Initializes map elements
+*/
+
 dojo.require("esri.utils");
 dojo.require("esri.arcgis.utils");
 
@@ -45,8 +49,6 @@ dojo.require("esri.dijit.BasemapGallery");
 
 dojo.require("esri.dijit.Scalebar");
 
-//var gpServiceUrl = "http://sampleserver6.arcgisonline.com/arcgis/rest/services/911CallsHotspot/GPServer/911%20Calls%20Hotspot";
-//var mapserviceurl = "http://sampleserver6.arcgisonline.com/arcgis/rest/services/911CallsHotspot/MapServer/jobs";
 var map, legend;
 
 var mapBase = "http://carto.gis.gatech.edu/arcgis/rest/services/";
@@ -101,6 +103,39 @@ var cMapTool = ko.observable( "pan" );
 
 var generalTabController;
 
+var isMapGraphicsEmpty = ko.observable(true);
+var timeLayerIds = ko.observableArray([]);
+
+var handleIdentify = null;
+var handleIdentifySummary = null;
+
+var tabs;
+var jpanes = null;
+
+var lastGraphic = null;
+var multipleSelectSummary = null;
+
+var map_x_coord = ko.observable("-00.00");
+var map_y_coord = ko.observable("00.00");
+
+var abs_map_scale = ko.observable("0");
+
+var lastMapEv = null;
+
+var rr = null;
+
+require(["esri/map", "http://esri.github.io/bootstrap-map-js/src/js/bootstrapmap.js" ,"dojo/domReady!"],
+function(Map, BootstrapMap) {
+	map = BootstrapMap.create("map",{
+	  basemap:"oceans",
+	});
+});
+
+var opacityControl = null;
+
+/**
+Creates the basemap gallery widget
+*/
 function createBasemapGallery() {	
 	var basemaps = [];
 	
@@ -152,6 +187,9 @@ function createBasemapGallery() {
 	});
 }
 
+/**
+	Function called to convert an extent in decimal degrees/ lat/long to Web Mercator
+*/
 function cvtLatLongExtent_2_WebMercator( extent, fn_when_finished ) {
 	var geometryService = new esri.tasks.GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
 	var PrjParams = new esri.tasks.ProjectParameters();
@@ -161,6 +199,9 @@ function cvtLatLongExtent_2_WebMercator( extent, fn_when_finished ) {
 	geometryService.project(PrjParams, fn_when_finished );
 }
 
+/**
+	Handles map measurement through the ESRI Geometry service
+*/
 function doMeasure(graphics) {
 	if(graphics[0].geometry.type != "POLYGON") {
 		var geometryService = new esri.tasks.GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
@@ -181,27 +222,43 @@ function doMeasure(graphics) {
 	}
 }
 
+/**
+	
+*/
 function hideDEMLayer() {
 	map.getLayer( map.layerIds[1] ).visibleLayers = [];
 	map.getLayer( map.layerIds[1] ).setVisibility(false);
 }
 
+/**
+
+*/
 function outputDistance(result) {
 	console.debug(result);
 }
 
-var isMapGraphicsEmpty = ko.observable(true);
-var timeLayerIds = ko.observableArray([]);
-
-require(["esri/map", "http://esri.github.io/bootstrap-map-js/src/js/bootstrapmap.js" ,"dojo/domReady!"],
-function(Map, BootstrapMap) {
-	map = BootstrapMap.create("map",{
-	  basemap:"oceans",
+/**
+*/
+function addOpacityControl() {
+    var targetElem = dojo.byId("RNC_opacity_control");
+    //var sliderElem = dojo.create("div", {id: "RNC_opacity_control_slider"}, targetElem, "first");
+	
+	var dynamicLayer = map.getLayer("NauticalCharts");
+	dynamicLayer.setOpacity( 0 );
+	
+	$("#RNC_opacity_control").slider({
+		value: 0,
+		min: 0,
+		max: 1,
+		step: 0.05,
+		slide: function(ev, ui) {
+			dynamicLayer.setOpacity( ui.value );
+		}
 	});
-});
+}
 
-var opacityControl = null;
-
+/**
+*/
 function addOpacityControl() {
     var targetElem = dojo.byId("RNC_opacity_control");
     //var sliderElem = dojo.create("div", {id: "RNC_opacity_control_slider"}, targetElem, "first");
@@ -225,54 +282,7 @@ function prepare_map_when_extents_finished(a) {
 		
 		map.setExtent(initialExtent);
 		
-		/*map = new esri.Map("map", {
-				extent : initialExtent
-		});
-		
-		dojo.connect(dijit.byId('map'), "onLoad", function() {
-		});*/
-		
 		map.setMapCursor("pointer");
-
-		/*
-		printer = new esri.dijit.Print({
-			map: map,
-			url: //"http://servicesbeta4.esri.com/arcgis/rest/services/Utilities/ExportWebMap/GPServer/Export Web Map Task"
-			"http://tulip.gis.gatech.edu:6080/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
-			templates: [{
-					label: "Map",
-					format: "PDF",
-					layout: "MAP_ONLY",
-					exportOptions: {
-						width: 500,
-						height: 400,
-						dpi: 96
-					}
-				}, {
-					label: "Letter Portrait",
-					format: "PDF",
-					layout: "Letter ANSI A Portrait",
-					layoutOptions: {
-						titleText: "Georgia Coastal Atlas",
-						authorText: "Coastal Resources Divsion",
-						copyrightText: "Georgia Department of Natural Resources",
-						scalebarUnit: "Miles",
-					}
-				}, {
-					label: "11x17 Portrait",
-					format: "PDF",
-					layout: "Tabloid ANSI B Portrait",
-					layoutOptions: {
-						titleText: "Georgia Coastal Atlas",
-						authorText: "Coastal Resources Divsion",
-						copyrightText: "Georgia Department of Natural Resources",
-						scalebarUnit: "Miles",
-					}
-				}]
-		}, dojo.byId("printButton"));
-		
-		printer.startup();
-		*/
 		
 		dojo.connect(map, "onMouseMove", showMouseCoordinates);
 		dojo.connect(map, "onMouseDrag", showMouseCoordinates);
@@ -291,8 +301,6 @@ function prepare_map_when_extents_finished(a) {
 		MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/LidarCZM/MapServer", ServiceType_Dynamic, map, null));
 		MapSvcAllLayers.add(new MapSvcDef("NauticalCharts", NOAA_NautChartURL, ServiceType_Dynamic, map, null));
 		MapSvcAllLayers.add(new MapSvcDef("Carto", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/GCAMP314/MapServer", ServiceType_Dynamic, map, null));
-
-		//MapSvcAllLayers.add(new MapSvcDef("Test", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/MyMapService/MapServer", ServiceType_Dynamic, map, null));
 
 		MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function () {
 			loaded(true);
@@ -349,6 +357,7 @@ function prepare_map_when_extents_finished(a) {
 					init_layer_controls(map);
 					init_id_funct(map);
 					currTab("All Layers");
+					addOpacityControl();
 				});
 				
 				//$('#timeSliderContainer').hide();
@@ -372,6 +381,7 @@ function prepare_map_when_extents_finished(a) {
 					init_layer_controls(map);
 					init_id_funct(map);
 					currTab("Energy");
+					addOpacityControl();
 				});
 				
 				//$('#timeSliderContainer').hide();
@@ -395,10 +405,12 @@ function prepare_map_when_extents_finished(a) {
 					init_layer_controls(map);
 					init_id_funct(map);
 					currTab("Habitat");
+					addOpacityControl();
 				});	
 				
 				//$('#timeSliderContainer').hide();
-				timeSliderVisible ( false )
+				timeSliderVisible ( false );
+				addOpacityControl();
 			});
 			
 			$('#fisheriesLink').on('click', function(e) {
@@ -421,6 +433,7 @@ function prepare_map_when_extents_finished(a) {
 					timeLayerIds.removeAll();
 					
 					currTab("Fisheries");
+					addOpacityControl();
 					
 					require(["dojo/_base/xhr"],
 						function(xhr) {
@@ -428,7 +441,7 @@ function prepare_map_when_extents_finished(a) {
 								url: "TimeLayers.xml",
 								handleAs : "json",
 								load: function(result) {							
-									var l = map.getLayer( map.layerIds[2] );
+									var l = map.getLayer( map.layerIds[3] );
 									console.debug(l);
 									
 									rr = result;
@@ -445,12 +458,12 @@ function prepare_map_when_extents_finished(a) {
 											console.debug(valToShow);
 											
 											for(var lll = 0; lll < tLayerIds.length; lll++) {
-												if( viewModel.isVisibleLayer( map.layerIds[2], parseInt(tLayerIds[lll].id) ) ) {
-														viewModel.toggleVisibleLayer( { "mapLayerId" : map.layerIds[2], "esriLayer" : { id: parseInt(tLayerIds[lll].id) } } )
+												if( viewModel.isVisibleLayer( map.layerIds[3], parseInt(tLayerIds[lll].id) ) ) {
+														viewModel.toggleVisibleLayer( { "mapLayerId" : map.layerIds[3], "esriLayer" : { id: parseInt(tLayerIds[lll].id) } } )
 													}
 											}
 											
-											viewModel.toggleVisibleLayer( { "mapLayerId" : map.layerIds[2], "esriLayer" : { id: parseInt(valToShow) } } )
+											viewModel.toggleVisibleLayer( { "mapLayerId" : map.layerIds[3], "esriLayer" : { id: parseInt(valToShow) } } )
 											l.refresh();
 											
 										//});
@@ -459,21 +472,6 @@ function prepare_map_when_extents_finished(a) {
 							}
 						)}
 					);
-					
-					if(false) {
-					var l = map.getLayer( map.layerIds[2] );
-					for(var jjj = 0; jjj < l.layerInfos.length; jjj++) {
-						
-						if(l.layerInfos[jjj].subLayerIds != null) continue;
-
-						var fl = new esri.layers.ArcGISDynamicMapServiceLayer(l.url + "/" + jjj );//"http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/Fisheries/MapServer/11" );
-						//console.debug(fl);
-						
-						//if(fl.timeInfo != null) {
-							timeLayerIds.push({"id": jjj, "label": fl["name"]});
-						//}
-					}
-					}
 					
 					var timeExtent = new esri.TimeExtent();
 					timeExtent.startTime = new Date("1/1/2011 EST");
@@ -488,7 +486,7 @@ function prepare_map_when_extents_finished(a) {
 					map.setTimeSlider(timeSlider);
 					timeSlider.setThumbCount(2);
 					
-					var layerTimeExtent = map.getLayer( map.layerIds[2] ).timeInfo.timeExtent;
+					var layerTimeExtent = map.getLayer( map.layerIds[3] ).timeInfo.timeExtent;
 					layerTimeExtent.startTime = timeExtent.startTime;
 					timeSlider.createTimeStopsByTimeInterval(layerTimeExtent, 1, 'esriTimeUnitsMonths');
 					timeSlider.setThumbMovingRate(1500);			
@@ -499,6 +497,7 @@ function prepare_map_when_extents_finished(a) {
 					// $('#timeSliderContainer').css('display', 'inline');
 					// $('#timeSliderChoices').css('display', 'inline');
 					timeSliderVisible( true );
+					addOpacityControl();
 				});
 			});
 
@@ -551,8 +550,8 @@ function prepare_map_when_extents_finished(a) {
 		esri.request(args);
 }
 
-var rr = null;
-
+/**
+*/
 function init() {
 	esriConfig.defaults.io.proxyUrl = "http://carto.gis.gatech.edu/proxypage_net/proxy.ashx";
 	esriConfig.defaults.io.alwaysUseProxy = true;
@@ -578,21 +577,20 @@ function init() {
 	cvtLatLongExtent_2_WebMercator( initialExtent, prepare_map_when_extents_finished);
 }
 
-var map_x_coord = ko.observable("-00.00");
-var map_y_coord = ko.observable("00.00");
-
-var abs_map_scale = ko.observable("0");
-
-var lastMapEv = null;
-
+/**
+*/
 function getMapScaleToVariable() {
 	abs_map_scale( "1: " + (Math.round(map.getScale()/100)*100));
 }
 
+/**
+*/
 function onMapExtentChange(extent,delta,levelChange,lod) {
 	getMapScaleToVariable();
 }
 
+/**
+*/
 function showMouseCoordinates(e) {
 	lastMapEv = e;
 	
@@ -619,6 +617,8 @@ function showMouseCoordinates(e) {
 	}
 }
 
+/**
+*/
 function init_id_funct(map) {
 	identifyTask = new esri.tasks.IdentifyTask(
 		map.getLayer(map.layerIds[2]).url
@@ -637,19 +637,27 @@ function init_id_funct(map) {
 	map.infoWindow.setTitle("Identify Results");
 }
 
+/**
+*/
 function return_to_LayerList() {
 	$('#layerTabLink').tab('show');
 }
 
+/**
+*/
 function fullExtent() {
 	map.setExtent(initialExtent);
 }
 
+/**
+*/
 function extentHistoryChangeHandler() {
 	//dijit.byId("zoomprev").disabled = navToolbar.isFirstExtent();
 	//dijit.byId("zoomnext").disabled = navToolbar.isLastExtent();
 }
 
+/**
+*/
 function sliderChanged(value) {
 	var num = Math.floor(value/100 * extents.length);
 	
@@ -663,15 +671,8 @@ function sliderChanged(value) {
 	});
 }
 
-var handleIdentify = null;
-var handleIdentifySummary = null;
-
-var tabs;
-var jpanes = null;
-
-var lastGraphic = null;
-var multipleSelectSummary = null;
-
+/**
+*/
 function jQueryReady() {
 	$(function() {
 		/*jpanes = $('.scroll-pane').jScrollPane({
@@ -764,6 +765,8 @@ function jQueryReady() {
 	});
 }
 
+/**
+*/
 function resetSummaryPane() {
 	if( multipleSelectSummary == null) {
 		multipleSelectSummary = $('#summarySelectList').multipleSelect().data();
@@ -772,18 +775,26 @@ function resetSummaryPane() {
 	multipleSelectSummary.multipleSelect.refresh();
 }
 
+/**
+*/
 function doClearMapGraphics() {
 	map.graphics.clear();
 }
 
+/**
+*/
 function doLoadLegendElements(mapSvc) {
 }
 
+/**
+*/
 function doToggleSidebar() {
 	isSidebarVisible(!isSidebarVisible());
 	map.resize();
 }
 
+/**
+*/
 function doShowPrintDlg() {
 	$("#printing-popover").show();
 }
