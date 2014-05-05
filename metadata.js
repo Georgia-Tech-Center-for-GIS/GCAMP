@@ -1,3 +1,11 @@
+/**
+@file Retrieves and displays layer metadata
+*/
+
+/**
+	Sends metadata request to service
+	@param a specifies which layer to process request
+*/
 function dispMetadata(a) {
 	//var lyr = map.getLayer(a.mapLayerId);
 	var nm = a.name;

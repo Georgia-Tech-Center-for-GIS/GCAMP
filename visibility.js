@@ -1,3 +1,6 @@
+/**
+@file Deals with layer visibility
+*/
 dojo.require("dijit.form.DateTextBox");
 dojo.require("dijit.Toolbar");
 
@@ -35,6 +38,9 @@ var DEMURL   = null;
 var DEM_ESRI = null;
 var phyLayer = null;
 
+/**
+Returns a list of child layers of the passed layer.
+*/
 function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 	var list = [];
 	var lastIndex = 0;
@@ -87,7 +93,6 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 	
 	var returnValue = { "childLayers": list, "lastIndex": lastIndex };
 	
-	//console.debug(list);
 	return returnValue;
 }
 
@@ -115,6 +120,7 @@ function return_map_layers() {
 			break;
 			
 			case 1:
+			case 2:
 			dispLyrOuter.name = "DEM";
 			DEMURL = lyr.url;
 			DEM_ESRI = lyr;
@@ -149,7 +155,7 @@ function return_map_layers() {
 			
 			break;
 			
-			case 2:
+			case 3:
 			break;
 			
 			case 3:

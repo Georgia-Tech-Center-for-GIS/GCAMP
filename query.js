@@ -1,3 +1,7 @@
+/**
+@file Programs the query functionality for the map.
+*/
+
 dojo.require("esri.utils");
 dojo.require("esri.arcgis.utils");
 
@@ -38,8 +42,14 @@ dojo.require("dojo/promise/all");
 var ptIDTolerance = ko.observable(15);
 var lastIdResults = ko.observableArray();
 
+/** Desired decimal precision for numbers */
 var decPrecision = 2;
 
+/**
+	Trims number to decPrecision
+	@param num double number to process
+	@return trimmed number
+*/
 function doTrimNumber(num) {
 	try {
 		return num.toFixed(decPrecision);
@@ -55,6 +65,10 @@ var params = null;
 var idInProgress = ko.observable(false);
 var noIdResults = ko.observable(true);
 
+/**
+	Performs a 'standard' indentify
+	@param evt 
+*/
 function doIdentify(evt) {
 	//map.graphics.clear();
 	lastIdResults.removeAll();
@@ -68,7 +82,7 @@ function doIdentify(evt) {
 	
     identifyParams.geometry = queryExtent.centerAt(centerPoint);
 	identifyParams.mapExtent = map.extent;
-	identifyParams.layerIds = /*[0]; / */ viewModel.currentVisibleLayers.peek()[2].vlayers;
+	identifyParams.layerIds = /*[0]; / */ viewModel.currentVisibleLayers.peek()[3].vlayers;
 	
 	identifyParams.layerIds = identifyParams.layerIds.sort();
 	
@@ -149,6 +163,9 @@ var idViewModel = {
 	}
 }
 
+/**
+	@param ftre
+*/
 function getResultsFields(ftre) {
 	var arrayResult = ko.observableArray();
 	
@@ -175,6 +192,9 @@ function getResultsFields(ftre) {
 
 //var newResults =  null; //ko.observableArray();
 
+/**
+
+*/
 function addToMap3(idResults, evt) {
 	var geometryService = new esri.tasks.GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
 	for (var i = 0; i < idResults.length; i++) {
@@ -182,6 +202,10 @@ function addToMap3(idResults, evt) {
 	}
 }
 
+/**
+	@param idResults
+	@param evt
+*/
 function addToMap(idResults, evt) {
 	//var tempIdResults = idResults;
 	var factoredResults = [];
@@ -197,7 +221,7 @@ function addToMap(idResults, evt) {
 		
 		try {
 		if( layerName == "") {
-			var ly1 = map.getLayer( map.layerIds[2] );
+			var ly1 = map.getLayer( map.layerIds[3] );
 			layerName = ly1.layerInfos[ idResults[i].layerId ].name + " (Raster)";
 			idResults[i].layerName = layerName;
 		}
@@ -281,7 +305,7 @@ var useDEMSummary = true;
 function doActivateVisibleLayers() {
 	//selectedLayersSummary.removeAll();
 	
-	var mapLayer = map.getLayer( map.layerIds[2] );
+	var mapLayer = map.getLayer( map.layerIds[3] );
 	var vLayers = mapLayer.visibleLayers;
 	
 	var newSelectedLayers = [];
@@ -399,7 +423,8 @@ function doSummaryQuery(geom) {
 	inProcess = false;
 }
 
-
+/**
+*/
 function queryRaster(geom,label,location) {
 	var tempArray = new Array();
 	
@@ -457,6 +482,8 @@ function queryRaster(geom,label,location) {
 	/** */
 }
 
+/**
+*/
 function processFields(curr_count, feature, sfields, pcntAdj) {
 	console.debug( curr_count );
 	console.debug( pcntAdj );
@@ -492,6 +519,8 @@ function processFields(curr_count, feature, sfields, pcntAdj) {
 	return sfields;
 }
 
+/**
+*/
 function processSummaryResults(all_results) {
 	if(results_done_processed) return;
 	

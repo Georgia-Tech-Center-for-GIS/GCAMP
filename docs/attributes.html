@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>attributes.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="attributes.html">
+                attributes.js
+              </a>
+            
+              
+              <a class="source" href="main.html">
+                main.js
+              </a>
+            
+              
+              <a class="source" href="map.html">
+                map.js
+              </a>
+            
+              
+              <a class="source" href="visibility.html">
+                visibility.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>attributes.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>dojo.require(<span class="hljs-string">"dijit.form.DateTextBox"</span>);
+dojo.require(<span class="hljs-string">"dijit.Toolbar"</span>);
+
+dojo.require(<span class="hljs-string">"dojo.store.Memory"</span>);
+dojo.require(<span class="hljs-string">"dojo.data.ItemFileReadStore"</span>);
+
+dojo.require(<span class="hljs-string">"dojo.dnd.Source"</span>);
+dojo.require(<span class="hljs-string">"dijit.TitlePane"</span>);
+
+dojo.require(<span class="hljs-string">"dijit.layout.BorderContainer"</span>); 
+dojo.require(<span class="hljs-string">"dijit.layout.ContentPane"</span>); 
+dojo.require(<span class="hljs-string">"dijit.layout.TabContainer"</span>);
+dojo.require(<span class="hljs-string">"dijit.form.CheckBox"</span>);
+
+dojo.require(<span class="hljs-string">"dojox.layout.ExpandoPane"</span>);
+dojo.require(<span class="hljs-string">"dojox.grid.DataGrid"</span>);
+
+dojo.require(<span class="hljs-string">"esri.utils"</span>);
+dojo.require(<span class="hljs-string">"esri.IdentityManager"</span>);
+
+dojo.require(<span class="hljs-string">"esri.map"</span>); 
+dojo.require(<span class="hljs-string">"esri.layers.FeatureLayer"</span>);
+dojo.require(<span class="hljs-string">"esri.layers.agsdynamic"</span>);
+dojo.require(<span class="hljs-string">"esri.tasks.gp"</span>); 
+dojo.require(<span class="hljs-string">"esri.dijit.Legend"</span>); 
+dojo.require(<span class="hljs-string">"esri.dijit.Popup"</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>dojo.require(“dgrid.OnDemandGrid”);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+<span class="hljs-keyword">var</span> grid = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">var</span> store = <span class="hljs-literal">null</span>;
+
+<span class="hljs-keyword">var</span> lastAttribFields = ko.observableArray();
+<span class="hljs-keyword">var</span> lastAttribFeatures = ko.observableArray();
+<span class="hljs-keyword">var</span> lastAttribURL = ko.observable();
+<span class="hljs-keyword">var</span> lastStatsFields = ko.observableArray();
+<span class="hljs-keyword">var</span> lastStatsAvg = ko.observableArray();
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initAttributesLayerList</span><span class="hljs-params">()</span> {</span>
+	<span class="hljs-keyword">var</span> lyrList = [];
+	
+	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j = <span class="hljs-number">0</span> ; j &lt; map.layerIds.length; j++ ) {
+		<span class="hljs-keyword">var</span> lyr = map.getLayer(map.layerIds[j]);
+		<span class="hljs-keyword">var</span> infos = lyr.layerInfos, info;
+		
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>, il=infos.length; i&lt;il; i++) {
+			info = infos[i];
+			
+			<span class="hljs-keyword">if</span>(info.subLayerIds == <span class="hljs-literal">null</span> &amp;&amp; info.name.search(<span class="hljs-string">"Basemap"</span>) == -<span class="hljs-number">1</span>) {
+				lyrList.push({label : info.name, value : lyr.url+<span class="hljs-string">"/"</span> + i});
+			}
+		}
+	}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>console.debug(lyrList);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	
+	<span class="hljs-keyword">var</span> layerStoreMemory2 = <span class="hljs-keyword">new</span> dojo.store.Memory({data: lyrList});
+	<span class="hljs-keyword">var</span> layerStore2 = <span class="hljs-keyword">new</span> dojo.data.ObjectStore({objectStore: layerStoreMemory2});
+			
+	<span class="hljs-keyword">var</span> lyrSelect2 = <span class="hljs-keyword">new</span> dijit.form.Select({
+		id: <span class="hljs-string">'attributesPanelSelector'</span>,
+		name: <span class="hljs-string">""</span>,
+		style: <span class="hljs-string">"width: 15em; height: 1em;"</span>,
+		options: lyrList,
+		maxHeight: <span class="hljs-string">"5em;"</span>});
+		
+	lyrSelect2.placeAt(<span class="hljs-string">"SelectMapLayerAttributes"</span>);
+	
+	dojo.connect(lyrSelect2, <span class="hljs-string">"onChange"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(evt)</span> {</span>
+		getAttributesLayer(evt);
+	});
+	
+	lyrSelect2.startup();
+}
+
+<span class="hljs-keyword">var</span> koNaN = ko.observable(<span class="hljs-built_in">Number</span>.NaN);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAttributesLayer</span> <span class="hljs-params">(url)</span> {</span>
+	<span class="hljs-keyword">try</span> {
+	lastAttribURL(url);
+	
+	lastAttribFeatures.removeAll();
+	lastAttribFields.removeAll();
+	lastStatsFields.removeAll();
+	
+	<span class="hljs-keyword">var</span> qt = <span class="hljs-keyword">new</span> esri.tasks.QueryTask( url );
+	<span class="hljs-keyword">var</span> query = <span class="hljs-keyword">new</span> esri.tasks.Query();
+	
+	qt.DisableClientCaching = <span class="hljs-literal">true</span>;
+	
+	query.where = <span class="hljs-string">"1=1"</span>;
+	query.returnGeometry = <span class="hljs-literal">true</span>;
+	query.outSpatialReference = map.spatialReference;
+	query.outFields= [<span class="hljs-string">"*"</span>];
+	
+	qt.execute(query, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(results)</span> {</span>
+		console.debug(results);
+		
+		<span class="hljs-keyword">var</span> fields = dojo.map(results.fields, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(field)</span> {</span>
+			<span class="hljs-keyword">if</span>(field.alias != <span class="hljs-string">"FID"</span>)
+				lastAttribFields.push({<span class="hljs-string">"name"</span> : field.name, <span class="hljs-string">"alias"</span> : field.alias});
+				
+			<span class="hljs-keyword">if</span>( field.type == <span class="hljs-string">"esriFieldTypeSingle"</span> ||
+				field.type == <span class="hljs-string">"esriFieldTypeDouble"</span> ||
+				field.type == <span class="hljs-string">"esriFieldTypeInteger"</span> ||
+				field.type == <span class="hljs-string">"esriFieldTypeSmallInteger"</span> ) {
+				lastStatsFields.push( {<span class="hljs-string">"fld_obj"</span>: field,
+					min: ko.observable(<span class="hljs-built_in">Number</span>.NaN),
+					max: ko.observable(<span class="hljs-built_in">Number</span>.NaN),
+					avg: ko.observable(<span class="hljs-built_in">Number</span>.NaN),
+					total: ko.observable(<span class="hljs-built_in">Number</span>.NaN),
+					count: ko.observable(<span class="hljs-number">0</span>) } );
+			}
+
+			<span class="hljs-keyword">return</span> [];</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>var item = [];
+item[‘name’] = field.alias;
+item[‘field’]= field.name;
+return dojo.clone(item);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		});
+		
+		<span class="hljs-keyword">var</span> sfields = lastStatsFields.peek();
+		
+		<span class="hljs-keyword">var</span> items = dojo.map(results.features, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(feature)</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>console.debug(feature);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			<span class="hljs-keyword">var</span> a = dojo.clone(feature.attributes);
+			a[<span class="hljs-string">"SHAPE"</span>] = feature.geometry;
+			lastAttribFeatures.push(a);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>map.graphics.add(feature);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			
+			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; sfields.length; i++) {
+				<span class="hljs-keyword">var</span> value = feature.attributes[ sfields[i][<span class="hljs-string">"fld_obj"</span>].name ];
+				
+				<span class="hljs-keyword">if</span>( <span class="hljs-built_in">isNaN</span>( sfields[i].max() ) || value &gt; sfields[i].max())
+					lastStatsFields()[i].max(value);
+				
+				<span class="hljs-keyword">if</span>( <span class="hljs-built_in">isNaN</span>( sfields[i].min() ) || value &lt; sfields[i].min())
+					lastStatsFields()[i].min(value);
+					
+				<span class="hljs-keyword">if</span>( <span class="hljs-built_in">isNaN</span>( sfields[i].total() ) )
+					lastStatsFields()[i].total(value);
+				<span class="hljs-keyword">else</span>
+					lastStatsFields()[i].total(value + lastStatsFields()[i].total());
+				
+				<span class="hljs-keyword">var</span> lastCount = lastStatsFields()[i].count();
+				lastStatsFields()[i].count(lastStatsFields()[i].count()+<span class="hljs-number">1</span>);
+					
+				<span class="hljs-keyword">if</span>( <span class="hljs-built_in">isNaN</span>( sfields[i].avg() ) )
+					lastStatsFields()[i].avg(value);
+				<span class="hljs-keyword">else</span> {
+					lastStatsFields()[i].avg((value + (lastStatsFields()[i].avg() * lastCount)) / (lastCount+<span class="hljs-number">1</span>) );
+				}
+			}
+			<span class="hljs-keyword">return</span> dojo.clone(feature.attributes);
+		});
+		
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; sfields.length; i++) {
+			lastStatsFields()[i].min(lastStatsFields()[i].min().toFixed(<span class="hljs-number">3</span>));
+			lastStatsFields()[i].avg(lastStatsFields()[i].avg().toFixed(<span class="hljs-number">3</span>));
+			lastStatsFields()[i].max(lastStatsFields()[i].max().toFixed(<span class="hljs-number">3</span>));
+			lastStatsFields()[i].total(lastStatsFields()[i].total().toFixed(<span class="hljs-number">3</span>));
+		}
+		
+		$(<span class="hljs-string">'#attribPopoutPanel'</span>).dialog({height : <span class="hljs-number">500</span>, width: <span class="hljs-number">650</span>, title:<span class="hljs-string">"Attribute Table"</span>});
+		
+		<span class="hljs-comment">/*if( lastStatsFields().length &gt; 0 ) {
+			$('#sumStatsPopoutPanel').dialog({height : 300, width: 400, title:"Statistics Table"});
+		}
+		else {
+			$('#sumStatsPopoutPanel').dialog('close')
+		}*/</span>
+		
+		$(<span class="hljs-string">'.attribRow'</span>).hover(
+			<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+				$(<span class="hljs-keyword">this</span>).addClass(<span class="hljs-string">"highlight"</span>);
+			},
+			<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+				$(<span class="hljs-keyword">this</span>).removeClass(<span class="hljs-string">"highlight"</span>);
+			}
+		);
+			
+		<span class="hljs-comment">/*
+		
+		var layout = [fields];
+		
+		var items = dojo.map(results.features, function(feature) {
+			return dojo.clone(feature.attributes);
+		});
+		
+		data = {
+			identifier: results.fields[0].name,
+			items: items
+		};
+		
+		store = new dojo.data.ItemFileReadStore({data: data});
+		
+		if(grid != null) {
+			grid.destroy();
+		}
+		
+		grid = new dojox.grid.DataGrid( {id: 'attribGrid', store: store, structure : layout, rowSelector: '20px'});
+		grid.placeAt("gridDiv");
+</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>grid.setStore( store);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+		grid.startup();
+		*/
+	});
+	}
+	catch(eeeee) {
+		console.debug(eeeee);
+	}
+}
+
+function dispAttribTable(a) {
+	getAttributesLayer(a.url);
+}
+
+var lastShape = null;
+var c = null;
+
+function doAttribZoom(a) {
+	lastShape = a;
+	
+	console.debug(a);
+	
+	var b = a["SHAPE"];
+	if(b.type == "point") {
+		c =  new esri.geometry.Extent(b.x-65000,b.y-65000,b.x+65000,b.y+65000, map.spatialReference);
+	}
+	else {
+		c = b.getExtent().expand(1.75);
+	}
+	
+	map.setExtent(c);
+}
+
+function showStatsDlg() {
+	$("#sumStatsPopoutPanel").dialog({height : 300, width: 400, title:"Statistics Table"});
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
