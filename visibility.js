@@ -156,9 +156,6 @@ function return_map_layers() {
 			break;
 			
 			case 3:
-			break;
-			
-			case 3:
 			console.debug(lyr.url);
 			soapURL = lyr.url.replace("rest/", "");
 			
