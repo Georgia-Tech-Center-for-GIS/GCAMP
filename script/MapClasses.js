@@ -16,6 +16,9 @@ var mbIsMapDebugMessagesOn = false;  //Set this to true to get alert describing 
 var ServiceType_Dynamic = "ST_Dynamic"; 
 var ServiceType_Tiled = "ST_Tiled";
 
+// DVA Added image type constant for Image Services
+var ServiceType_Image = "ST_Image";
+
 //Classes =====================================================================
 
 //MapSvcList Class ----------
@@ -154,6 +157,10 @@ function MapSvcDef(sID, sUrl, sServiceType, oEsriMap, fnCallbackBeforeAddToMap)
         case ServiceType_Dynamic:
           this.MapServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(this.Url, {id: this.ID}); 
           break;
+		//Added by DVA to load image services
+		case ServiceType_Image:
+		  this.MapServiceLayer = new esri.layers.ArcGISImageServiceLayer(this.Url, {id: this.ID});
+		  break;
       }
       mdtInitializationStarted = new Date();
       mbIsInitialized = true;
