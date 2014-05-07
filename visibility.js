@@ -34,7 +34,6 @@ var layerTitlePane = null;
 var allMapLayers = ko.observableArray();
 
 var demLayer = null;
-var DEMURL   = null;
 var DEM_ESRI = null;
 var phyLayer = null;
 
@@ -76,13 +75,6 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 			availableLayersSummary.push( {data: li.name + "|" + dispLyr.url, label: li.name } );
 		}
 		
-			/*var legendResp = mapLyr.legendResponse.layers[id];
-
-			if(legendResp.layerType == "Raster Layer") {
-				console.debug(legendResp);
-				console.debug(legendResp.layerType);
-				dispLyr.isRaster = true;
-			}*/
 		}
 		catch(e) {
 			console.debug(e);
@@ -114,15 +106,9 @@ function return_map_layers() {
 		var dispLyrOuter = {
 			"children": []
 		};
-		
-		switch(j) {
-			case 0:
-			break;
-			
-			case 1:
-			case 2:
+	
+		if(lyr.url == DEM_URL) {
 			dispLyrOuter.name = "DEM";
-			DEMURL = lyr.url;
 			DEM_ESRI = lyr;
 			//soapURL = lyr.url.replace("rest/", "");
 			
@@ -152,10 +138,8 @@ function return_map_layers() {
 					console.debug(demLayer);
 				}
 			});
-			
-			break;
-			
-			case 3:
+		}
+		else if(lyr.url == CartoMapServiceURL) {
 			console.debug(lyr.url);
 			soapURL = lyr.url.replace("rest/", "");
 			
@@ -203,7 +187,6 @@ function return_map_layers() {
 									dispLyr.children.push(demLayer);
 								}
 
-								
 								allMapLayers.push(dispLyr);
 							}
 						});
@@ -213,9 +196,8 @@ function return_map_layers() {
 					}
 				}
 			});
-			break;
-			
-			default:
+		}
+		else if(j > 3) {
 			dispLyrOuter.name = mapLyrs()[ j-3 ].mapLabel;
 			
 			dojo.forEach( lyr.layerInfos, function (li, i) {
@@ -242,8 +224,7 @@ function return_map_layers() {
 			});
 			
 			allMapLayers.push(dispLyrOuter);
-			break;
-		};
+		}
 	}
 	
 	lastIndex = -1;

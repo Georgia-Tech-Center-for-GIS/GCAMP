@@ -74,8 +74,6 @@ var mapSvrChoices = ko.observable(
 	{id:6, mapLabel:"Carto/Coast", url: "http://carto.gis.gatech.edu/ArcGIS/rest/services/coastal113/MapServer"}
 ]);
 
-var NOAA_NautChartURL = "http://egisws02.nos.noaa.gov/ArcGIS/rest/services/RNC/NOAA_RNC/ImageServer";
-
 var extents = [];
 	
 var initialExtent;
@@ -124,6 +122,8 @@ var lastMapEv = null;
 
 var rr = null;
 
+var DEM_URL = "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/LidarCZM/MapServer";
+var NOAA_NautChartURL = "http://egisws02.nos.noaa.gov/ArcGIS/rest/services/RNC/NOAA_RNC/ImageServer";
 var CartoMapServiceURL = "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/GCAMP514/MapServer";
 
 require(["esri/map", "http://esri.github.io/bootstrap-map-js/src/js/bootstrapmap.js" ,"dojo/domReady!"],
@@ -282,7 +282,7 @@ function prepare_map_when_extents_finished(a) {
         //});
 		
 		//MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
-		MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/LidarCZM/MapServer", ServiceType_Dynamic, map, null));
+		MapSvcAllLayers.add(new MapSvcDef("DEM", DEM_URL, ServiceType_Dynamic, map, null));
 		MapSvcAllLayers.add(new MapSvcDef("NauticalCharts", NOAA_NautChartURL, ServiceType_Image, map, null));
 		MapSvcAllLayers.add(new MapSvcDef("Carto", CartoMapServiceURL, ServiceType_Dynamic, map, null));
 
@@ -545,6 +545,7 @@ function init() {
 	esri.config.defaults.io.corsEnabledServers.push("http://ocs-gis.ncd.noaa.gov");
 	esri.config.defaults.io.corsEnabledServers.push("http://services.arcgisonline.com");
 	esri.config.defaults.io.corsEnabledServers.push("http://tasks.arcgisonline.com");
+	esri.config.defaults.io.corsEnabledServers.push("http://egisws02.nos.noaa.gov");
 
 	extents = [
 		/*
