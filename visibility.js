@@ -156,9 +156,6 @@ function return_map_layers() {
 			break;
 			
 			case 3:
-			break;
-			
-			case 3:
 			console.debug(lyr.url);
 			soapURL = lyr.url.replace("rest/", "");
 			
@@ -370,9 +367,11 @@ function init_layer_controls(map) {
 			
 			var lyr = map.getLayer(map.layerIds[i]);
 			
-			for(var j = 0; j < lyr.visibleLayers.length; j++) {			
-				if( lyr.layerInfos[ lyr.visibleLayers[j] ].subLayerIds == null) {
-					reallyVisibleLayers.push(lyr.visibleLayers[j]);
+			if(lyr.hasOwnProperty("visibleLayers")) {
+				for(var j = 0; j < lyr.visibleLayers.length; j++) {			
+					if( lyr.layerInfos[ lyr.visibleLayers[j] ].subLayerIds == null) {
+						reallyVisibleLayers.push(lyr.visibleLayers[j]);
+					}
 				}
 			}
 			
