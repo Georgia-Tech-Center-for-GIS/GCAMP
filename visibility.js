@@ -139,7 +139,8 @@ function return_map_layers() {
 				}
 			});
 		}
-		else if(lyr.url == CartoMapServiceURL || lyr.url.lastIndexOf("tulip") > -1 ) {
+		else if(lyr.url == TulipMapServiceURL || lyr.url.lastIndexOf("tulip") > -1 ) {
+			CurrentMainMapServiceURL = lyr.url;
 			console.debug(lyr.url);
 			soapURL = lyr.url.replace("rest/", "");
 			

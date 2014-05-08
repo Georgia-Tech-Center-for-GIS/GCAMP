@@ -1,3 +1,7 @@
+/**
+@file Handles the printing of the map.
+*/
+
 var format = ko.observable("PDF");
 var borderLess = ko.observable();
 var paperSize = ko.observable("letter");
@@ -35,10 +39,14 @@ var le = null;
 var isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
 var isSafari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
 
+/**
+Either uses HTML5 (for Chrome) or opens a new window (all others) to download the printed file
+@param sUrl URL to download
+*/
 function downloadFile(sUrl) {
  
     //If in Chrome or Safari - download via virtual link click
-    if ((isChrome || isSafari) && false) {
+    if ( isChrome /*|| isSafari*/ )  {
         //Creating new link node.
         var link = document.createElement('a');
         link.href = sUrl;
@@ -63,6 +71,9 @@ function downloadFile(sUrl) {
     window.open(sUrl + query);
 }
 
+/**
+Prints the map using the esri widget.
+*/
 function sendPrintJob() {
 	printInfo = esri.request(({
 		"url" : "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/AdvancedPrinting/GPServer/AdvancedPrinting",
@@ -109,7 +120,7 @@ function sendPrintJob() {
 			
 		ptemplate.layoutOptions = { "legendLayers" : null, titleText: mapPrintTitle() };
 		
-		console.debug( ptemplate.exportOptions );
+		//console.debug( ptemplate.exportOptions );
 		
 		ptemplate.format = format();
 		ptemplate.label  = mapPrintTitle();
@@ -127,6 +138,9 @@ function sendPrintJob() {
 	});
 }
 
+/**
+Closes (hides) the print dialog.
+*/
 function printDlgCancel() {
 	$('#printing-popover').hide();
 }
