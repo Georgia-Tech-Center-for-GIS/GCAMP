@@ -48,11 +48,17 @@ function MapSvcList()
   }
 
   this.failureAlert = function()
-  { 
-    if (msAlertToDisplayOnMapLoadFailure != null && msAlertToDisplayOnMapLoadFailure != "")
-      alert(msAlertToDisplayOnMapLoadFailure + getMapDebugMessage(this));
-    else
-      alert("Error: One or more map services failed to initialize." + getMapDebugMessage(this));
+  {
+	if( false ) {
+		if (msAlertToDisplayOnMapLoadFailure != null && msAlertToDisplayOnMapLoadFailure != "")
+		  alert(msAlertToDisplayOnMapLoadFailure + getMapDebugMessage(this));
+		else
+		  alert("Error: One or more map services failed to initialize." + getMapDebugMessage(this));
+	}
+	else {
+		if (mfnCallbackAfterInitialize != null)
+		  mfnCallbackAfterInitialize();
+	}
   }
   
   function getMapDebugMessage(thisObject)
@@ -147,52 +153,55 @@ function MapSvcDef(sID, sUrl, sServiceType, oEsriMap, fnCallbackBeforeAddToMap)
   //Public Methods ====================================
   this.tryLoad = function()
   {
-    if (!mbIsInitialized)
-    {
-      switch (this.ServiceType)
-      {
-        case ServiceType_Tiled:
-          this.MapServiceLayer = new esri.layers.ArcGISTiledMapServiceLayer(this.Url, {id: this.ID}); 
-          break;
-        case ServiceType_Dynamic:
-          this.MapServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(this.Url, {id: this.ID}); 
-          break;
-		//Added by DVA to load image services
-		case ServiceType_Image:
-		  this.MapServiceLayer = new esri.layers.ArcGISImageServiceLayer(this.Url, {id: this.ID});
-		  break;
-      }
-      mdtInitializationStarted = new Date();
-      mbIsInitialized = true;
-      this.RetryCnt++;
+	try {
+		if (!mbIsInitialized)
+		{
+		  switch (this.ServiceType)
+		  {
+			case ServiceType_Tiled:
+			  this.MapServiceLayer = new esri.layers.ArcGISTiledMapServiceLayer(this.Url, {id: this.ID}); 
+			  break;
+			case ServiceType_Dynamic:
+			  this.MapServiceLayer = new esri.layers.ArcGISDynamicMapServiceLayer(this.Url, {id: this.ID}); 
+			  break;
+			//Added by DVA to load image services
+			case ServiceType_Image:
+			  this.MapServiceLayer = new esri.layers.ArcGISImageServiceLayer(this.Url, {id: this.ID});
+			  break;
+		  }
+		  mdtInitializationStarted = new Date();
+		  mbIsInitialized = true;
+		  this.RetryCnt++;
+		}
+		else
+		{
+		  if (!isLoaded()) 
+		  {
+			//Start Retry Logic ---------------
+			var dtCurTime = new Date();
+			var iElapsedTime = dtCurTime.getTime() - mdtInitializationStarted.getTime();
+			if ((iElapsedTime / 1000) > LoadSingleMap_RetryAfter_TimeoutSecs)
+			{
+			  //OK, here is the key to the whole thing.  At this point we
+			  // are giving up on this map service request.  We will
+			  // delete the current maps service layer and retry the 
+			  // request.  This allows for the first request to fail
+			  // and auto-requests the second try.
+			  delete this.MapServiceLayer;
+			  this.MapServiceLayer = null;
+			  mdtInitializationStarted = null;
+			  mbIsInitialized = false;
+			  this.tryLoad();  //Retry to load from scratch.
+			}
+			//End Retry Logic ---------------
+		  }
+		}
+		
+		//If the service had been added to the map, it is ready.
+		this.IsReady = isLoaded();
     }
-    else
-    {
-      if (!isLoaded()) 
-      {
-        //Start Retry Logic ---------------
-        var dtCurTime = new Date();
-        var iElapsedTime = dtCurTime.getTime() - mdtInitializationStarted.getTime();
-        if ((iElapsedTime / 1000) > LoadSingleMap_RetryAfter_TimeoutSecs)
-        {
-          //OK, here is the key to the whole thing.  At this point we
-          // are giving up on this map service request.  We will
-          // delete the current maps service layer and retry the 
-          // request.  This allows for the first request to fail
-          // and auto-requests the second try.
-          delete this.MapServiceLayer;
-          this.MapServiceLayer = null;
-          mdtInitializationStarted = null;
-          mbIsInitialized = false;
-          this.tryLoad();  //Retry to load from scratch.
-        }
-        //End Retry Logic ---------------
-      }
-    }
-    
-    //If the service had been added to the map, it is ready.
-    this.IsReady = isLoaded();
-    
+	catch (except) {
+	}    
   }//tryLoad
   
   this.addToMap = function()

@@ -234,8 +234,13 @@ function doMeasure(graphics) {
 	
 */
 function hideDEMLayer() {
-	map.getLayer( map.layerIds[1] ).visibleLayers = [];
-	map.getLayer( map.layerIds[1] ).setVisibility(false);
+	try {
+		mlayer = map.getLayer("DEM");
+		mLayer.visibleLayers = [];
+		mLayer.setVisibility(false);
+	}
+	catch(e) {
+	}
 }
 
 /**
@@ -248,20 +253,37 @@ function outputDistance(result) {
 /**
 */
 function addOpacityControl() {
-    var targetElem = dojo.byId("RNC_opacity_control");
-    //var sliderElem = dojo.create("div", {id: "RNC_opacity_control_slider"}, targetElem, "first");
-	
-	var dynamicLayer = map.getLayer("NauticalCharts");
-	dynamicLayer.setOpacity( 0 );
-	
-	$("#RNC_opacity_control").slider({
-		value: 0,
-		min: 0,
-		max: 1,
-		step: 0.05,
-		slide: function(ev, ui) {
-			dynamicLayer.setOpacity( ui.value );
-		}
+	try {
+		var targetElem = dojo.byId("RNC_opacity_control");
+		//var sliderElem = dojo.create("div", {id: "RNC_opacity_control_slider"}, targetElem, "first");
+		
+		var dynamicLayer = map.getLayer("NauticalCharts");
+		dynamicLayer.setOpacity( 0 );
+		
+		$("#RNC_opacity_control").slider({
+			value: 0,
+			min: 0,
+			max: 1,
+			step: 0.05,
+			slide: function(ev, ui) {
+				dynamicLayer.setOpacity( ui.value );
+			}
+		});
+	}
+	catch (exc) {
+	}
+}
+
+function isMapLayerTimeDependant (urlQ, index) {
+	require(["esri/request"], function(esriRequest) {
+		var timeLayers = esriRequest({
+			url: urlQ + "/" + index + "?f=json",
+			handleAs: "json",
+		});
+		timeLayers.then(function(result){
+			console.debug(result);
+			console.debug(result.hasOwnProperty("timeInfo"));
+		});
 	});
 }
 
