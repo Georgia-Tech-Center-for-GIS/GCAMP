@@ -1,3 +1,7 @@
+/**
+@file Handles display of a feature's attribute table
+*/
+
 dojo.require("dijit.form.DateTextBox");
 dojo.require("dijit.Toolbar");
 
@@ -75,6 +79,10 @@ function initAttributesLayerList() {
 
 var koNaN = ko.observable(Number.NaN);
 
+/**
+Retrieves the attributes for a layer at url (need to include the particular layer's index
+@param url URL to retrieve
+*/
 function getAttributesLayer (url) {
 	try {
 	lastAttribURL(url);
@@ -113,11 +121,6 @@ function getAttributesLayer (url) {
 			}
 
 			return [];
-			
-			//var item = [];
-			//item['name'] = field.alias;
-			//item['field']= field.name;
-			//return dojo.clone(item);
 		});
 		
 		var sfields = lastStatsFields.peek();
@@ -163,14 +166,7 @@ function getAttributesLayer (url) {
 		}
 		
 		$('#attribPopoutPanel').dialog({height : 500, width: 650, title:"Attribute Table"});
-		
-		/*if( lastStatsFields().length > 0 ) {
-			$('#sumStatsPopoutPanel').dialog({height : 300, width: 400, title:"Statistics Table"});
-		}
-		else {
-			$('#sumStatsPopoutPanel').dialog('close')
-		}*/
-		
+				
 		$('.attribRow').hover(
 			function() {
 				$(this).addClass("highlight");
@@ -179,32 +175,6 @@ function getAttributesLayer (url) {
 				$(this).removeClass("highlight");
 			}
 		);
-			
-		/*
-		
-		var layout = [fields];
-		
-		var items = dojo.map(results.features, function(feature) {
-			return dojo.clone(feature.attributes);
-		});
-		
-		data = {
-			identifier: results.fields[0].name,
-			items: items
-		};
-		
-		store = new dojo.data.ItemFileReadStore({data: data});
-		
-		if(grid != null) {
-			grid.destroy();
-		}
-		
-		grid = new dojox.grid.DataGrid( {id: 'attribGrid', store: store, structure : layout, rowSelector: '20px'});
-		grid.placeAt("gridDiv");
-		//grid.setStore( store);
-
-		grid.startup();
-		*/
 	});
 	}
 	catch(eeeee) {
@@ -219,10 +189,12 @@ function dispAttribTable(a) {
 var lastShape = null;
 var c = null;
 
+/**
+Zooms to a feature
+@param a record object from query. Uses a["SHAPE"] to zoom.
+*/
 function doAttribZoom(a) {
 	lastShape = a;
-	
-	console.debug(a);
 	
 	var b = a["SHAPE"];
 	if(b.type == "point") {

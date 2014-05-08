@@ -122,9 +122,15 @@ var lastMapEv = null;
 
 var rr = null;
 
+/** URL to DEM (map) service */
 var DEM_URL = "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/LidarCZM/MapServer";
+/** NOAA Raster Nautical Charts service URL */
 var NOAA_NautChartURL = "http://egisws02.nos.noaa.gov/ArcGIS/rest/services/RNC/NOAA_RNC/ImageServer";
-var CartoMapServiceURL = "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/GCAMP514/MapServer";
+/** Main tulip map service URL */
+var TulipMapServiceURL = "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/GCAMP514/MapServer";
+
+/** Current main map service; */
+var CurrentMainMapServiceURL = TulipMapServiceURL;
 
 require(["esri/map", "http://esri.github.io/bootstrap-map-js/src/js/bootstrapmap.js" ,"dojo/domReady!"],
 function(Map, BootstrapMap) {
@@ -228,8 +234,13 @@ function doMeasure(graphics) {
 	
 */
 function hideDEMLayer() {
-	map.getLayer( map.layerIds[1] ).visibleLayers = [];
-	map.getLayer( map.layerIds[1] ).setVisibility(false);
+	try {
+		mlayer = map.getLayer("DEM");
+		mLayer.visibleLayers = [];
+		mLayer.setVisibility(false);
+	}
+	catch(e) {
+	}
 }
 
 /**
@@ -242,20 +253,37 @@ function outputDistance(result) {
 /**
 */
 function addOpacityControl() {
-    var targetElem = dojo.byId("RNC_opacity_control");
-    //var sliderElem = dojo.create("div", {id: "RNC_opacity_control_slider"}, targetElem, "first");
-	
-	var dynamicLayer = map.getLayer("NauticalCharts");
-	dynamicLayer.setOpacity( 0 );
-	
-	$("#RNC_opacity_control").slider({
-		value: 0,
-		min: 0,
-		max: 1,
-		step: 0.05,
-		slide: function(ev, ui) {
-			dynamicLayer.setOpacity( ui.value );
-		}
+	try {
+		var targetElem = dojo.byId("RNC_opacity_control");
+		//var sliderElem = dojo.create("div", {id: "RNC_opacity_control_slider"}, targetElem, "first");
+		
+		var dynamicLayer = map.getLayer("NauticalCharts");
+		dynamicLayer.setOpacity( 0 );
+		
+		$("#RNC_opacity_control").slider({
+			value: 0,
+			min: 0,
+			max: 1,
+			step: 0.05,
+			slide: function(ev, ui) {
+				dynamicLayer.setOpacity( ui.value );
+			}
+		});
+	}
+	catch (exc) {
+	}
+}
+
+function isMapLayerTimeDependant (urlQ, index) {
+	require(["esri/request"], function(esriRequest) {
+		var timeLayers = esriRequest({
+			url: urlQ + "/" + index + "?f=json",
+			handleAs: "json",
+		});
+		timeLayers.then(function(result){
+			console.debug(result);
+			console.debug(result.hasOwnProperty("timeInfo"));
+		});
 	});
 }
 
@@ -284,7 +312,7 @@ function prepare_map_when_extents_finished(a) {
 		//MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
 		MapSvcAllLayers.add(new MapSvcDef("DEM", DEM_URL, ServiceType_Dynamic, map, null));
 		MapSvcAllLayers.add(new MapSvcDef("NauticalCharts", NOAA_NautChartURL, ServiceType_Image, map, null));
-		MapSvcAllLayers.add(new MapSvcDef("Carto", CartoMapServiceURL, ServiceType_Dynamic, map, null));
+		MapSvcAllLayers.add(new MapSvcDef("Carto", TulipMapServiceURL, ServiceType_Dynamic, map, null));
 
 		MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function () {
 			loaded(true);
@@ -333,7 +361,7 @@ function prepare_map_when_extents_finished(a) {
 				MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
 				MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/LidarCZM/MapServer", ServiceType_Dynamic, map, null));
 				MapSvcAllLayers.add(new MapSvcDef("NauticalCharts", NOAA_NautChartURL, ServiceType_Image, map, null));
-				MapSvcAllLayers.add(new MapSvcDef("Carto", CartoMapServiceURL, ServiceType_Dynamic, map, null));
+				MapSvcAllLayers.add(new MapSvcDef("Carto", TulipMapServiceURL, ServiceType_Dynamic, map, null));
 				MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function() {
 					map.getLayer( map.layerIds[1] ).visibleLayers = [];
 					map.getLayer( map.layerIds[1] ).setVisibility(false);
@@ -603,10 +631,12 @@ function showMouseCoordinates(e) {
 }
 
 /**
+Initilizes the identify function with the map service URL and other parameters
 */
 function init_id_funct(map) {
 	identifyTask = new esri.tasks.IdentifyTask(
-		map.getLayer(map.layerIds[2]).url
+		CurrentMainMapServiceURL
+		/*map.getLayer(map.layerIds[2]).url */
 	/* "http://carto.gis.gatech.edu/ArcGIS/rest/services/TidalEnergyTest/MapServer"*/ );
 	
 	identifyParams = new esri.tasks.IdentifyParameters();
