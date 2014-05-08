@@ -456,7 +456,7 @@ function prepare_map_when_extents_finished(a) {
 							}
 						)}
 					);
-					
+
 					var timeExtent = new esri.TimeExtent();
 					timeExtent.startTime = new Date("1/1/2011 EST");
 					map.setTimeExtent(timeExtent);
