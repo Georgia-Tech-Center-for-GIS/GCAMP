@@ -59,8 +59,18 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 			"minScale" : li.minScale,
 			"maxScale" : li.maxScale,
 			"isRaster" : false,
-			"legend" : legendItems
+			"legend" : legendItems,
+			"timeInfo" : null
 		};
+		
+		getMapLayerTimeInfo(mapLyr.url, id, function(lname,ti) {
+			console.debug("IAMHERE");
+			console.debug(ti);
+			
+			timeLayerIds.push( { "id" : id, "label" : lname } );
+			li.timeInfo = ti;
+			checkTimeLayers();
+		});
 			
 		lastIndex = id;
 
@@ -256,7 +266,6 @@ var viewModel = {
 		
 		//var element = $('.scroll-pane').jScrollPane({verticalGutter: 0});
 		//var api = element.data('jsp');
-
 	},
 	
 	
@@ -266,9 +275,6 @@ var viewModel = {
 		if(lyr != null) {
 			var vl = lyr.visibleLayers;
 			var nl = [];
-			
-			//console.debug(a);
-			//console.debug(vl);
 			
 			nl = vl.filter(function(c) {
 				var a = [];
@@ -367,9 +373,6 @@ var qry = null;
 var a = [];
 
 function updateLayerVisibility (changeValue) {
-	//console.debug(changeValue);
-	//console.debug(this);
-	
 	qry = dojo.query(".dijitChecked", dojo.byId('layersSection'));
 	
 	a = new Array();
