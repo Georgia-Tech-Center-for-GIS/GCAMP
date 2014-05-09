@@ -13,20 +13,31 @@ function dispMetadata(a) {
 	console.debug(a);
 	
 	var args = {
-			url: "http://carto.gis.gatech.edu/ViewerJSNew/metadata/" + a.name + ".xml",
+			url: "http://carto.gis.gatech.edu/GCAMP/metadata/" + a.name + ".xml",
 			handleAs: "xml",
 			load: function(data) {
 			
-				var abstractText = data.querySelector("abstract").textContent;
-				var purposeText = data.querySelector("purpose").textContent;
-				var supplinf = data.querySelector("supplinf").textContent;
+				try {
+					lastMetadataLayerTitle (a.name);
+					
+					var abstractText = data.querySelector("abstract").textContent;
+					lastMetadataAbstract (abstractText);
+				}
+				catch(e) {}
+				try {
+					var purposeText = data.querySelector("purpose").textContent;
+					lastMetadataPurpose (purposeText);
+				}
+				catch(e) {}
 				
-				var links = data.querySelector("onlink").textContent;
-				
-				lastMetadataAbstract (abstractText);
-				lastMetadataPurpose (purposeText);
-				lastMetadataLinks ( links );
-				lastMetadataLayerTitle (a.name);
+				try{
+					var links = data.querySelector("onlink").textContent;
+					lastMetadataLinks ( links );
+					
+					var supplinf = data.querySelector("supplinf").textContent;
+				}
+				catch(e) {
+				}
 				
 				$('#mdtaLink').tab('show');
 			},

@@ -106,7 +106,7 @@ function return_map_layers() {
 		var dispLyrOuter = {
 			"children": []
 		};
-	
+
 		if(lyr.url == DEM_URL) {
 			dispLyrOuter.name = "DEM";
 			DEM_ESRI = lyr;
@@ -122,7 +122,7 @@ function return_map_layers() {
 						"mapLayerId" : DEM_ESRI.id,
 						"seq" : 0,
 						"name": "Digital Elevation Model (DEM)",
-						"url" : DEMURL + "/0",
+						"url" : DEM_URL + "/0",
 						"esriLayer": DEM_ESRI.layerInfos[0],
 						"children" : [],
 						"isRaster" : true,
@@ -132,30 +132,25 @@ function return_map_layers() {
 						"visible": false
 					};
 
-					//dispLyrOuter.children.push(dispLyr);
 					demLayer = dispLyr;
-					
-					console.debug(demLayer);
 				}
 			});
 		}
 		else if(lyr.url == TulipMapServiceURL || lyr.url.lastIndexOf("tulip") > -1 ) {
 			CurrentMainMapServiceURL = lyr.url;
-			console.debug(lyr.url);
+
 			soapURL = lyr.url.replace("rest/", "");
 			
 			esri.request({
 				url: lyr.url + "/legend",
 				handleAs : "json",
 				content : {
-					"soapUrl": lyr.url,
+					"soapUrl": soapURL,
 					f: "json"
 				},
 				load : function(result) {
 					var newResults = [];
 					try {
-						console.debug(result);
-					
 						for(var jjj = 0; jjj < result.layers.length; jjj++) {
 							newResults[ result.layers[jjj].layerId ] = result.layers[jjj].legend;
 						}
@@ -163,8 +158,6 @@ function return_map_layers() {
 						viewModel.legendElements(newResults);
 
 						dojo.forEach( lyr.layerInfos, function (li, i) {
-						//console.debug( lyr.layerInfos);
-
 							if(i-1 >= lastIndex) {
 						
 							var dispLyr = {

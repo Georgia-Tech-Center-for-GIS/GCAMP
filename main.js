@@ -235,11 +235,12 @@ function doMeasure(graphics) {
 */
 function hideDEMLayer() {
 	try {
-		mlayer = map.getLayer("DEM");
+		mLayer = map.getLayer("DEM");
 		mLayer.visibleLayers = [];
 		mLayer.setVisibility(false);
 	}
 	catch(e) {
+		console.debug(e);
 	}
 }
 
@@ -304,10 +305,6 @@ function prepare_map_when_extents_finished(a) {
 		geometryService = new esri.tasks.GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
 		
         dojo.connect(geometryService, "onLengthsComplete", outputDistance);
-        //dojo.connect(geometryService, "onProjectComplete", function(graphics) {
-          //call GeometryService.lengths() with projected geometry
-//		  geometryService.lengths(graphics);
-        //});
 		
 		//MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
 		MapSvcAllLayers.add(new MapSvcDef("DEM", DEM_URL, ServiceType_Dynamic, map, null));
@@ -315,6 +312,7 @@ function prepare_map_when_extents_finished(a) {
 		MapSvcAllLayers.add(new MapSvcDef("Carto", TulipMapServiceURL, ServiceType_Dynamic, map, null));
 
 		MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function () {
+			hideDEMLayer();
 			loaded(true);
 			
 			$("#button-close-intro").button("enabled");
@@ -325,8 +323,6 @@ function prepare_map_when_extents_finished(a) {
 			
 			$('#SplashCloseBtn').button('reset');
 			
-			hideDEMLayer();
-
 			ko.applyBindings();
 			
 			navToolbar = new esri.toolbars.Navigation(map);
@@ -363,9 +359,8 @@ function prepare_map_when_extents_finished(a) {
 				MapSvcAllLayers.add(new MapSvcDef("NauticalCharts", NOAA_NautChartURL, ServiceType_Image, map, null));
 				MapSvcAllLayers.add(new MapSvcDef("Carto", TulipMapServiceURL, ServiceType_Dynamic, map, null));
 				MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function() {
-					map.getLayer( map.layerIds[1] ).visibleLayers = [];
-					map.getLayer( map.layerIds[1] ).setVisibility(false);
-
+					hideDEMLayer();
+					
 					init_layer_controls(map);
 					init_id_funct(map);
 					currTab("All Layers");
@@ -387,9 +382,8 @@ function prepare_map_when_extents_finished(a) {
 				MapSvcAllLayers.add(new MapSvcDef("NauticalCharts", NOAA_NautChartURL, ServiceType_Image, map, null));
 				MapSvcAllLayers.add(new MapSvcDef("Energy", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/Energy/MapServer", ServiceType_Dynamic, map, null));				
 				MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function() {
-					map.getLayer( map.layerIds[1] ).visibleLayers = [];
-					map.getLayer( map.layerIds[1] ).setVisibility(false);
-
+					hideDEMLayer();
+					
 					init_layer_controls(map);
 					init_id_funct(map);
 					currTab("Energy");
@@ -411,9 +405,8 @@ function prepare_map_when_extents_finished(a) {
 				MapSvcAllLayers.add(new MapSvcDef("NauticalCharts", NOAA_NautChartURL, ServiceType_Image, map, null));
 				MapSvcAllLayers.add(new MapSvcDef("Habitat", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/habitat/MapServer", ServiceType_Dynamic, map, null));				
 				MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function() {
-					map.getLayer( map.layerIds[1] ).visibleLayers = [];
-					map.getLayer( map.layerIds[1] ).setVisibility(false);
-
+					hideDEMLayer();
+					
 					init_layer_controls(map);
 					init_id_funct(map);
 					currTab("Habitat");
