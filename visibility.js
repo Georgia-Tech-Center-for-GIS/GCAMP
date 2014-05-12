@@ -64,13 +64,12 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 		};
 		
 		getMapLayerTimeInfo(mapLyr.url, id, function(lname,ti) {
-			console.debug("IAMHERE");
-			console.debug(ti);
+			li.timeInfo = ti;
 			
 			timeLayerIds.push( { "id" : id, "label" : lname } );
-			li.timeInfo = ti;
 			checkTimeLayers();
-		});
+			
+		}, checkTimeLayers );
 			
 		lastIndex = id;
 
