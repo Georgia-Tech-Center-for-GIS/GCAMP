@@ -85,21 +85,21 @@ var map_width = ko.observable("100%");
 var identifyTask, identifyParams, symbol;
 var geometryService = null;
 
-var navToolbar;
-var drwToolbar;
-var initBasemap;
-var ly_Energy;
-var ly_Habitat;
-var ly_DEM;
+var navToolbar = null;
+var drwToolbar = null;
+var initBasemap = null;
+var ly_Energy = null;
+var ly_Habitat = null;
+var ly_DEM = null;
 
-var printer;
-var timeSlider;
+var printer = null;
+var timeSlider = null;
 
 var MapSvcAllLayers = new CreateCollection("MapSvcList");
 
 var cMapTool = ko.observable( "pan" );
 
-var generalTabController;
+var generalTabController = null;
 
 var isMapGraphicsEmpty = ko.observable(true);
 var timeLayerIds = ko.observableArray([]);
@@ -107,7 +107,7 @@ var timeLayerIds = ko.observableArray([]);
 var handleIdentify = null;
 var handleIdentifySummary = null;
 
-var tabs;
+var tabs = null;
 var jpanes = null;
 
 var lastGraphic = null;
@@ -275,17 +275,90 @@ function addOpacityControl() {
 	}
 }
 
-function isMapLayerTimeDependant (urlQ, index) {
-	require(["esri/request"], function(esriRequest) {
-		var timeLayers = esriRequest({
-			url: urlQ + "/" + index + "?f=json",
-			handleAs: "json",
+function getMapLayerTimeInfo (urlQ, index, fnIfNotNull, fnIfNull) {
+	try {
+		require(["esri/request"], function(esriRequest) {
+			var timeLayers = esriRequest({
+				url: urlQ + "/" + index + "?f=json",
+				handleAs: "json",
+			});
+			
+			timeLayers.then(function(result){			
+				if( result.hasOwnProperty("timeInfo")) {
+					console.debug(result);
+					
+					if(fnIfNotNull != null)
+						fnIfNotNull(result.name, result.timeInfo);
+					else
+						return result.timeInfo;
+				}
+				else {
+					if(fnIfNull != null)
+						fnIfNull();
+					else
+						return null;
+				}
+			});
 		});
-		timeLayers.then(function(result){
-			console.debug(result);
-			console.debug(result.hasOwnProperty("timeInfo"));
-		});
-	});
+	}
+	catch(eee) {
+		return null;
+	}
+}
+
+/**
+If there are time-enabled layers enumerated, turn on the time slider, etc.
+*/
+function checkTimeLayers() {
+	timeSliderVisible(timeLayerIds().length > 0);
+	
+	if(timeLayerIds().length == 0) {
+		timeSliderVisible(false);
+		return;
+	}
+	else
+	{
+		var timeExtent = new esri.TimeExtent();
+		timeExtent.startTime = new Date("1/1/2011 EST");
+		map.setTimeExtent(timeExtent);
+
+		if(timeSlider == null) {
+			timeSlider = new esri.dijit.TimeSlider({
+			  style: "width: 800px;"
+			}, dojo.byId("timeSliderDiv"));
+
+			map.setTimeSlider(timeSlider);
+			timeSlider.setThumbCount(2);
+			
+			var layerTimeExtent = map.getLayer( map.layerIds[3] ).timeInfo.timeExtent;
+			layerTimeExtent.startTime = timeExtent.startTime;
+			timeSlider.createTimeStopsByTimeInterval(layerTimeExtent, 1, 'esriTimeUnitsMonths');
+			timeSlider.setThumbMovingRate(1500);			
+			timeSlider.setLoop(true);
+			timeSlider.setLabels(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]);
+			timeSlider.startup();
+			
+			$('#timeSliderChoicesSelect').change( function() {					
+					var l = map.getLayer( map.layerIds[3] );
+
+					if( l != null ) {
+						var valToShow = timeSelValue();
+						var tLayerIds = timeLayerIds();
+						
+						console.debug(valToShow);
+						
+						for(var lll = 0; lll < tLayerIds.length; lll++) {
+							if( viewModel.isVisibleLayer( map.layerIds[3], parseInt(tLayerIds[lll].id) ) ) {
+									viewModel.toggleVisibleLayer( { "mapLayerId" : map.layerIds[3], "esriLayer" : { id: parseInt(tLayerIds[lll].id) } } )
+								}
+						}
+						
+						viewModel.toggleVisibleLayer( { "mapLayerId" : map.layerIds[3], "esriLayer" : { id: parseInt(valToShow) } } )
+						l.refresh();
+					}
+			});
+		}
+	}
 }
 
 /**
@@ -312,6 +385,7 @@ function prepare_map_when_extents_finished(a) {
 		MapSvcAllLayers.add(new MapSvcDef("Carto", TulipMapServiceURL, ServiceType_Dynamic, map, null));
 
 		MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function () {
+			timeLayerIds.removeAll();
 			hideDEMLayer();
 			loaded(true);
 			
@@ -331,7 +405,6 @@ function prepare_map_when_extents_finished(a) {
 			dojo.connect(map, 'onExtentHistoryChange', extentHistoryChangeHandler);
 			dojo.connect(map, 'onExtentChange', onMapExtentChange);
 			getMapScaleToVariable();
-			//dojo.connect('onDrawEnd', measureEnd);
 			
 			$('#zoomInBtn').on('click', function(e) {
 				map.setMapCursor("url(images/zoom_in.cur),auto");
@@ -351,6 +424,7 @@ function prepare_map_when_extents_finished(a) {
 			$('#allLayersLink').on('click', function(e) {
 				map.removeAllLayers();
 				viewModel.currentVisibleLayers.removeAll();
+				timeLayerIds.removeAll();
 				
 				MapSvcAllLayers = new CreateCollection("MapSvcList");
 				
@@ -363,17 +437,16 @@ function prepare_map_when_extents_finished(a) {
 					
 					init_layer_controls(map);
 					init_id_funct(map);
+					
 					currTab("All Layers");
 					addOpacityControl();
 				});
-				
-				//$('#timeSliderContainer').hide();
-				timeSliderVisible ( false );
 			});
 			
 			$('#energyLink').on('click', function(e) {
 				map.removeAllLayers();
 				viewModel.currentVisibleLayers.removeAll();
+				timeLayerIds.removeAll();				
 				
 				MapSvcAllLayers = new CreateCollection("MapSvcList");
 				
@@ -389,13 +462,11 @@ function prepare_map_when_extents_finished(a) {
 					currTab("Energy");
 					addOpacityControl();
 				});
-				
-				//$('#timeSliderContainer').hide();
-				timeSliderVisible ( false );
 			});
 			
 			$('#habitatLink').on('click', function(e) {
 				map.removeAllLayers();
+				timeLayerIds.removeAll();
 				viewModel.currentVisibleLayers.removeAll();
 				
 				MapSvcAllLayers = new CreateCollection("MapSvcList");
@@ -411,15 +482,12 @@ function prepare_map_when_extents_finished(a) {
 					init_id_funct(map);
 					currTab("Habitat");
 					addOpacityControl();
-				});	
-				
-				//$('#timeSliderContainer').hide();
-				timeSliderVisible ( false );
-				addOpacityControl();
+				});
 			});
 			
 			$('#fisheriesLink').on('click', function(e) {
 				map.removeAllLayers();
+				timeLayerIds.removeAll();
 				viewModel.currentVisibleLayers.removeAll();
 				
 				MapSvcAllLayers = new CreateCollection("MapSvcList");
@@ -429,79 +497,14 @@ function prepare_map_when_extents_finished(a) {
 				MapSvcAllLayers.add(new MapSvcDef("NauticalCharts", NOAA_NautChartURL, ServiceType_Image, map, null));
 				MapSvcAllLayers.add(new MapSvcDef("Fisheries", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/Fisheries/MapServer", ServiceType_Dynamic, map, null));				
 				MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function() {
-					map.getLayer( map.layerIds[1] ).visibleLayers = [];
-					map.getLayer( map.layerIds[1] ).setVisibility(false);
-
+					hideDEMLayer();
+				
 					init_layer_controls(map);
 					init_id_funct(map);
 					
 					timeLayerIds.removeAll();
 					
 					currTab("Fisheries");
-					addOpacityControl();
-					
-					require(["dojo/_base/xhr"],
-						function(xhr) {
-							xhr.get({
-								url: "TimeLayers.xml",
-								handleAs : "json",
-								load: function(result) {							
-									var l = map.getLayer( map.layerIds[3] );
-									console.debug(l);
-									
-									rr = result;
-									
-									for(var jjj = 0; jjj < result.length; jjj++ ){
-										timeLayerIds.push ( { "id" : result[jjj].id, "label" : l.layerInfos[ result[jjj].id ].name } );
-									}
-									
-									$('#timeSliderChoicesSelect').change( function() {
-										//$('#timeSliderChoicesSelect option:selected').each( function() {
-											var valToShow = timeSelValue();
-											var tLayerIds = timeLayerIds();
-											
-											console.debug(valToShow);
-											
-											for(var lll = 0; lll < tLayerIds.length; lll++) {
-												if( viewModel.isVisibleLayer( map.layerIds[3], parseInt(tLayerIds[lll].id) ) ) {
-														viewModel.toggleVisibleLayer( { "mapLayerId" : map.layerIds[3], "esriLayer" : { id: parseInt(tLayerIds[lll].id) } } )
-													}
-											}
-											
-											viewModel.toggleVisibleLayer( { "mapLayerId" : map.layerIds[3], "esriLayer" : { id: parseInt(valToShow) } } )
-											l.refresh();
-											
-										//});
-									});
-								}
-							}
-						)}
-					);
-
-					var timeExtent = new esri.TimeExtent();
-					timeExtent.startTime = new Date("1/1/2011 EST");
-					map.setTimeExtent(timeExtent);
-
-					if(timeSlider == null) {
-						timeSlider = new esri.dijit.TimeSlider({
-						  style: "width: 800px;"
-						}, dojo.byId("timeSliderDiv"));
-					}
-					
-					map.setTimeSlider(timeSlider);
-					timeSlider.setThumbCount(2);
-					
-					var layerTimeExtent = map.getLayer( map.layerIds[3] ).timeInfo.timeExtent;
-					layerTimeExtent.startTime = timeExtent.startTime;
-					timeSlider.createTimeStopsByTimeInterval(layerTimeExtent, 1, 'esriTimeUnitsMonths');
-					timeSlider.setThumbMovingRate(1500);			
-					timeSlider.setLoop(true);
-					timeSlider.setLabels(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]);
-					timeSlider.startup();
-
-					// $('#timeSliderContainer').css('display', 'inline');
-					// $('#timeSliderChoices').css('display', 'inline');
-					timeSliderVisible( true );
 					addOpacityControl();
 				});
 			});
