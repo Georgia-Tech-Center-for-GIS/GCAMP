@@ -146,6 +146,10 @@ h3 {
 	background-image: url("images/identify.png");
 }
 
+.showTimeSliderIcon {
+	background-image: url("images/glyphicons_054_clock.png");
+}
+
 .measureLine {
 	background-image: url("images/glyphicons_068_ruller.png");
 }
