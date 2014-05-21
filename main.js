@@ -63,6 +63,8 @@ var loaded = ko.observable();
 var timeSelValue = ko.observable();
 var timeSliderVisible = ko.observable(false);
 
+var opacityLayers = ko.observableArray();
+
 var mapSvrChoices = ko.observable(
 [
 	{id:1, mapLabel:"Raster Nautical Charts (RNC)",url:"http://egisws02.nos.noaa.gov/ArcGIS/rest/services/RNC/NOAA_RNC/MapServer"},
