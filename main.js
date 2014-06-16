@@ -76,7 +76,7 @@ var mapSvrChoices = ko.observable(
 
 var extents = [];
 	
-var initialExtent;
+var initialExtent = null;
 
 var isSidebarVisible = ko.observable(true);
 var currTab = ko.observable("All Layers");
@@ -133,10 +133,15 @@ var TulipMapServiceURL = "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/
 /** Current main map service; */
 var CurrentMainMapServiceURL = TulipMapServiceURL;
 
-require(["esri/map", "http://esri.github.io/bootstrap-map-js/src/js/bootstrapmap.js" ,"dojo/domReady!"],
-function(Map, BootstrapMap) {
+require(["esri/geometry/Extent", "esri/map", "http://esri.github.io/bootstrap-map-js/src/js/bootstrapmap.js" ,"dojo/domReady!"],
+function(Extent, Map, BootstrapMap) {
+	initialExtent = (new Extent(
+		{"ymin": 30.561, "ymax": 32.422, "xmin": -82.319, "xmax": -79.973,
+		"spatialReference": { "wkid" : 4326 }} )).expand(2);
+		
 	map = BootstrapMap.create("map",{
 	  basemap:"oceans",
+	  "extent": initialExtent
 	});
 });
 
@@ -199,14 +204,16 @@ function createBasemapGallery() {
 /**
 	Function called to convert an extent in decimal degrees/ lat/long to Web Mercator
 */
-function cvtLatLongExtent_2_WebMercator( extent, fn_when_finished ) {
-	var geometryService = new esri.tasks.GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
+/*function cvtLatLongExtent_2_WebMercator( extent, fn_when_finished ) {
+	/*var geometryService = new esri.tasks.GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
 	var PrjParams = new esri.tasks.ProjectParameters();
 	PrjParams.geometries = [extent];
 	PrjParams.outSR = new esri.SpatialReference(3857);
 
 	geometryService.project(PrjParams, fn_when_finished );
-}
+
+	fn_when_finished( null );
+}*/
 
 /**
 	Handles map measurement through the ESRI Geometry service
@@ -285,9 +292,7 @@ function getMapLayerTimeInfo (urlQ, index, fnIfNotNull, fnIfNull) {
 			});
 			
 			timeLayers.then(function(result){			
-				if( result.hasOwnProperty("timeInfo")) {
-					console.debug(result);
-					
+				if( result.hasOwnProperty("timeInfo")) {					
 					if(fnIfNotNull != null)
 						fnIfNotNull(result.name, result.timeInfo);
 					else
@@ -366,10 +371,10 @@ function checkTimeLayers() {
 
 /**
 */
-function prepare_map_when_extents_finished(a) {
-		initialExtent = a[0];
+function prepareMap() {
+		//initialExtent = a[0];
 		
-		map.setExtent(initialExtent);
+		//map.setExtent(initialExtent);
 		
 		map.setMapCursor("pointer");
 		
@@ -574,19 +579,7 @@ function init() {
 	esri.config.defaults.io.corsEnabledServers.push("http://tasks.arcgisonline.com");
 	esri.config.defaults.io.corsEnabledServers.push("http://egisws02.nos.noaa.gov");
 
-	extents = [
-		/*
-		new esri.geometry.Extent( {"ymin": 31, "ymax": 33, "xmin" : -87, "xmax": -78, "spatialReference": { "wkid" : 4269 } } ) , //all
-		new esri.geometry.Extent( {"ymin": 31, "ymax": 33, "xmin" : -87, "xmax": -78, "spatialReference": { "wkid" : 4269 } } ) , //on-shore
-		new esri.geometry.Extent( {"ymin": 28, "ymax": 35, "xmin" : -81, "xmax": -73, "spatialReference": { "wkid" : 4269 } } ) , //coast
-		new esri.geometry.Extent( {"ymin": 31, "ymax": 33, "xmin" : -87, "xmax": -78, "spatialReference": { "wkid" : 4269 } } )   //ocean
-		*/
-		new esri.geometry.Extent( {"ymin": 30.561, "ymax": 32.422, "xmin": -82.319, "xmax": -79.973, "spatialReference": { "wkid" : 4269 }} )
-	];
-	
-	initialExtent = extents[0];
-		
-	cvtLatLongExtent_2_WebMercator( initialExtent, prepare_map_when_extents_finished);
+	prepareMap();
 }
 
 /**
