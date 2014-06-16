@@ -94,6 +94,7 @@ var ly_DEM = null;
 
 var printer = null;
 var timeSlider = null;
+var timeSliderEnabled = ko.observable(false);
 
 var MapSvcAllLayers = new CreateCollection("MapSvcList");
 
@@ -315,10 +316,12 @@ function getMapLayerTimeInfo (urlQ, index, fnIfNotNull, fnIfNull) {
 If there are time-enabled layers enumerated, turn on the time slider, etc.
 */
 function checkTimeLayers() {
-	timeSliderVisible(timeLayerIds().length > 0);
+	//timeSliderVisible(timeLayerIds().length > 0);
+	timeSliderVisible(false);
+	timeSliderEnabled(timeLayerIds().length > 0);
 	
 	if(timeLayerIds().length == 0) {
-		timeSliderVisible(false);
+		timeSliderEnabled(false);
 		return;
 	}
 	else
