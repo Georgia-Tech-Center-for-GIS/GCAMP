@@ -346,7 +346,8 @@ function checkTimeLayers() {
 			timeSlider.setLabels(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]);
 			timeSlider.startup();
 			
-			$('#timeSliderChoicesSelect').change( function() {					
+			$('#timeSliderChoicesSelect').change( function(ev) {
+				if(loaded()) {
 					var l = map.getLayer( map.layerIds[3] );
 
 					if( l != null ) {
@@ -364,6 +365,7 @@ function checkTimeLayers() {
 						viewModel.toggleVisibleLayer( { "mapLayerId" : map.layerIds[3], "esriLayer" : { id: parseInt(valToShow) } } )
 						l.refresh();
 					}
+				}
 			});
 		}
 	}
@@ -375,6 +377,7 @@ function prepareMap() {
 		//initialExtent = a[0];
 		
 		//map.setExtent(initialExtent);
+		loaded(false);
 		
 		map.setMapCursor("pointer");
 		
@@ -392,10 +395,9 @@ function prepareMap() {
 		MapSvcAllLayers.add(new MapSvcDef("NauticalCharts", NOAA_NautChartURL, ServiceType_Image, map, null));
 		MapSvcAllLayers.add(new MapSvcDef("Carto", TulipMapServiceURL, ServiceType_Dynamic, map, null));
 
-		MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function () {
+		MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function () {	
 			timeLayerIds.removeAll();
 			hideDEMLayer();
-			loaded(true);
 			
 			$("#button-close-intro").button("enabled");
 			
@@ -430,6 +432,9 @@ function prepareMap() {
 			addOpacityControl();
 						
 			$('#allLayersLink').on('click', function(e) {
+				loaded(false);
+				$('#timeSliderChoicesSelect').off('change');
+				
 				map.removeAllLayers();
 				viewModel.currentVisibleLayers.removeAll();
 				timeLayerIds.removeAll();
@@ -442,16 +447,20 @@ function prepareMap() {
 				MapSvcAllLayers.add(new MapSvcDef("Carto", TulipMapServiceURL, ServiceType_Dynamic, map, null));
 				MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function() {
 					hideDEMLayer();
+					currTab("All Layers");
 					
 					init_layer_controls(map);
 					init_id_funct(map);
 					
-					currTab("All Layers");
 					addOpacityControl();
+					loaded(true);
 				});
 			});
 			
 			$('#energyLink').on('click', function(e) {
+				loaded(false);
+				$('#timeSliderChoicesSelect').off('change');
+
 				map.removeAllLayers();
 				viewModel.currentVisibleLayers.removeAll();
 				timeLayerIds.removeAll();				
@@ -468,11 +477,16 @@ function prepareMap() {
 					init_layer_controls(map);
 					init_id_funct(map);
 					currTab("Energy");
+					
+					loaded(true);
 					addOpacityControl();
 				});
 			});
 			
 			$('#habitatLink').on('click', function(e) {
+				loaded(false);
+				$('#timeSliderChoicesSelect').off('change');
+
 				map.removeAllLayers();
 				timeLayerIds.removeAll();
 				viewModel.currentVisibleLayers.removeAll();
@@ -489,11 +503,16 @@ function prepareMap() {
 					init_layer_controls(map);
 					init_id_funct(map);
 					currTab("Habitat");
+					
+					loaded(true);
 					addOpacityControl();
 				});
 			});
 			
 			$('#fisheriesLink').on('click', function(e) {
+				loaded(false);
+				$('#timeSliderChoicesSelect').off('change');
+
 				map.removeAllLayers();
 				timeLayerIds.removeAll();
 				viewModel.currentVisibleLayers.removeAll();
@@ -513,6 +532,7 @@ function prepareMap() {
 					timeLayerIds.removeAll();
 					
 					currTab("Fisheries");
+					loaded(true);
 					addOpacityControl();
 				});
 			});
@@ -544,6 +564,7 @@ function prepareMap() {
 			init_layer_controls(map);
 			init_id_funct(map);
 			
+			loaded(true);
 //			addLayerToMap(NOAA_NautChartURL, "NOAA Nautical Charts");
 		});
 			
