@@ -199,8 +199,11 @@ function return_map_layers() {
 					}
 				}
 			});
+			break;
 		}
-		else if(j > 3) {
+		else if(lyr.url != NOAA_NautChartURL) { //if(j > 3) {
+			//if( mapLyrs.length == 0) continue;
+			
 			dispLyrOuter.name = mapLyrs()[ j-3 ].mapLabel;
 			
 			dojo.forEach( lyr.layerInfos, function (li, i) {
