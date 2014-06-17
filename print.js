@@ -113,7 +113,7 @@ function sendPrintJob() {
 				"dpi":		dpi
 			};
 		}
-				
+
 		var llayers = new esri.tasks.LegendLayer();
 		llayers.legendId = map.layerIds[3];
 		llayers.subLayerIds = map.getLayer(map.layerIds[3] ).visibleLayers;
@@ -128,13 +128,26 @@ function sendPrintJob() {
 		var pparams = new esri.tasks.PrintParameters();
 		pparams.map = map;
 		pparams.template = ptemplate;
+		var pt = null;
 		
-		var pt = new esri.tasks.PrintTask( "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task" );
-		pt.execute(pparams, function(rr) {
-			console.debug(rr);
-			downloadFile(rr.url);
-			printDlgCancel();
-		});
+		try {
+			pt = new esri.tasks.PrintTask( "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task" );
+			pt.execute(pparams, function(rr) {
+				console.debug(rr);
+				downloadFile(rr.url);
+				printDlgCancel();
+			});
+		}
+		catch(ev) {
+			console.debug(ev);
+			timeSlider.setThumbIndexes([0,1]);
+			
+			pt.execute(pparams, function(rr) {
+				console.debug(rr);
+				downloadFile(rr.url);
+				printDlgCancel();
+			});
+		}
 	});
 }
 
