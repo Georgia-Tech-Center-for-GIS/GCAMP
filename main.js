@@ -346,6 +346,8 @@ function checkTimeLayers() {
 			timeSlider.setLabels(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]);
 			timeSlider.startup();
 			
+			//timeSlider.setThumbIndexes([0,1]);
+			
 			$('#timeSliderChoicesSelect').change( function(ev) {
 				if(loaded()) {
 					var l = map.getLayer( map.layerIds[3] );
@@ -478,8 +480,8 @@ function prepareMap() {
 					init_id_funct(map);
 					currTab("Energy");
 					
-					loaded(true);
 					addOpacityControl();
+					loaded(true);
 				});
 			});
 			
@@ -504,8 +506,8 @@ function prepareMap() {
 					init_id_funct(map);
 					currTab("Habitat");
 					
-					loaded(true);
 					addOpacityControl();
+					loaded(true);
 				});
 			});
 			
@@ -532,8 +534,9 @@ function prepareMap() {
 					timeLayerIds.removeAll();
 					
 					currTab("Fisheries");
-					loaded(true);
+
 					addOpacityControl();
+					loaded(true);
 				});
 			});
 
@@ -568,23 +571,25 @@ function prepareMap() {
 //			addLayerToMap(NOAA_NautChartURL, "NOAA Nautical Charts");
 		});
 			
-		var args = {
-			url: "http://carto.gis.gatech.edu/proxypage_net/sites.ashx",
-			handleAs: "json",
-			load: function(data) {
-				serviceCatalog = [];
-				
-				for(var i = 0; i < data.length; i++) {
-					if(data[i].label != "") {
-						serviceCatalog.push(
-							{ url: data[i].url, label: data[i].label, id: i+1}
-						);
+		if (false) {
+			var args = {
+				url: "http://carto.gis.gatech.edu/proxypage_net/sites.ashx",
+				handleAs: "json",
+				load: function(data) {
+					serviceCatalog = [];
+					
+					for(var i = 0; i < data.length; i++) {
+						if(data[i].label != "") {
+							serviceCatalog.push(
+								{ url: data[i].url, label: data[i].label, id: i+1}
+							);
+						}
 					}
 				}
-			}
-		};
+			};
 					
-		esri.request(args);
+			esri.request(args);
+		}
 }
 
 /**
