@@ -24,9 +24,11 @@
 	<link type="text/css" href="css/jquery.jscrollpane.css" rel="stylesheet" media="all" > </link>
 	<link rel="stylesheet" href="css/multiple-select.css" > </link>
 	
-	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"> </link>
-	<link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"> </link>
-	<link href="/bootstrap/css/bootstrap-combined.min.css" rel="stylesheet"> </link>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<!-- link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"-->
+	<!--link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"> </link>
+	<link href="/bootstrap/css/bootstrap-combined.min.css" rel="stylesheet"> </link-->
 
 	<link rel="stylesheet" type="text/css" href="./css/marco_style.css"> </link>
     <link rel="stylesheet" type="text/css" href="style.css">  </link>
@@ -54,7 +56,8 @@
 	
 	<script type="text/javascript" src="script/jquery.multiple.select.js"></script>
 	
-	<script src="/bootstrap/js/bootstrap.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	
 	<!-- script src="/kendo/js/kendo.web.min.js"></script -->
 	<script src='script/knockout-3.0.0.js'></script>
 	<script src='script/knockout-bindings.js'></script>
@@ -77,24 +80,23 @@
  
 <body class="tundra" style='margin-top: 0px;'>
 	<div class='container-fluid'>
-		<div class='row-fluid' style='height: 3em;'>
-			<div class='span12'>
-				<div id='BrandingPanel'>
-					<!--img src='http://georgia.gov/profiles/georgiagov/themes/gagov/logo.png' alt='Georgia.gov LogoUntitled event'/-->
-					<span id='GABranding'>Georgia Coastal and Marine Planner</span>
+		<div class='row-fluid' style=''>
+			<div class='col-lg-5' style='height: 4em; padding-top: 1em;'>
+				<!--img src='http://georgia.gov/profiles/georgiagov/themes/gagov/logo.png' alt='Georgia.gov LogoUntitled event'/-->
+				<span id='GABranding'>Georgia Coastal and Marine Planner</span>				
+			</div>
+			<div class='col-lg-6' style='position: absolute; height: 8em; left: 50%; top: .5em;' data-bind='visible: timeSliderVisible()'>
+				<div id='timeSliderContainer' style='width: 100%; padding: 1em;'>
+					<div id='timeSliderDiv'></div>
+					<div id='timeSliderChoices' >
+						<select id='timeSliderChoicesSelect' data-bind="options: timeLayerIds, optionsText: 'label', optionsValue: 'id', value: timeSelValue"> </select>
+					</div>
 				</div>
-
-				<div class='sidebar-nav' data-bind='css { spacerTimeVisible: timeSliderVisible(), spacerTimeInvisible: !timeSliderVisible() }'>
-					<ul>
-						<div id='timeSliderContainer' data-bind='visible: timeSliderVisible()'>
-							<div id='timeSliderDiv'></div>
-							<div id='timeSliderChoices' >
-								<select id='timeSliderChoicesSelect' data-bind="options: timeLayerIds, optionsText: 'label', optionsValue: 'id', value: timeSelValue"> </select>
-							</div>
-						</div>
-						<!-- <li> <a>Regulatory</a> </li> -->
-					</ul>
-				</div>
+			</div>
+			<div class='col-lg-5' style='height: 4em;' data-bind='style: { width: ( !timeSliderVisible() ? "auto" : "100%" )  } '>
+				<img src='images/GDNRLogo_small.png' alt='Georgia DNR Logo' style='height: 55px; margin-right: .5em;' />
+				<img src='images/CGISLogo_small.png' alt='Center for GIS Logo' style='height: 40px; margin-right: .5em;' />
+				<img src='images/NOAA_small.png' alt='NOAA Logo' style='height: 55px; margin-right: .5em;' />
 			</div>
 		</div>
 		
@@ -155,7 +157,7 @@
 	<hr/>
 	<div class='container-fluid' style='height: 90%;' >
 		<div class='row-fluid' style='height: 90%;'>
-			<div class='span3' style='height: 100%;' data-bind='visible: isSidebarVisible()'>
+			<div class='col-lg-3' style='height: 100%;' data-bind='visible: isSidebarVisible()'>
 					<div class='tab-content' style='height:100%; overflow: hidden;'>
 						<div class='tab-pane active' id="layersTab" style='height: 100%;'>
 							<h2>Data Layers</h2>
@@ -181,11 +183,11 @@
 											<div>
 												<div class='btn-group btn-group-layer' style='width: 20em;'>
 													<span class='btn btn-layer' style='padding-top: 0px; margin: 0px; padding-left: .4em; padding-right: .4em;' data-bind='click: viewModel.toggleVisibleLayer'>
-														<i class='check icon-large icon-check'
+														<i class='checkbox icon-large icon-check'
 														data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq) "
 														style='padding: 4px; margin: 0px; width: 15px; background-image: url("images/glyphicons_152_check.png"); background-position: 0 0;'>
 														</i>
-														<i class='check icon-large icon-check'
+														<i class='checkbox icon-large icon-check'
 														data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq) == false"
 														style='padding: 4px; margin: 0px; width: 15px; background-image: url("images/glyphicons_153_unchecked.png"); background-position: 0 0;'>
 														</i>
@@ -444,7 +446,7 @@
 						</div>
 					</div>
 			</div>
-			<div class='container' data-bind='css: { span9: isSidebarVisible(), span12: !isSidebarVisible() }' style='height: 90%;'>
+			<div class='container' data-bind='css: { "col-lg-9": isSidebarVisible(), "col-lg-12": !isSidebarVisible() }' style='height: 90%;'>
 				<div id="map" style='height: 100%;'> </div>
 				<div id='coordContainer' style=''>
 					<div id='coordinates' class='button button-group'>
@@ -457,40 +459,28 @@
 			<!--div id='MapPanel' style='height: 100%;'>
 			<!-- data-bind='css: { noSidebarMap: (!isSidebarVisible()), yesSidebarMap: isSidebarVisible() } '>
 			</div -->
+		</div>		
+	</div>
+	
+	<div class="dialog-confirm" id='intro'>
+		<div>
+			<img src='images/GDNRLogo_small.png' alt='Georgia DNR Logo' style='height: 40px; margin-right: .5em; float: left;' />
+			<img src='images/NOAA_small.png' alt='NOAA Logo' style='height: 40px; margin-right: .5em; float: left;' />
+			<img src='images/CGISLogo_small.png' alt='Center for GIS Logo' style='height: 35px; margin-right: .5em; float: clear;' />
 		</div>
 		
-			<div id='logos' data-bind='css{ logosTimeInvisible: !timeSliderVisible(), logosTimeVisible: timeSliderVisible() }'>
-				<img src='images/GDNRLogo_small.png' alt='Georgia DNR Logo' style='height: 55px; margin-right: .5em;' />
-				<img src='images/CGISLogo_small.png' alt='Center for GIS Logo' style='height: 40px; margin-right: .5em;' />
-				<img src='images/NOAA_small.png' alt='NOAA Logo' style='height: 55px; margin-right: .5em;' />
-			</div>
-	</div>
-		<div class="dialog-confirm" id='intro'>
-				<div>
-					<img src='images/GDNRLogo_small.png' alt='Georgia DNR Logo' style='height: 40px; margin-right: .5em; float: left;' />
-					<img src='images/NOAA_small.png' alt='NOAA Logo' style='height: 40px; margin-right: .5em; float: left;' />
-					<img src='images/CGISLogo_small.png' alt='Center for GIS Logo' style='height: 35px; margin-right: .5em; float: clear;' />
-				</div>
-				<hr/>
-				<div>
+		<hr/>
+		
+		<div>
 			<p>The Georgia Coastal and Marine Planner was created by the
 			Georgia Tech Center for GIS for the Georgia Department of Natural Resources
 			Coastal Management Program with funding provided by the National Oceanic and
 			Atmospheric Administration (NOAA). The Planner’s intended use is solely for planning
 			purposes and the GA Tech Center for GIS, DNR, and NOAA make no warranty,
 			representation, or guarantee to the accuracy or completeness of the content.</p>
-			</div>
-		<!--<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			<h3>Georgia Coastal Atlas</h3>
 		</div>
-		<div class="modal-body">
-			<p></p>
-		</div>
-		<div class="modal-footer">
-			<a id='SplashCloseBtn' href="#" class="btn disabled" data-dismiss="modal" data-loading-text='Loading...'>I Understand</a>
-		</div> -->
 	</div>
+	
 	<div class="modal hide fade" id='metaError'>
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -557,7 +547,7 @@
 			<div class="popover-content">
 				<div data-bind="">
 					<div class="row-fluid">
-						<div class="span6">
+						<div class="col-lg-6">
 							<strong>Format</strong>
 							<div class="control-group">
 								<label class="radio control-label">
@@ -585,7 +575,7 @@
 								<input type="checkbox" data-bind="checked: landscape">Landscape
 							</label>
 						</div>
-						<div class="span6">
+						<div class="col-lg-6">
 							<div class="well">
 								<fieldset data-bind="visible: format() !== 'PDF'" style="display: none;">
 									<strong>Image Size</strong>
@@ -597,7 +587,7 @@
 									<span class="ui-spinner ui-widget ui-widget-content ui-corner-all">
 										<input type="text" class="spinner ui-spinner-input" data-bind="spinner: shotHeightDisplay, spinnerOptions: { step: 10 }" autocomplete="off" role="spinbutton" aria-valuenow="8.5"><a class="ui-spinner-button ui-spinner-up ui-corner-tr ui-button ui-widget ui-state-default ui-button-text-only" tabindex="-1" role="button" aria-disabled="false"><span class="ui-button-text"><span class="ui-icon ui-icon-triangle-1-n">▲</span></span></a><a class="ui-spinner-button ui-spinner-down ui-corner-br ui-button ui-widget ui-state-default ui-button-text-only" tabindex="-1" role="button" aria-disabled="false"><span class="ui-button-text"><span class="ui-icon ui-icon-triangle-1-s">▼</span></span></a></span>
 									<label>Units</label>
-									<select class="span7" data-bind="value: units">
+									<select class="col-lg-7" data-bind="value: units">
 										<option value="inches">inches</option>
 										<option value="pixels">pixels</option>
 									</select>
