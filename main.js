@@ -568,6 +568,8 @@ function prepareMap() {
 			init_id_funct(map);
 			
 			loaded(true);
+			
+			$("#button-close-intro").button().removeAttr('disabled');
 //			addLayerToMap(NOAA_NautChartURL, "NOAA Nautical Charts");
 		});
 			
