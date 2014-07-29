@@ -155,7 +155,7 @@ function createBasemapGallery() {
 	
 	var cmspBasemapLayers = [];
 	
-	var cmspLayers = [
+	/*var cmspLayers = [
 		{label: "Collision Regulation Lanes", url: "http://ocs-gis.ncd.noaa.gov/arcgis/rest/services/CMSP/Collision_regulation_lines/MapServer"},
 		{label: "Disposal Areas", url: "http://ocs-gis.ncd.noaa.gov/arcgis/rest/services/CMSP/Disposal_Areas/MapServer"},
 		{label: "Precautionary Areas", url: "http://ocs-gis.ncd.noaa.gov/arcgis/rest/services/CMSP/Precautionary_Areas/MapServer"},
@@ -173,31 +173,59 @@ function createBasemapGallery() {
 		});
 		
 		basemaps.push(cmspBasemap);
-	}
-		
-	var basemapGallery = new esri.dijit.BasemapGallery({
-		showArcGISBasemaps : true,
-		/*"basemaps": basemaps, */
-		map: map,
-	}, "basemapGallery");
+	}*/
 	
-	basemapGallery.startup();
-
-	dojo.connect(basemapGallery, "onError", function(err) { console.debug(error); });
-	dojo.connect(basemapGallery, "onLoad", function(e) {
-		//console.debug("Load");
-		//dojo.byId('status').setAttribute("style", "display: block");
-	});
-	
-	dojo.connect(basemapGallery, "onSelectionChange", function(e) {
-		console.debug("OnSelectionChange");
-		
-		dojo.connect(basemapGallery.getSelected(), "onLoad", function(e) {
-			console.debug("Load");
-			dojo.byId('status').setAttribute("style", "display: none");
+	require(["esri/dijit/Basemap","esri/dijit/BasemapLayer", "esri/layers/WebTiledLayer"], function(Basemap,BasemapLayer,WebTiledLayer) {
+		var wcLyr = new WebTiledLayer("http://${subDomain}.tile.stamen.com/watercolor/${level}/${col}/${row}.jpg", {
+		  "copyright": "Stamen Designs",
+		  "id": "StamenWaterColors",
+		  "subDomains": ["a", "b", "c","d"]
 		});
 		
-		init_layer_controls(map);
+		//map.addLayer(wcLyr);
+		
+		var wcbm = new BasemapLayer({
+		  url: "http://${subDomain}.tile.stamen.com/watercolor/${level}/${col}/${row}.jpg",
+		  type: "WebTiledLayer",
+		  copyright: "Stamen Designs",
+		  "id": "StamenWaterColors",
+		  subDomains: ["a", "b", "c","d"],
+		});
+		
+		var wcmap = new Basemap ({
+			layers: [wcbm],
+			title: "Watercolor",
+			id: "SWC"
+		});
+		
+		basemaps.push(wcmap);
+			
+		var basemapGallery = new esri.dijit.BasemapGallery({
+			//showArcGISBasemaps : true,
+			"basemaps": basemaps,
+			map: map,
+		}, "basemapGallery");
+		
+		basemapGallery.startup();
+		
+		basemapGallery.select("SWC");
+
+		dojo.connect(basemapGallery, "onError", function(err) { console.debug(error); });
+		dojo.connect(basemapGallery, "onLoad", function(e) {
+			//console.debug("Load");
+			//dojo.byId('status').setAttribute("style", "display: block");
+		});
+		
+		dojo.connect(basemapGallery, "onSelectionChange", function(e) {
+			console.debug("OnSelectionChange");
+			
+			dojo.connect(basemapGallery.getSelected(), "onLoad", function(e) {
+				console.debug("Load");
+				dojo.byId('status').setAttribute("style", "display: none");
+			});
+			
+			init_layer_controls(map);
+		});
 	});
 }
 
