@@ -207,8 +207,6 @@ function createBasemapGallery() {
 		}, "basemapGallery");
 		
 		basemapGallery.startup();
-		
-		basemapGallery.select("SWC");
 
 		dojo.connect(basemapGallery, "onError", function(err) { console.debug(error); });
 		dojo.connect(basemapGallery, "onLoad", function(e) {
@@ -431,9 +429,8 @@ function prepareMap() {
 			
 			$("#button-close-intro").button("enabled");
 			
-			map.graphics.onGraphicAdd = map.graphics.onGraphicsClear = function () {
-				isMapGraphicsEmpty(map.graphics.graphics.length);
-			};
+			map.graphics.on("graphics-add", function (){ isMapGraphicsEmpty(map.graphics.graphics.length); } );
+			map.graphics.on("graphics-clear", function (){ isMapGraphicsEmpty(map.graphics.graphics.length); } );
 			
 			$('#SplashCloseBtn').button('reset');
 			
