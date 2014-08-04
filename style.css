@@ -573,10 +573,14 @@ ul {
 	background-color: #EEEEEE;
 }
 
-i.checkbox.icon-large, .btn-layer {
-	min-height: 18px;	min-width: 18px;
-	height: 18px;		width: 18px;
+.btn-layer {
+	/*margin:  3px;*/
 	
-	padding: 0px;
-	margin:  0px;
+	background-position: 0 0;
+	background-size: 20px 20px;
+}
+
+.btn-layer:hover {
+	background-position: 0 0;
+	background-size: 20px 20px;
 }
