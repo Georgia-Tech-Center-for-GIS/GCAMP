@@ -572,3 +572,11 @@ ul {
 .nav-tabs>.active>a, .nav-tabs>.active>a:hover, .nav-tabs>.active>a:focus {
 	background-color: #EEEEEE;
 }
+
+i.checkbox.icon-large, .btn-layer {
+	min-height: 18px;	min-width: 18px;
+	height: 18px;		width: 18px;
+	
+	padding: 0px;
+	margin:  0px;
+}
