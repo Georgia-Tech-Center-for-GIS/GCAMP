@@ -42,7 +42,14 @@ function dispMetadata(a) {
 				$('#mdtaLink').tab('show');
 			},
 			error : function () {
-				$('#metaError').modal();
+				$('#metaError').dialog({
+					modal: true,
+					buttons: {
+						"Ok": function() {
+							$(this).dialog("close");
+						}
+					}
+				});
 			}
 	};
 	

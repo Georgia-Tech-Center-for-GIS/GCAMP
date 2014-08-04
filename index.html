@@ -110,6 +110,7 @@
 				<li data-bind='css: { activeLayerTabStyle: (currTab()=="Energy")}'>		<a id='energyLink'    style='font-size: 16px;'>Energy</a> </li>
 				<li data-bind='css: { activeLayerTabStyle: (currTab()=="Fisheries")}'>	<a id='fisheriesLink' style='font-size: 16px;'>Fisheries</a> </li>
 				<li data-bind='css: { activeLayerTabStyle: (currTab()=="Habitat")}'>	<a id='habitatLink'   style='font-size: 16px;'>Habitat</a> </li>
+				<li data-bind='css: { activeLayerTabStyle: (currTab()=="Hazards")}'>	<a id='hazardLink'    style='font-size: 16px;'>Hazard</a> </li>
 			</ul>
 
 			<ul class='nav nav-tabs' id='myTab' data-bind='css :{ enlargedMapTool : !isSidebarVisible() } '
@@ -181,16 +182,20 @@
 										<!-- /ko -->
 										<!-- ko if: (children.length == 0) -->
 											<div>
-												<div class='btn-group btn-group-layer' style='width: 20em;'>
-													<span class='btn btn-layer' style='padding-top: 0px; margin: 0px; padding-left: .4em; padding-right: .4em;' data-bind='click: viewModel.toggleVisibleLayer'>
-														<i class='checkbox icon-large icon-check'
-														data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq) "
-														style='padding: 4px; margin: 0px; width: 15px; background-image: url("images/glyphicons_152_check.png"); background-position: 0 0;'>
-														</i>
-														<i class='checkbox icon-large icon-check'
-														data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq) == false"
-														style='padding: 4px; margin: 0px; width: 15px; background-image: url("images/glyphicons_153_unchecked.png"); background-position: 0 0;'>
-														</i>
+												<div class='btn-group btn-group-layer' style=''>
+													<span class='' style=''>
+														<button class='btn btn-default btn-layer'
+														data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq), click: viewModel.toggleVisibleLayer"
+														style='background-image: url("images/glyphicons_152_check.png"); background-repeat: no-repeat;'>
+														</button>
+														<button class='btn btn-default btn-layer'
+														data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq) == false, click: viewModel.toggleVisibleLayer"
+														style='background-image: url("images/glyphicons_153_unchecked.png"); background-repeat: no-repeat;'>
+														</button>
+														<button class='btn btn-default btn-layer'
+														data-bind='click: dispMetadata'
+														style='background-image: url("images/glyphicons_195_circle_info.png"); background-repeat: no-repeat;'>
+														</button>
 													</span>
 													<!-- ko if: false --> <!-- legend != null && legend.length == 1 && viewModel.isVisibleLayer(mapLayerId,seq) -->
 														<span class='icon icon-large'
@@ -204,13 +209,12 @@
 														</span>
 													<!-- /ko -->
 													<!--a class='btn btn-info-sign'><i class='icon-info-sign icon-large'></i> </a-->
-													<span class='btn btn-layer' data-bind='click: dispMetadata' style='text-align: left; padding-left: .4em; padding-right: .4em;'><i class='icon Information-Icon' title='Display Metadata'></i></span>
 													<span class='btn btn-layer' data-bind='visible: minScale || maxScale' style='text-align:left;'>
 														<!-- i data-bind='visible: isRaster' class='icon' style='padding: 0px; margin: 0 1px 0 1px; height: 15px; width: 15px; background-position: 0 0; background-image: url("images/glyphicons_138_picture.png"); background-size: 15px 15px;'></i-->
 														<i title='Scale Dependant Layer' data-bind='visible: minScale || maxScale' class='icon' style='padding: 0px; margin: 0 1px 0 1px; height: 15px; width: 15px; background-position: 0 0; background-image: url("images/glyphicons_137_cogwheels.png"); background-size: 15px 15px;'></i>
 													</span>
-													<!-- ko if: !minScale && !maxScale -->
 														<div class='btn btn-layer' data-bind='text: name, click: dispAttribTable' style='text-align:left; min-width: 300px;' title='Display Attribute Table'></div>
+													<!-- ko if: !minScale && !maxScale -->
 													<!-- /ko -->
 													<!-- ko if: (minScale || maxScale ) -->
 														<div class='btn btn-layer' data-bind='text: name, click: dispAttribTable' style='text-align:left; min-width: 259px;' title='Display Attribute Table'></div>
@@ -481,17 +485,8 @@
 		</div>
 	</div>
 	
-	<div class="modal hide fade" id='metaError'>
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			<h3>Georgia Coastal Atlas: Metadata Lookup</h3>
-		</div>
-		<div class="modal-body">
-			<p>No Metadata Found, or other error.</p>
-		</div>
-		<div class="modal-footer">
-			<a href="#" class="btn" data-dismiss="modal">Close</a>
-		</div>
+	<div class="" id='metaError' style='display: hidden' title='Georgia Coastal Atlas: Metadata Lookup'>
+		<p>No Metadata Found, or other error.</p>
 	</div>
 	<div class='' id='measurePopoutPanel'>
 	</div>

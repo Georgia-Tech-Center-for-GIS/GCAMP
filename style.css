@@ -572,3 +572,15 @@ ul {
 .nav-tabs>.active>a, .nav-tabs>.active>a:hover, .nav-tabs>.active>a:focus {
 	background-color: #EEEEEE;
 }
+
+.btn-layer {
+	/*margin:  3px;*/
+	
+	background-position: 0 0;
+	background-size: 20px 20px;
+}
+
+.btn-layer:hover {
+	background-position: 0 0;
+	background-size: 20px 20px;
+}
