@@ -220,6 +220,7 @@
 														<div class='btn btn-layer' data-bind='text: name, click: dispAttribTable' style='text-align:left; min-width: 259px;' title='Display Attribute Table'></div>
 													<!-- /ko -->
 												</div>
+												<div class='layerOpacitySlider' data-bind="attr: {name: 'timeSlider'+mapLayerId+'|'+seq}" > </div>
 												<!-- ko if: legend != null -->
 												<div data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq), foreach: legend" style='font-size: 10pt; padding: .5em;'>
 													<div>

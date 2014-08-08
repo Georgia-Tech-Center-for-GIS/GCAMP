@@ -88,7 +88,7 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 		catch(e) {
 			console.debug(e);
 		}
-		
+				
 		list.push(dispLyr);
 	});
 	
@@ -197,13 +197,28 @@ function return_map_layers() {
 					catch(eeee) {
 						console.debug(eeee);
 					}
+					
+					$('.layerOpacitySlider').slider({
+						min: 0,
+						max: 1,
+						step: 0.1,
+						value: 1.0,
+						slide: function(event, ui) {
+							console.debug(event.delegateTarget.name);
+						}
+					});
+
 				}
 			});
 			break;
 		}
+/*
+		else if(j > 3) {
+/* ======= * /
 		else if(lyr.url != NOAA_NautChartURL) { //if(j > 3) {
 			//if( mapLyrs.length == 0) continue;
 			
+/* Leaving merged sections in comment * /
 			dispLyrOuter.name = mapLyrs()[ j-3 ].mapLabel;
 			
 			dojo.forEach( lyr.layerInfos, function (li, i) {
@@ -230,9 +245,9 @@ function return_map_layers() {
 			});
 			
 			allMapLayers.push(dispLyrOuter);
-		}
+		}*/
 	}
-	
+
 	lastIndex = -1;
 }
 
@@ -456,13 +471,6 @@ function dispLayerInfo(name, id, wurl) {
 		{ url: "http://carto.gis.gatech.edu/coast/metadata/" + name + ".xml",
 		  handleAs : "text"}).
 		then(function(data) {
-			/*var dstring = "<ul>";
-
-			for(item in data) {
-				dstring += "<li><b>" + item + "</b>: " + data[item];
-			}
-			
-			dstring += "</ul>";*/
 			var jsdom = dojox.xml.DomParser.parse(data);
 			xmldata = jsdom;
 			

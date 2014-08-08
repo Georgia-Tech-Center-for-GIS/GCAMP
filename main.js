@@ -63,6 +63,8 @@ var loaded = ko.observable();
 var timeSelValue = ko.observable();
 var timeSliderVisible = ko.observable(false);
 
+var opacityLayers = ko.observableArray();
+
 var mapSvrChoices = ko.observable(
 [
 	{id:1, mapLabel:"Raster Nautical Charts (RNC)",url:"http://egisws02.nos.noaa.gov/ArcGIS/rest/services/RNC/NOAA_RNC/MapServer"},
@@ -623,7 +625,7 @@ function prepareMap() {
 */
 function init() {
 	esriConfig.defaults.io.proxyUrl = "http://carto.gis.gatech.edu/proxypage_net/proxy.ashx";
-	esriConfig.defaults.io.alwaysUseProxy = true;
+	esriConfig.defaults.io.alwaysUseProxy = (window.location.toString().lastIndexOf("carto") > -1) ? true: false;
 	
 	esri.config.defaults.io.corsEnabledServers.push("http://carto.gis.gatech.edu");
 	esri.config.defaults.io.corsEnabledServers.push("http://www.csc.noaa.gov");
