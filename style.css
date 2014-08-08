@@ -245,7 +245,7 @@ div {
 	color: #78ABB1;
 	
 	font-weight: bold;
-	font-size: 24pt;
+	font-size: 20pt;
 }
 
 #BrandingPanel {
@@ -407,17 +407,8 @@ ul {
 }
 
 #timeSliderContainer {
-	top: 1em;
-	right: 6em;
-	position: absolute;
-	
 	border: 1px solid gray;
-	/*border-radius: 10px;*/
-	
 	background-color: #EEEEEE;
-	padding: 0.3em;
-	
-	/*display: none;*/
 }
 
 #timeSliderDiv {
@@ -578,14 +569,18 @@ ul {
 	margin-bottom: 5px;
 }
 
-.spacerTimeVisible {
-	height: 4em;
-}
-
-.spacerTimeInvisible {
-	height: 0;
-}
-
 .nav-tabs>.active>a, .nav-tabs>.active>a:hover, .nav-tabs>.active>a:focus {
 	background-color: #EEEEEE;
+}
+
+.btn-layer {
+	/*margin:  3px;*/
+	
+	background-position: 0 0;
+	background-size: 20px 20px;
+}
+
+.btn-layer:hover {
+	background-position: 0 0;
+	background-size: 20px 20px;
 }
