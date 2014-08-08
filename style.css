@@ -578,6 +578,9 @@ ul {
 	
 	background-position: 0 0;
 	background-size: 20px 20px;
+	
+	width: 25px;
+	height:25px;
 }
 
 .btn-layer:hover {
