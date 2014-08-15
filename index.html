@@ -182,7 +182,7 @@
 										<!-- /ko -->
 										<!-- ko if: (children.length == 0) -->
 											<div>
-												<div class='btn-group btn-group-layer' style=''>
+												<div class='btn-group btn-group-layer'>
 													<span class='' style=''>
 														<button class='btn btn-default btn-layer'
 														data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq), click: viewModel.toggleVisibleLayer"
@@ -213,14 +213,14 @@
 														<!-- i data-bind='visible: isRaster' class='icon' style='padding: 0px; margin: 0 1px 0 1px; height: 15px; width: 15px; background-position: 0 0; background-image: url("images/glyphicons_138_picture.png"); background-size: 15px 15px;'></i-->
 														<i title='Scale Dependant Layer' data-bind='visible: minScale || maxScale' class='icon' style='padding: 0px; margin: 0 1px 0 1px; height: 15px; width: 15px; background-position: 0 0; background-image: url("images/glyphicons_137_cogwheels.png"); background-size: 15px 15px;'></i>
 													</span>
-														<div class='btn btn-layer' data-bind='text: name, click: dispAttribTable' style='text-align:left; min-width: 300px;' title='Display Attribute Table'></div>
+														<div class='btn btn-layer' style='display: inline' data-bind='text: name, click: dispAttribTable' style='text-align:left; min-width: 300px;' title='Display Attribute Table'></div>
 													<!-- ko if: !minScale && !maxScale -->
 													<!-- /ko -->
 													<!-- ko if: (minScale || maxScale ) -->
 														<div class='btn btn-layer' data-bind='text: name, click: dispAttribTable' style='text-align:left; min-width: 259px;' title='Display Attribute Table'></div>
 													<!-- /ko -->
 												</div>
-												<div class='layerOpacitySlider' data-bind="attr: {name: 'timeSlider'+mapLayerId+'|'+seq}" > </div>
+												<!-- div class='layerOpacitySlider' data-bind="attr: {name: 'timeSlider'+mapLayerId+'|'+seq}" > </div -->
 												<!-- ko if: legend != null -->
 												<div data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq), foreach: legend" style='font-size: 10pt; padding: .5em;'>
 													<div>
