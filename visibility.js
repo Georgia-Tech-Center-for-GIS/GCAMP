@@ -50,7 +50,7 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 		
 		//console.debug( viewModel.legendElements()[id] );
 		
-		var legendItems = viewModel.legendElements()[id];
+		//var legendItems = viewModel.legendElements()[ mapLyrId ][id];
 		
 		if(li != null && li != "undefined") {
 			var dispLyr = {
@@ -63,7 +63,8 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 				"minScale" : li.minScale,
 				"maxScale" : li.maxScale,
 				"isRaster" : false,
-				legend : ko.observableArray(legendItems),
+				legend : ko.observableArray(),
+				//legend : ko.observableArray(legendItems),
 				"timeInfo" : null
 			};
 			
@@ -109,7 +110,9 @@ function return_map_layers() {
 	demLayer = null;
 	
 	for(var j = 1 ; j < map.layerIds.length; j++ ) {
-		var lyr = map.getLayer(map.layerIds[j]);
+		var currLyrMapId = map.layerIds[j];
+		
+		var lyr = map.getLayer(currLyrMapId);
 		var lastIndex = -1;
 		console.debug(lyr.url);
 		//var allLyrs = [];
@@ -162,20 +165,16 @@ function return_map_layers() {
 				},
 				load : function(result, a) {
 					var newResults = [];
-					
-					console.debug(a);
-					
-					console.debug(result);
-						
+											
 					for(var jjj = 0; jjj < result.layers.length; jjj++) {
 						newResults[ result.layers[jjj].layerId ] = result.layers[jjj].legend;
 					}
 					
-					viewModel.legendElements(newResults);
+					console.debug(j);
+					
+					viewModel.legendElements()[currLyrMapId] = newResults ;
 				}
 			})
-
-			console.debug(viewModel.legendElements());
 
 			dojo.forEach( map.getLayer(lyr.id).layerInfos, function (li, i) {						
 				if(i-1 >= lastIndex) {
@@ -271,7 +270,7 @@ var lastMetadataLayerTitle = ko.observable();
 var viewModel = {
 	themes : ko.observableArray(),
 	currentVisibleLayers: ko.observableArray(),
-	legendElements: ko.observableArray(),
+	legendElements: ko.observable({}),
 	
 	isOpenTheme : function (a) {
 		var themeName = a;
@@ -344,7 +343,7 @@ var viewModel = {
 			
 			console.debug(a);
 			
-			a.legend ( viewModel.legendElements()[a.seq] );
+			a.legend ( viewModel.legendElements()[a.mapLayerId][a.seq] );
 			
 			lyr.setVisibleLayers(nl);
 			legend.refresh();

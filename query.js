@@ -66,7 +66,7 @@ var idInProgress = ko.observable(false);
 var noIdResults = ko.observable(true);
 
 /**
-	Performs a 'standard' indentify
+	Performs a 'standard' identify
 	@param evt 
 */
 function doIdentify(evt) {
