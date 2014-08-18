@@ -173,6 +173,17 @@ function return_map_layers() {
 					console.debug(j);
 					
 					viewModel.legendElements()[currLyrMapId] = newResults ;
+					
+					if(allMapLayers() != null && allMapLayers().length > 0) {
+						for(var lll = 0; lll < allMapLayers().length; lll++) {
+							if( allMapLayers()[lll].children.length > 0) {
+								for(var mmm = 0; mmm < allMapLayers()[l].length; l++) {
+								}
+							}
+							else {
+							}
+						}
+					}
 				}
 			})
 
