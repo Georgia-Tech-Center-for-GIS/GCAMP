@@ -221,8 +221,8 @@
 													<!-- /ko -->
 												</div>
 												<!-- div class='layerOpacitySlider' data-bind="attr: {name: 'timeSlider'+mapLayerId+'|'+seq}" > </div -->
-												<!-- ko if: legend != null -->
-												<div data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq), foreach: legend" style='font-size: 10pt; padding: .5em;'>
+												<!-- ko if: legend != null && legend().length > 0 -->
+												<div data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq), foreach: legend()" style='font-size: 10pt; padding: .5em;'>
 													<div>
 														<img data-bind="attr: { src: 'data:'+contentType+';base64,'+imageData } "/> 
 														<span data-bind="text: label"></span>

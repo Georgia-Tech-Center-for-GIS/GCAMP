@@ -47,6 +47,9 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 	dojo.forEach( layerInfo.subLayerIds, function(id, k) {
 	try {					
 		var li = mapLyr.layerInfos[id];
+		
+		//console.debug( viewModel.legendElements()[id] );
+		
 		var legendItems = viewModel.legendElements()[id];
 		
 		if(li != null && li != "undefined") {
@@ -60,7 +63,7 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 				"minScale" : li.minScale,
 				"maxScale" : li.maxScale,
 				"isRaster" : false,
-				"legend" : legendItems,
+				legend : ko.observableArray(legendItems),
 				"timeInfo" : null
 			};
 			
@@ -134,7 +137,7 @@ function return_map_layers() {
 						"esriLayer": DEM_ESRI.layerInfos[0],
 						"children" : [],
 						"isRaster" : true,
-						"legend"   : result.layers[0].legend,
+						"legend"   : result.layers[0],
 						"minScale": 0,
 						"maxScale": 0,
 						"visible": false
@@ -170,11 +173,13 @@ function return_map_layers() {
 					
 					viewModel.legendElements(newResults);
 				}
-			});
+			})
+
+			console.debug(viewModel.legendElements());
 
 			dojo.forEach( map.getLayer(lyr.id).layerInfos, function (li, i) {						
 				if(i-1 >= lastIndex) {
-			
+				
 					var dispLyr = {
 						"mapLayerId" : map.layerIds[j],
 						"seq" : i,
@@ -183,7 +188,9 @@ function return_map_layers() {
 						"esriLayer": li,
 						"children" : [],
 						minScale: 0,
-						maxScale: 0
+						maxScale: 0,
+						legend : ko.observableArray()
+						/*"legend" : viewModel.legendElements()[i] */
 					};
 
 					if(li.subLayerIds) {
@@ -215,6 +222,10 @@ function return_map_layers() {
 				});*/
 			//break;
 		}
+	}
+
+	lastIndex = -1;
+
 /*
 		else if(j > 3) {
 /* ======= * /
@@ -249,9 +260,6 @@ function return_map_layers() {
 			
 			allMapLayers.push(dispLyrOuter);
 		}*/
-	}
-
-	lastIndex = -1;
 }
 
 var xmlMeta;
@@ -333,6 +341,10 @@ var viewModel = {
 			else {
 				lyr.setVisibility(true);
 			}
+			
+			console.debug(a);
+			
+			a.legend ( viewModel.legendElements()[a.seq] );
 			
 			lyr.setVisibleLayers(nl);
 			legend.refresh();
