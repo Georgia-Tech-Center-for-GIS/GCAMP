@@ -182,7 +182,7 @@
 										<!-- /ko -->
 										<!-- ko if: (children.length == 0) -->
 											<div>
-												<div class='btn-group btn-group-layer' style=''>
+												<div class=''> <!-- btn-group btn-group-layer -->
 													<span class='' style=''>
 														<button class='btn btn-default btn-layer'
 														data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq), click: viewModel.toggleVisibleLayer"
@@ -197,32 +197,21 @@
 														style='background-image: url("images/glyphicons_195_circle_info.png"); background-repeat: no-repeat;'>
 														</button>
 													</span>
-													<!-- ko if: false --> <!-- legend != null && legend.length == 1 && viewModel.isVisibleLayer(mapLayerId,seq) -->
-														<span class='icon icon-large'
-															  data-bind="style : { backgroundImage: 'url(data: legend.contentType,legend.imageData)' }"
-															  style='background-repeat: none; margin-top: -25px; margin-bottom: 0px; margin-left: -12px; width: 41px;' >
-															  <!--span data-bind='text: $data.legend[0].url'>
-															  </span-->
-																<!--span class='icon-large' data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq), foreach: legend" style='font-size: 10pt; width: 15px;'>
-																	<span class='legendSwatch'><img data-bind="attr: { src: url } " style='width: 100%; height: 100%;'> </img> </span>
-																</span-->
-														</span>
-													<!-- /ko -->
-													<!--a class='btn btn-info-sign'><i class='icon-info-sign icon-large'></i> </a-->
+													
 													<span class='btn btn-layer' data-bind='visible: minScale || maxScale' style='text-align:left;'>
 														<!-- i data-bind='visible: isRaster' class='icon' style='padding: 0px; margin: 0 1px 0 1px; height: 15px; width: 15px; background-position: 0 0; background-image: url("images/glyphicons_138_picture.png"); background-size: 15px 15px;'></i-->
 														<i title='Scale Dependant Layer' data-bind='visible: minScale || maxScale' class='icon' style='padding: 0px; margin: 0 1px 0 1px; height: 15px; width: 15px; background-position: 0 0; background-image: url("images/glyphicons_137_cogwheels.png"); background-size: 15px 15px;'></i>
 													</span>
-														<div class='btn btn-layer' data-bind='text: name, click: dispAttribTable' style='text-align:left; min-width: 300px;' title='Display Attribute Table'></div>
+													<span class='btn btn-layer' style='display: inline' data-bind='text: name, click: dispAttribTable' style='text-align:left; min-width: 300px;' title='Display Attribute Table'></span>
 													<!-- ko if: !minScale && !maxScale -->
 													<!-- /ko -->
 													<!-- ko if: (minScale || maxScale ) -->
-														<div class='btn btn-layer' data-bind='text: name, click: dispAttribTable' style='text-align:left; min-width: 259px;' title='Display Attribute Table'></div>
+														<span class='btn btn-layer' data-bind='text: name, click: dispAttribTable' style='text-align:left; min-width: 259px;' title='Display Attribute Table'></span>
 													<!-- /ko -->
 												</div>
-												<div class='layerOpacitySlider' data-bind="attr: {name: 'timeSlider'+mapLayerId+'|'+seq}" > </div>
-												<!-- ko if: legend != null -->
-												<div data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq), foreach: legend" style='font-size: 10pt; padding: .5em;'>
+												
+												<!-- ko if: legend != null && legend().length > 0 -->
+												<div data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq), foreach: legend()" style='font-size: 10pt; padding: .5em;'>
 													<div>
 														<img data-bind="attr: { src: 'data:'+contentType+';base64,'+imageData } "/> 
 														<span data-bind="text: label"></span>

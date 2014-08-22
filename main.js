@@ -459,7 +459,7 @@ function prepareMap() {
 			});
 			
 			addOpacityControl();
-						
+			
 			$('#allLayersLink').on('click', function(e) {
 				loaded(false);
 				$('#timeSliderChoicesSelect').off('change');
@@ -566,6 +566,37 @@ function prepareMap() {
 					loaded(true);
 				});
 			});
+			
+			$("#hazardLink").on('click', function(e) {
+				loaded(false);
+				$('#timeSliderChoicesSelect').off('change');
+
+				map.removeAllLayers();
+				timeLayerIds.removeAll();
+				viewModel.currentVisibleLayers.removeAll();
+				
+				MapSvcAllLayers = new CreateCollection("MapSvcList");
+								
+				MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
+				MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/LidarCZM/MapServer", ServiceType_Dynamic, map, null));
+//				MapSvcAllLayers.add(new MapSvcDef("NauticalCharts", NOAA_NautChartURL, ServiceType_Image, map, null));
+				MapSvcAllLayers.add(new MapSvcDef("Hazards1", "http://gchp.skio.usg.edu/rest/services/Server/AIWW/MapServer", ServiceType_Dynamic, map, null));
+				MapSvcAllLayers.add(new MapSvcDef("Hazards2", "http://gchp.skio.usg.edu/rest/services/Server/Hurricane_Tracks/MapServer", ServiceType_Dynamic, map, null));
+				MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function() {
+					hideDEMLayer();
+				
+					init_layer_controls(map);
+					init_id_funct(map);
+					
+					timeLayerIds.removeAll();
+					
+					currTab("Hazards");
+
+					addOpacityControl();
+					loaded(true);
+				});
+
+			});
 
 			$('#panBtn').on('click', function(e) {
 				map.setMapCursor("pointer");
@@ -625,7 +656,8 @@ function prepareMap() {
 */
 function init() {
 	esriConfig.defaults.io.proxyUrl = "http://carto.gis.gatech.edu/proxypage_net/proxy.ashx";
-	esriConfig.defaults.io.alwaysUseProxy = (window.location.toString().lastIndexOf("carto") > -1) ? true: false;
+	esriConfig.defaults.io.alwaysUseProxy = 
+	(window.location.toString().lastIndexOf("carto") > -1) ? true: true;
 	
 	esri.config.defaults.io.corsEnabledServers.push("http://carto.gis.gatech.edu");
 	esri.config.defaults.io.corsEnabledServers.push("http://www.csc.noaa.gov");
@@ -633,6 +665,7 @@ function init() {
 	esri.config.defaults.io.corsEnabledServers.push("http://services.arcgisonline.com");
 	esri.config.defaults.io.corsEnabledServers.push("http://tasks.arcgisonline.com");
 	esri.config.defaults.io.corsEnabledServers.push("http://egisws02.nos.noaa.gov");
+	esri.config.defaults.io.corsEnabledServers.push("http://gchp.skio.usg.edu");
 
 	prepareMap();
 }
