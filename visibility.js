@@ -44,20 +44,22 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 	var list = [];
 	var lastIndex = 0;
 	
+	console.debug("subLayerIds: " + layerInfo.subLayerIds);
+	
 	dojo.forEach( layerInfo.subLayerIds, function(id, k) {
-		try {					
+		try {
 			var li = mapLyr.layerInfos[id];
 			
-			if(li != null && li != "undefined") {
+			if(li != null && li != "undefined" && li.name != "Oysters") {
 				var legendItems = viewModel.legendElements()[ mapLyrId ][id];
 
 				var dispLyr = {
 					"mapLayerId" : mapLyrId,
-					"seq" : li.id,
+					"seq" : id,
 					"name": li.name,
-					"url" : mapLyr.url + "/" + li.id,
+					"url" : mapLyr.url + "/" + id,
 					"esriLayer": li,
-					"children" : ko.observableArray(),
+					"children" : ko.observableArray([]),
 					"minScale" : li.minScale,
 					"maxScale" : li.maxScale,
 					"isRaster" : false,
@@ -73,10 +75,10 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 					checkTimeLayers();
 					
 				}, checkTimeLayers );
-					
+				
 				lastIndex = id;
 
-				if(li.subLayerIds && li.name != "Oysters") {
+				if(li.subLayerIds) {
 					var retval = return_child_layers(mapLyr, mapLyrId, li);
 					dispLyr.children(retval.childLayers);
 					lastIndex = retval.lastIndex;
@@ -84,16 +86,16 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 				else {
 					availableLayersSummary.push( {data: li.name + "|" + dispLyr.url, label: li.name } );
 				}
+				
+				list.push(dispLyr);
 			}
 		}
 		catch(e) {
 			console.debug(e);
 		}
-					
-		list.push(dispLyr);
-
 	});
 	
+	console.debug(list);
 	return { "childLayers": list, "lastIndex": lastIndex };
 	//return returnValue;
 }
@@ -120,22 +122,22 @@ function processLayer(lyr, lyrIndex) {
 					
 			viewModel.legendElements()[lyr.id] = newResults ;
 			
-			dojo.forEach( map.getLayer(lyr.id).layerInfos, function (li, i) {						
-				console.debug(li);
-				
+			var mapLayer = map.getLayer(lyr.id).layerInfos;
+			dojo.forEach( mapLayer, function (li, i) {			
 				if(i-1 >= lastIndex) {
-				
+					console.debug(li);
+					
 					var dispLyr = {
 						"mapLayerId" : map.layerIds[lyr.id],
-						"seq" : i,
+						"seq" : li.id,
 						"name": li.name,
 						"url" : lyr.url + "/" + i,
 						"esriLayer": li,
-						"children" : ko.observableArray(),
+						"children" : ko.observableArray([]),
 						minScale: 0,
 						maxScale: 0,
 						//legend : ko.observableArray()
-						"legend" : viewModel.legendElements()[lyr.id][i]
+						"legend" : viewModel.legendElements()[lyr.id][li.id]
 					};
 
 					if(li.subLayerIds) {
@@ -144,7 +146,7 @@ function processLayer(lyr, lyrIndex) {
 						var retval = return_child_layers(lyr, lyr.id, li);
 						
 						dispLyr.children(retval.childLayers);
-						lastIndex = retval.lastIndex;						
+						lastIndex = retval.lastIndex;
 					}
 					
 					allMapLayers.push(dispLyr);
@@ -199,7 +201,7 @@ function return_map_layers() {
 						"name": "Digital Elevation Model (DEM)",
 						"url" : DEM_URL + "/0",
 						"esriLayer": DEM_ESRI.layerInfos[0],
-						"children" : ko.observableArray(),
+						"children" : ko.observableArray([]),
 						"isRaster" : true,
 						"legend"   : result.layers[0],
 						"minScale": 0,
