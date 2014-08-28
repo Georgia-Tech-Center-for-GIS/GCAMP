@@ -57,7 +57,7 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 					"name": li.name,
 					"url" : mapLyr.url + "/" + li.id,
 					"esriLayer": li,
-					"children" : [],
+					"children" : ko.observableArray(),
 					"minScale" : li.minScale,
 					"maxScale" : li.maxScale,
 					"isRaster" : false,
@@ -78,7 +78,7 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 
 				if(li.subLayerIds && li.name != "Oysters") {
 					var retval = return_child_layers(mapLyr, mapLyrId, li);
-					dispLyr.children = retval.childLayers;
+					dispLyr.children(retval.childLayers);
 					lastIndex = retval.lastIndex;
 				}
 				else {
@@ -131,7 +131,7 @@ function processLayer(lyr, lyrIndex) {
 						"name": li.name,
 						"url" : lyr.url + "/" + i,
 						"esriLayer": li,
-						"children" : [],
+						"children" : ko.observableArray(),
 						minScale: 0,
 						maxScale: 0,
 						//legend : ko.observableArray()
@@ -143,21 +143,21 @@ function processLayer(lyr, lyrIndex) {
 						
 						var retval = return_child_layers(lyr, lyr.id, li);
 						
-						dispLyr.children = (retval.childLayers);
-						lastIndex = retval.lastIndex;
-						
-						if(li.name.trim() == "Physical" && demLayer != null) {
-							dispLyr.children.push(demLayer);
-						}
+						dispLyr.children(retval.childLayers);
+						lastIndex = retval.lastIndex;						
 					}
-						
-					//console.debug(dispLyr.children);
-								
+					
 					allMapLayers.push(dispLyr);
 				}
 			});
 			
-			//lastIndex = -1;	
+			
+			for(var lll = 0; lll < allMapLayers().length; lll++) {
+				console.debug( allMapLayers()[lll].name );
+				if(allMapLayers()[lll].name.trim() == "Physical") {
+					allMapLayers()[lll].children.push(demLayer);
+				}
+			}
 		}
 	});
 }
@@ -199,7 +199,7 @@ function return_map_layers() {
 						"name": "Digital Elevation Model (DEM)",
 						"url" : DEM_URL + "/0",
 						"esriLayer": DEM_ESRI.layerInfos[0],
-						"children" : [],
+						"children" : ko.observableArray(),
 						"isRaster" : true,
 						"legend"   : result.layers[0],
 						"minScale": 0,
