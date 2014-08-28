@@ -110,7 +110,7 @@
 				<li data-bind='css: { activeLayerTabStyle: (currTab()=="Energy")}'>		<a id='energyLink'    style='font-size: 16px;'>Energy</a> </li>
 				<li data-bind='css: { activeLayerTabStyle: (currTab()=="Fisheries")}'>	<a id='fisheriesLink' style='font-size: 16px;'>Fisheries</a> </li>
 				<li data-bind='css: { activeLayerTabStyle: (currTab()=="Habitat")}'>	<a id='habitatLink'   style='font-size: 16px;'>Habitat</a> </li>
-				<li data-bind='css: { activeLayerTabStyle: (currTab()=="Hazards")}'>	<a id='hazardLink'    style='font-size: 16px;'>Hazard</a> </li>
+				<!-- li data-bind='css: { activeLayerTabStyle: (currTab()=="Hazards")}'>	<a id='hazardLink'    style='font-size: 16px;'>Hazard</a> </li -->
 			</ul>
 
 			<ul class='nav nav-tabs' id='myTab' data-bind='css :{ enlargedMapTool : !isSidebarVisible() } '
@@ -163,13 +163,13 @@
 						<div class='tab-pane active' id="layersTab" style='height: 100%;'>
 							<h2>Data Layers</h2>
 							<!--div data-bind="text: ly1.visibleLayers.length"></div-->
-							<div class='' style='height: 80%; overflow: auto;'>
+							<div class='' style='height: 80%; width: 120%; overflow: auto;'>
 								<!--div class=' style='padding-right: 1em; height:100%; width: 100%;'-->
 									<ul id='layersVisibList' data-bind="template: {name: 'layers_template', foreach: allMapLayers }"' style='width: 100%; list-style-type: none;'>
 									</ul>
 									
 									<script type="text/html" id="layers_template">
-										<!-- ko if: (children.length > 0) -->
+										<!-- ko if: children().length != 0 -->
 											<li>
 											<div class='accordion-heading' data-bind="click : viewModel.setOpenTheme , css:{'active': true}">
 												<div> <a >  <span data-bind='text: name'></span> </a> </div>
@@ -180,9 +180,9 @@
 											</div>
 											</li>
 										<!-- /ko -->
-										<!-- ko if: (children.length == 0) -->
+										<!-- ko if: children().length == 0 -->
 											<div>
-												<div class=''> <!-- btn-group btn-group-layer -->
+												<!-- div class=''--> <!-- btn-group btn-group-layer -->
 													<span class='' style=''>
 														<button class='btn btn-default btn-layer'
 														data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq), click: viewModel.toggleVisibleLayer"
@@ -208,7 +208,7 @@
 													<!-- ko if: (minScale || maxScale ) -->
 														<span class='btn btn-layer' data-bind='text: name, click: dispAttribTable' style='text-align:left; min-width: 259px;' title='Display Attribute Table'></span>
 													<!-- /ko -->
-												</div>
+												<!-- /div -->
 												
 												<!-- ko if: legend != null && legend().length > 0 -->
 												<div data-bind="visible: viewModel.isVisibleLayer(mapLayerId, seq), foreach: legend()" style='font-size: 10pt; padding: .5em;'>
@@ -228,7 +228,7 @@
 							<h2>Basemaps</h2>
 							<div style='padding-bottom: 2em;'><i class='btn' data-bind='click: return_to_LayerList'> Return to Layer list </i></div>
 							
-							<div id='basemapGallery'> </div>
+							<div id='basemapGallery' style='overflow: auto;'> </div>
 						</div>
 						<div class='tab-pane' id="otherDataTab" style='padding-left:1em;'>
 							<h2>Add Data</h2>

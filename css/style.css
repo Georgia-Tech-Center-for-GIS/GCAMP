@@ -462,6 +462,7 @@ a.disabled-link:hover {
 #map-info {
   margin-top: 10px !important;
 }
+
 #pos {
   position: absolute;
   background: white;
@@ -492,7 +493,6 @@ a.disabled-link:hover {
 #legend-accordion .accordion-toggle {
     font-size: 12px;
 }
-
 
 #data-accordion .icon-info-sign {
   margin-left: -15px;

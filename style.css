@@ -577,16 +577,16 @@ ul {
 	/*margin:  3px;*/
 	
 	background-position: 0 0;
-	background-size: 20px 20px;
+	background-size: 18px 18px;
 	
-	width: 25px;
-	height:25px;
+	width: 18px;
+	height:18px;
 }
 
 .btn-layer:hover {
 	background-position: 0 0;
-	background-size: 20px 20px;
+	background-size: 18px 18px;
 	
-	width: 25px;
-	height:25px;
+	width: 18px;
+	height:18px;
 }
