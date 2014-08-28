@@ -110,7 +110,7 @@
 				<li data-bind='css: { activeLayerTabStyle: (currTab()=="Energy")}'>		<a id='energyLink'    style='font-size: 16px;'>Energy</a> </li>
 				<li data-bind='css: { activeLayerTabStyle: (currTab()=="Fisheries")}'>	<a id='fisheriesLink' style='font-size: 16px;'>Fisheries</a> </li>
 				<li data-bind='css: { activeLayerTabStyle: (currTab()=="Habitat")}'>	<a id='habitatLink'   style='font-size: 16px;'>Habitat</a> </li>
-				<li data-bind='css: { activeLayerTabStyle: (currTab()=="Hazards")}'>	<a id='hazardLink'    style='font-size: 16px;'>Hazard</a> </li>
+				<!-- li data-bind='css: { activeLayerTabStyle: (currTab()=="Hazards")}'>	<a id='hazardLink'    style='font-size: 16px;'>Hazard</a> </li -->
 			</ul>
 
 			<ul class='nav nav-tabs' id='myTab' data-bind='css :{ enlargedMapTool : !isSidebarVisible() } '
@@ -169,7 +169,7 @@
 									</ul>
 									
 									<script type="text/html" id="layers_template">
-										<!-- ko if: (children.length > 0) -->
+										<!-- ko if: children.length != 0 -->
 											<li>
 											<div class='accordion-heading' data-bind="click : viewModel.setOpenTheme , css:{'active': true}">
 												<div> <a >  <span data-bind='text: name'></span> </a> </div>
@@ -180,7 +180,7 @@
 											</div>
 											</li>
 										<!-- /ko -->
-										<!-- ko if: (children.length == 0) -->
+										<!-- ko if: children.length == 0 -->
 											<div>
 												<div class=''> <!-- btn-group btn-group-layer -->
 													<span class='' style=''>
@@ -228,7 +228,7 @@
 							<h2>Basemaps</h2>
 							<div style='padding-bottom: 2em;'><i class='btn' data-bind='click: return_to_LayerList'> Return to Layer list </i></div>
 							
-							<div id='basemapGallery'> </div>
+							<div id='basemapGallery' style='overflow: auto;'> </div>
 						</div>
 						<div class='tab-pane' id="otherDataTab" style='padding-left:1em;'>
 							<h2>Add Data</h2>

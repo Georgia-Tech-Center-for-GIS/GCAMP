@@ -45,60 +45,122 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 	var lastIndex = 0;
 	
 	dojo.forEach( layerInfo.subLayerIds, function(id, k) {
-	try {					
-		var li = mapLyr.layerInfos[id];
-		
-		//console.debug( viewModel.legendElements()[id] );
-		
-		//var legendItems = viewModel.legendElements()[ mapLyrId ][id];
-		
-		if(li != null && li != "undefined") {
-			var dispLyr = {
-				"mapLayerId" : mapLyrId,
-				"seq" : id,
-				"name": li.name,
-				"url" : mapLyr.url + "/" + id,
-				"esriLayer": li,
-				"children" : [],
-				"minScale" : li.minScale,
-				"maxScale" : li.maxScale,
-				"isRaster" : false,
-				legend : ko.observableArray(),
-				//legend : ko.observableArray(legendItems),
-				"timeInfo" : null
-			};
+		try {					
+			var li = mapLyr.layerInfos[id];
 			
-			getMapLayerTimeInfo(mapLyr.url, id, function(lname,ti) {
-				li.timeInfo = ti;
-				
-				timeLayerIds.push( { "id" : id, "label" : lname } );
-				checkTimeLayers();
-				
-			}, checkTimeLayers );
-				
-			lastIndex = id;
+			if(li != null && li != "undefined") {
+				var legendItems = viewModel.legendElements()[ mapLyrId ][id];
 
-			if(li.subLayerIds) {
-				var retval = return_child_layers(mapLyr, mapLyrId, li);
-				dispLyr.children = dojo.clone(retval.childLayers);
-				lastIndex = retval.lastIndex;
-			}
-			else {
-				availableLayersSummary.push( {data: li.name + "|" + dispLyr.url, label: li.name } );
-			}
-			}
-			}
-			catch(e) {
-				console.debug(e);
-			}
+				var dispLyr = {
+					"mapLayerId" : mapLyrId,
+					"seq" : li.id,
+					"name": li.name,
+					"url" : mapLyr.url + "/" + li.id,
+					"esriLayer": li,
+					"children" : [],
+					"minScale" : li.minScale,
+					"maxScale" : li.maxScale,
+					"isRaster" : false,
+					//legend : ko.observableArray(),
+					legend : ko.observableArray(legendItems),
+					"timeInfo" : null
+				};
+				
+				getMapLayerTimeInfo(mapLyr.url, id, function(lname,ti) {
+					li.timeInfo = ti;
 					
-			list.push(dispLyr);
+					timeLayerIds.push( { "id" : id, "label" : lname } );
+					checkTimeLayers();
+					
+				}, checkTimeLayers );
+					
+				lastIndex = id;
+
+				if(li.subLayerIds && li.name != "Oysters") {
+					var retval = return_child_layers(mapLyr, mapLyrId, li);
+					dispLyr.children = dojo.clone(retval.childLayers);
+					lastIndex = retval.lastIndex;
+				}
+				else {
+					availableLayersSummary.push( {data: li.name + "|" + dispLyr.url, label: li.name } );
+				}
+			}
+		}
+		catch(e) {
+			console.debug(e);
+		}
+					
+		list.push(dispLyr);
 
 	});
 	
 	var returnValue = { "childLayers": list, "lastIndex": lastIndex };
 	
 	return returnValue;
+}
+
+function processLayer(lyr, lyrIndex) {
+	var lastIndex = -1;
+	CurrentMainMapServiceURL = lyr.url;
+
+	soapURL = lyr.url.replace("rest/", "");
+	
+	esri.request({
+		url: lyr.url + "/legend",
+		handleAs : "json",
+		content : {
+			"soapUrl": soapURL,
+			f: "json"
+		},
+		load : function(result, a) {
+			var newResults = [];
+
+			for(var jjj = 0; jjj < result.layers.length; jjj++) {
+				newResults[ result.layers[jjj].layerId ] = result.layers[jjj].legend;
+			}
+					
+			viewModel.legendElements()[lyr.id] = newResults ;
+			
+			dojo.forEach( map.getLayer(lyr.id).layerInfos, function (li, i) {						
+				console.debug(li);
+				
+				if(i-1 >= lastIndex) {
+				
+					var dispLyr = {
+						"mapLayerId" : map.layerIds[lyr.id],
+						"seq" : i,
+						"name": li.name,
+						"url" : lyr.url + "/" + i,
+						"esriLayer": li,
+						"children" : [],
+						minScale: 0,
+						maxScale: 0,
+						//legend : ko.observableArray()
+						"legend" : viewModel.legendElements()[lyr.id][i]
+					};
+
+					if(li.subLayerIds) {
+						//dispLyr.children = [];
+						
+						var retval = return_child_layers(lyr, lyr.id, li);
+
+						dispLyr.children = dojo.clone(retval.childLayers);
+						lastIndex = retval.lastIndex;
+					}
+						
+					console.debug(dispLyr.children);
+					
+					if(li.name.trim() == "Physical" && demLayer != null) {
+						dispLyr.children.push(demLayer);
+					}
+				
+					allMapLayers.push(dispLyr);
+				}
+			});
+			
+			//lastIndex = -1;	
+		}
+	});
 }
 
 function return_map_layers() {
@@ -150,126 +212,12 @@ function return_map_layers() {
 				}
 			});
 		}
-		else if(lyr.url == TulipMapServiceURL || lyr.url.lastIndexOf("tulip") > -1 ||
-			lyr.url.lastIndexOf("gchp") > -1) {
-			CurrentMainMapServiceURL = lyr.url;
-
-			soapURL = lyr.url.replace("rest/", "");
+		else if(lyr.url == TulipMapServiceURL || lyr.url.lastIndexOf("tulip") > -1 /*||
+			lyr.url.lastIndexOf("gchp") > -1 */) {
 			
-			esri.request({
-				url: lyr.url + "/legend",
-				handleAs : "json",
-				content : {
-					"soapUrl": soapURL,
-					f: "json"
-				},
-				load : function(result, a) {
-					var newResults = [];
-											
-					for(var jjj = 0; jjj < result.layers.length; jjj++) {
-						newResults[ result.layers[jjj].layerId ] = result.layers[jjj].legend;
-					}
-					
-					console.debug(j);
-					
-					viewModel.legendElements()[currLyrMapId] = newResults ;
-					
-					if(allMapLayers() != null && allMapLayers().length > 0) {
-						for(var lll = 0; lll < allMapLayers().length; lll++) {
-							if( allMapLayers()[lll].children.length > 0) {
-								for(var mmm = 0; mmm < allMapLayers()[l].length; l++) {
-								}
-							}
-							else {
-							}
-						}
-					}
-				}
-			})
-
-			dojo.forEach( map.getLayer(lyr.id).layerInfos, function (li, i) {						
-				if(i-1 >= lastIndex) {
-				
-					var dispLyr = {
-						"mapLayerId" : map.layerIds[j],
-						"seq" : i,
-						"name": li.name,
-						"url" : lyr.url + "/" + i,
-						"esriLayer": li,
-						"children" : [],
-						minScale: 0,
-						maxScale: 0,
-						legend : ko.observableArray()
-						/*"legend" : viewModel.legendElements()[i] */
-					};
-
-					if(li.subLayerIds) {
-						dispLyr.children = [];
-						
-						var retval = return_child_layers(lyr, map.layerIds[j], li);
-						dispLyr.children = dojo.clone(retval.childLayers);
-						lastIndex = retval.lastIndex;
-					}
-						
-					if(li.name.trim() == "Physical" && demLayer != null) {
-						dispLyr.children.push(demLayer);
-					}
-				
-					allMapLayers.push(dispLyr);
-				}
-			});
-			
-			lastIndex = -1;
-				
-				/*$('.layerOpacitySlider').slider({
-					min: 0,
-					max: 1,
-					step: 0.1,
-					value: 1.0,
-					slide: function(event, ui) {
-						console.debug(event.delegateTarget.name);
-					}
-				});*/
-			//break;
+			processLayer(lyr, j);
 		}
 	}
-
-	lastIndex = -1;
-
-/*
-		else if(j > 3) {
-/* ======= * /
-		else if(lyr.url != NOAA_NautChartURL) { //if(j > 3) {
-			//if( mapLyrs.length == 0) continue;
-			
-/* Leaving merged sections in comment * /
-			dispLyrOuter.name = mapLyrs()[ j-3 ].mapLabel;
-			
-			dojo.forEach( lyr.layerInfos, function (li, i) {
-				if(i-1 < lastIndex) {
-				}
-				else {
-					var dispLyr = {
-						"mapLayerId" : map.layerIds[j],
-						"seq" : i,
-						"name": li.name,
-						"url" : lyr.url + "/" + i,
-						"esriLayer": li,
-						"children" : []
-					};
-
-					if(li.subLayerIds) {				
-						var retval = return_child_layers(lyr, map.layerIds[j], li);
-						dispLyr.children = dojo.clone(retval.childLayers);
-						lastIndex = retval.lastIndex;
-					}
-					
-					dispLyrOuter.children.push(dispLyr);
-				}
-			});
-			
-			allMapLayers.push(dispLyrOuter);
-		}*/
 }
 
 var xmlMeta;
@@ -351,10 +299,8 @@ var viewModel = {
 			else {
 				lyr.setVisibility(true);
 			}
-			
-			console.debug(a);
-			
-			a.legend ( viewModel.legendElements()[a.mapLayerId][a.seq] );
+					
+			//a.legend ( viewModel.legendElements()[a.mapLayerId][a.seq] );
 			
 			lyr.setVisibleLayers(nl);
 			legend.refresh();
