@@ -78,7 +78,7 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 
 				if(li.subLayerIds && li.name != "Oysters") {
 					var retval = return_child_layers(mapLyr, mapLyrId, li);
-					dispLyr.children = dojo.clone(retval.childLayers);
+					dispLyr.children = retval.childLayers;
 					lastIndex = retval.lastIndex;
 				}
 				else {
@@ -94,9 +94,8 @@ function return_child_layers(mapLyr, mapLyrId, layerInfo) {
 
 	});
 	
-	var returnValue = { "childLayers": list, "lastIndex": lastIndex };
-	
-	return returnValue;
+	return { "childLayers": list, "lastIndex": lastIndex };
+	//return returnValue;
 }
 
 function processLayer(lyr, lyrIndex) {
@@ -143,17 +142,17 @@ function processLayer(lyr, lyrIndex) {
 						//dispLyr.children = [];
 						
 						var retval = return_child_layers(lyr, lyr.id, li);
-
-						dispLyr.children = dojo.clone(retval.childLayers);
+						
+						dispLyr.children = (retval.childLayers);
 						lastIndex = retval.lastIndex;
+						
+						if(li.name.trim() == "Physical" && demLayer != null) {
+							dispLyr.children.push(demLayer);
+						}
 					}
 						
-					console.debug(dispLyr.children);
-					
-					if(li.name.trim() == "Physical" && demLayer != null) {
-						dispLyr.children.push(demLayer);
-					}
-				
+					//console.debug(dispLyr.children);
+								
 					allMapLayers.push(dispLyr);
 				}
 			});
