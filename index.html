@@ -157,8 +157,8 @@
 	</div>
 	<hr/>
 	<div class='container-fluid' style='height: 90%;' >
-		<div class='row-fluid' style='height: 90%;'>
-			<div class='col-sm-3' style='height: 100%;' data-bind='visible: isSidebarVisible()'>
+		<div class='row-fluid' style='height: 90%; overflow: auto;'>
+			<div id='tabColumn' class='col-sm-3 col-lg-height' style='' data-bind='visible: isSidebarVisible()'>
 					<div class='tab-content' style='height:100%; width: 100%;'>
 						<div class='tab-pane active' id="layersTab" style='height: 100%; width: 100%;'>
 							<h2>Data Layers</h2>
@@ -437,7 +437,7 @@
 						</div>
 					</div>
 			</div>
-			<div class='container' data-bind='css: { "col-sm-9": isSidebarVisible(), "col-sm-12": !isSidebarVisible() }' style='height: 90%;'>
+			<div class='container col-lg-height' data-bind='css: { "col-sm-9": isSidebarVisible(), "col-sm-12": !isSidebarVisible() }' style=''>
 				<div id="map" style='height: 100%;'> </div>
 				<div id='coordContainer' style=''>
 					<div id='coordinates' class='button button-group'>
