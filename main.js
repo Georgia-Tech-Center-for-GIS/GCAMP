@@ -753,20 +753,25 @@ $(document).ready(function() {
 		autoReinitialise : true
 	});*/
 		
-	$('a[data-toggle="tab"]').on('shown', function (e) {
-			if( $(e.target).attr('href') == "#identifyPane") {
-				
-				map.setMapCursor("url(images/id_cursor.cur),auto");
-				handleIdentify = map.on("click", doIdentify);
-				//handleIdentify = dojo.connect(map, "onClick", doIdentify);
+	$('a[data-toggle="tab"]').on('click', function (e) {
+		console.debug( $(e.target).attr('href') );
+		
+		if( $(e.target).attr('href') == "#identifyPane") {
+			
+			map.setMapCursor("url(images/id_cursor.cur),auto");
+			handleIdentify = map.on("click", doIdentify);
+			//handleIdentify = dojo.connect(map, "onClick", doIdentify);
+		}
+		else {
+			map.setMapCursor("default");
+			
+			if(handleIdentify != null) {
+				//dojo.disconnect(handleIdentify);
+				//jquery.off("click", handleIdentify);
+				handleIdentify.remove();
+				handleIdentify = null;
 			}
-			else {
-				map.setMapCursor("default");
-				//if(handleIdentify != null) {
-					//dojo.disconnect(handleIdentify);
-					//handleIdentify = null;
-				//}
-			}
+		}
 	});
 	/*
 			if( $(e.target).attr('href') == "#identifyPaneSumm" ) {
