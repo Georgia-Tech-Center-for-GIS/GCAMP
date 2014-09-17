@@ -74,6 +74,8 @@ function doIdentify(evt) {
 	lastIdResults.removeAll();
 	idViewModel.idOpenLayers = ko.observableArray();
 	
+	console.debug("IAMHERE");
+	
 	var centerPoint = new esri.geometry.Point(evt.mapPoint.x,evt.mapPoint.y,evt.mapPoint.spatialReference);
     var mapWidth = map.extent.getWidth();
 	var pixelWidth = mapWidth / map.width;

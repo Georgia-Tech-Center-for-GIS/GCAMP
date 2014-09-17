@@ -37,7 +37,7 @@
       #map{ margin: 0; padding: 0; } 
     </style> 
     <script>
-	var dojoConfig = { parseOnLoad: true };
+	var dojoConfig = { parseOnLoad: false };
 	/*
 		packages : [
 			{
@@ -123,8 +123,9 @@
 					<i class='icon open-maplayer-icon'></i></a></li -->
 				<li><a title='Map Legend' href='#legendPane' data-toggle='tab'>
 					<i class='icon map-legend-icon'></i></a></li>
+<!-- Added href attribute to i element as a hack to ensure event handler fires . -->
 				<li><a title='Identify Feature' href='#identifyPane' data-toggle='tab'>
-					<i class='icon Identify-results'></i></a></li>
+					<i href='#identifyPane' class='icon Identify-results'></i></a></li>
 				<!-- li><a title='Summary by Area' href='#identifyPaneSumm' data-toggle='tab'>
 					<i class='icon summaryIcon'></i></a></li -->
 				<li style='margin-right: 10px;'><a title='' href='#metadataPane' id='mdtaLink' data-toggle='tab'>
@@ -437,7 +438,7 @@
 						</div>
 					</div>
 			</div>
-			<div class='container col-lg-height' data-bind='css: { "col-sm-9": isSidebarVisible(), "col-sm-12": !isSidebarVisible() }' style=''>
+			<div class='container col-lg-height' data-bind='css: { "col-sm-9": isSidebarVisible(), "col-sm-12": !isSidebarVisible() }' style='height: 100%;'>
 				<div id="map" style='height: 100%;'> </div>
 				<div id='coordContainer' style=''>
 					<div id='coordinates' class='button button-group'>

@@ -135,18 +135,6 @@ var TulipMapServiceURL = "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/
 /** Current main map service; */
 var CurrentMainMapServiceURL = TulipMapServiceURL;
 
-require(["esri/geometry/Extent", "esri/map", "http://esri.github.io/bootstrap-map-js/src/js/bootstrapmap.js" ,"dojo/domReady!"],
-function(Extent, Map, BootstrapMap) {
-	initialExtent = (new Extent(
-		{"ymin": 30.561, "ymax": 32.422, "xmin": -82.319, "xmax": -79.973,
-		"spatialReference": { "wkid" : 4326 }} )).expand(2);
-		
-	map = BootstrapMap.create("map",{
-	  basemap:"oceans",
-	  "extent": initialExtent
-	});
-});
-
 var opacityControl = null;
 
 /**
@@ -404,9 +392,17 @@ function checkTimeLayers() {
 /**
 */
 function prepareMap() {
-		//initialExtent = a[0];
-		
-		//map.setExtent(initialExtent);
+	require(["esri/geometry/Extent", "esri/map", "http://esri.github.io/bootstrap-map-js/src/js/bootstrapmap.js" ,"dojo/domReady!"],
+	function(Extent, Map, BootstrapMap) {
+		initialExtent = (new Extent(
+			{"ymin": 30.561, "ymax": 32.422, "xmin": -82.319, "xmax": -79.973,
+			"spatialReference": { "wkid" : 4326 }} )).expand(2);
+			
+		map = BootstrapMap.create("map",{
+		  basemap:"oceans",
+		  "extent": initialExtent
+		});
+
 		loaded(false);
 		
 		map.setMapCursor("pointer");
@@ -435,8 +431,6 @@ function prepareMap() {
 			map.graphics.on("graphics-clear", function (){ isMapGraphicsEmpty(map.graphics.graphics.length); } );
 			
 			$('#SplashCloseBtn').button('reset');
-			
-			ko.applyBindings();
 			
 			navToolbar = new esri.toolbars.Navigation(map);
 			drwToolbar = new esri.toolbars.Draw(map);
@@ -628,46 +622,8 @@ function prepareMap() {
 			loaded(true);
 			
 			$("#button-close-intro").button().removeAttr('disabled');
-//			addLayerToMap(NOAA_NautChartURL, "NOAA Nautical Charts");
-		});
-			
-		if (false) {
-			var args = {
-				url: "http://carto.gis.gatech.edu/proxypage_net/sites.ashx",
-				handleAs: "json",
-				load: function(data) {
-					serviceCatalog = [];
-					
-					for(var i = 0; i < data.length; i++) {
-						if(data[i].label != "") {
-							serviceCatalog.push(
-								{ url: data[i].url, label: data[i].label, id: i+1}
-							);
-						}
-					}
-				}
-			};
-					
-			esri.request(args);
-		}
-}
-
-/**
-*/
-function init() {
-	esriConfig.defaults.io.proxyUrl = "http://carto.gis.gatech.edu/proxypage_net/proxy.ashx";
-	esriConfig.defaults.io.alwaysUseProxy = 
-	(window.location.toString().lastIndexOf("carto") > -1) ? true: true;
-	
-	esri.config.defaults.io.corsEnabledServers.push("http://carto.gis.gatech.edu");
-	esri.config.defaults.io.corsEnabledServers.push("http://www.csc.noaa.gov");
-	esri.config.defaults.io.corsEnabledServers.push("http://ocs-gis.ncd.noaa.gov");
-	esri.config.defaults.io.corsEnabledServers.push("http://services.arcgisonline.com");
-	esri.config.defaults.io.corsEnabledServers.push("http://tasks.arcgisonline.com");
-	esri.config.defaults.io.corsEnabledServers.push("http://egisws02.nos.noaa.gov");
-	esri.config.defaults.io.corsEnabledServers.push("http://gchp.skio.usg.edu");
-
-	prepareMap();
+		});			
+	});
 }
 
 /**
@@ -768,36 +724,56 @@ function sliderChanged(value) {
 
 /**
 */
-function jQueryReady() {
-	$(function() {
-		/*jpanes = $('.scroll-pane').jScrollPane({
-			showArrows : true,
-			verticalArrowPositions: 'split',
-			horizontalArrowPositions: 'split',
-			maintainPosition : false,
-			verticalDragMinHeight: 20,
-			verticalDragMaxHeight: 20,
-			horizontalDragMinWidth: 20,
-			horizontalDragMaxWidth: 20,
-			scrollbarWidth: 250,
-			scrollbarHeight: 250,
-			autoReinitialise : true
-		});*/
+$(document).ready(function() {
+	esriConfig.defaults.io.proxyUrl = "http://carto.gis.gatech.edu/proxypage_net/proxy.ashx";
+	esriConfig.defaults.io.alwaysUseProxy = 
+	(window.location.toString().lastIndexOf("carto") > -1) ? true: true;
+	
+	esri.config.defaults.io.corsEnabledServers.push("http://carto.gis.gatech.edu");
+	esri.config.defaults.io.corsEnabledServers.push("http://www.csc.noaa.gov");
+	esri.config.defaults.io.corsEnabledServers.push("http://ocs-gis.ncd.noaa.gov");
+	esri.config.defaults.io.corsEnabledServers.push("http://services.arcgisonline.com");
+	esri.config.defaults.io.corsEnabledServers.push("http://tasks.arcgisonline.com");
+	esri.config.defaults.io.corsEnabledServers.push("http://egisws02.nos.noaa.gov");
+	esri.config.defaults.io.corsEnabledServers.push("http://gchp.skio.usg.edu");
+
+	prepareMap();
+	
+	/*jpanes = $('.scroll-pane').jScrollPane({
+		showArrows : true,
+		verticalArrowPositions: 'split',
+		horizontalArrowPositions: 'split',
+		maintainPosition : false,
+		verticalDragMinHeight: 20,
+		verticalDragMaxHeight: 20,
+		horizontalDragMinWidth: 20,
+		horizontalDragMaxWidth: 20,
+		scrollbarWidth: 250,
+		scrollbarHeight: 250,
+		autoReinitialise : true
+	});*/
 		
-		tabs = $('a[data-toggle="tab"]').on('shown', function (e) {
-			if( $(e.target).attr('href') == "#identifyPane") {
-				map.setMapCursor("url(images/id_cursor.cur),auto");
-				handleIdentify = dojo.connect(map, "onClick", doIdentify);
-				
-			}
-			else {
-				map.setMapCursor("default");
-				if(handleIdentify != null) {
-					dojo.disconnect(handleIdentify);
-					handleIdentify = null;
-				}
-			}
+	$('a[data-toggle="tab"]').on('click', function (e) {
+		console.debug( $(e.target).attr('href') );
+		
+		if( $(e.target).attr('href') == "#identifyPane") {
 			
+			map.setMapCursor("url(images/id_cursor.cur),auto");
+			handleIdentify = map.on("click", doIdentify);
+			//handleIdentify = dojo.connect(map, "onClick", doIdentify);
+		}
+		else {
+			map.setMapCursor("default");
+			
+			if(handleIdentify != null) {
+				//dojo.disconnect(handleIdentify);
+				//jquery.off("click", handleIdentify);
+				handleIdentify.remove();
+				handleIdentify = null;
+			}
+		}
+	});
+	/*
 			if( $(e.target).attr('href') == "#identifyPaneSumm" ) {
 				resetSummaryPane();
 				drwToolbar.activate(esri.toolbars.Draw.POLYGON);
@@ -830,8 +806,9 @@ function jQueryReady() {
 			//alert($(e.target).attr('href')) //e.target // activated tab
 			//e.relatedTarget // previous tab
 			//$('.scroll-pane').jScrollPane();
-		})
-	
+		});
+		*/
+		
 		$('#intro').dialog({
 			modal: true,
 			buttons: [{
@@ -857,8 +834,9 @@ function jQueryReady() {
 		$('#meas').on('click', function(e) {
 			$('#measurePopoutPanel').dialog({width:250, title:"Measurement"});
 		});
-	});
-}
+		
+	ko.applyBindings();
+});
 
 /**
 */
@@ -893,6 +871,3 @@ function doToggleSidebar() {
 function doShowPrintDlg() {
 	$("#printing-popover").show();
 }
-
-$(document).ready(jQueryReady);
-dojo.addOnLoad(init);
