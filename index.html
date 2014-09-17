@@ -37,7 +37,7 @@
       #map{ margin: 0; padding: 0; } 
     </style> 
     <script>
-	var dojoConfig = { parseOnLoad: true };
+	var dojoConfig = { parseOnLoad: false };
 	/*
 		packages : [
 			{
@@ -437,7 +437,7 @@
 						</div>
 					</div>
 			</div>
-			<div class='container col-lg-height' data-bind='css: { "col-sm-9": isSidebarVisible(), "col-sm-12": !isSidebarVisible() }' style=''>
+			<div class='container col-lg-height' data-bind='css: { "col-sm-9": isSidebarVisible(), "col-sm-12": !isSidebarVisible() }' style='height: 100%;'>
 				<div id="map" style='height: 100%;'> </div>
 				<div id='coordContainer' style=''>
 					<div id='coordinates' class='button button-group'>
