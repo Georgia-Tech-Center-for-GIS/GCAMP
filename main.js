@@ -221,7 +221,7 @@ function createBasemapGallery() {
 	Function called to convert an extent in decimal degrees/ lat/long to Web Mercator
 */
 /*function cvtLatLongExtent_2_WebMercator( extent, fn_when_finished ) {
-	/*var geometryService = new esri.tasks.GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
+	/*var geometryService = new esri.tasks.GeometryService("http://tulip.gis.gatech.edu:6080/arcgis/rest/services/Utilities/Geometry/GeometryServer");
 	var PrjParams = new esri.tasks.ProjectParameters();
 	PrjParams.geometries = [extent];
 	PrjParams.outSR = new esri.SpatialReference(3857);
@@ -236,7 +236,7 @@ function createBasemapGallery() {
 */
 function doMeasure(graphics) {
 	if(graphics[0].geometry.type != "POLYGON") {
-		var geometryService = new esri.tasks.GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
+		var geometryService = new esri.tasks.GeometryService("http://tulip.gis.gatech.edu:6080/arcgis/rest/services/Utilities/Geometry/GeometryServer");
 		var lp = new esri.tasks.LengthsParameters();
 		lp.polylines = graphics;
 		lp.lengthUnit = esri.tasks.GeometryService.UNIT_FOOT;
@@ -244,7 +244,7 @@ function doMeasure(graphics) {
 		geometryService.lengths(lp, outputDistance);
 	}
 	else {
-		var geometryService = new esri.tasks.GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
+		var geometryService = new esri.tasks.GeometryService("http://tulip.gis.gatech.edu:6080/arcgis/rest/services/Utilities/Geometry/GeometryServer");
 		var ap = new esri.tasks.AreasAndLengthsParameters();
 		ap.polygons = graphics;
 		ap.areaUnit = esri.tasks.GeometryService.UNIT_ACRE;
@@ -412,7 +412,7 @@ function prepareMap() {
 		
 		initBasemap = new esri.layers.ArcGISDynamicMapServiceLayer("http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer");
 		
-		geometryService = new esri.tasks.GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
+		geometryService = new esri.tasks.GeometryService("http://tulip.gis.gatech.edu:6080/arcgis/rest/services/Utilities/Geometry/GeometryServer");
 		
         dojo.connect(geometryService, "onLengthsComplete", outputDistance);
 		
@@ -427,8 +427,8 @@ function prepareMap() {
 			
 			$("#button-close-intro").button("enabled");
 			
-			map.graphics.on("graphics-add", function (){ isMapGraphicsEmpty(map.graphics.graphics.length); } );
-			map.graphics.on("graphics-clear", function (){ isMapGraphicsEmpty(map.graphics.graphics.length); } );
+			//map.graphics.on("graphics-add", function (){ isMapGraphicsEmpty(map.graphics.graphics.length); } );
+			//map.graphics.on("graphics-clear", function (){ isMapGraphicsEmpty(map.graphics.graphics.length); } );
 			
 			$('#SplashCloseBtn').button('reset');
 			
@@ -785,7 +785,7 @@ $(document).ready(function() {
 						lastGraphic = graphic;
 						//doMeasure([graphic]);
 
-						var geometryService = new esri.tasks.GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
+						var geometryService = new esri.tasks.GeometryService("http://tulip.gis.gatech.edu:6080/arcgis/rest/services/Utilities/Geometry/GeometryServer");
 						var PrjParams = new esri.tasks.ProjectParameters();
 						PrjParams.geometries = [geometry];
 						PrjParams.outSR = new esri.SpatialReference(32618);

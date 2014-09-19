@@ -74,7 +74,7 @@ function doIdentify(evt) {
 	lastIdResults.removeAll();
 	idViewModel.idOpenLayers = ko.observableArray();
 	
-	console.debug("IAMHERE");
+	//console.debug( evt.mapPoint.spatialReference );
 	
 	var centerPoint = new esri.geometry.Point(evt.mapPoint.x,evt.mapPoint.y,evt.mapPoint.spatialReference);
     var mapWidth = map.extent.getWidth();
@@ -85,6 +85,7 @@ function doIdentify(evt) {
     identifyParams.geometry = queryExtent.centerAt(centerPoint);
 	identifyParams.mapExtent = map.extent;
 	identifyParams.layerIds = /*[0]; / */ viewModel.currentVisibleLayers.peek()[3].vlayers;
+	identifyParams.spatialReference = map.spatialReference;
 	
 	identifyParams.layerIds = identifyParams.layerIds.sort();
 	
@@ -93,6 +94,8 @@ function doIdentify(evt) {
 	identifyTask.execute(identifyParams,
 		function (idResults) {
 			idInProgress(false);
+			
+			console.debug(idResults);
 			
 			if (idResults != null && idResults.length > 0) {
 				noIdResults(false);
@@ -133,35 +136,62 @@ var idViewModel = {
 		
 		//$('.scroll-pane').jScrollPane({verticalGutter: 0});
 	},
-	
+	_zoomToProjectedFeature : function( geom, attrib ) {
+		require(["esri/geometry", "esri/symbols/SimpleMarkerSymbol", "esri/symbols/SimpleFillSymbol", "esri/symbols/SimpleLineSymbol",
+			"esri/Color", "esri/InfoTemplate", "esri/graphic"],
+				function(Point, SimpleMarkerSymbol,SimpleFillSymbol, SimpleLineSymbol, Color,InfoTemplate,Graphic) {      
+					var b = geom.geometries[0];
+					lastGraphic = b;
+
+					map.graphics.clear();
+
+					var grph = new Graphic(b);
+
+					if(b.type == "point") {
+						var sms = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_CIRCLE, 9, null, new Color("#FFFF00"));
+						grph.symbol = sms;
+
+						map.setExtent( new esri.geometry.Extent(b.x-150,b.y-150,b.x+150,b.y+150, map.spatialReference) );
+					}
+					else if(b.type == "polygon") {
+						var sfs = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID,
+						new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASHDOT,
+						new Color([255,0,0]), 2), new Color("#FFFF00"));
+
+						grph.symbol = sfs;
+
+						map.setExtent( b.getExtent().expand(1.75) );
+					}
+
+					map.graphics.add(grph);
+				});
+	},
 	zoomToFeature : function (a) {
-		map.graphics.clear();
-		
-		var fgeom = null;
-		
-		if(a.feature.geometry.getExtent() == null) {
-			symbol = new esri.symbol.PictureMarkerSymbol('images/Identify-Results.png',  48, 48);
-			
-			var centerPoint = new esri.geometry.Point(a.feature.geometry.x,a.feature.geometry.y,a.feature.geometry.spatialReference);
-			var mapWidth = map.extent.getWidth();
-			var pixelWidth = mapWidth/map.width;
-			var tolerance = 15000;
-			var queryExtent = new esri.geometry.Extent (1,1,tolerance,tolerance,a.feature.geometry.spatialReference);
-	
-			fgeom = queryExtent.centerAt(centerPoint);
-		}
-		else {
-			symbol = new esri.symbol.SimpleFillSymbol(
-				esri.symbol.SimpleFillSymbol.STYLE_SOLID,
-				new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([255, 255, 0]), 3),
-				new dojo.Color([255, 255, 0, 0.25]));
+		require(["esri/tasks/GeometryService", "esri/tasks/ProjectParameters",
+				 "esri/InfoTemplate"],
+			function(GeometryService, ProjectParameters, InfoTemplate) {
+				var feature = a.feature;
+				
+				console.debug(feature);
+				b = feature.geometry;
+				previousAttributes = feature.attributes;
 
-			fgeom = a.feature.geometry.getExtent().expand(1.5);
-		}
-
-		a.feature.setSymbol(symbol);		
-		map.setExtent(fgeom);
-		map.graphics.add(a.feature);
+				if( b.spatialReference.wkid == 4326 ) {
+					idViewModel._zoomToProjectedFeature({geometries:[esri.geometry.geographicToWebMercator(b) ]});
+				}
+				else if( b.spatialReference.wkid != map.spatialReference.wkid ) {
+					var gs = new GeometryService("http://tulip.gis.gatech.edu:6080/arcgis/rest/services/Utilities/Geometry/GeometryServer");
+					var params = new ProjectParameters();
+					params.geometries = [b];
+					params.outSR = map.spatialReference;
+					
+					gs.project(params);
+					gs.on("project-complete", idViewModel._zoomToProjectedFeature);
+				}
+				else {
+					idViewModel._zoomToProjectedFeature({geometries:[b]});
+				}
+			});
 	}
 }
 
@@ -198,7 +228,7 @@ function getResultsFields(ftre) {
 
 */
 function addToMap3(idResults, evt) {
-	var geometryService = new esri.tasks.GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
+	var geometryService = new esri.tasks.GeometryService("http://tulip.gis.gatech.edu:6080/arcgis/rest/services/Utilities/Geometry/GeometryServer");
 	for (var i = 0; i < idResults.length; i++) {
 		console.debug(idResults[i]);
 	}
@@ -563,7 +593,7 @@ function processSummaryResults(all_results) {
 				
 				//lastAttribFeaturesSummary.push(a);
 							
-				var geometryService = new esri.tasks.GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
+				var geometryService = new esri.tasks.GeometryService("http://tulip.gis.gatech.edu:6080/arcgis/rest/services/Utilities/Geometry/GeometryServer");
 				
 				//console.debug(feature.geometry.type);
 				
