@@ -10,7 +10,8 @@ function dispMetadata(a) {
 	//var lyr = map.getLayer(a.mapLayerId);
 	var nm = a.name;
 	
-	console.debug(a);
+	lastMetadataLayerTitle (a.name);
+	lastMetadataLinkURL ("http://carto.gis.gatech.edu/GCAMP/metadata/" + a.name + ".xml");
 	
 	var args = {
 			url: "http://carto.gis.gatech.edu/GCAMP/metadata/" + a.name + ".xml",
@@ -18,10 +19,9 @@ function dispMetadata(a) {
 			load: function(data) {
 			
 				try {
-					lastMetadataLayerTitle (a.name);
 					
 					var abstractText = data.querySelector("abstract").textContent;
-					lastMetadataAbstract (abstractText);
+					
 				}
 				catch(e) {}
 				try {

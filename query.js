@@ -85,7 +85,7 @@ function doIdentify(evt) {
     identifyParams.geometry = queryExtent.centerAt(centerPoint);
 	identifyParams.mapExtent = map.extent;
 	identifyParams.layerIds = /*[0]; / */ viewModel.currentVisibleLayers.peek()[3].vlayers;
-	identifyParams.spatialReference = map.spatialReference;
+	//identifyParams.spatialReference = map.spatialReference;
 	
 	identifyParams.layerIds = identifyParams.layerIds.sort();
 	
@@ -167,9 +167,9 @@ var idViewModel = {
 				});
 	},
 	zoomToFeature : function (a) {
-		require(["esri/tasks/GeometryService", "esri/tasks/ProjectParameters",
+		require(["esri/tasks/ProjectParameters",
 				 "esri/InfoTemplate"],
-			function(GeometryService, ProjectParameters, InfoTemplate) {
+			function(ProjectParameters, InfoTemplate) {
 				var feature = a.feature;
 				
 				console.debug(feature);
@@ -180,13 +180,12 @@ var idViewModel = {
 					idViewModel._zoomToProjectedFeature({geometries:[esri.geometry.geographicToWebMercator(b) ]});
 				}
 				else if( b.spatialReference.wkid != map.spatialReference.wkid ) {
-					var gs = new GeometryService("http://tulip.gis.gatech.edu:6080/arcgis/rest/services/Utilities/Geometry/GeometryServer");
 					var params = new ProjectParameters();
 					params.geometries = [b];
 					params.outSR = map.spatialReference;
 					
-					gs.project(params);
-					gs.on("project-complete", idViewModel._zoomToProjectedFeature);
+					geometryService.project(params);
+					geometryService.on("project-complete", idViewModel._zoomToProjectedFeature);
 				}
 				else {
 					idViewModel._zoomToProjectedFeature({geometries:[b]});

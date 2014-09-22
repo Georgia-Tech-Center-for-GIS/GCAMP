@@ -54,6 +54,25 @@ var map, legend;
 var mapBase = "http://carto.gis.gatech.edu/arcgis/rest/services/";
 var mapMarine = "http://www.csc.noaa.gov/ArcGISPUB/rest/services/MultipurposeMarineCadastre/MultipurposeMarineCadastre/MapServer/";
 
+var defaultBasemapURL = "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer";
+
+/** URL to DEM (map) service */
+var DEM_URL = "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/LidarCZM/MapServer";
+/** NOAA Raster Nautical Charts service URL */
+var NOAA_NautChartURL = "http://egisws02.nos.noaa.gov/ArcGIS/rest/services/RNC/NOAA_RNC/ImageServer";
+/** Main tulip map service URL */
+var TulipMapServiceURL = "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/GCAMP514/MapServer";
+
+/** URL for Energy tab */
+var EnergyMapServiceURL = "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/Energy/MapServer";
+/** URL for Habitat tab */
+var HabitatMapServiceURL = "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/habitat/MapServer";
+/** URL for Fisheries tab */
+var FisheriesMapServiceURL = "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/Fisheries/MapServer";
+
+/** Current main map service; */
+var CurrentMainMapServiceURL = TulipMapServiceURL;
+
 var cartoLayers = ["NauticalChart522", "Habitat522", "Wetlands530", "CoastalResources61", "Physical522", "Counties531", "Administrative530"];
 var marineLayers = ["2", "3", "4", "5"];
 var selectedNewMapSvc = ko.observable();
@@ -124,16 +143,6 @@ var abs_map_scale = ko.observable("0");
 var lastMapEv = null;
 
 var rr = null;
-
-/** URL to DEM (map) service */
-var DEM_URL = "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/LidarCZM/MapServer";
-/** NOAA Raster Nautical Charts service URL */
-var NOAA_NautChartURL = "http://egisws02.nos.noaa.gov/ArcGIS/rest/services/RNC/NOAA_RNC/ImageServer";
-/** Main tulip map service URL */
-var TulipMapServiceURL = "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/GCAMP514/MapServer";
-
-/** Current main map service; */
-var CurrentMainMapServiceURL = TulipMapServiceURL;
 
 var opacityControl = null;
 
@@ -464,8 +473,8 @@ function prepareMap() {
 				
 				MapSvcAllLayers = new CreateCollection("MapSvcList");
 				
-				MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
-				MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/LidarCZM/MapServer", ServiceType_Dynamic, map, null));
+				MapSvcAllLayers.add(new MapSvcDef("BaseMap", defaultBasemapURL, ServiceType_Tiled, map, null));
+				MapSvcAllLayers.add(new MapSvcDef("DEM", DEM_URL, ServiceType_Dynamic, map, null));
 				MapSvcAllLayers.add(new MapSvcDef("NauticalCharts", NOAA_NautChartURL, ServiceType_Image, map, null));
 				MapSvcAllLayers.add(new MapSvcDef("Carto", TulipMapServiceURL, ServiceType_Dynamic, map, null));
 				MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function() {
@@ -490,10 +499,10 @@ function prepareMap() {
 				
 				MapSvcAllLayers = new CreateCollection("MapSvcList");
 				
-				MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
-				MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/LidarCZM/MapServer", ServiceType_Dynamic, map, null));
+				MapSvcAllLayers.add(new MapSvcDef("BaseMap", defaultBasemapURL, ServiceType_Tiled, map, null));
+				MapSvcAllLayers.add(new MapSvcDef("DEM", DEM_URL, ServiceType_Dynamic, map, null));
 				MapSvcAllLayers.add(new MapSvcDef("NauticalCharts", NOAA_NautChartURL, ServiceType_Image, map, null));
-				MapSvcAllLayers.add(new MapSvcDef("Energy", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/Energy/MapServer", ServiceType_Dynamic, map, null));				
+				MapSvcAllLayers.add(new MapSvcDef("Energy", EnergyMapServiceURL, ServiceType_Dynamic, map, null));	
 				MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function() {
 					hideDEMLayer();
 					
@@ -516,10 +525,10 @@ function prepareMap() {
 				
 				MapSvcAllLayers = new CreateCollection("MapSvcList");
 						
-				MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
-				MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/LidarCZM/MapServer", ServiceType_Dynamic, map, null));
+				MapSvcAllLayers.add(new MapSvcDef("BaseMap", defaultBasemapURL, ServiceType_Tiled, map, null));
+				MapSvcAllLayers.add(new MapSvcDef("DEM", DEM_URL, ServiceType_Dynamic, map, null));
 				MapSvcAllLayers.add(new MapSvcDef("NauticalCharts", NOAA_NautChartURL, ServiceType_Image, map, null));
-				MapSvcAllLayers.add(new MapSvcDef("Habitat", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/habitat/MapServer", ServiceType_Dynamic, map, null));				
+				MapSvcAllLayers.add(new MapSvcDef("Habitat", HabitatMapServiceURL, ServiceType_Dynamic, map, null));
 				MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function() {
 					hideDEMLayer();
 					
@@ -543,9 +552,9 @@ function prepareMap() {
 				MapSvcAllLayers = new CreateCollection("MapSvcList");
 								
 				MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
-				MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/LidarCZM/MapServer", ServiceType_Dynamic, map, null));
+				MapSvcAllLayers.add(new MapSvcDef("DEM", DEM_URL, ServiceType_Dynamic, map, null));
 				MapSvcAllLayers.add(new MapSvcDef("NauticalCharts", NOAA_NautChartURL, ServiceType_Image, map, null));
-				MapSvcAllLayers.add(new MapSvcDef("Fisheries", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/Fisheries/MapServer", ServiceType_Dynamic, map, null));				
+				MapSvcAllLayers.add(new MapSvcDef("Fisheries", FisheriesMapServiceURL, ServiceType_Dynamic, map, null));
 				MapSvcAllLayers.initializeAllMapSerivceLayers(map, "Something Else happened", function() {
 					hideDEMLayer();
 				
@@ -572,7 +581,7 @@ function prepareMap() {
 				MapSvcAllLayers = new CreateCollection("MapSvcList");
 								
 				MapSvcAllLayers.add(new MapSvcDef("BaseMap", "http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer", ServiceType_Tiled, map, null));
-				MapSvcAllLayers.add(new MapSvcDef("DEM", "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/LidarCZM/MapServer", ServiceType_Dynamic, map, null));
+				MapSvcAllLayers.add(new MapSvcDef("DEM", DEM_URL, ServiceType_Dynamic, map, null));
 //				MapSvcAllLayers.add(new MapSvcDef("NauticalCharts", NOAA_NautChartURL, ServiceType_Image, map, null));
 				MapSvcAllLayers.add(new MapSvcDef("Hazards1", "http://gchp.skio.usg.edu/rest/services/Server/AIWW/MapServer", ServiceType_Dynamic, map, null));
 				MapSvcAllLayers.add(new MapSvcDef("Hazards2", "http://gchp.skio.usg.edu/rest/services/Server/Hurricane_Tracks/MapServer", ServiceType_Dynamic, map, null));

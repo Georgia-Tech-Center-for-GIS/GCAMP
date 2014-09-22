@@ -377,7 +377,8 @@
 												<ul>
 													<div data-bind="foreach: $data">
 														<li style='padding-top: 0.8em;'><span data-bind="text: value"></span> <br/>
-															<a data-bind="click: idViewModel.zoomToFeature " >Zoom to feature</a></li>
+															<div>Zoom to feature</></li>
+																<!-- data-bind="click: idViewModel.zoomToFeature "  -->
 															<table>
 																<thead>
 																	<tr><th>Attribute</th><th>Value</th></tr>
@@ -404,10 +405,13 @@
 							<div style='padding-bottom: 2em;'><i class='btn' data-bind='click: return_to_LayerList'> Return to Layer list </i></div>
 						
 							<h3 data-bind='text: lastMetadataLayerTitle'> </h3>
+							<a data-bind='attr: {href: lastMetadataLinkURL}'> Download Metadata PDF </a>
 
 							<div class='tab-pane' id='metadataPane' style='padding-left:1em; height: 90%; overflow-y: scroll;'>
-								
-								<div class='accordion' id='abstrAcc'>
+								<div>
+								</div>
+							</div>
+								<!--div class='accordion' id='abstrAcc'>
 									<div class='accordion-heading'>
 										<a class='accordion-toggle' data-toggle='collapse' data-parent='#abstrAcc' href='#infoAccCollapse1'>Abstract</a>
 									</div>
@@ -433,8 +437,7 @@
 										<a style='overflow: auto; height: 80%; width: 90%;' class='' data-bind='attr: {href: lastMetadataLinks }, text: lastMetadataLinks' id='metaLinks'>
 										</a>
 									</div>
-								</div>
-							</div>
+								</div-->
 						</div>
 					</div>
 			</div>
