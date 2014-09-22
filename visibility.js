@@ -227,6 +227,8 @@ var lastMetadataPurpose  = ko.observable();
 var lastMetadataLinks    = ko.observable();
 var lastMetadataLayerTitle = ko.observable();
 
+var lastMetadataLinkURL = ko.observable();
+
 var viewModel = {
 	themes : ko.observableArray(),
 	currentVisibleLayers: ko.observableArray(),
