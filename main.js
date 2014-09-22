@@ -64,7 +64,7 @@ var NOAA_NautChartURL = "http://egisws02.nos.noaa.gov/ArcGIS/rest/services/RNC/N
 var TulipMapServiceURL = "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/GCAMP514/MapServer";
 
 /** URL for Energy tab */
-var EnergyMapServiceURL = "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/Energy/MapServer";
+var EnergyMapServiceURL = "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/Energ/MapServer";
 /** URL for Habitat tab */
 var HabitatMapServiceURL = "http://tulip.gis.gatech.edu:6080/arcgis/rest/services/GACoast/habitat/MapServer";
 /** URL for Fisheries tab */
