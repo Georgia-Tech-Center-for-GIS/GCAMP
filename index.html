@@ -67,7 +67,9 @@
     <script src="http://js.arcgis.com/3.9/"></script>
 	<script src="script/MapClasses.js" type="text/javascript"></script>
 	
-	<script type="text/javascript" src="script/gowiththeflow.js"></script>
+	<!-- script type="text/javascript" src="script/gowiththeflow.js"></script -->
+	<script type='text/javascript' src='script/jszip.js'></script>
+	<script type='text/javascript' src='script/xlsx.js'></script>
 	
 	<script src='metadata.js'> </script>
 	<script src='attributes.js'> </script>
@@ -407,9 +409,8 @@
 							<h3 data-bind='text: lastMetadataLayerTitle'> </h3>
 							<a data-bind='attr: {href: lastMetadataLinkURL}'> Download Metadata PDF </a>
 
-							<div class='tab-pane' id='metadataPane' style='padding-left:1em; height: 90%; overflow-y: scroll;'>
-								<div>
-								</div>
+							<div overflow: auto;'>
+								<div data-bind='text: lastMetadataAbstract' id='metaAbstract'> </div>
 							</div>
 								<!--div class='accordion' id='abstrAcc'>
 									<div class='accordion-heading'>
