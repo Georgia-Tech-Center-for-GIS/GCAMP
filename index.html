@@ -409,9 +409,8 @@
 							<h3 data-bind='text: lastMetadataLayerTitle'> </h3>
 							<a data-bind='attr: {href: lastMetadataLinkURL}'> Download Metadata PDF </a>
 
-							<div class='tab-pane' id='metadataPane' style='padding-left:1em; height: 90%; overflow-y: scroll;'>
-								<div>
-								</div>
+							<div overflow: auto;'>
+								<div data-bind='text: lastMetadataAbstract' id='metaAbstract'> </div>
 							</div>
 								<!--div class='accordion' id='abstrAcc'>
 									<div class='accordion-heading'>

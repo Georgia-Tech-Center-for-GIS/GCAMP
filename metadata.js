@@ -13,19 +13,24 @@ function dispMetadata(a) {
 	lastMetadataLayerTitle (a.name);
 	lastMetadataLinkURL ("http://carto.gis.gatech.edu/GCAMP/metadata/" + a.name + ".pdf");
 
-	var url = "/GCAMP/GCAMPdatalist514.xlsx";
+	//var url = "/GCAMP/GCAMPdatalist514.xlsx";
 
 	var args = {
-			url: "GCAMPmetadata.csv",
+			url: "http://carto.gis.gatech.edu/GCAMP/GCAMPmetadata.csv",
 			handleAs: "text",
 			load: function(data) {
 				var lines = data.split("\n");
 				
-				dojo.foreach(lines, function(ln) {
+				dojo.forEach(lines, function(ln) {
 					var fields = ln.split(",");
+					
+					if( fields[0] == lastMetadataLayerTitle() ) {
+						fields.splice(1, 1);
+						lastMetadataAbstract( fields.join(',') );
+					}
+					
+					$('#mdtaLink').tab('show');
 				});
-			
-				$('#mdtaLink').tab('show');
 			},
 			error : function () {
 				$('#metaError').dialog({
